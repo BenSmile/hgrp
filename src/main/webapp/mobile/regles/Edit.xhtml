@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="ReglesEditPage" lazy="true">
+        <pm:header title="#{resourcesBundle.EditReglesTitle}">
+            <h:form>
+                <p:commandButton styleClass="ui-btn-left ui-btn-inline" value="#{resourcesBundle.Cancel}" icon="ui-icon-arrow-l" action="#{mobilePageController.navigateBackInHistory('pm:ReglesListPage')}"/>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="ReglesEditForm">
+
+                <h:panelGroup id="display">
+                    <p:outputPanel rendered="#{reglesController.selected != null}">
+
+                        <pm:field>
+                            <h:outputLabel value="#{resourcesBundle.EditReglesLabel_idRegle}" for="idRegle" />
+                            <h:outputText id="idRegle" value="#{reglesController.selected.idRegle}" />
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditReglesLabel_ageMenarche}" for="ageMenarche" />
+                            <p:inputText id="ageMenarche" value="#{reglesController.selected.ageMenarche}" title="#{resourcesBundle.EditReglesTitle_ageMenarche}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditReglesLabel_ddr}" for="ddr" />
+                            <p:calendar id="ddr" pattern="MM/dd/yyyy" value="#{reglesController.selected.ddr}" title="#{resourcesBundle.EditReglesTitle_ddr}"  showOn="button"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditReglesLabel_dureeRegle}" for="dureeRegle" />
+                            <p:inputText id="dureeRegle" value="#{reglesController.selected.dureeRegle}" title="#{resourcesBundle.EditReglesTitle_dureeRegle}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditReglesLabel_fluxMenstruel}" for="fluxMenstruel" />
+                            <p:inputText id="fluxMenstruel" value="#{reglesController.selected.fluxMenstruel}" title="#{resourcesBundle.EditReglesTitle_fluxMenstruel}" size="13" maxlength="13"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditReglesLabel_regularite}" for="regularite" />
+                            <p:inputText id="regularite" value="#{reglesController.selected.regularite}" title="#{resourcesBundle.EditReglesTitle_regularite}" size="4" maxlength="4"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditReglesLabel_dysmenorhee}" for="dysmenorhee" />
+                            <p:inputText id="dysmenorhee" value="#{reglesController.selected.dysmenorhee}" title="#{resourcesBundle.EditReglesTitle_dysmenorhee}" size="4" maxlength="4"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditReglesLabel_amenorheedepuisaccouchement}" for="amenorheedepuisaccouchement" />
+                            <p:inputText id="amenorheedepuisaccouchement" value="#{reglesController.selected.amenorheedepuisaccouchement}" title="#{resourcesBundle.EditReglesTitle_amenorheedepuisaccouchement}" size="4" maxlength="4"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditReglesLabel_utilisateur}" for="utilisateur" />
+                            <p:selectOneMenu id="utilisateur" value="#{reglesController.selected.utilisateur}" required="true" requiredMessage="#{resourcesBundle.EditReglesRequiredMessage_utilisateur}" converter="usersConverter">
+                                <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{usersController.items}"
+                                               var="utilisateurItem"
+                                               itemValue="#{utilisateurItem}"
+                                               itemLabel="#{utilisateurItem.uname.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditReglesLabel_numDossier}" for="numDossier" />
+                            <p:selectOneMenu id="numDossier" value="#{reglesController.selected.numDossier}" required="true" requiredMessage="#{resourcesBundle.EditReglesRequiredMessage_numDossier}" converter="infosFemmeConverter">
+                                <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{infosFemmeController.items}"
+                                               var="numDossierItem"
+                                               itemValue="#{numDossierItem}"
+                                               itemLabel="#{numDossierItem.numDossier.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                        </pm:field>
+                    </p:outputPanel>
+                    <p:commandButton actionListener="#{reglesController.save}" value="#{resourcesBundle.Save}" update="#{mobilePageController.updatableWidgets(component,'display,:ReglesListPage:ReglesListForm:datalist,:growl')}" action="#{mobilePageController.navigateWithHistory('pm:ReglesListPage')}">
+                        <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                </h:panelGroup>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

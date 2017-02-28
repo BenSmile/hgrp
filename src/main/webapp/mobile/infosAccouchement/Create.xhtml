@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="InfosAccouchementCreatePage" lazy="true">
+        <pm:header title="#{resourcesBundle.CreateInfosAccouchementTitle}">
+            <h:form>
+                <p:commandButton styleClass="ui-btn-left ui-btn-inline" value="#{resourcesBundle.Cancel}" icon="ui-icon-arrow-l" action="#{mobilePageController.navigateBackInHistory('pm:InfosAccouchementListPage')}"/>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="InfosAccouchementCreateForm">
+
+                <h:panelGroup id="display" rendered="#{infosAccouchementController.selected != null}">
+                    <p:tabView id="InfosAccouchementTabView">
+
+                        <p:tab id="InfosAccouchementTab1" title="#{resourcesBundle.TabHeaderPrefix} 1">
+                            <p:outputPanel>
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_dateaccouchement}" for="dateaccouchement" />
+                                    <p:calendar id="dateaccouchement" pattern="MM/dd/yyyy" value="#{infosAccouchementController.selected.dateaccouchement}" title="#{resourcesBundle.CreateInfosAccouchementTitle_dateaccouchement}"  showOn="button"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_datesortie}" for="datesortie" />
+                                    <p:calendar id="datesortie" pattern="MM/dd/yyyy" value="#{infosAccouchementController.selected.datesortie}" title="#{resourcesBundle.CreateInfosAccouchementTitle_datesortie}"  showOn="button"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_accoucheuse}" for="accoucheuse" />
+                                    <p:inputText id="accoucheuse" value="#{infosAccouchementController.selected.accoucheuse}" title="#{resourcesBundle.CreateInfosAccouchementTitle_accoucheuse}" size="30" maxlength="30"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_etatMere}" for="etatMere" />
+                                    <p:inputText id="etatMere" value="#{infosAccouchementController.selected.etatMere}" title="#{resourcesBundle.CreateInfosAccouchementTitle_etatMere}" size="8" maxlength="8"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_decesmaternelPostTravail}" for="decesmaternelPostTravail" />
+                                    <p:inputText id="decesmaternelPostTravail" value="#{infosAccouchementController.selected.decesmaternelPostTravail}" title="#{resourcesBundle.CreateInfosAccouchementTitle_decesmaternelPostTravail}" size="4" maxlength="4"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_decesMaternelApresIntervention}" for="decesMaternelApresIntervention" />
+                                    <p:inputText id="decesMaternelApresIntervention" value="#{infosAccouchementController.selected.decesMaternelApresIntervention}" title="#{resourcesBundle.CreateInfosAccouchementTitle_decesMaternelApresIntervention}" size="4" maxlength="4"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_modeaccouchement}" for="modeaccouchement" />
+                                    <p:inputText id="modeaccouchement" value="#{infosAccouchementController.selected.modeaccouchement}" title="#{resourcesBundle.CreateInfosAccouchementTitle_modeaccouchement}" size="10" maxlength="10"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_eutocique}" for="eutocique" />
+                                    <p:inputText id="eutocique" value="#{infosAccouchementController.selected.eutocique}" title="#{resourcesBundle.CreateInfosAccouchementTitle_eutocique}" size="4" maxlength="4"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_dystocique}" for="dystocique" />
+                                    <p:inputText id="dystocique" value="#{infosAccouchementController.selected.dystocique}" title="#{resourcesBundle.CreateInfosAccouchementTitle_dystocique}" size="11" maxlength="11"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_ha}" for="ha" />
+                                    <p:inputText id="ha" value="#{infosAccouchementController.selected.ha}" title="#{resourcesBundle.CreateInfosAccouchementTitle_ha}" size="4" maxlength="4"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_trans}" for="trans" />
+                                    <p:inputText id="trans" value="#{infosAccouchementController.selected.trans}" title="#{resourcesBundle.CreateInfosAccouchementTitle_trans}" size="4" maxlength="4"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_infection}" for="infection" />
+                                    <p:inputText id="infection" value="#{infosAccouchementController.selected.infection}" title="#{resourcesBundle.CreateInfosAccouchementTitle_infection}" size="26" maxlength="26"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_indication}" for="indication" />
+                                    <p:inputText id="indication" value="#{infosAccouchementController.selected.indication}" title="#{resourcesBundle.CreateInfosAccouchementTitle_indication}" size="149" maxlength="149"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_etatEnfant}" for="etatEnfant" />
+                                    <p:inputText id="etatEnfant" value="#{infosAccouchementController.selected.etatEnfant}" title="#{resourcesBundle.CreateInfosAccouchementTitle_etatEnfant}" size="14" maxlength="14"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_vivant}" for="vivant" />
+                                    <p:inputText id="vivant" value="#{infosAccouchementController.selected.vivant}" title="#{resourcesBundle.CreateInfosAccouchementTitle_vivant}" size="11" maxlength="11"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_mortne}" for="mortne" />
+                                    <p:inputText id="mortne" value="#{infosAccouchementController.selected.mortne}" title="#{resourcesBundle.CreateInfosAccouchementTitle_mortne}" size="10" maxlength="10"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_poids}" for="poids" />
+                                    <p:inputText id="poids" value="#{infosAccouchementController.selected.poids}" title="#{resourcesBundle.CreateInfosAccouchementTitle_poids}" size="20" maxlength="20"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_sexe}" for="sexe" />
+                                    <p:inputText id="sexe" value="#{infosAccouchementController.selected.sexe}" title="#{resourcesBundle.CreateInfosAccouchementTitle_sexe}" size="9" maxlength="9"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_presentation}" for="presentation" />
+                                    <p:inputText id="presentation" value="#{infosAccouchementController.selected.presentation}" title="#{resourcesBundle.CreateInfosAccouchementTitle_presentation}" size="11" maxlength="11"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_particulariteEnfant}" for="particulariteEnfant" />
+                                    <p:inputText id="particulariteEnfant" value="#{infosAccouchementController.selected.particulariteEnfant}" title="#{resourcesBundle.CreateInfosAccouchementTitle_particulariteEnfant}" size="94" maxlength="94"/>
+                                </pm:field>
+
+                            </p:outputPanel>
+                        </p:tab>
+                        <p:tab id="InfosAccouchementTab2" title="#{resourcesBundle.TabHeaderPrefix} 2">
+                            <p:outputPanel>
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_observation}" for="observation" />
+                                    <p:inputText id="observation" value="#{infosAccouchementController.selected.observation}" title="#{resourcesBundle.CreateInfosAccouchementTitle_observation}" size="150" maxlength="150"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_accouchementVIHPositif}" for="accouchementVIHPositif" />
+                                    <p:inputText id="accouchementVIHPositif" value="#{infosAccouchementController.selected.accouchementVIHPositif}" title="#{resourcesBundle.CreateInfosAccouchementTitle_accouchementVIHPositif}" required="true" requiredMessage="#{resourcesBundle.CreateInfosAccouchementRequiredMessage_accouchementVIHPositif}" size="4" maxlength="4"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_tritherapiePourVIH}" for="tritherapiePourVIH" />
+                                    <p:inputText id="tritherapiePourVIH" value="#{infosAccouchementController.selected.tritherapiePourVIH}" title="#{resourcesBundle.CreateInfosAccouchementTitle_tritherapiePourVIH}" size="4" maxlength="4"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_enfantVIHPositif}" for="enfantVIHPositif" />
+                                    <p:inputText id="enfantVIHPositif" value="#{infosAccouchementController.selected.enfantVIHPositif}" title="#{resourcesBundle.CreateInfosAccouchementTitle_enfantVIHPositif}" required="true" requiredMessage="#{resourcesBundle.CreateInfosAccouchementRequiredMessage_enfantVIHPositif}" size="4" maxlength="4"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_tritherapieEnfantVIHPositif}" for="tritherapieEnfantVIHPositif" />
+                                    <p:inputText id="tritherapieEnfantVIHPositif" value="#{infosAccouchementController.selected.tritherapieEnfantVIHPositif}" title="#{resourcesBundle.CreateInfosAccouchementTitle_tritherapieEnfantVIHPositif}" required="true" requiredMessage="#{resourcesBundle.CreateInfosAccouchementRequiredMessage_tritherapieEnfantVIHPositif}" size="4" maxlength="4"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_CPoN18emeJour}" for="CPoN18emeJour" />
+                                    <p:inputText id="CPoN18emeJour" value="#{infosAccouchementController.selected.CPoN18emeJour}" title="#{resourcesBundle.CreateInfosAccouchementTitle_CPoN18emeJour}" size="4" maxlength="4"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_CPoN242emeJour}" for="CPoN242emeJour" />
+                                    <p:inputText id="CPoN242emeJour" value="#{infosAccouchementController.selected.CPoN242emeJour}" title="#{resourcesBundle.CreateInfosAccouchementTitle_CPoN242emeJour}" size="4" maxlength="4"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_recuVitamineA}" for="recuVitamineA" />
+                                    <p:inputText id="recuVitamineA" value="#{infosAccouchementController.selected.recuVitamineA}" title="#{resourcesBundle.CreateInfosAccouchementTitle_recuVitamineA}" size="4" maxlength="4"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_recuFerAcideFollique}" for="recuFerAcideFollique" />
+                                    <p:inputText id="recuFerAcideFollique" value="#{infosAccouchementController.selected.recuFerAcideFollique}" title="#{resourcesBundle.CreateInfosAccouchementTitle_recuFerAcideFollique}" size="4" maxlength="4"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_complicationApresAcc}" for="complicationApresAcc" />
+                                    <p:inputText id="complicationApresAcc" value="#{infosAccouchementController.selected.complicationApresAcc}" title="#{resourcesBundle.CreateInfosAccouchementTitle_complicationApresAcc}" size="4" maxlength="4"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_utilisateur}" for="utilisateur" />
+                                    <p:selectOneMenu id="utilisateur" value="#{infosAccouchementController.selected.utilisateur}" required="true" requiredMessage="#{resourcesBundle.CreateInfosAccouchementRequiredMessage_utilisateur}" converter="usersConverter">
+                                        <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                        <f:selectItems value="#{usersController.items}"
+                                                       var="utilisateurItem"
+                                                       itemValue="#{utilisateurItem}"
+                                                       itemLabel="#{utilisateurItem.uname.toString()}"
+                                                       />
+
+                                    </p:selectOneMenu>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_numDossier}" for="numDossier" />
+                                    <p:selectOneMenu id="numDossier" value="#{infosAccouchementController.selected.numDossier}" required="true" requiredMessage="#{resourcesBundle.CreateInfosAccouchementRequiredMessage_numDossier}" converter="infosFemmeConverter">
+                                        <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                        <f:selectItems value="#{infosFemmeController.items}"
+                                                       var="numDossierItem"
+                                                       itemValue="#{numDossierItem}"
+                                                       itemLabel="#{numDossierItem.numDossier.toString()}"
+                                                       />
+
+                                    </p:selectOneMenu>
+                                </pm:field>
+                                </p:panelGrid>
+                        </p:tab>
+                    </p:tabView>
+                    <p:commandButton actionListener="#{infosAccouchementController.saveNew}" value="#{resourcesBundle.Save}" update="display,:InfosAccouchementListPage:InfosAccouchementListForm:datalist,:growl" action="#{mobilePageController.navigateWithHistory('pm:InfosAccouchementListPage')}">
+                        <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                </h:panelGroup>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

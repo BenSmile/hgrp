@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="MesuresPreventivesListForm">
+
+        <p:panel header="#{resourcesBundle.ListMesuresPreventivesTitle}">
+            <p:contextMenu id="MesuresPreventivesDataTableContextMenu" for="datalist">  
+                <p:menuitem value="#{resourcesBundle.Create}" onclick="document.getElementById('MesuresPreventivesListForm:createButton').click();" icon="ui-icon-plus"/>
+                <p:menuitem value="#{resourcesBundle.View}" onclick="document.getElementById('MesuresPreventivesListForm:viewButton').click();" icon="ui-icon-search"/>
+                <p:menuitem value="#{resourcesBundle.Edit}" rendered="#{login.admin}" onclick="document.getElementById('MesuresPreventivesListForm:editButton').click();" icon="ui-icon-pencil"/>
+                <p:menuitem value="#{resourcesBundle.Delete}" rendered="#{login.admin}" onclick="document.getElementById('MesuresPreventivesListForm:deleteButton').click();" icon="ui-icon-trash"/>
+                <p:separator/>
+                <p:menuitem value="#{resourcesBundle.MesuresPreventivesMenuItem_utilisateur}" icon="ui-icon-search"  actionListener="#{mesuresPreventivesController.prepareUtilisateur}" update=":UsersViewForm" oncomplete="PF('UsersViewDialog').show()" disabled="#{empty mesuresPreventivesController.selected.utilisateur}"/>  
+                <p:menuitem value="#{resourcesBundle.MesuresPreventivesMenuItem_idRDV}" icon="ui-icon-search"  actionListener="#{mesuresPreventivesController.prepareIdRDV}" update=":ConsultationViewForm" oncomplete="PF('ConsultationViewDialog').show()" disabled="#{empty mesuresPreventivesController.selected.idRDV}"/>  
+            </p:contextMenu>
+            <p:dataTable id="datalist"
+                         value="#{mesuresPreventivesController.items}"
+                         var="item"
+                         rowKey="#{item.idMesPrev}"
+                         widgetVar="mesuresPreventivesTable"
+                         selection="#{mesuresPreventivesController.selected}"
+                         liveScroll="true"
+                         scrollHeight="225"
+                         scrollRows="12"
+                         selectionMode="single"
+                         scrollable="true" 
+                         paginator="true"
+                         paginatorTemplate="{Exporters}">
+                <f:facet name="{Exporters}">
+                    <h:commandLink onclick="PrimeFaces.monitorDownload(start(), stop);" value="Exporter vers Excel">
+                        <p:graphicImage name="images/exports/excel.png" width="24"/>
+                        <p:dataExporter type="xls" target="datalist" fileName="infofemme"/>
+                    </h:commandLink>
+                    <ui:remove>   
+                        <h:commandLink onclick="PrimeFaces.monitorDownload(start(), stop);">
+                            <p:graphicImage name="images/exports/pdf.png" width="24"/>
+                            <p:dataExporter type="pdf" target="datalist" fileName="infofemme"/>
+                        </h:commandLink>
+
+                        <h:commandLink onclick="PrimeFaces.monitorDownload(start(), stop);">
+                            <p:graphicImage name="images/exports/csv.png" width="24"/>
+                            <p:dataExporter type="csv" target="datalist" fileName="infofemme" />
+                        </h:commandLink>
+
+                        <h:commandLink onclick="PrimeFaces.monitorDownload(start(), stop);">
+                            <p:graphicImage name="images/exports/xml.png" width="24"/>
+                            <p:dataExporter type="xml" target="datalist" fileName="infofemme" />
+                        </h:commandLink>
+                    </ui:remove>
+                </f:facet>
+
+
+                <p:ajax event="rowSelect"   update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:MesuresPreventivesDataTableContextMenu" listener="#{mesuresPreventivesController.resetParents}"/>
+                <p:ajax event="rowUnselect" update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:MesuresPreventivesDataTableContextMenu" listener="#{mesuresPreventivesController.resetParents}"/>
+                <p:ajax event="contextMenu" update="@form:createButton @form:viewButton @form:editButton @form:deleteButton" listener="#{mesuresPreventivesController.resetParents}"/>
+                <p:ajax event="rowDblselect" onsuccess="document.getElementById('MesuresPreventivesListForm:viewButton').click();"/>
+
+                <ui:remove>   
+                    <p:column sortBy="#{item.idMesPrev}" filterBy="#{item.idMesPrev}" style="width: 50px;">
+                        <f:facet name="header">
+                            <h:outputText value="#{resourcesBundle.ListMesuresPreventivesTitle_idMesPrev}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idMesPrev}"/>
+                    </p:column>
+                </ui:remove>
+                <p:column  sortBy="#{item.idRDV.numDossier.numDossier}" filterBy="#{item.idRDV.numDossier.numDossier}" style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="num Dossier"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idRDV.numDossier.numDossier}"/>
+                </p:column>
+                <p:column  style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="Date consultation"/>
+                    </f:facet>
+                    <h:outputText value="#{item.idRDV.date.getDate()}/#{item.idRDV.date.getMonth() +1}/#{item.idRDV.date.getYear() + 1900}"/>
+
+                </p:column>
+
+
+
+                <p:column  style="width: 100px;" >
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListMesuresPreventivesTitle_vat}"/>
+                    </f:facet>
+                    <f:facet name="filter">
+                        <p:selectOneMenu onchange="PF('mesuresPreventivesTable').filter()" >
+                            <f:selectItem itemLabel="Toutes" itemValue="#{null}" noSelectionOption="true" />
+                            <f:selectItem itemLabel="VAT1" itemValue="VAT1" />
+                            <f:selectItem itemLabel="VAT2" itemValue="VAT2" />
+                            <f:selectItem itemLabel="VAT3" itemValue="VAT3" />
+                            <f:selectItem itemLabel="VAT4" itemValue="VAT4" />
+                            <f:selectItem itemLabel="VAT5" itemValue="VAT5" />
+                        </p:selectOneMenu>
+                    </f:facet>
+
+                    <h:outputText value="#{item.vat}"/>
+                </p:column>
+
+
+                <p:column  style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListMesuresPreventivesTitle_femmecompletementvaccinee}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.femmecompletementvaccinee}"/>
+                </p:column>
+
+
+
+
+
+                <p:column  style="width: 100px;" >
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListMesuresPreventivesTitle_sp}"/>
+                    </f:facet>
+                    <f:facet name="filter">
+                        <p:selectOneMenu onchange="PF('mesuresPreventivesTable').filter()" >
+                            <f:selectItem itemLabel="Toutes" itemValue="#{null}" noSelectionOption="true" />
+                            <f:selectItem itemLabel="SP1" itemValue="SP1" />
+                            <f:selectItem itemLabel="SP2" itemValue="SP2" />
+                            <f:selectItem itemLabel="SP3 Si PVV" itemValue="SP3 Si PVV" />
+                        </p:selectOneMenu>
+                    </f:facet>
+
+                    <h:outputText value="#{item.sp}"/>
+                </p:column>
+
+
+                <p:column style="width: 100px;" >
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListMesuresPreventivesTitle_mebendaAu2emeTrimestre}"/>
+                    </f:facet>
+                    <f:facet name="filter">
+                        <p:selectOneMenu onchange="PF('mesuresPreventivesTable').filter()" >
+                            <f:selectItem itemLabel="Toutes" itemValue="#{null}" noSelectionOption="true" />
+                            <f:selectItem itemLabel="Oui" itemValue="Oui" />
+                            <f:selectItem itemLabel="Non" itemValue="Non" />
+
+                        </p:selectOneMenu>
+                    </f:facet>
+
+                    <h:outputText value="#{item.mebendaAu2emeTrimestre}"/>
+                </p:column>
+
+
+                <p:column  style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListMesuresPreventivesTitle_dortsousMild}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.dortsousMild}"/>
+                </p:column>
+
+
+
+                <p:column  style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListMesuresPreventivesTitle_vermifuge}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.vermifuge}"/>
+                </p:column>
+
+
+
+                <p:column style="width: 100px;" >
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListMesuresPreventivesTitle_supplementaion}"/>
+                    </f:facet>
+                    <f:facet name="filter">
+                        <p:selectOneMenu onchange="PF('mesuresPreventivesTable').filter()" >
+                            <f:selectItem itemLabel="Toutes" itemValue="#{null}" noSelectionOption="true" />
+                            <f:selectItem itemLabel="Oui" itemValue="Oui" />
+                            <f:selectItem itemLabel="Non" itemValue="Non" />
+
+                        </p:selectOneMenu>
+                    </f:facet>
+
+                    <h:outputText value="#{item.supplementaion}"/>
+                </p:column>
+
+
+
+                <p:column style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListMesuresPreventivesTitle_fefol}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.fefol}"/>
+                </p:column>
+
+                <p:column style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListMesuresPreventivesTitle_conseilDepistageVolontaire}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.conseilDepistageVolontaire}"/>
+                </p:column>
+
+                <p:column  style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListMesuresPreventivesTitle_depister}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.depister}"/>
+                </p:column>
+
+                <p:column style="width: 100px;" >
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListMesuresPreventivesTitle_femmeinformee}"/>
+                    </f:facet>
+                    <f:facet name="filter">
+                        <p:selectOneMenu onchange="PF('mesuresPreventivesTable').filter()" >
+                            <f:selectItem itemLabel="Toutes" itemValue="#{null}" noSelectionOption="true" />
+                            <f:selectItem itemLabel="Oui" itemValue="Oui" />
+                            <f:selectItem itemLabel="Non" itemValue="Non" />
+
+                        </p:selectOneMenu>
+                    </f:facet>
+
+                    <h:outputText value="#{item.femmeinformee}"/>
+                </p:column>
+
+                <p:column  style="width: 100px;" >
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListMesuresPreventivesTitle_ferPlusAcideFollique}"/>
+                    </f:facet>
+                    <f:facet name="filter">
+                        <p:selectOneMenu onchange="PF('mesuresPreventivesTable').filter()" >
+                            <f:selectItem itemLabel="Toutes" itemValue="#{null}" noSelectionOption="true" />
+                            <f:selectItem itemLabel="aucune dose" itemValue="aucune" />
+                            <f:selectItem itemLabel="1ère dose" itemValue="1ère dose" />
+                            <f:selectItem itemLabel="2ème dose" itemValue="2ème dose" />
+                            <f:selectItem itemLabel="3ème dose" itemValue="3ème dose" />
+                        </p:selectOneMenu>
+                    </f:facet>
+
+                    <h:outputText value="#{item.ferPlusAcideFollique}"/>
+                </p:column>
+
+                <p:column  style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListMesuresPreventivesTitle_resultat}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.resultat}"/>
+                </p:column>
+
+
+
+
+            </p:dataTable>
+
+            <p:commandButton id="createButton"                             icon="ui-icon-plus"   value="#{resourcesBundle.Create}" actionListener="#{mesuresPreventivesController.prepareCreate}" update=":MesuresPreventivesCreateForm" oncomplete="PF('MesuresPreventivesCreateDialog').show()"/>
+            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{resourcesBundle.View}" update=":MesuresPreventivesViewForm" oncomplete="PF('MesuresPreventivesViewDialog').show()" disabled="#{empty mesuresPreventivesController.selected}"/>
+            <p:commandButton id="editButton"   rendered="#{login.admin}" icon="ui-icon-pencil" value="#{resourcesBundle.Edit}" update=":MesuresPreventivesEditForm" oncomplete="PF('MesuresPreventivesEditDialog').show()" disabled="#{empty mesuresPreventivesController.selected}"/>
+            <p:commandButton id="deleteButton"  rendered="#{login.admin}" icon="ui-icon-trash"  value="#{resourcesBundle.Delete}" actionListener="#{mesuresPreventivesController.delete}" update=":growl,datalist" disabled="#{empty mesuresPreventivesController.selected}">
+                <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+            </p:commandButton>
+
+        </p:panel>
+        <ui:include src="/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>

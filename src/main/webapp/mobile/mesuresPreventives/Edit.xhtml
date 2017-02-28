@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="MesuresPreventivesEditPage" lazy="true">
+        <pm:header title="#{resourcesBundle.EditMesuresPreventivesTitle}">
+            <h:form>
+                <p:commandButton styleClass="ui-btn-left ui-btn-inline" value="#{resourcesBundle.Cancel}" icon="ui-icon-arrow-l" action="#{mobilePageController.navigateBackInHistory('pm:MesuresPreventivesListPage')}"/>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="MesuresPreventivesEditForm">
+
+                <h:panelGroup id="display">
+                    <p:outputPanel rendered="#{mesuresPreventivesController.selected != null}">
+
+                        <pm:field>
+                            <h:outputLabel value="#{resourcesBundle.EditMesuresPreventivesLabel_idMesPrev}" for="idMesPrev" />
+                            <h:outputText id="idMesPrev" value="#{mesuresPreventivesController.selected.idMesPrev}" />
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditMesuresPreventivesLabel_vat}" for="vat" />
+                            <p:inputText id="vat" value="#{mesuresPreventivesController.selected.vat}" title="#{resourcesBundle.EditMesuresPreventivesTitle_vat}" size="5" maxlength="5"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditMesuresPreventivesLabel_femmecompletementvaccinee}" for="femmecompletementvaccinee" />
+                            <p:inputText id="femmecompletementvaccinee" value="#{mesuresPreventivesController.selected.femmecompletementvaccinee}" title="#{resourcesBundle.EditMesuresPreventivesTitle_femmecompletementvaccinee}" size="4" maxlength="4"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditMesuresPreventivesLabel_sp}" for="sp" />
+                            <p:inputText id="sp" value="#{mesuresPreventivesController.selected.sp}" title="#{resourcesBundle.EditMesuresPreventivesTitle_sp}" size="10" maxlength="10"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditMesuresPreventivesLabel_dortsousMild}" for="dortsousMild" />
+                            <p:inputText id="dortsousMild" value="#{mesuresPreventivesController.selected.dortsousMild}" title="#{resourcesBundle.EditMesuresPreventivesTitle_dortsousMild}" size="4" maxlength="4"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditMesuresPreventivesLabel_mebendaAu2emeTrimestre}" for="mebendaAu2emeTrimestre" />
+                            <p:inputText id="mebendaAu2emeTrimestre" value="#{mesuresPreventivesController.selected.mebendaAu2emeTrimestre}" title="#{resourcesBundle.EditMesuresPreventivesTitle_mebendaAu2emeTrimestre}" size="4" maxlength="4"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditMesuresPreventivesLabel_vermifuge}" for="vermifuge" />
+                            <p:inputText id="vermifuge" value="#{mesuresPreventivesController.selected.vermifuge}" title="#{resourcesBundle.EditMesuresPreventivesTitle_vermifuge}" size="4" maxlength="4"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditMesuresPreventivesLabel_supplementaion}" for="supplementaion" />
+                            <p:inputText id="supplementaion" value="#{mesuresPreventivesController.selected.supplementaion}" title="#{resourcesBundle.EditMesuresPreventivesTitle_supplementaion}" size="4" maxlength="4"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditMesuresPreventivesLabel_fefol}" for="fefol" />
+                            <p:inputText id="fefol" value="#{mesuresPreventivesController.selected.fefol}" title="#{resourcesBundle.EditMesuresPreventivesTitle_fefol}" size="4" maxlength="4"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditMesuresPreventivesLabel_conseilDepistageVolontaire}" for="conseilDepistageVolontaire" />
+                            <p:inputText id="conseilDepistageVolontaire" value="#{mesuresPreventivesController.selected.conseilDepistageVolontaire}" title="#{resourcesBundle.EditMesuresPreventivesTitle_conseilDepistageVolontaire}" size="4" maxlength="4"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditMesuresPreventivesLabel_depister}" for="depister" />
+                            <p:inputText id="depister" value="#{mesuresPreventivesController.selected.depister}" title="#{resourcesBundle.EditMesuresPreventivesTitle_depister}" size="4" maxlength="4"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditMesuresPreventivesLabel_resultat}" for="resultat" />
+                            <p:inputText id="resultat" value="#{mesuresPreventivesController.selected.resultat}" title="#{resourcesBundle.EditMesuresPreventivesTitle_resultat}" size="11" maxlength="11"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditMesuresPreventivesLabel_femmeinformee}" for="femmeinformee" />
+                            <p:inputText id="femmeinformee" value="#{mesuresPreventivesController.selected.femmeinformee}" title="#{resourcesBundle.EditMesuresPreventivesTitle_femmeinformee}" size="4" maxlength="4"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditMesuresPreventivesLabel_ferPlusAcideFollique}" for="ferPlusAcideFollique" />
+                            <p:inputText id="ferPlusAcideFollique" value="#{mesuresPreventivesController.selected.ferPlusAcideFollique}" title="#{resourcesBundle.EditMesuresPreventivesTitle_ferPlusAcideFollique}" size="12" maxlength="12"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditMesuresPreventivesLabel_utilisateur}" for="utilisateur" />
+                            <p:selectOneMenu id="utilisateur" value="#{mesuresPreventivesController.selected.utilisateur}" required="true" requiredMessage="#{resourcesBundle.EditMesuresPreventivesRequiredMessage_utilisateur}" converter="usersConverter">
+                                <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{usersController.items}"
+                                               var="utilisateurItem"
+                                               itemValue="#{utilisateurItem}"
+                                               itemLabel="#{utilisateurItem.uname.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditMesuresPreventivesLabel_idRDV}" for="idRDV" />
+                            <p:selectOneMenu id="idRDV" value="#{mesuresPreventivesController.selected.idRDV}" required="true" requiredMessage="#{resourcesBundle.EditMesuresPreventivesRequiredMessage_idRDV}" converter="consultationConverter">
+                                <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{consultationController.items}"
+                                               var="idRDVItem"
+                                               itemValue="#{idRDVItem}"
+                                               itemLabel="#{idRDVItem.idRDV.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                        </pm:field>
+                    </p:outputPanel>
+                    <p:commandButton actionListener="#{mesuresPreventivesController.save}" value="#{resourcesBundle.Save}" update="#{mobilePageController.updatableWidgets(component,'display,:MesuresPreventivesListPage:MesuresPreventivesListForm:datalist,:growl')}" action="#{mobilePageController.navigateWithHistory('pm:MesuresPreventivesListPage')}">
+                        <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                </h:panelGroup>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

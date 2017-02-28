@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InfosFemmeCreateDlg" widgetVar="InfosFemmeCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{resourcesBundle.CreateInfosFemmeTitle}" closeOnEscape="true">
+
+            <h:form id="InfosFemmeCreateForm">
+
+                <h:panelGroup id="display" rendered="#{infosFemmeController.selected != null}">
+                    <p:tabView id="InfosFemmeTabView">
+
+                        <p:tab id="InfosFemmeTab1" title="#{resourcesBundle.TabHeaderPrefix} 1">
+                            <p:panelGrid columns="2" columnClasses="column">
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosFemmeLabel_numDossier}" for="numDossier" />
+                                <p:inputText id="numDossier" value="#{infosFemmeController.selected.numDossier}" title="#{resourcesBundle.CreateInfosFemmeTitle_numDossier}" required="true" requiredMessage="#{resourcesBundle.CreateInfosFemmeRequiredMessage_numDossier}" size="15" maxlength="15"/>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosFemmeLabel_nom}" for="nom" />
+                                <p:inputText id="nom" value="#{infosFemmeController.selected.nom}" title="#{resourcesBundle.CreateInfosFemmeTitle_nom}" size="30" maxlength="30"/>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosFemmeLabel_postNom}" for="postNom" />
+                                <p:inputText id="postNom" value="#{infosFemmeController.selected.postNom}" title="#{resourcesBundle.CreateInfosFemmeTitle_postNom}" size="30" maxlength="30"/>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosFemmeLabel_prenom}" for="prenom" />
+                                <p:inputText id="prenom" value="#{infosFemmeController.selected.prenom}" title="#{resourcesBundle.CreateInfosFemmeTitle_prenom}" size="30" maxlength="30"/>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosFemmeLabel_profession}" for="profession" />
+                                <p:inputText id="profession" value="#{infosFemmeController.selected.profession}" title="#{resourcesBundle.CreateInfosFemmeTitle_profession}" size="30" maxlength="30"/>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosFemmeLabel_professioConjoint}" for="professioConjoint" />
+                                <p:inputText id="professioConjoint" value="#{infosFemmeController.selected.professioConjoint}" title="#{resourcesBundle.CreateInfosFemmeTitle_professioConjoint}" size="30" maxlength="30"/>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosFemmeLabel_zoneSante}" for="zoneSante" />
+                                <p:inputText id="zoneSante" value="#{infosFemmeController.selected.zoneSante}" title="#{resourcesBundle.CreateInfosFemmeTitle_zoneSante}" size="30" maxlength="30"/>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosFemmeLabel_aireSante}" for="aireSante" />
+                                <p:inputText id="aireSante" value="#{infosFemmeController.selected.aireSante}" title="#{resourcesBundle.CreateInfosFemmeTitle_aireSante}" size="30" maxlength="30"/>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosFemmeLabel_province}" for="province" />
+                                <p:inputText id="province" value="#{infosFemmeController.selected.province}" title="#{resourcesBundle.CreateInfosFemmeTitle_province}" size="30" maxlength="30"/>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosFemmeLabel_district}" for="district" />
+                                <p:inputText id="district" value="#{infosFemmeController.selected.district}" title="#{resourcesBundle.CreateInfosFemmeTitle_district}" size="30" maxlength="30"/>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosFemmeLabel_adresseCPN}" for="adresseCPN" />
+                                <p:inputText id="adresseCPN" value="#{infosFemmeController.selected.adresseCPN}" title="#{resourcesBundle.CreateInfosFemmeTitle_adresseCPN}" size="30" maxlength="30"/>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosFemmeLabel_telephone}" for="telephone" />
+                                <p:inputText id="telephone" value="#{infosFemmeController.selected.telephone}" title="#{resourcesBundle.CreateInfosFemmeTitle_telephone}" size="50" maxlength="50"/>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosFemmeLabel_age}" for="age" />
+                                <p:inputText id="age" value="#{infosFemmeController.selected.age}" title="#{resourcesBundle.CreateInfosFemmeTitle_age}"/>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosFemmeLabel_provenance}" for="provenance" />
+                                <p:inputText id="provenance" value="#{infosFemmeController.selected.provenance}" title="#{resourcesBundle.CreateInfosFemmeTitle_provenance}" size="3" maxlength="3"/>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosFemmeLabel_etatCivil}" for="etatCivil" />
+                                <p:inputText id="etatCivil" value="#{infosFemmeController.selected.etatCivil}" title="#{resourcesBundle.CreateInfosFemmeTitle_etatCivil}" size="11" maxlength="11"/>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosFemmeLabel_niveauEtude}" for="niveauEtude" />
+                                <p:inputText id="niveauEtude" value="#{infosFemmeController.selected.niveauEtude}" title="#{resourcesBundle.CreateInfosFemmeTitle_niveauEtude}" size="10" maxlength="10"/>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosFemmeLabel_utilisateur}" for="utilisateur" />
+                                <p:selectOneMenu id="utilisateur" value="#{infosFemmeController.selected.utilisateur}" required="true" requiredMessage="#{resourcesBundle.CreateInfosFemmeRequiredMessage_utilisateur}" converter="usersConverter">
+                                    <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                    <f:selectItems value="#{usersController.items}"
+                                                   var="utilisateurItem"
+                                                   itemValue="#{utilisateurItem}"
+                                                   itemLabel="#{utilisateurItem.uname.toString()}"
+                                                   />
+
+                                </p:selectOneMenu>
+                            </p:panelGrid>
+                        </p:tab>
+                    </p:tabView>
+                    <p:commandButton actionListener="#{infosFemmeController.saveNew}" value="#{resourcesBundle.Save}" update="display,:InfosFemmeListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('InfosFemmeCreateDialog'));">
+                        <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{resourcesBundle.Cancel}" oncomplete="PF('InfosFemmeCreateDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

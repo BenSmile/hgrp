@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="InfosFemmeEditPage" lazy="true">
+        <pm:header title="#{resourcesBundle.EditInfosFemmeTitle}">
+            <h:form>
+                <p:commandButton styleClass="ui-btn-left ui-btn-inline" value="#{resourcesBundle.Cancel}" icon="ui-icon-arrow-l" action="#{mobilePageController.navigateBackInHistory('pm:InfosFemmeListPage')}"/>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="InfosFemmeEditForm">
+
+                <h:panelGroup id="display">
+                    <p:tabView id="InfosFemmeTabView">
+
+                        <p:tab id="InfosFemmeTab1" title="#{resourcesBundle.TabHeaderPrefix} 1">
+                            <p:outputPanel rendered="#{infosFemmeController.selected != null}">
+                                <pm:field>
+                                    <h:outputLabel value="#{resourcesBundle.EditInfosFemmeLabel_numDossier}" for="numDossier" />
+                                    <h:outputText id="numDossier" value="#{infosFemmeController.selected.numDossier}" />
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditInfosFemmeLabel_nom}" for="nom" />
+                                    <p:inputText id="nom" value="#{infosFemmeController.selected.nom}" title="#{resourcesBundle.EditInfosFemmeTitle_nom}" size="30" maxlength="30"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditInfosFemmeLabel_postNom}" for="postNom" />
+                                    <p:inputText id="postNom" value="#{infosFemmeController.selected.postNom}" title="#{resourcesBundle.EditInfosFemmeTitle_postNom}" size="30" maxlength="30"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditInfosFemmeLabel_prenom}" for="prenom" />
+                                    <p:inputText id="prenom" value="#{infosFemmeController.selected.prenom}" title="#{resourcesBundle.EditInfosFemmeTitle_prenom}" size="30" maxlength="30"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditInfosFemmeLabel_profession}" for="profession" />
+                                    <p:inputText id="profession" value="#{infosFemmeController.selected.profession}" title="#{resourcesBundle.EditInfosFemmeTitle_profession}" size="30" maxlength="30"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditInfosFemmeLabel_professioConjoint}" for="professioConjoint" />
+                                    <p:inputText id="professioConjoint" value="#{infosFemmeController.selected.professioConjoint}" title="#{resourcesBundle.EditInfosFemmeTitle_professioConjoint}" size="30" maxlength="30"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditInfosFemmeLabel_zoneSante}" for="zoneSante" />
+                                    <p:inputText id="zoneSante" value="#{infosFemmeController.selected.zoneSante}" title="#{resourcesBundle.EditInfosFemmeTitle_zoneSante}" size="30" maxlength="30"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditInfosFemmeLabel_aireSante}" for="aireSante" />
+                                    <p:inputText id="aireSante" value="#{infosFemmeController.selected.aireSante}" title="#{resourcesBundle.EditInfosFemmeTitle_aireSante}" size="30" maxlength="30"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditInfosFemmeLabel_province}" for="province" />
+                                    <p:inputText id="province" value="#{infosFemmeController.selected.province}" title="#{resourcesBundle.EditInfosFemmeTitle_province}" size="30" maxlength="30"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditInfosFemmeLabel_district}" for="district" />
+                                    <p:inputText id="district" value="#{infosFemmeController.selected.district}" title="#{resourcesBundle.EditInfosFemmeTitle_district}" size="30" maxlength="30"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditInfosFemmeLabel_adresseCPN}" for="adresseCPN" />
+                                    <p:inputText id="adresseCPN" value="#{infosFemmeController.selected.adresseCPN}" title="#{resourcesBundle.EditInfosFemmeTitle_adresseCPN}" size="30" maxlength="30"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditInfosFemmeLabel_telephone}" for="telephone" />
+                                    <p:inputText id="telephone" value="#{infosFemmeController.selected.telephone}" title="#{resourcesBundle.EditInfosFemmeTitle_telephone}" size="50" maxlength="50"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditInfosFemmeLabel_age}" for="age" />
+                                    <p:inputText id="age" value="#{infosFemmeController.selected.age}" title="#{resourcesBundle.EditInfosFemmeTitle_age}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditInfosFemmeLabel_provenance}" for="provenance" />
+                                    <p:inputText id="provenance" value="#{infosFemmeController.selected.provenance}" title="#{resourcesBundle.EditInfosFemmeTitle_provenance}" size="3" maxlength="3"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditInfosFemmeLabel_etatCivil}" for="etatCivil" />
+                                    <p:inputText id="etatCivil" value="#{infosFemmeController.selected.etatCivil}" title="#{resourcesBundle.EditInfosFemmeTitle_etatCivil}" size="11" maxlength="11"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditInfosFemmeLabel_niveauEtude}" for="niveauEtude" />
+                                    <p:inputText id="niveauEtude" value="#{infosFemmeController.selected.niveauEtude}" title="#{resourcesBundle.EditInfosFemmeTitle_niveauEtude}" size="10" maxlength="10"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditInfosFemmeLabel_utilisateur}" for="utilisateur" />
+                                    <p:selectOneMenu id="utilisateur" value="#{infosFemmeController.selected.utilisateur}" required="true" requiredMessage="#{resourcesBundle.EditInfosFemmeRequiredMessage_utilisateur}" converter="usersConverter">
+                                        <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                        <f:selectItems value="#{usersController.items}"
+                                                       var="utilisateurItem"
+                                                       itemValue="#{utilisateurItem}"
+                                                       itemLabel="#{utilisateurItem.uname.toString()}"
+                                                       />
+
+                                    </p:selectOneMenu>
+                                </pm:field>
+                            </p:outputPanel>
+                        </p:tab>
+                    </p:tabView>
+                    <p:commandButton actionListener="#{infosFemmeController.save}" value="#{resourcesBundle.Save}" update="#{mobilePageController.updatableWidgets(component,'display,:InfosFemmeListPage:InfosFemmeListForm:datalist,:growl')}" action="#{mobilePageController.navigateWithHistory('pm:InfosFemmeListPage')}">
+                        <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                </h:panelGroup>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

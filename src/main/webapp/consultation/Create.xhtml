@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ConsultationCreateDialog" widgetVar="ConsultationCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{resourcesBundle.CreateConsultationTitle}" closeOnEscape="true">
+
+            <h:form id="ConsultationCreateForm">
+
+                <h:panelGroup id="display" rendered="#{consultationController.selected != null}">
+                    <p:tabView id="ConsultationTabView">
+
+                        <p:tab id="ConsultationTab1" title="#{resourcesBundle.TabHeaderPrefix} 1">
+                            <p:panelGrid columns="4" columnClasses="column">
+
+                                <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_numDossier}" for="numDossier" />
+                                <h:panelGroup>
+                                    <p:selectOneMenu id="numDossier" style="width: 160px;" required="true" filter="true" filterMatchMode="startsWith" value="#{consultationController.selected.numDossier}"  converter="infosFemmeConverter">
+                                        <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                        <f:selectItems value="#{infosFemmeController.items}"
+                                                       var="numDossierItem"
+                                                       itemValue="#{numDossierItem}"
+                                                       itemLabel="#{numDossierItem.toString()} "/>
+                                    </p:selectOneMenu>
+                                    <p:inputText style="visibility: hidden" id="user" value="#{consultationController.user}" title="user: " size="30" maxlength="30"/>
+                                </h:panelGroup>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_conjonctivehb}" for="conjonctivehb" />
+                                <h:panelGroup>
+                                    <p:selectOneMenu style="width: 160px;"  id="conjonctivehb" value="#{consultationController.selected.conjonctivehb}" title="#{resourcesBundle.CreateConsultationTitle_conjonctivehb}"  maxlength="20">
+                                        <f:selectItem itemLabel=""/>
+                                        <f:selectItem itemLabel="colorées" itemValue="colorées"/>
+                                        <f:selectItem itemLabel="pales(hb moin de 7g)" itemValue="pales(hb moin de 7g)"/>
+                                        <f:selectItem itemLabel="Ictériques" itemValue="Ictériques"/>
+                                    </p:selectOneMenu>
+                                </h:panelGroup>
+                                <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_date}" for="date" />
+                                <h:panelGroup>
+                                    <p:calendar id="date" required="true"  pattern="dd/MM/yyyy" value="#{consultationController.date}" title="#{resourcesBundle.CreateConsultationTitle_date}"  showOn="button"/>
+                                </h:panelGroup>
+                                <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_hauteurUterine} (cm)" for="hauteurUterine" />
+                                <h:panelGroup>
+                                    <p:spinner id="hauteurUterine" min="0" style="width: 160px;" value="#{consultationController.selected.hauteurUterine}" title="#{resourcesBundle.CreateConsultationTitle_hauteurUterine}" size="20"/>
+                                </h:panelGroup>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_surfaceuterine}" for="surfaceuterine" />
+                                <h:panelGroup >
+                                    <p:selectOneMenu id="surfaceuterine" style="width: 160px;" value="#{consultationController.selected.surfaceuterine}" title="#{resourcesBundle.CreateConsultationTitle_surfaceuterine}"  maxlength="15">
+                                        <f:selectItem itemLabel=""/>
+                                        <f:selectItem itemLabel="Régulière" itemValue="Régulière"/>
+                                        <f:selectItem itemLabel="Irrégulière" itemValue="Irrégulière"/>
+                                    </p:selectOneMenu>
+
+                                </h:panelGroup>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_ageGrossesse}" for="ageGrossesse" />
+                                <h:panelGroup>
+                                    <p:selectOneMenu style="width: 160px;" required="true" id="ageGrossesse" value="#{consultationController.selected.ageGrossesse}" title="#{resourcesBundle.CreateConsultationTitle_ageGrossesse}"  maxlength="20">
+                                        <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                        <f:selectItem itemLabel="1er mois" itemValue="1er mois" />
+                                        <f:selectItem itemLabel="2ème mois" itemValue="2ème mois" />
+                                        <f:selectItem itemLabel="3ème mois" itemValue="3ème mois" />
+                                        <f:selectItem itemLabel="4ème mois" itemValue="4ème mois" />
+                                        <f:selectItem itemLabel="5ème mois" itemValue="5ème mois" />
+                                        <f:selectItem itemLabel="6ème mois" itemValue="6ème mois" />
+                                        <f:selectItem itemLabel="7ème mois" itemValue="7ème mois" />
+                                        <f:selectItem itemLabel="8ème mois" itemValue="8ème mois" />
+                                        <f:selectItem itemLabel="9ème mois" itemValue="9ème mois" />
+                                    </p:selectOneMenu>
+                                </h:panelGroup>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_mouvementfoetaux}" for="mouvementfoetaux" />
+                                <h:panelGroup>
+                                    <p:selectOneMenu id="mouvementfoetaux" style="width: 160px;" value="#{consultationController.selected.mouvementfoetaux}" title="#{resourcesBundle.CreateConsultationTitle_mouvementfoetaux}"  maxlength="8">
+                                        <f:selectItem itemLabel=""/>
+                                        <f:selectItem itemLabel="Présent" itemValue="Présent"/>
+                                        <f:selectItem itemLabel="Absent" itemValue="Absent"/>
+                                    </p:selectOneMenu>
+
+                                </h:panelGroup>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_bruitfoetaux}" for="bruitfoetaux" />
+                                <h:panelGroup>
+                                    <p:selectOneMenu id="bruitfoetaux" style="width: 160px;" value="#{consultationController.selected.bruitfoetaux}" title="#{resourcesBundle.CreateConsultationTitle_bruitfoetaux}"  maxlength="8">
+                                        <f:selectItem itemLabel=""/>
+                                        <f:selectItem itemLabel="Présent" itemValue="Présent"/>
+                                        <f:selectItem itemLabel="Négatif" itemValue="Négatif"/>
+                                        <f:selectItem itemLabel="Normal" itemValue="Normal"/>
+                                        <f:selectItem itemLabel="Anormal" itemValue="Anormal"/>
+                                        <f:selectItem itemLabel="Douteux" itemValue="douteux"/>
+                                    </p:selectOneMenu>
+                                </h:panelGroup>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_bcf}" for="bcf" />
+                                <h:panelGroup>
+                                    <p:selectOneMenu id="bcf"  style="width: 160px;" value="#{consultationController.selected.bcf}" title="#{resourcesBundle.CreateConsultationTitle_bcf}"  maxlength="8">
+                                        <f:selectItem itemLabel=""/>
+                                        <f:selectItem itemLabel="Présent" itemValue="Présent"/>
+                                        <f:selectItem itemLabel="Absent" itemValue="Absent"/>
+                                    </p:selectOneMenu>
+                                </h:panelGroup>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_presentation}" for="presentation" />
+                                <h:panelGroup>
+                                    <p:selectOneMenu id="presentation" style="width: 160px;" value="#{consultationController.selected.presentation}" title="#{resourcesBundle.CreateConsultationTitle_presentation}"  maxlength="13">
+                                        <f:selectItem itemLabel=""/>
+                                        <f:selectItem itemLabel="Céphalique" itemValue="Céphalique"/>
+                                        <f:selectItem itemLabel="Transverse" itemValue="Transverse"/>
+                                        <f:selectItem itemLabel="Siège" itemValue="Siège"/>
+                                        <f:selectItem itemLabel="Non déterminée" itemValue="Non déterminé"/>
+                                    </p:selectOneMenu>
+                                </h:panelGroup>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_pertesliquidiènnes}" for="pertesliquidiènnes" />
+                                <h:panelGroup>
+                                    <p:selectOneMenu id="pertesliquidiènnes" style="width: 160px;" value="#{consultationController.selected.pertesliquidiènnes}" title="#{resourcesBundle.CreateConsultationTitle_pertesliquidiènnes}"  maxlength="4">
+                                        <f:selectItem itemLabel=""/>
+                                        <f:selectItem itemLabel="oui" itemValue="oui"/>
+                                        <f:selectItem itemLabel="non" itemValue="non"/>
+                                    </p:selectOneMenu>
+                                </h:panelGroup>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_oedemes}" for="oedemes" />
+                                <h:panelGroup>
+                                    <p:selectOneMenu id="oedemes"  style="width: 160px;" value="#{consultationController.selected.oedemes}" title="#{resourcesBundle.CreateConsultationTitle_oedemes}"  maxlength="8">
+                                        <f:selectItem itemLabel=""/>
+                                        <f:selectItem itemLabel="Positif" itemValue="Positif"/>
+                                        <f:selectItem itemLabel="Négatif" itemValue="Négatif"/>
+                                    </p:selectOneMenu>
+                                </h:panelGroup>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_albuminure}" for="albuminure" />
+                                <h:panelGroup>
+                                    <p:selectOneMenu id="albuminure"  style="width: 160px;" value="#{consultationController.selected.albuminure}" title="#{resourcesBundle.CreateConsultationTitle_albuminure}"  maxlength="8">
+                                        <f:selectItem itemLabel=""/>
+                                        <f:selectItem itemLabel="Positif" itemValue="Positif"/>
+                                        <f:selectItem itemLabel="Négatif" itemValue="Négatif"/>
+                                    </p:selectOneMenu>
+                                </h:panelGroup>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_glycosurie}" for="glycosurie" />
+                                <h:panelGroup>
+                                    <p:selectOneMenu id="glycosurie"  style="width: 160px;" value="#{consultationController.selected.glycosurie}" title="#{resourcesBundle.CreateConsultationTitle_glycosurie}"  maxlength="8">
+                                        <f:selectItem itemLabel=""/>
+                                        <f:selectItem itemLabel="Positif" itemValue="Positif"/>
+                                        <f:selectItem itemLabel="Négatif" itemValue="Négatif"/>
+                                    </p:selectOneMenu>
+                                </h:panelGroup>
+                                <p:outputLabel value="TA (cm de Hg)" for="ta" />
+                                <h:panelGroup>
+                                    <p:inputMask id="ta"  value="#{consultationController.ta}" mask="99/99" required="true"/>
+                                </h:panelGroup>
+                                <ui:remove>
+                                    <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_ta1}" for="ta1" />
+                                    <h:panelGroup>
+                                        <p:spinner id="ta1" style="width: 160px;" value="#{consultationController.selected.ta1}" title="#{resourcesBundle.CreateConsultationTitle_ta1}"/>
+                                    </h:panelGroup>
+
+                                    <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_ta2}" for="ta2" />
+                                    <h:panelGroup>
+                                        <p:spinner id="ta2" style="width: 160px;" value="#{consultationController.selected.ta2}" title="#{resourcesBundle.CreateConsultationTitle_ta2}"/>
+                                    </h:panelGroup>
+                                </ui:remove>
+                                <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_mictalgie}" for="mictalgie" />
+                                <h:panelGroup>
+                                    <p:selectOneMenu id="mictalgie"  style="width: 160px;" value="#{consultationController.selected.mictalgie}" title="#{resourcesBundle.CreateConsultationTitle_mictalgie}"  maxlength="8">
+                                        <f:selectItem itemLabel=""/>
+                                        <f:selectItem itemLabel="Positif" itemValue="Positif"/>
+                                        <f:selectItem itemLabel="Négatif" itemValue="Négatif"/>
+                                    </p:selectOneMenu>
+                                </h:panelGroup>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_contraction}" for="contraction" />
+                                <h:panelGroup>
+                                    <p:selectOneMenu id="contraction"  style="width: 160px;" value="#{consultationController.selected.contraction}" title="#{resourcesBundle.CreateConsultationTitle_contraction}"  maxlength="8">
+                                        <f:selectItem itemLabel=""/>
+                                        <f:selectItem itemLabel="Positif" itemValue="Positif"/>
+                                        <f:selectItem itemLabel="Négatif" itemValue="Négatif"/>
+                                    </p:selectOneMenu>
+                                </h:panelGroup>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_bassinPromonitoire}" for="bassinPromonitoire" />
+                                <h:panelGroup>
+                                    <p:selectOneMenu id="bassinPromonitoire" style="width: 160px;"  value="#{consultationController.selected.bassinPromonitoire}" title="#{resourcesBundle.CreateConsultationTitle_bassinPromonitoire}"  maxlength="14">
+                                        <f:selectItem itemLabel=""/>
+                                        <f:selectItem itemLabel="Accessible" itemValue="Accessible"/>
+                                        <f:selectItem itemLabel="Non Accessible" itemValue="Non Accessible"/>
+                                    </p:selectOneMenu>
+                                </h:panelGroup>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_poids}" for="poids" />
+                                <h:panelGroup>
+                                    <p:spinner min="0" id="poids" style="width: 160px;" value="#{consultationController.selected.poids}" title="#{resourcesBundle.CreateConsultationTitle_poids}"/>
+                                </h:panelGroup>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_taille}" for="taille" />
+                                <h:panelGroup>
+                                    <p:inputText id="taille" style="width: 160px;" value="#{consultationController.selected.taille}" title="#{resourcesBundle.CreateConsultationTitle_taille}"/>
+                                </h:panelGroup>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_femmeARisque}" for="femmeARisque" />
+                                <h:panelGroup >
+                                    <p:selectOneMenu id="femmeARisque" style="width: 160px;" value="#{consultationController.selected.femmeARisque}" title="#{resourcesBundle.CreateConsultationTitle_femmeARisque}"  maxlength="15">
+                                        <f:selectItem itemLabel=""/>
+                                        <f:selectItem itemLabel="Non" itemValue="Non"/>
+                                        <f:selectItem itemLabel="détectée" itemValue="détectée"/>
+                                        <f:selectItem itemLabel="référée" itemValue="référée"/>
+                                    </p:selectOneMenu>
+                                </h:panelGroup>
+
+                            </p:panelGrid>
+                        </p:tab>
+                        <p:tab id="ConsultationTab2" title="#{resourcesBundle.TabHeaderPrefix} 2">
+                            <p:panelGrid columns="4" columnClasses="column">
+                                <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_raison}" for="raison" />
+                                <h:panelGroup>
+                                    <p:inputTextarea rows="4" cols="30" id="raison" value="#{consultationController.selected.raison}" title="#{resourcesBundle.CreateConsultationTitle_raison}" />
+                                </h:panelGroup>
+                                <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_decisioncentresante}" for="decisioncentresante" />
+                                <h:panelGroup>
+                                    <p:selectCheckboxMenu required="true" id="decisioncentresante" value="#{consultationController.decisions}" 
+                                                          filter="true" filterMatchMode="startsWith" label="Decision centre santé" panelStyle="width:250px" >
+                                        <f:selectItem itemLabel="aucune" itemValue="aucune"/>
+                                        <f:selectItem itemLabel="CPN Normal" itemValue="CPN Normal"/>
+                                        <f:selectItem itemLabel="RDV(référée) à la maternité" itemValue="RDV(référé) à la maternité"/>
+                                    </p:selectCheckboxMenu>
+                                </h:panelGroup>
+                            </p:panelGrid>
+                        </p:tab>
+                    </p:tabView>
+                    <p:commandButton  type="submit" actionListener="#{consultationController.saveNew}"  value="#{resourcesBundle.Save}" update="display,:ConsultationListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('ConsultationCreateDialog'));">
+                        <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{resourcesBundle.Cancel}" onclick="PF('ConsultationCreateDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

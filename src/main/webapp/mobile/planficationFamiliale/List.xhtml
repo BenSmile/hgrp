@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="PlanficationFamilialeListPage">
+        <pm:header title="#{resourcesBundle.ListPlanficationFamilialeTitle}">
+            <h:form>
+                <p:commandButton id="backButton"   styleClass="ui-btn-left  ui-btn-inline" icon="ui-icon-arrow-l" value="#{myBundle.Back}" action="#{mobilePageController.navigateBackInHistory('/mobile/index')}"/>
+                <p:commandButton id="createButton" styleClass="ui-btn-right ui-btn-inline" icon="ui-icon-plus"    value="#{resourcesBundle.Create}" update=":PlanficationFamilialeCreatePage:PlanficationFamilialeCreateForm" actionListener="#{planficationFamilialeController.prepareCreate}" action="#{mobilePageController.navigateWithHistory('pm:PlanficationFamilialeCreatePage')}">
+                    <f:actionListener binding="#{currentPageListener}"/>
+                </p:commandButton>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="PlanficationFamilialeListForm">
+
+                <p:dataTable id="datalist"
+                             value="#{planficationFamilialeController.items}"
+                             var="item"
+                             rowKey="#{item.idPF}"
+                             paginator="true"
+                             rows="10"
+                             rowsPerPageTemplate="10,20,30,40,50"
+                             selectionMode="single"
+                             selection="#{planficationFamilialeController.selected}"
+                             reflow="true">
+
+                    <p:ajax event="rowSelect"   update="@form:editButton,@form:deleteButton,@form:navigationMenuButton,@form:navigationMenuPanel" listener="#{planficationFamilialeController.resetParents}"/>
+                    <p:ajax event="rowUnselect" update="@form:editButton,@form:deleteButton,@form:navigationMenuButton,@form:navigationMenuPanel" listener="#{planficationFamilialeController.resetParents}"/>
+                    <p:ajax event="swipeleft"   oncomplete="document.getElementById('PlanficationFamilialeListPage:PlanficationFamilialeListForm:deleteButton').click();"/>
+                    <p:ajax event="tap"         oncomplete="document.getElementById('PlanficationFamilialeListPage:PlanficationFamilialeListForm:editButton').click();"/>
+                    <p:ajax event="taphold"     oncomplete="document.getElementById('PlanficationFamilialeListPage:PlanficationFamilialeListForm:navigationMenuButton').click();"/>
+
+                    <p:column sortBy="#{item.idPF}" filterBy="#{item.idPF}" headerText="#{resourcesBundle.ListPlanficationFamilialeTitle_idPF}">
+                        <h:outputText value="#{item.idPF}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.nouvelleacceptante}" filterBy="#{item.nouvelleacceptante}" headerText="#{resourcesBundle.ListPlanficationFamilialeTitle_nouvelleacceptante}">
+                        <h:outputText value="#{item.nouvelleacceptante}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.renouvellement}" filterBy="#{item.renouvellement}" headerText="#{resourcesBundle.ListPlanficationFamilialeTitle_renouvellement}">
+                        <h:outputText value="#{item.renouvellement}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.methodeanterieure}" filterBy="#{item.methodeanterieure}" headerText="#{resourcesBundle.ListPlanficationFamilialeTitle_methodeanterieure}">
+                        <h:outputText value="#{item.methodeanterieure}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.autreMethodeAnterieure}" filterBy="#{item.autreMethodeAnterieure}" headerText="#{resourcesBundle.ListPlanficationFamilialeTitle_autreMethodeAnterieure}">
+                        <h:outputText value="#{item.autreMethodeAnterieure}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.sourcerenseignementsurPF}" filterBy="#{item.sourcerenseignementsurPF}" headerText="#{resourcesBundle.ListPlanficationFamilialeTitle_sourcerenseignementsurPF}">
+                        <h:outputText value="#{item.sourcerenseignementsurPF}"/>
+                    </p:column>
+
+                    <!--
+                                        <p:column sortBy="#{item.raisondechangement}" filterBy="#{item.raisondechangement}" headerText="#{resourcesBundle.ListPlanficationFamilialeTitle_raisondechangement}">
+                                            <h:outputText value="#{item.raisondechangement}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.planification}" filterBy="#{item.planification}" headerText="#{resourcesBundle.ListPlanficationFamilialeTitle_planification}">
+                                            <h:outputText value="#{item.planification}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.counsling}" filterBy="#{item.counsling}" headerText="#{resourcesBundle.ListPlanficationFamilialeTitle_counsling}">
+                                            <h:outputText value="#{item.counsling}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.methodechoisie}" filterBy="#{item.methodechoisie}" headerText="#{resourcesBundle.ListPlanficationFamilialeTitle_methodechoisie}">
+                                            <h:outputText value="#{item.methodechoisie}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.utilisateur.uname}" filterBy="#{item.utilisateur.uname}" headerText="#{resourcesBundle.ListPlanficationFamilialeTitle_utilisateur}">
+                                            <h:outputText value="#{item.utilisateur.uname}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.numDossier.numDossier}" filterBy="#{item.numDossier.numDossier}" headerText="#{resourcesBundle.ListPlanficationFamilialeTitle_numDossier}">
+                                            <h:outputText value="#{item.numDossier.numDossier}"/>
+                                        </p:column>
+                    -->
+                </p:dataTable>
+                <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{resourcesBundle.Edit}" update=":PlanficationFamilialeEditPage:PlanficationFamilialeEditForm" disabled="#{empty planficationFamilialeController.selected}" actionListener="#{mobilePageController.currentPageListener}" action="#{mobilePageController.navigateWithHistory('pm:PlanficationFamilialeEditPage')}"/>
+                <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{resourcesBundle.Delete}" actionListener="#{planficationFamilialeController.delete}" update=":growl,datalist" disabled="#{empty planficationFamilialeController.selected}">
+                    <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+                </p:commandButton>
+                <p:commandButton id="navigationMenuButton" style="visibility: hidden;" value="#{resourcesBundle.Menu}" disabled="#{empty planficationFamilialeController.selected}"/>
+
+                <p:overlayPanel id="navigationMenuPanel" for="navigationMenuButton" at="right" showEffect="overlay">
+                    <h2>#{resourcesBundle.PlanficationFamilialeHeading} #{resourcesBundle.Menu}</h2>
+                    <p:menu>
+                        <p:menuitem value="#{resourcesBundle.PlanficationFamilialeMenuItem_utilisateur}" icon="ui-icon-search" update=":UsersEditPage:UsersEditForm" disabled="#{empty planficationFamilialeController.selected.utilisateur}" actionListener="#{planficationFamilialeController.prepareUtilisateur}" action="#{mobilePageController.navigateWithHistory}">  
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="pm:UsersEditPage"/>
+                        </p:menuitem>
+                        <p:menuitem value="#{resourcesBundle.PlanficationFamilialeMenuItem_numDossier}" icon="ui-icon-search" update=":InfosFemmeEditPage:InfosFemmeEditForm" disabled="#{empty planficationFamilialeController.selected.numDossier}" actionListener="#{planficationFamilialeController.prepareNumDossier}" action="#{mobilePageController.navigateWithHistory}">  
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="pm:InfosFemmeEditPage"/>
+                        </p:menuitem>
+                        <p:menuitem value="#{resourcesBundle.PlanficationFamilialeMenuItem_motifConsultationCollection}" icon="ui-icon-search"  action="#{mobilePageController.navigateWithHistory}" disabled="#{empty planficationFamilialeController.selected.motifConsultationCollection}" ajax="false">
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="#{planficationFamilialeController.navigateMotifConsultationCollection()}"/>
+                        </p:menuitem>  
+                    </p:menu>
+                </p:overlayPanel>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

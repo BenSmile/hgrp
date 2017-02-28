@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="SuiviMaterniteListPage">
+        <pm:header title="#{resourcesBundle.ListSuiviMaterniteTitle}">
+            <h:form>
+                <p:commandButton id="backButton"   styleClass="ui-btn-left  ui-btn-inline" icon="ui-icon-arrow-l" value="#{myBundle.Back}" action="#{mobilePageController.navigateBackInHistory('/mobile/index')}"/>
+                <p:commandButton id="createButton" styleClass="ui-btn-right ui-btn-inline" icon="ui-icon-plus"    value="#{resourcesBundle.Create}" update=":SuiviMaterniteCreatePage:SuiviMaterniteCreateForm" actionListener="#{suiviMaterniteController.prepareCreate}" action="#{mobilePageController.navigateWithHistory('pm:SuiviMaterniteCreatePage')}">
+                    <f:actionListener binding="#{currentPageListener}"/>
+                </p:commandButton>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="SuiviMaterniteListForm">
+
+                <p:dataTable id="datalist"
+                             value="#{suiviMaterniteController.items}"
+                             var="item"
+                             rowKey="#{item.idSuiv}"
+                             paginator="true"
+                             rows="10"
+                             rowsPerPageTemplate="10,20,30,40,50"
+                             selectionMode="single"
+                             selection="#{suiviMaterniteController.selected}"
+                             reflow="true">
+
+                    <p:ajax event="rowSelect"   update="@form:editButton,@form:deleteButton"/>
+                    <p:ajax event="rowUnselect" update="@form:editButton,@form:deleteButton"/>
+                    <p:ajax event="swipeleft"   oncomplete="document.getElementById('SuiviMaterniteListPage:SuiviMaterniteListForm:deleteButton').click();"/>
+                    <p:ajax event="tap"         oncomplete="document.getElementById('SuiviMaterniteListPage:SuiviMaterniteListForm:editButton').click();"/>
+
+                    <p:column sortBy="#{item.idSuiv}" filterBy="#{item.idSuiv}" headerText="#{resourcesBundle.ListSuiviMaterniteTitle_idSuiv}">
+                        <h:outputText value="#{item.idSuiv}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.examenPhysique}" filterBy="#{item.examenPhysique}" headerText="#{resourcesBundle.ListSuiviMaterniteTitle_examenPhysique}">
+                        <h:outputText value="#{item.examenPhysique}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.examenParacliniques}" filterBy="#{item.examenParacliniques}" headerText="#{resourcesBundle.ListSuiviMaterniteTitle_examenParacliniques}">
+                        <h:outputText value="#{item.examenParacliniques}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.autreObservation}" filterBy="#{item.autreObservation}" headerText="#{resourcesBundle.ListSuiviMaterniteTitle_autreObservation}">
+                        <h:outputText value="#{item.autreObservation}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.conclusion}" filterBy="#{item.conclusion}" headerText="#{resourcesBundle.ListSuiviMaterniteTitle_conclusion}">
+                        <h:outputText value="#{item.conclusion}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.decision}" filterBy="#{item.decision}" headerText="#{resourcesBundle.ListSuiviMaterniteTitle_decision}">
+                        <h:outputText value="#{item.decision}"/>
+                    </p:column>
+
+                    <!--
+                                        <p:column sortBy="#{item.numDossierCPN}" filterBy="#{item.numDossierCPN}" headerText="#{resourcesBundle.ListSuiviMaterniteTitle_numDossierCPN}">
+                                            <h:outputText value="#{item.numDossierCPN}"/>
+                                        </p:column>
+                    -->
+                </p:dataTable>
+                <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{resourcesBundle.Edit}" update=":SuiviMaterniteEditPage:SuiviMaterniteEditForm" disabled="#{empty suiviMaterniteController.selected}" actionListener="#{mobilePageController.currentPageListener}" action="#{mobilePageController.navigateWithHistory('pm:SuiviMaterniteEditPage')}"/>
+                <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{resourcesBundle.Delete}" actionListener="#{suiviMaterniteController.delete}" update=":growl,datalist" disabled="#{empty suiviMaterniteController.selected}">
+                    <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+                </p:commandButton>
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

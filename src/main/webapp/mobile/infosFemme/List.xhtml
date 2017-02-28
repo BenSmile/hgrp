@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="InfosFemmeListPage">
+        <pm:header title="#{resourcesBundle.ListInfosFemmeTitle}">
+            <h:form>
+                <p:commandButton id="backButton"   styleClass="ui-btn-left  ui-btn-inline" icon="ui-icon-arrow-l" value="#{myBundle.Back}" action="#{mobilePageController.navigateBackInHistory('/mobile/index')}"/>
+                <p:commandButton id="createButton" styleClass="ui-btn-right ui-btn-inline" icon="ui-icon-plus"    value="#{resourcesBundle.Create}" update=":InfosFemmeCreatePage:InfosFemmeCreateForm" actionListener="#{infosFemmeController.prepareCreate}" action="#{mobilePageController.navigateWithHistory('pm:InfosFemmeCreatePage')}">
+                    <f:actionListener binding="#{currentPageListener}"/>
+                </p:commandButton>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="InfosFemmeListForm">
+
+                <p:dataTable id="datalist"
+                             value="#{infosFemmeController.items}"
+                             var="item"
+                             rowKey="#{item.numDossier}"
+                             paginator="true"
+                             rows="10"
+                             rowsPerPageTemplate="10,20,30,40,50"
+                             selectionMode="single"
+                             selection="#{infosFemmeController.selected}"
+                             reflow="true">
+
+                    <p:ajax event="rowSelect"   update="@form:editButton,@form:deleteButton,@form:navigationMenuButton,@form:navigationMenuPanel" listener="#{infosFemmeController.resetParents}"/>
+                    <p:ajax event="rowUnselect" update="@form:editButton,@form:deleteButton,@form:navigationMenuButton,@form:navigationMenuPanel" listener="#{infosFemmeController.resetParents}"/>
+                    <p:ajax event="swipeleft"   oncomplete="document.getElementById('InfosFemmeListPage:InfosFemmeListForm:deleteButton').click();"/>
+                    <p:ajax event="tap"         oncomplete="document.getElementById('InfosFemmeListPage:InfosFemmeListForm:editButton').click();"/>
+                    <p:ajax event="taphold"     oncomplete="document.getElementById('InfosFemmeListPage:InfosFemmeListForm:navigationMenuButton').click();"/>
+
+                    <p:column sortBy="#{item.numDossier}" filterBy="#{item.numDossier}" headerText="#{resourcesBundle.ListInfosFemmeTitle_numDossier}">
+                        <h:outputText value="#{item.numDossier}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.nom}" filterBy="#{item.nom}" headerText="#{resourcesBundle.ListInfosFemmeTitle_nom}">
+                        <h:outputText value="#{item.nom}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.postNom}" filterBy="#{item.postNom}" headerText="#{resourcesBundle.ListInfosFemmeTitle_postNom}">
+                        <h:outputText value="#{item.postNom}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.prenom}" filterBy="#{item.prenom}" headerText="#{resourcesBundle.ListInfosFemmeTitle_prenom}">
+                        <h:outputText value="#{item.prenom}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.profession}" filterBy="#{item.profession}" headerText="#{resourcesBundle.ListInfosFemmeTitle_profession}">
+                        <h:outputText value="#{item.profession}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.professioConjoint}" filterBy="#{item.professioConjoint}" headerText="#{resourcesBundle.ListInfosFemmeTitle_professioConjoint}">
+                        <h:outputText value="#{item.professioConjoint}"/>
+                    </p:column>
+
+                    <!--
+                                        <p:column sortBy="#{item.zoneSante}" filterBy="#{item.zoneSante}" headerText="#{resourcesBundle.ListInfosFemmeTitle_zoneSante}">
+                                            <h:outputText value="#{item.zoneSante}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.aireSante}" filterBy="#{item.aireSante}" headerText="#{resourcesBundle.ListInfosFemmeTitle_aireSante}">
+                                            <h:outputText value="#{item.aireSante}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.province}" filterBy="#{item.province}" headerText="#{resourcesBundle.ListInfosFemmeTitle_province}">
+                                            <h:outputText value="#{item.province}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.district}" filterBy="#{item.district}" headerText="#{resourcesBundle.ListInfosFemmeTitle_district}">
+                                            <h:outputText value="#{item.district}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.adresseCPN}" filterBy="#{item.adresseCPN}" headerText="#{resourcesBundle.ListInfosFemmeTitle_adresseCPN}">
+                                            <h:outputText value="#{item.adresseCPN}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.telephone}" filterBy="#{item.telephone}" headerText="#{resourcesBundle.ListInfosFemmeTitle_telephone}">
+                                            <h:outputText value="#{item.telephone}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.age}" filterBy="#{item.age}" headerText="#{resourcesBundle.ListInfosFemmeTitle_age}">
+                                            <h:outputText value="#{item.age}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.provenance}" filterBy="#{item.provenance}" headerText="#{resourcesBundle.ListInfosFemmeTitle_provenance}">
+                                            <h:outputText value="#{item.provenance}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.etatCivil}" filterBy="#{item.etatCivil}" headerText="#{resourcesBundle.ListInfosFemmeTitle_etatCivil}">
+                                            <h:outputText value="#{item.etatCivil}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.niveauEtude}" filterBy="#{item.niveauEtude}" headerText="#{resourcesBundle.ListInfosFemmeTitle_niveauEtude}">
+                                            <h:outputText value="#{item.niveauEtude}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.utilisateur.uname}" filterBy="#{item.utilisateur.uname}" headerText="#{resourcesBundle.ListInfosFemmeTitle_utilisateur}">
+                                            <h:outputText value="#{item.utilisateur.uname}"/>
+                                        </p:column>
+                    -->
+                </p:dataTable>
+                <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{resourcesBundle.Edit}" update=":InfosFemmeEditPage:InfosFemmeEditForm" disabled="#{empty infosFemmeController.selected}" actionListener="#{mobilePageController.currentPageListener}" action="#{mobilePageController.navigateWithHistory('pm:InfosFemmeEditPage')}"/>
+                <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{resourcesBundle.Delete}" actionListener="#{infosFemmeController.delete}" update=":growl,datalist" disabled="#{empty infosFemmeController.selected}">
+                    <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+                </p:commandButton>
+                <p:commandButton id="navigationMenuButton" style="visibility: hidden;" value="#{resourcesBundle.Menu}" disabled="#{empty infosFemmeController.selected}"/>
+
+                <p:overlayPanel id="navigationMenuPanel" for="navigationMenuButton" at="right" showEffect="overlay">
+                    <h2>#{resourcesBundle.InfosFemmeHeading} #{resourcesBundle.Menu}</h2>
+                    <p:menu>
+                        <p:menuitem value="#{resourcesBundle.InfosFemmeMenuItem_planficationFamilialeCollection}" icon="ui-icon-search"  action="#{mobilePageController.navigateWithHistory}" disabled="#{empty infosFemmeController.selected.planficationFamilialeCollection}" ajax="false">
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="#{infosFemmeController.navigatePlanficationFamilialeCollection()}"/>
+                        </p:menuitem>  
+                        <p:menuitem value="#{resourcesBundle.InfosFemmeMenuItem_donneesObjectivesCollection}" icon="ui-icon-search"  action="#{mobilePageController.navigateWithHistory}" disabled="#{empty infosFemmeController.selected.donneesObjectivesCollection}" ajax="false">
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="#{infosFemmeController.navigateDonneesObjectivesCollection()}"/>
+                        </p:menuitem>  
+                        <p:menuitem value="#{resourcesBundle.InfosFemmeMenuItem_grossesseCollection}" icon="ui-icon-search"  action="#{mobilePageController.navigateWithHistory}" disabled="#{empty infosFemmeController.selected.grossesseCollection}" ajax="false">
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="#{infosFemmeController.navigateGrossesseCollection()}"/>
+                        </p:menuitem>  
+                        <p:menuitem value="#{resourcesBundle.InfosFemmeMenuItem_infosAccouchementCollection}" icon="ui-icon-search"  action="#{mobilePageController.navigateWithHistory}" disabled="#{empty infosFemmeController.selected.infosAccouchementCollection}" ajax="false">
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="#{infosFemmeController.navigateInfosAccouchementCollection()}"/>
+                        </p:menuitem>  
+                        <p:menuitem value="#{resourcesBundle.InfosFemmeMenuItem_dcipCollection}" icon="ui-icon-search"  action="#{mobilePageController.navigateWithHistory}" disabled="#{empty infosFemmeController.selected.dcipCollection}" ajax="false">
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="#{infosFemmeController.navigateDcipCollection()}"/>
+                        </p:menuitem>  
+                        <p:menuitem value="#{resourcesBundle.InfosFemmeMenuItem_antecedentCpnCollection}" icon="ui-icon-search"  action="#{mobilePageController.navigateWithHistory}" disabled="#{empty infosFemmeController.selected.antecedentCpnCollection}" ajax="false">
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="#{infosFemmeController.navigateAntecedentCpnCollection()}"/>
+                        </p:menuitem>  
+                        <p:menuitem value="#{resourcesBundle.InfosFemmeMenuItem_hospitalisationCollection}" icon="ui-icon-search"  action="#{mobilePageController.navigateWithHistory}" disabled="#{empty infosFemmeController.selected.hospitalisationCollection}" ajax="false">
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="#{infosFemmeController.navigateHospitalisationCollection()}"/>
+                        </p:menuitem>  
+                        <p:menuitem value="#{resourcesBundle.InfosFemmeMenuItem_reglesCollection}" icon="ui-icon-search"  action="#{mobilePageController.navigateWithHistory}" disabled="#{empty infosFemmeController.selected.reglesCollection}" ajax="false">
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="#{infosFemmeController.navigateReglesCollection()}"/>
+                        </p:menuitem>  
+                        <p:menuitem value="#{resourcesBundle.InfosFemmeMenuItem_autresProblemesCollection}" icon="ui-icon-search"  action="#{mobilePageController.navigateWithHistory}" disabled="#{empty infosFemmeController.selected.autresProblemesCollection}" ajax="false">
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="#{infosFemmeController.navigateAutresProblemesCollection()}"/>
+                        </p:menuitem>  
+                        <p:menuitem value="#{resourcesBundle.InfosFemmeMenuItem_examenLaboCollection}" icon="ui-icon-search"  action="#{mobilePageController.navigateWithHistory}" disabled="#{empty infosFemmeController.selected.examenLaboCollection}" ajax="false">
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="#{infosFemmeController.navigateExamenLaboCollection()}"/>
+                        </p:menuitem>  
+                        <p:menuitem value="#{resourcesBundle.InfosFemmeMenuItem_utilisateur}" icon="ui-icon-search" update=":UsersEditPage:UsersEditForm" disabled="#{empty infosFemmeController.selected.utilisateur}" actionListener="#{infosFemmeController.prepareUtilisateur}" action="#{mobilePageController.navigateWithHistory}">  
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="pm:UsersEditPage"/>
+                        </p:menuitem>
+                        <p:menuitem value="#{resourcesBundle.InfosFemmeMenuItem_antecedentPlCollection}" icon="ui-icon-search"  action="#{mobilePageController.navigateWithHistory}" disabled="#{empty infosFemmeController.selected.antecedentPlCollection}" ajax="false">
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="#{infosFemmeController.navigateAntecedentPlCollection()}"/>
+                        </p:menuitem>  
+                        <p:menuitem value="#{resourcesBundle.InfosFemmeMenuItem_consultationCollection}" icon="ui-icon-search"  action="#{mobilePageController.navigateWithHistory}" disabled="#{empty infosFemmeController.selected.consultationCollection}" ajax="false">
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="#{infosFemmeController.navigateConsultationCollection()}"/>
+                        </p:menuitem>  
+                    </p:menu>
+                </p:overlayPanel>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="UsersEditPage" lazy="true">
+        <pm:header title="#{resourcesBundle.EditUsersTitle}">
+            <h:form>
+                <p:commandButton styleClass="ui-btn-left ui-btn-inline" value="#{resourcesBundle.Cancel}" icon="ui-icon-arrow-l" action="#{mobilePageController.navigateBackInHistory('pm:UsersListPage')}"/>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="UsersEditForm">
+
+                <h:panelGroup id="display">
+                    <p:tabView id="UsersTabView">
+
+                        <p:tab id="UsersTab1" title="#{resourcesBundle.TabHeaderPrefix} 1">
+                            <p:outputPanel rendered="#{usersController.selected != null}">
+                                <pm:field>
+                                    <h:outputLabel value="#{resourcesBundle.EditUsersLabel_uname}" for="uname" />
+                                    <h:outputText id="uname" value="#{usersController.selected.uname}" />
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditUsersLabel_password}" for="password" />
+                                    <p:inputText id="password" value="#{usersController.selected.password}" title="#{resourcesBundle.EditUsersTitle_password}" required="true" requiredMessage="#{resourcesBundle.EditUsersRequiredMessage_password}" size="60" maxlength="60"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditUsersLabel_nom}" for="nom" />
+                                    <p:inputText id="nom" value="#{usersController.selected.nom}" title="#{resourcesBundle.EditUsersTitle_nom}" required="true" requiredMessage="#{resourcesBundle.EditUsersRequiredMessage_nom}" size="30" maxlength="30"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditUsersLabel_postNom}" for="postNom" />
+                                    <p:inputText id="postNom" value="#{usersController.selected.postNom}" title="#{resourcesBundle.EditUsersTitle_postNom}" required="true" requiredMessage="#{resourcesBundle.EditUsersRequiredMessage_postNom}" size="30" maxlength="30"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditUsersLabel_prenom}" for="prenom" />
+                                    <p:inputText id="prenom" value="#{usersController.selected.prenom}" title="#{resourcesBundle.EditUsersTitle_prenom}" required="true" requiredMessage="#{resourcesBundle.EditUsersRequiredMessage_prenom}" size="20" maxlength="20"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditUsersLabel_role}" for="role" />
+                                    <p:inputText id="role" value="#{usersController.selected.role}" title="#{resourcesBundle.EditUsersTitle_role}" required="true" requiredMessage="#{resourcesBundle.EditUsersRequiredMessage_role}" size="8" maxlength="8"/>
+                                </pm:field>
+                            </p:outputPanel>
+                        </p:tab>
+                    </p:tabView>
+                    <p:commandButton actionListener="#{usersController.save}" value="#{resourcesBundle.Save}" update="#{mobilePageController.updatableWidgets(component,'display,:UsersListPage:UsersListForm:datalist,:growl')}" action="#{mobilePageController.navigateWithHistory('pm:UsersListPage')}">
+                        <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                </h:panelGroup>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d5beb9c9-13d4-4980-9497-d4bfe2ff023c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="984a95cb-ae65-4b79-bf58-e0a3aa6dbd43"/>
+	<field name="EffectifConsulationPF" class="java.lang.String"/>
+	<field name="ACTraites" class="java.lang.String"/>
+	<field name="ACImplants" class="java.lang.String"/>
+	<field name="ACRetraits" class="java.lang.String"/>
+	<field name="NCSoustraits" class="java.lang.String"/>
+	<field name="Date" class="java.lang.String"/>
+	<field name="DateRapport" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<image>
+				<reportElement x="0" y="0" width="205" height="79" uuid="05ba9cdd-29e3-49bf-ba96-1b380bdc4968"/>
+				<imageExpression><![CDATA["C:\\Users\\Ben Kafirongo\\Documents\\NetBeansProjects\\hgrp_3\\web\\resources\\images\\logo.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="233" y="10" width="285" height="28" uuid="6ef58b4c-f24d-40ba-b480-dc8ae145af7e"/>
+				<textElement textAlignment="Center">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RAPPORT DE PLANIFICATION FAMILIALE ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="259" y="38" width="66" height="25" uuid="71f7469a-18d6-4d23-a815-3626033fb107"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mois de : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="325" y="38" width="145" height="25" uuid="769d51ba-69e7-45bb-99bb-5f4221157bff"/>
+				<textFieldExpression><![CDATA[$F{Date}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="10" width="555" height="3" uuid="43500b8a-6bea-4ebe-9359-b3e9413a26ed"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="0" y="13" width="555" height="3" uuid="6e5d8911-192f-4f56-9eaf-087a48c5cf0a"/>
+			</rectangle>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="314" splitType="Stretch">
+			<rectangle>
+				<reportElement x="39" y="11" width="114" height="32" uuid="302b4e9e-8b29-40a3-9872-5b26692042ea"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="39" y="23" width="114" height="20" uuid="56be039d-df56-4997-9150-7c980aebf79f"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[NUMERO]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="153" y="11" width="231" height="32" uuid="822ac2bf-f9db-4bb7-8327-881587f5c4f6"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="164" y="23" width="208" height="20" uuid="337b5744-dba9-4886-a9f7-b3cdecd66e13"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[ACTIVITES]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="384" y="11" width="122" height="32" uuid="79ba9e62-d29e-4820-8f2b-ef69a9671fab"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="395" y="23" width="100" height="20" uuid="420ba932-2725-4b92-89c5-cd920b023777"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="39" y="223" width="114" height="30" uuid="d3a19ff8-4478-4bc2-a548-c4d871d3fdad"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="39" y="233" width="114" height="20" uuid="c2f62d8d-de69-4f9d-9798-7f6ce693e91b"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[3]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="39" y="103" width="114" height="30" uuid="da688f91-40a7-4b75-97c5-349d4109795a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="39" y="73" width="114" height="30" uuid="564a259e-2e90-4250-8406-05fd8c49a60b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="39" y="43" width="114" height="30" uuid="ba0794ab-03ac-43bb-9056-1dc43c70a2de"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="39" y="53" width="114" height="20" uuid="e965b22e-1117-4ab7-a90c-810f5a27345a"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[1]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="153" y="43" width="231" height="30" uuid="96b22aea-584c-4a85-b103-d8830123aa79"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="153" y="133" width="231" height="30" uuid="de2b6032-b3ba-424c-b6c0-ebf4d7256c30"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="153" y="103" width="231" height="30" uuid="211bff43-8ede-40d1-9c87-5d7c11a293e0"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="153" y="73" width="231" height="30" uuid="01ab69af-fdf7-425e-a47c-814b8b1db378"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="164" y="53" width="141" height="20" uuid="f3794e0a-1ce5-4d40-b6b4-c1dbbc483e22"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Consultation en PF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="153" y="83" width="125" height="20" uuid="6cbb1939-070a-4f4c-accb-367bafc3db76"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[   Effectif consultation PF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="163" y="113" width="162" height="20" uuid="075d8591-bd43-4e66-94a5-60f785e460d0"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[AC Revenu en consultation]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="163" y="143" width="209" height="20" uuid="4e9b8dac-56fa-4da8-931e-2d8c4b0b6f53"/>
+				<text><![CDATA[a. AC traités]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="153" y="163" width="231" height="30" uuid="93485f1e-3b41-438f-ac13-6032c194deaa"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="163" y="173" width="209" height="20" uuid="31b777dd-e9b9-41b7-8eb0-358934d4b7a4"/>
+				<text><![CDATA[b. AC pour retrait implant/ norplant]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="153" y="193" width="231" height="30" uuid="85a10932-5473-4cbf-a03a-a21e75ab4558"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="163" y="203" width="209" height="20" uuid="6c28e03b-fe5f-4a03-bd88-7fb695cf9b7d"/>
+				<text><![CDATA[c. QC pour le retrait DIU]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="153" y="223" width="231" height="30" uuid="bfd11378-92ab-4670-a6e7-4820c658d8ad"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="163" y="233" width="196" height="20" uuid="c7856d23-38dd-40d5-a05e-f82e4c1846d3"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[NC enregistrés pendant le mois ]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="153" y="253" width="231" height="30" uuid="44eb6da0-0041-4c52-afd8-597a5d609735"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="163" y="263" width="209" height="20" uuid="658f4abd-de6a-4f37-979d-269bbed159ac"/>
+				<text><![CDATA[d. NC ayant souscrit]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="39" y="113" width="114" height="20" uuid="2191c741-b1fd-4b34-a983-648edcbb5b43"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="39" y="83" width="114" height="20" uuid="53fa8ecf-ca86-412f-9cc3-feda9496b3cf"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[A]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="384" y="73" width="122" height="30" uuid="751c13ee-079b-4685-8221-545574553658"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="384" y="133" width="122" height="30" uuid="5d1b1d1d-3cc3-4bf5-879b-81929bd4940a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="384" y="163" width="122" height="30" uuid="f41c27ab-1509-4276-a411-4f9943eec2fc"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="384" y="253" width="122" height="30" uuid="d6f0bd92-1c1f-41fa-beb5-0a09ce6e995b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="384" y="193" width="122" height="30" uuid="0c1f2c1f-9f38-4188-a155-b2a2d6e35c09"/>
+			</rectangle>
+			<textField>
+				<reportElement x="395" y="83" width="100" height="20" uuid="7068f30a-196e-411f-84da-fb8a66742965"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{EffectifConsulationPF}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="395" y="143" width="100" height="20" uuid="cda430e8-1259-413a-aca8-666da578d7cf"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ACTraites}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="395" y="173" width="100" height="20" uuid="d00ad3d4-fb99-41bf-8820-4ebc31491db7"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ACImplants}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="395" y="203" width="100" height="20" uuid="32aae435-f682-4418-8c90-292efd63b840"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ACRetraits}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="395" y="263" width="100" height="20" uuid="fe0af613-5b09-47f3-8f6f-2046008f4ae4"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{NCSoustraits}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="50">
+			<textField>
+				<reportElement x="455" y="15" width="100" height="20" uuid="dae432c7-b15c-4d48-bf3e-b71a79f98f22"/>
+				<textFieldExpression><![CDATA[$F{DateRapport}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

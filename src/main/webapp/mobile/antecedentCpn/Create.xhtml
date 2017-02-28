@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="AntecedentCpnCreatePage" lazy="true">
+        <pm:header title="#{resourcesBundle.CreateAntecedentCpnTitle}">
+            <h:form>
+                <p:commandButton styleClass="ui-btn-left ui-btn-inline" value="#{resourcesBundle.Cancel}" icon="ui-icon-arrow-l" action="#{mobilePageController.navigateBackInHistory('pm:AntecedentCpnListPage')}"/>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="AntecedentCpnCreateForm">
+
+                <h:panelGroup id="display" rendered="#{antecedentCpnController.selected != null}">
+                    <p:tabView id="AntecedentCpnTabView">
+
+                        <p:tab id="AntecedentCpnTab1" title="#{resourcesBundle.TabHeaderPrefix} 1">
+                            <p:outputPanel>
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateAntecedentCpnLabel_ddr}" for="ddr" />
+                                    <p:calendar id="ddr" pattern="MM/dd/yyyy" value="#{antecedentCpnController.selected.ddr}" title="#{resourcesBundle.CreateAntecedentCpnTitle_ddr}"  showOn="button"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateAntecedentCpnLabel_dpa}" for="dpa" />
+                                    <p:calendar id="dpa" pattern="MM/dd/yyyy" value="#{antecedentCpnController.selected.dpa}" title="#{resourcesBundle.CreateAntecedentCpnTitle_dpa}"  showOn="button"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateAntecedentCpnLabel_grossesse}" for="grossesse" />
+                                    <p:inputText id="grossesse" value="#{antecedentCpnController.selected.grossesse}" title="#{resourcesBundle.CreateAntecedentCpnTitle_grossesse}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateAntecedentCpnLabel_enfantsvie}" for="enfantsvie" />
+                                    <p:inputText id="enfantsvie" value="#{antecedentCpnController.selected.enfantsvie}" title="#{resourcesBundle.CreateAntecedentCpnTitle_enfantsvie}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateAntecedentCpnLabel_avortement1erTrim}" for="avortement1erTrim" />
+                                    <p:inputText id="avortement1erTrim" value="#{antecedentCpnController.selected.avortement1erTrim}" title="#{resourcesBundle.CreateAntecedentCpnTitle_avortement1erTrim}" size="4" maxlength="4"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateAntecedentCpnLabel_primipare15ansOuMoin}" for="primipare15ansOuMoin" />
+                                    <p:inputText id="primipare15ansOuMoin" value="#{antecedentCpnController.selected.primipare15ansOuMoin}" title="#{resourcesBundle.CreateAntecedentCpnTitle_primipare15ansOuMoin}" size="4" maxlength="4"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateAntecedentCpnLabel_primipare30ansOuPlus}" for="primipare30ansOuPlus" />
+                                    <p:inputText id="primipare30ansOuPlus" value="#{antecedentCpnController.selected.primipare30ansOuPlus}" title="#{resourcesBundle.CreateAntecedentCpnTitle_primipare30ansOuPlus}" size="4" maxlength="4"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateAntecedentCpnLabel_dernieraccouchementdatede}" for="dernieraccouchementdatede" />
+                                    <p:calendar id="dernieraccouchementdatede" pattern="MM/dd/yyyy" value="#{antecedentCpnController.selected.dernieraccouchementdatede}" title="#{resourcesBundle.CreateAntecedentCpnTitle_dernieraccouchementdatede}"  showOn="button"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateAntecedentCpnLabel_type}" for="type" />
+                                    <p:inputText id="type" value="#{antecedentCpnController.selected.type}" title="#{resourcesBundle.CreateAntecedentCpnTitle_type}" size="9" maxlength="9"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateAntecedentCpnLabel_intInf2ans}" for="intInf2ans" />
+                                    <p:inputText id="intInf2ans" value="#{antecedentCpnController.selected.intInf2ans}" title="#{resourcesBundle.CreateAntecedentCpnTitle_intInf2ans}" size="4" maxlength="4"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateAntecedentCpnLabel_plusgrospoidsnaiss}" for="plusgrospoidsnaiss" />
+                                    <p:inputText id="plusgrospoidsnaiss" value="#{antecedentCpnController.selected.plusgrospoidsnaiss}" title="#{resourcesBundle.CreateAntecedentCpnTitle_plusgrospoidsnaiss}" size="4" maxlength="4"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateAntecedentCpnLabel_plusde4kg}" for="plusde4kg" />
+                                    <p:inputText id="plusde4kg" value="#{antecedentCpnController.selected.plusde4kg}" title="#{resourcesBundle.CreateAntecedentCpnTitle_plusde4kg}" size="4" maxlength="4"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateAntecedentCpnLabel_dernierEnfant}" for="dernierEnfant" />
+                                    <p:inputText id="dernierEnfant" value="#{antecedentCpnController.selected.dernierEnfant}" title="#{resourcesBundle.CreateAntecedentCpnTitle_dernierEnfant}" size="18" maxlength="18"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateAntecedentCpnLabel_complicationtraitement}" for="complicationtraitement" />
+                                    <p:inputText id="complicationtraitement" value="#{antecedentCpnController.selected.complicationtraitement}" title="#{resourcesBundle.CreateAntecedentCpnTitle_complicationtraitement}" size="50" maxlength="50"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateAntecedentCpnLabel_complicationpostPartum}" for="complicationpostPartum" />
+                                    <p:inputText id="complicationpostPartum" value="#{antecedentCpnController.selected.complicationpostPartum}" title="#{resourcesBundle.CreateAntecedentCpnTitle_complicationpostPartum}" size="40" maxlength="40"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateAntecedentCpnLabel_traitementpoursterilite}" for="traitementpoursterilite" />
+                                    <p:inputText id="traitementpoursterilite" value="#{antecedentCpnController.selected.traitementpoursterilite}" title="#{resourcesBundle.CreateAntecedentCpnTitle_traitementpoursterilite}" size="4" maxlength="4"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateAntecedentCpnLabel_parite}" for="parite" />
+                                    <p:inputText id="parite" value="#{antecedentCpnController.selected.parite}" title="#{resourcesBundle.CreateAntecedentCpnTitle_parite}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateAntecedentCpnLabel_avortement}" for="avortement" />
+                                    <p:inputText id="avortement" value="#{antecedentCpnController.selected.avortement}" title="#{resourcesBundle.CreateAntecedentCpnTitle_avortement}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateAntecedentCpnLabel_deces}" for="deces" />
+                                    <p:inputText id="deces" value="#{antecedentCpnController.selected.deces}" title="#{resourcesBundle.CreateAntecedentCpnTitle_deces}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateAntecedentCpnLabel_vbg}" for="vbg" />
+                                    <p:inputText id="vbg" value="#{antecedentCpnController.selected.vbg}" title="#{resourcesBundle.CreateAntecedentCpnTitle_vbg}" size="4" maxlength="4"/>
+                                </pm:field>
+
+                            </p:outputPanel>
+                        </p:tab>
+                        <p:tab id="AntecedentCpnTab2" title="#{resourcesBundle.TabHeaderPrefix} 2">
+                            <p:outputPanel>
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateAntecedentCpnLabel_antecedentChirurgicauxCPN}" for="antecedentChirurgicauxCPN" />
+                                    <p:inputText id="antecedentChirurgicauxCPN" value="#{antecedentCpnController.selected.antecedentChirurgicauxCPN}" title="#{resourcesBundle.CreateAntecedentCpnTitle_antecedentChirurgicauxCPN}" size="55" maxlength="55"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateAntecedentCpnLabel_antecedentMedicauxCPN}" for="antecedentMedicauxCPN" />
+                                    <p:inputText id="antecedentMedicauxCPN" value="#{antecedentCpnController.selected.antecedentMedicauxCPN}" title="#{resourcesBundle.CreateAntecedentCpnTitle_antecedentMedicauxCPN}" size="61" maxlength="61"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateAntecedentCpnLabel_grossesseissuduviol}" for="grossesseissuduviol" />
+                                    <p:inputText id="grossesseissuduviol" value="#{antecedentCpnController.selected.grossesseissuduviol}" title="#{resourcesBundle.CreateAntecedentCpnTitle_grossesseissuduviol}" size="4" maxlength="4"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateAntecedentCpnLabel_numDossier}" for="numDossier" />
+                                    <p:selectOneMenu id="numDossier" value="#{antecedentCpnController.selected.numDossier}"  converter="infosFemmeConverter">
+                                        <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                        <f:selectItems value="#{infosFemmeController.items}"
+                                                       var="numDossierItem"
+                                                       itemValue="#{numDossierItem}"
+                                                       itemLabel="#{numDossierItem.numDossier.toString()}"
+                                                       />
+
+                                    </p:selectOneMenu>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateAntecedentCpnLabel_utilisateur}" for="utilisateur" />
+                                    <p:selectOneMenu id="utilisateur" value="#{antecedentCpnController.selected.utilisateur}" required="true" requiredMessage="#{resourcesBundle.CreateAntecedentCpnRequiredMessage_utilisateur}" converter="usersConverter">
+                                        <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                        <f:selectItems value="#{usersController.items}"
+                                                       var="utilisateurItem"
+                                                       itemValue="#{utilisateurItem}"
+                                                       itemLabel="#{utilisateurItem.uname.toString()}"
+                                                       />
+
+                                    </p:selectOneMenu>
+                                </pm:field>
+                                </p:panelGrid>
+                        </p:tab>
+                    </p:tabView>
+                    <p:commandButton actionListener="#{antecedentCpnController.saveNew}" value="#{resourcesBundle.Save}" update="display,:AntecedentCpnListPage:AntecedentCpnListForm:datalist,:growl" action="#{mobilePageController.navigateWithHistory('pm:AntecedentCpnListPage')}">
+                        <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                </h:panelGroup>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

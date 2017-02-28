@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="DcipEditDlg" widgetVar="DcipEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{resourcesBundle.EditDcipTitle}" closeOnEscape="true">
+
+            <h:form id="DcipEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{dcipController.selected != null}">
+
+                        <p:outputLabel value="#{resourcesBundle.EditDcipLabel_numDossier}" for="numDossier" />
+                        <p:selectOneMenu id="numDossier" value="#{dcipController.selected.numDossier}" required="true" requiredMessage="#{resourcesBundle.EditDcipRequiredMessage_numDossier}" converter="infosFemmeConverter">
+                            <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{infosFemmeController.items}"
+                                           var="numDossierItem"
+                                           itemValue="#{numDossierItem}"
+                                           itemLabel="#{numDossierItem.toString()}"/>
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{resourcesBundle.CreateDcipLabel_counselingpretest}" for="counselingpretest" />
+                        <p:selectOneMenu id="counselingpretest" value="#{dcipController.selected.counselingpretest}"  title="#{resourcesBundle.CreateDcipTitle_counselingpretest}">
+                            <f:selectItem itemLabel=""/>
+                            <f:selectItem itemLabel="Oui" itemValue="Oui"/>     
+                            <f:selectItem itemLabel="Non" itemValue="Non"/>
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{resourcesBundle.CreateDcipLabel_testVIH}" for="testVIH" />
+                        <p:selectOneMenu id="testVIH" value="#{dcipController.selected.testVIH}"  title="#{resourcesBundle.CreateDcipTitle_testVIH}">
+                            <f:selectItem itemLabel=""/>
+
+                            <f:selectItem itemLabel="Oui" itemValue="Oui"/>     
+                            <f:selectItem itemLabel="Non" itemValue="Non"/>
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{resourcesBundle.CreateDcipLabel_resultat}" for="resultat" />
+                        <p:selectOneMenu id="resultat" value="#{dcipController.selected.resultat}" title="#{resourcesBundle.CreateDcipTitle_resultat}">
+                            <f:selectItem itemLabel=""/>
+                            <f:selectItem itemLabel="Positif" itemValue="Positif"/>     
+                            <f:selectItem itemLabel="Negatif" itemValue="Negatif"/>
+                            <f:selectItem itemLabel="Indétérminé" itemValue="Indétérminé"/>
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{resourcesBundle.CreateDcipLabel_counselingposttest}" for="counselingposttest" />
+                        <p:selectOneMenu id="counselingposttest" value="#{dcipController.selected.counselingposttest}"   title="#{resourcesBundle.CreateDcipTitle_counselingposttest}">
+                            <f:selectItem itemLabel=""/>
+                            <f:selectItem itemLabel="Oui" itemValue="Oui"/>     
+                            <f:selectItem itemLabel="Non" itemValue="Non"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{resourcesBundle.CreateDcipLabel_informerResultatposttest}" for="informerResultatposttest" />
+                        <p:selectOneMenu id="informerResultatposttest" value="#{dcipController.selected.informerResultatposttest}"   title="#{resourcesBundle.CreateDcipTitle_informerResultatposttest}">
+                            <f:selectItem itemLabel=""/>
+                            <f:selectItem itemLabel="Oui" itemValue="Oui"/>     
+                            <f:selectItem itemLabel="Non" itemValue="Non"/>
+                        </p:selectOneMenu>
+                        <ui:remove>
+                            <p:outputLabel value="#{resourcesBundle.EditDcipLabel_utilisateur}" for="utilisateur" />
+                            <p:selectOneMenu id="utilisateur" value="#{dcipController.selected.utilisateur}" required="true" requiredMessage="#{resourcesBundle.EditDcipRequiredMessage_utilisateur}" converter="usersConverter">
+                                <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{usersController.items}"
+                                               var="utilisateurItem"
+                                               itemValue="#{utilisateurItem}"
+                                               itemLabel="#{utilisateurItem.uname.toString()}"/>
+                            </p:selectOneMenu>
+                        </ui:remove>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{dcipController.save}" value="#{resourcesBundle.Save}" update="display,:DcipListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('DcipEditDialog'));">
+                        <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{resourcesBundle.Cancel}" oncomplete="PF('DcipEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

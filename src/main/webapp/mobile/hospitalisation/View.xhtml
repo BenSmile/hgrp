@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="HospitalisationViewPage" lazy="true">
+        <pm:header title="#{resourcesBundle.ViewHospitalisationTitle}">
+            <h:form>
+                <p:commandButton styleClass="ui-btn-left ui-btn-inline" value="#{resourcesBundle.Cancel}" icon="ui-icon-arrow-l" action="#{mobilePageController.navigateBackInHistory('pm:HospitalisationListPage')}"/>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="HospitalisationViewForm">
+
+                <h:panelGroup id="display">
+                    <p:outputPanel rendered="#{hospitalisationController.selected != null}">
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewHospitalisationLabel_idHosp}"/>
+                            <h:outputText value="#{hospitalisationController.selected.idHosp}" title="#{resourcesBundle.ViewHospitalisationTitle_idHosp}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewHospitalisationLabel_dateHospitalisation}"/>
+                            <h:outputText value="#{hospitalisationController.selected.dateHospitalisation}" title="#{resourcesBundle.ViewHospitalisationTitle_dateHospitalisation}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewHospitalisationLabel_hospitalisation}"/>
+                            <h:outputText value="#{hospitalisationController.selected.hospitalisation}" title="#{resourcesBundle.ViewHospitalisationTitle_hospitalisation}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewHospitalisationLabel_pourTraitementSpecifique}"/>
+                            <h:outputText value="#{hospitalisationController.selected.pourTraitementSpecifique}" title="#{resourcesBundle.ViewHospitalisationTitle_pourTraitementSpecifique}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewHospitalisationLabel_utilisateur}"/>
+                            <h:outputText value="#{hospitalisationController.selected.utilisateur.uname}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewHospitalisationLabel_numDossier}"/>
+                            <h:outputText value="#{hospitalisationController.selected.numDossier.numDossier}"/>
+                        </pm:field>
+                    </p:outputPanel>
+                </h:panelGroup>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

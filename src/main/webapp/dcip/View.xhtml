@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DcipViewDlg" widgetVar="DcipViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{resourcesBundle.ViewDcipTitle}" closeOnEscape="true">
+
+            <h:form id="DcipViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{dcipController.selected != null}">
+
+                        <h:outputText value="#{resourcesBundle.ViewDcipLabel_idDCIP}"/>
+                        <h:outputText value="#{dcipController.selected.idDCIP}" title="#{resourcesBundle.ViewDcipTitle_idDCIP}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewDcipLabel_counselingpretest}"/>
+                        <h:outputText value="#{dcipController.selected.counselingpretest}" title="#{resourcesBundle.ViewDcipTitle_counselingpretest}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewDcipLabel_code}"/>
+                        <h:outputText value="#{dcipController.selected.code}" title="#{resourcesBundle.ViewDcipTitle_code}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewDcipLabel_testVIH}"/>
+                        <h:outputText value="#{dcipController.selected.testVIH}" title="#{resourcesBundle.ViewDcipTitle_testVIH}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewDcipLabel_resultat}"/>
+                        <h:outputText value="#{dcipController.selected.resultat}" title="#{resourcesBundle.ViewDcipTitle_resultat}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewDcipLabel_counselingposttest}"/>
+                        <h:outputText value="#{dcipController.selected.counselingposttest}" title="#{resourcesBundle.ViewDcipTitle_counselingposttest}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewDcipLabel_informerResultatposttest}"/>
+                        <h:outputText value="#{dcipController.selected.informerResultatposttest}" title="#{resourcesBundle.ViewDcipTitle_informerResultatposttest}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewDcipLabel_utilisateur}"/>
+                        <h:outputText value="#{dcipController.selected.utilisateur.uname}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewDcipLabel_numDossier}"/>
+                        <h:outputText value="#{dcipController.selected.numDossier.numDossier}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{resourcesBundle.Close}" onclick="PF('DcipViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

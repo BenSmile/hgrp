@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="InfosAccouchementListPage">
+        <pm:header title="#{resourcesBundle.ListInfosAccouchementTitle}">
+            <h:form>
+                <p:commandButton id="backButton"   styleClass="ui-btn-left  ui-btn-inline" icon="ui-icon-arrow-l" value="#{myBundle.Back}" action="#{mobilePageController.navigateBackInHistory('/mobile/index')}"/>
+                <p:commandButton id="createButton" styleClass="ui-btn-right ui-btn-inline" icon="ui-icon-plus"    value="#{resourcesBundle.Create}" update=":InfosAccouchementCreatePage:InfosAccouchementCreateForm" actionListener="#{infosAccouchementController.prepareCreate}" action="#{mobilePageController.navigateWithHistory('pm:InfosAccouchementCreatePage')}">
+                    <f:actionListener binding="#{currentPageListener}"/>
+                </p:commandButton>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="InfosAccouchementListForm">
+
+                <p:dataTable id="datalist"
+                             value="#{infosAccouchementController.items}"
+                             var="item"
+                             rowKey="#{item.idInfoAcc}"
+                             paginator="true"
+                             rows="10"
+                             rowsPerPageTemplate="10,20,30,40,50"
+                             selectionMode="single"
+                             selection="#{infosAccouchementController.selected}"
+                             reflow="true">
+
+                    <p:ajax event="rowSelect"   update="@form:editButton,@form:deleteButton,@form:navigationMenuButton,@form:navigationMenuPanel" listener="#{infosAccouchementController.resetParents}"/>
+                    <p:ajax event="rowUnselect" update="@form:editButton,@form:deleteButton,@form:navigationMenuButton,@form:navigationMenuPanel" listener="#{infosAccouchementController.resetParents}"/>
+                    <p:ajax event="swipeleft"   oncomplete="document.getElementById('InfosAccouchementListPage:InfosAccouchementListForm:deleteButton').click();"/>
+                    <p:ajax event="tap"         oncomplete="document.getElementById('InfosAccouchementListPage:InfosAccouchementListForm:editButton').click();"/>
+                    <p:ajax event="taphold"     oncomplete="document.getElementById('InfosAccouchementListPage:InfosAccouchementListForm:navigationMenuButton').click();"/>
+
+                    <p:column sortBy="#{item.idInfoAcc}" filterBy="#{item.idInfoAcc}" headerText="#{resourcesBundle.ListInfosAccouchementTitle_idInfoAcc}">
+                        <h:outputText value="#{item.idInfoAcc}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.dateaccouchement}" filterBy="#{item.dateaccouchement}" headerText="#{resourcesBundle.ListInfosAccouchementTitle_dateaccouchement}">
+                        <h:outputText value="#{item.dateaccouchement}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.datesortie}" filterBy="#{item.datesortie}" headerText="#{resourcesBundle.ListInfosAccouchementTitle_datesortie}">
+                        <h:outputText value="#{item.datesortie}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.accoucheuse}" filterBy="#{item.accoucheuse}" headerText="#{resourcesBundle.ListInfosAccouchementTitle_accoucheuse}">
+                        <h:outputText value="#{item.accoucheuse}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.etatMere}" filterBy="#{item.etatMere}" headerText="#{resourcesBundle.ListInfosAccouchementTitle_etatMere}">
+                        <h:outputText value="#{item.etatMere}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.decesmaternelPostTravail}" filterBy="#{item.decesmaternelPostTravail}" headerText="#{resourcesBundle.ListInfosAccouchementTitle_decesmaternelPostTravail}">
+                        <h:outputText value="#{item.decesmaternelPostTravail}"/>
+                    </p:column>
+
+                    <!--
+                                        <p:column sortBy="#{item.decesMaternelApresIntervention}" filterBy="#{item.decesMaternelApresIntervention}" headerText="#{resourcesBundle.ListInfosAccouchementTitle_decesMaternelApresIntervention}">
+                                            <h:outputText value="#{item.decesMaternelApresIntervention}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.modeaccouchement}" filterBy="#{item.modeaccouchement}" headerText="#{resourcesBundle.ListInfosAccouchementTitle_modeaccouchement}">
+                                            <h:outputText value="#{item.modeaccouchement}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.eutocique}" filterBy="#{item.eutocique}" headerText="#{resourcesBundle.ListInfosAccouchementTitle_eutocique}">
+                                            <h:outputText value="#{item.eutocique}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.dystocique}" filterBy="#{item.dystocique}" headerText="#{resourcesBundle.ListInfosAccouchementTitle_dystocique}">
+                                            <h:outputText value="#{item.dystocique}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.ha}" filterBy="#{item.ha}" headerText="#{resourcesBundle.ListInfosAccouchementTitle_ha}">
+                                            <h:outputText value="#{item.ha}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.trans}" filterBy="#{item.trans}" headerText="#{resourcesBundle.ListInfosAccouchementTitle_trans}">
+                                            <h:outputText value="#{item.trans}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.infection}" filterBy="#{item.infection}" headerText="#{resourcesBundle.ListInfosAccouchementTitle_infection}">
+                                            <h:outputText value="#{item.infection}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.indication}" filterBy="#{item.indication}" headerText="#{resourcesBundle.ListInfosAccouchementTitle_indication}">
+                                            <h:outputText value="#{item.indication}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.etatEnfant}" filterBy="#{item.etatEnfant}" headerText="#{resourcesBundle.ListInfosAccouchementTitle_etatEnfant}">
+                                            <h:outputText value="#{item.etatEnfant}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.vivant}" filterBy="#{item.vivant}" headerText="#{resourcesBundle.ListInfosAccouchementTitle_vivant}">
+                                            <h:outputText value="#{item.vivant}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.mortne}" filterBy="#{item.mortne}" headerText="#{resourcesBundle.ListInfosAccouchementTitle_mortne}">
+                                            <h:outputText value="#{item.mortne}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.poids}" filterBy="#{item.poids}" headerText="#{resourcesBundle.ListInfosAccouchementTitle_poids}">
+                                            <h:outputText value="#{item.poids}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.sexe}" filterBy="#{item.sexe}" headerText="#{resourcesBundle.ListInfosAccouchementTitle_sexe}">
+                                            <h:outputText value="#{item.sexe}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.presentation}" filterBy="#{item.presentation}" headerText="#{resourcesBundle.ListInfosAccouchementTitle_presentation}">
+                                            <h:outputText value="#{item.presentation}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.particulariteEnfant}" filterBy="#{item.particulariteEnfant}" headerText="#{resourcesBundle.ListInfosAccouchementTitle_particulariteEnfant}">
+                                            <h:outputText value="#{item.particulariteEnfant}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.observation}" filterBy="#{item.observation}" headerText="#{resourcesBundle.ListInfosAccouchementTitle_observation}">
+                                            <h:outputText value="#{item.observation}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.accouchementVIHPositif}" filterBy="#{item.accouchementVIHPositif}" headerText="#{resourcesBundle.ListInfosAccouchementTitle_accouchementVIHPositif}">
+                                            <h:outputText value="#{item.accouchementVIHPositif}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.tritherapiePourVIH}" filterBy="#{item.tritherapiePourVIH}" headerText="#{resourcesBundle.ListInfosAccouchementTitle_tritherapiePourVIH}">
+                                            <h:outputText value="#{item.tritherapiePourVIH}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.enfantVIHPositif}" filterBy="#{item.enfantVIHPositif}" headerText="#{resourcesBundle.ListInfosAccouchementTitle_enfantVIHPositif}">
+                                            <h:outputText value="#{item.enfantVIHPositif}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.tritherapieEnfantVIHPositif}" filterBy="#{item.tritherapieEnfantVIHPositif}" headerText="#{resourcesBundle.ListInfosAccouchementTitle_tritherapieEnfantVIHPositif}">
+                                            <h:outputText value="#{item.tritherapieEnfantVIHPositif}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.CPoN18emeJour}" filterBy="#{item.CPoN18emeJour}" headerText="#{resourcesBundle.ListInfosAccouchementTitle_CPoN18emeJour}">
+                                            <h:outputText value="#{item.CPoN18emeJour}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.CPoN242emeJour}" filterBy="#{item.CPoN242emeJour}" headerText="#{resourcesBundle.ListInfosAccouchementTitle_CPoN242emeJour}">
+                                            <h:outputText value="#{item.CPoN242emeJour}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.recuVitamineA}" filterBy="#{item.recuVitamineA}" headerText="#{resourcesBundle.ListInfosAccouchementTitle_recuVitamineA}">
+                                            <h:outputText value="#{item.recuVitamineA}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.recuFerAcideFollique}" filterBy="#{item.recuFerAcideFollique}" headerText="#{resourcesBundle.ListInfosAccouchementTitle_recuFerAcideFollique}">
+                                            <h:outputText value="#{item.recuFerAcideFollique}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.complicationApresAcc}" filterBy="#{item.complicationApresAcc}" headerText="#{resourcesBundle.ListInfosAccouchementTitle_complicationApresAcc}">
+                                            <h:outputText value="#{item.complicationApresAcc}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.utilisateur.uname}" filterBy="#{item.utilisateur.uname}" headerText="#{resourcesBundle.ListInfosAccouchementTitle_utilisateur}">
+                                            <h:outputText value="#{item.utilisateur.uname}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.numDossier.numDossier}" filterBy="#{item.numDossier.numDossier}" headerText="#{resourcesBundle.ListInfosAccouchementTitle_numDossier}">
+                                            <h:outputText value="#{item.numDossier.numDossier}"/>
+                                        </p:column>
+                    -->
+                </p:dataTable>
+                <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{resourcesBundle.Edit}" update=":InfosAccouchementEditPage:InfosAccouchementEditForm" disabled="#{empty infosAccouchementController.selected}" actionListener="#{mobilePageController.currentPageListener}" action="#{mobilePageController.navigateWithHistory('pm:InfosAccouchementEditPage')}"/>
+                <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{resourcesBundle.Delete}" actionListener="#{infosAccouchementController.delete}" update=":growl,datalist" disabled="#{empty infosAccouchementController.selected}">
+                    <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+                </p:commandButton>
+                <p:commandButton id="navigationMenuButton" style="visibility: hidden;" value="#{resourcesBundle.Menu}" disabled="#{empty infosAccouchementController.selected}"/>
+
+                <p:overlayPanel id="navigationMenuPanel" for="navigationMenuButton" at="right" showEffect="overlay">
+                    <h2>#{resourcesBundle.InfosAccouchementHeading} #{resourcesBundle.Menu}</h2>
+                    <p:menu>
+                        <p:menuitem value="#{resourcesBundle.InfosAccouchementMenuItem_utilisateur}" icon="ui-icon-search" update=":UsersEditPage:UsersEditForm" disabled="#{empty infosAccouchementController.selected.utilisateur}" actionListener="#{infosAccouchementController.prepareUtilisateur}" action="#{mobilePageController.navigateWithHistory}">  
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="pm:UsersEditPage"/>
+                        </p:menuitem>
+                        <p:menuitem value="#{resourcesBundle.InfosAccouchementMenuItem_numDossier}" icon="ui-icon-search" update=":InfosFemmeEditPage:InfosFemmeEditForm" disabled="#{empty infosAccouchementController.selected.numDossier}" actionListener="#{infosAccouchementController.prepareNumDossier}" action="#{mobilePageController.navigateWithHistory}">  
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="pm:InfosFemmeEditPage"/>
+                        </p:menuitem>
+                    </p:menu>
+                </p:overlayPanel>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

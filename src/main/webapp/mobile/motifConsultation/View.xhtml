@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="MotifConsultationViewPage" lazy="true">
+        <pm:header title="#{resourcesBundle.ViewMotifConsultationTitle}">
+            <h:form>
+                <p:commandButton styleClass="ui-btn-left ui-btn-inline" value="#{resourcesBundle.Cancel}" icon="ui-icon-arrow-l" action="#{mobilePageController.navigateBackInHistory('pm:MotifConsultationListPage')}"/>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="MotifConsultationViewForm">
+
+                <h:panelGroup id="display">
+                    <p:outputPanel rendered="#{motifConsultationController.selected != null}">
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewMotifConsultationLabel_idMotCons}"/>
+                            <h:outputText value="#{motifConsultationController.selected.idMotCons}" title="#{resourcesBundle.ViewMotifConsultationTitle_idMotCons}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewMotifConsultationLabel_motif}"/>
+                            <h:outputText value="#{motifConsultationController.selected.motif}" title="#{resourcesBundle.ViewMotifConsultationTitle_motif}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewMotifConsultationLabel_autreprecision}"/>
+                            <h:outputText value="#{motifConsultationController.selected.autreprecision}" title="#{resourcesBundle.ViewMotifConsultationTitle_autreprecision}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewMotifConsultationLabel_idPF}"/>
+                            <h:outputText value="#{motifConsultationController.selected.idPF.idPF}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewMotifConsultationLabel_utilisateur}"/>
+                            <h:outputText value="#{motifConsultationController.selected.utilisateur.uname}"/>
+                        </pm:field>
+                    </p:outputPanel>
+                </h:panelGroup>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="InfosFemmeViewPage" lazy="true">
+        <pm:header title="#{resourcesBundle.ViewInfosFemmeTitle}">
+            <h:form>
+                <p:commandButton styleClass="ui-btn-left ui-btn-inline" value="#{resourcesBundle.Cancel}" icon="ui-icon-arrow-l" action="#{mobilePageController.navigateBackInHistory('pm:InfosFemmeListPage')}"/>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="InfosFemmeViewForm">
+
+                <h:panelGroup id="display">
+                    <p:tabView id="InfosFemmeTabView">
+
+                        <p:tab id="InfosFemmeTab1" title="#{resourcesBundle.TabHeaderPrefix} 1">
+                            <p:outputPanel rendered="#{infosFemmeController.selected != null}">
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosFemmeLabel_numDossier}"/>
+                                    <h:outputText value="#{infosFemmeController.selected.numDossier}" title="#{resourcesBundle.ViewInfosFemmeTitle_numDossier}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosFemmeLabel_nom}"/>
+                                    <h:outputText value="#{infosFemmeController.selected.nom}" title="#{resourcesBundle.ViewInfosFemmeTitle_nom}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosFemmeLabel_postNom}"/>
+                                    <h:outputText value="#{infosFemmeController.selected.postNom}" title="#{resourcesBundle.ViewInfosFemmeTitle_postNom}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosFemmeLabel_prenom}"/>
+                                    <h:outputText value="#{infosFemmeController.selected.prenom}" title="#{resourcesBundle.ViewInfosFemmeTitle_prenom}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosFemmeLabel_profession}"/>
+                                    <h:outputText value="#{infosFemmeController.selected.profession}" title="#{resourcesBundle.ViewInfosFemmeTitle_profession}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosFemmeLabel_professioConjoint}"/>
+                                    <h:outputText value="#{infosFemmeController.selected.professioConjoint}" title="#{resourcesBundle.ViewInfosFemmeTitle_professioConjoint}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosFemmeLabel_zoneSante}"/>
+                                    <h:outputText value="#{infosFemmeController.selected.zoneSante}" title="#{resourcesBundle.ViewInfosFemmeTitle_zoneSante}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosFemmeLabel_aireSante}"/>
+                                    <h:outputText value="#{infosFemmeController.selected.aireSante}" title="#{resourcesBundle.ViewInfosFemmeTitle_aireSante}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosFemmeLabel_province}"/>
+                                    <h:outputText value="#{infosFemmeController.selected.province}" title="#{resourcesBundle.ViewInfosFemmeTitle_province}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosFemmeLabel_district}"/>
+                                    <h:outputText value="#{infosFemmeController.selected.district}" title="#{resourcesBundle.ViewInfosFemmeTitle_district}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosFemmeLabel_adresseCPN}"/>
+                                    <h:outputText value="#{infosFemmeController.selected.adresseCPN}" title="#{resourcesBundle.ViewInfosFemmeTitle_adresseCPN}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosFemmeLabel_telephone}"/>
+                                    <h:outputText value="#{infosFemmeController.selected.telephone}" title="#{resourcesBundle.ViewInfosFemmeTitle_telephone}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosFemmeLabel_age}"/>
+                                    <h:outputText value="#{infosFemmeController.selected.age}" title="#{resourcesBundle.ViewInfosFemmeTitle_age}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosFemmeLabel_provenance}"/>
+                                    <h:outputText value="#{infosFemmeController.selected.provenance}" title="#{resourcesBundle.ViewInfosFemmeTitle_provenance}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosFemmeLabel_etatCivil}"/>
+                                    <h:outputText value="#{infosFemmeController.selected.etatCivil}" title="#{resourcesBundle.ViewInfosFemmeTitle_etatCivil}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosFemmeLabel_niveauEtude}"/>
+                                    <h:outputText value="#{infosFemmeController.selected.niveauEtude}" title="#{resourcesBundle.ViewInfosFemmeTitle_niveauEtude}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosFemmeLabel_utilisateur}"/>
+                                    <h:outputText value="#{infosFemmeController.selected.utilisateur.uname}"/>
+                                </pm:field>
+                            </p:outputPanel>
+                        </p:tab>
+                    </p:tabView>
+                </h:panelGroup>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

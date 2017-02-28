@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AutresProblemesViewDlg" widgetVar="AutresProblemesViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{resourcesBundle.ViewAutresProblemesTitle}" closeOnEscape="true">
+
+            <h:form id="AutresProblemesViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{autresProblemesController.selected != null}">
+
+                        <h:outputText value="#{resourcesBundle.ViewAutresProblemesLabel_idAutreProbl}"/>
+                        <h:outputText value="#{autresProblemesController.selected.idAutreProbl}" title="#{resourcesBundle.ViewAutresProblemesTitle_idAutreProbl}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewAutresProblemesLabel_dateAutreProbl}"/>
+                        <h:outputText value="#{autresProblemesController.selected.dateAutreProbl}" title="#{resourcesBundle.ViewAutresProblemesTitle_dateAutreProbl}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{resourcesBundle.ViewAutresProblemesLabel_probleme}"/>
+                        <h:outputText value="#{autresProblemesController.selected.probleme}" title="#{resourcesBundle.ViewAutresProblemesTitle_probleme}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewAutresProblemesLabel_observationTraitement}"/>
+                        <h:outputText value="#{autresProblemesController.selected.observationTraitement}" title="#{resourcesBundle.ViewAutresProblemesTitle_observationTraitement}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewAutresProblemesLabel_numDossier}"/>
+                        <h:outputText value="#{autresProblemesController.selected.numDossier.numDossier}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewAutresProblemesLabel_utilisateur}"/>
+                        <h:outputText value="#{autresProblemesController.selected.utilisateur.uname}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{resourcesBundle.Close}" onclick="PF('AutresProblemesViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

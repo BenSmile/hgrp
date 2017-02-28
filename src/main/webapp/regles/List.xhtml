@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="ReglesListForm">
+
+        <p:panel header="#{resourcesBundle.ListReglesTitle}">
+            <p:contextMenu id="ReglesDataTableContextMenu" for="datalist">  
+                <p:menuitem value="#{resourcesBundle.Create}" onclick="document.getElementById('ReglesListForm:createButton').click();" icon="ui-icon-plus"/>
+                <p:menuitem value="#{resourcesBundle.View}" onclick="document.getElementById('ReglesListForm:viewButton').click();" icon="ui-icon-search"/>
+                <p:menuitem value="#{resourcesBundle.Edit}" onclick="document.getElementById('ReglesListForm:editButton').click();" icon="ui-icon-pencil"/>
+                <p:menuitem value="#{resourcesBundle.Delete}" onclick="document.getElementById('ReglesListForm:deleteButton').click();" icon="ui-icon-trash"/>
+                <p:separator/>
+                <p:menuitem value="#{resourcesBundle.ReglesMenuItem_utilisateur}" icon="ui-icon-search"  actionListener="#{reglesController.prepareUtilisateur}" update=":UsersViewForm" oncomplete="PF('UsersViewDialog').show()" disabled="#{empty reglesController.selected.utilisateur}"/>  
+                <p:menuitem value="#{resourcesBundle.ReglesMenuItem_numDossier}" icon="ui-icon-search"  actionListener="#{reglesController.prepareNumDossier}" update=":InfosFemmeViewForm" oncomplete="PF('InfosFemmeViewDialog').show()" disabled="#{empty reglesController.selected.numDossier}"/>  
+            </p:contextMenu>
+            <p:dataTable id="datalist"
+                         value="#{reglesController.items}"
+                         lazy="false"
+                         rowKey="#{item.idRegle}"
+                         var="item"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30,40,50"
+                         selectionMode="single"
+                         selection="#{reglesController.selected}">
+                <!--
+                         To enable Lazy Loading, please copy/replace the following lines above,
+                         and be sure to replace the word HASH with the # symbol:
+                
+                         value="HASH{reglesController.lazyItems}"
+                         lazy="true"
+                         rowKey="HASH{item.idRegle}"  <<< Remove this line
+                -->
+
+
+                <p:ajax event="rowSelect"   update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:ReglesDataTableContextMenu" listener="#{reglesController.resetParents}"/>
+                <p:ajax event="rowUnselect" update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:ReglesDataTableContextMenu" listener="#{reglesController.resetParents}"/>
+                <p:ajax event="contextMenu" update="@form:createButton @form:viewButton @form:editButton @form:deleteButton" listener="#{reglesController.resetParents}"/>
+                <p:ajax event="rowDblselect" onsuccess="document.getElementById('ReglesListForm:viewButton').click();"/>
+
+                <p:column sortBy="#{item.numDossier.getNumDossier()}" filterBy="#{item.numDossier.getNumDossier()}">
+                    <f:facet name="header">
+                        <h:outputText value="Num Dossier"/>
+                    </f:facet>
+                    <h:outputText value="#{item.numDossier.getNumDossier()}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.ageMenarche}" filterBy="#{item.ageMenarche}">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListReglesTitle_ageMenarche}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.ageMenarche}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.ddr}" filterBy="#{item.ddr}">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListReglesTitle_ddr}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.ddr}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                </p:column>
+
+
+                <p:column sortBy="#{item.dureeRegle}" filterBy="#{item.dureeRegle}">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListReglesTitle_dureeRegle}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.dureeRegle}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.fluxMenstruel}" filterBy="#{item.fluxMenstruel}">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListReglesTitle_fluxMenstruel}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.fluxMenstruel}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.regularite}" filterBy="#{item.regularite}">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListReglesTitle_regularite}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.regularite}"/>
+                </p:column>
+
+                <!--
+                                    <p:column sortBy="#{item.dysmenorhee}" filterBy="#{item.dysmenorhee}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{resourcesBundle.ListReglesTitle_dysmenorhee}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.dysmenorhee}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.amenorheedepuisaccouchement}" filterBy="#{item.amenorheedepuisaccouchement}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{resourcesBundle.ListReglesTitle_amenorheedepuisaccouchement}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.amenorheedepuisaccouchement}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.utilisateur.uname}" filterBy="#{item.utilisateur.uname}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{resourcesBundle.ListReglesTitle_utilisateur}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.utilisateur.uname}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.numDossier.numDossier}" filterBy="#{item.numDossier.numDossier}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{resourcesBundle.ListReglesTitle_numDossier}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.numDossier.numDossier}"/>
+                                    </p:column>
+                -->
+
+            </p:dataTable>
+
+            <p:commandButton id="createButton"  icon="ui-icon-plus"   value="#{resourcesBundle.Create}" actionListener="#{reglesController.prepareCreate}" update=":ReglesCreateForm" oncomplete="PF('ReglesCreateDialog').show()"/>
+            <p:commandButton id="viewButton"   style="visibility: visible;" icon="ui-icon-search" value="#{resourcesBundle.View}" update=":ReglesViewForm" oncomplete="PF('ReglesViewDialog').show()" disabled="#{empty reglesController.selected}"/>
+            <p:commandButton id="editButton"   style="visibility: visible;" icon="ui-icon-pencil" value="#{resourcesBundle.Edit}" update=":ReglesEditForm" oncomplete="PF('ReglesEditDialog').show()" disabled="#{empty reglesController.selected}"/>
+            <p:commandButton id="deleteButton" style="visibility: visible;" icon="ui-icon-trash"  value="#{resourcesBundle.Delete}" actionListener="#{reglesController.delete}" update=":growl,datalist" disabled="#{empty reglesController.selected}">
+                <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+            </p:commandButton>
+
+        </p:panel>
+        <ui:include src="/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>

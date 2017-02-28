@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+    <h:form id="InfosFemmeListForm">
+
+        <p:panel header="Liste Dossiers clients">
+            <p:contextMenu id="InfosFemmeDataTableContextMenu" for="datalist">
+                <p:submenu  label="Dossier" icon="fa fa-folder">
+                    <p:menuitem value="#{resourcesBundle.Create}" onclick="document.getElementById('InfosFemmeListForm:createButton').click();" icon="ui-icon-plus"/>
+                    <p:menuitem value="#{resourcesBundle.View}" onclick="document.getElementById('InfosFemmeListForm:viewButton').click();" icon="ui-icon-search"/>
+                    <p:menuitem value="#{resourcesBundle.Edit}" rendered="#{login.admin}"  onclick="document.getElementById('InfosFemmeListForm:editButton').click();" icon="ui-icon-pencil"/>
+                    <p:menuitem value="#{resourcesBundle.Delete}" rendered="#{login.admin}"  onclick="document.getElementById('InfosFemmeListForm:deleteButton').click();" icon="ui-icon-trash"/>
+                </p:submenu>
+                <p:separator/>
+                <p:menuitem value="#{resourcesBundle.InfosFemmeMenuItem_consultationCollection} (#{infosFemmeController.selected.consultationCollection.size()})" icon="fa fa-stethoscope"  action="#{infosFemmeController.navigateConsultationCollection}"  ajax="false"/>  
+                <p:menuitem value="#{resourcesBundle.InfosFemmeMenuItem_planficationFamilialeCollection}" icon="fa fa-tasks"  action="#{infosFemmeController.navigatePlanficationFamilialeCollection}" ajax="false"/>  
+                <p:menuitem value="#{resourcesBundle.InfosFemmeMenuItem_donneesObjectivesCollection}" icon="fa fa-check-circle-o"  action="#{infosFemmeController.navigateDonneesObjectivesCollection}"  ajax="false"/>  
+                <p:menuitem value="#{resourcesBundle.InfosFemmeMenuItem_grossesseCollection}" icon="fa fa-female"  action="#{infosFemmeController.navigateGrossesseCollection}"  ajax="false"/>  
+                <p:menuitem value="#{resourcesBundle.InfosFemmeMenuItem_infosAccouchementCollection}" icon="fa fa-group"  action="#{infosFemmeController.navigateInfosAccouchementCollection}"  ajax="false"/>  
+                <p:menuitem value="#{resourcesBundle.InfosFemmeMenuItem_antecedentCpnCollection}" icon="ui-icon-search"  action="#{infosFemmeController.navigateAntecedentCpnCollection}"  ajax="false"/>  
+                <p:separator/>
+                <p:submenu  label="Plus d'options" icon="ui-icon-extlink">
+                    <p:menuitem value="#{resourcesBundle.InfosFemmeMenuItem_dcipCollection}" icon="fa fa-fax"  action="#{infosFemmeController.navigateDcipCollection}"  ajax="false"/>  
+                    <p:menuitem value="#{resourcesBundle.InfosFemmeMenuItem_hospitalisationCollection}" icon="fa fa-wheelchair"  action="#{infosFemmeController.navigateHospitalisationCollection}"  ajax="false"/>  
+                    <p:menuitem value="#{resourcesBundle.InfosFemmeMenuItem_reglesCollection}" icon="fa fa fa-deviantart"  action="#{infosFemmeController.navigateReglesCollection}"  ajax="false"/>  
+                    <p:menuitem value="#{resourcesBundle.InfosFemmeMenuItem_autresProblemesCollection}" icon="fa fa-bug"  action="#{infosFemmeController.navigateAutresProblemesCollection}"  ajax="false"/>  
+                    <ui:remove>
+                        <p:menuitem value="#{resourcesBundle.InfosFemmeMenuItem_examenLaboCollection}" icon="fa fa-eyedropper"  action="#{infosFemmeController.navigateExamenLaboCollection}"  ajax="false"/>  
+                    </ui:remove>
+                    <p:menuitem value="#{resourcesBundle.InfosFemmeMenuItem_utilisateur}" icon="fa fa-user"  actionListener="#{infosFemmeController.prepareUtilisateur}" update=":UsersViewForm" oncomplete="PF('UsersViewDialog').show()" />  
+                    <p:menuitem value="#{resourcesBundle.InfosFemmeMenuItem_antecedentPlCollection}" icon="ui-icon-search"  action="#{infosFemmeController.navigateAntecedentPlCollection}"  ajax="false"/>  
+                </p:submenu>
+
+            </p:contextMenu>
+
+
+            <p:dataTable id="datalist"
+                         value="#{infosFemmeController.items}"
+                         widgetVar="cpnTable"
+                         var="item"
+                         rowKey="#{item.numDossier}"
+                         liveScroll="true"
+                         scrollHeight="250"
+                         scrollRows="12"
+                         selectionMode="single"
+                         scrollable="true" 
+                         paginator="true"
+                         selection="#{infosFemmeController.selected}"
+                         paginatorTemplate="{Exporters}"
+                         >
+                <f:facet name="{Exporters}">
+                    <h:commandLink onclick="PrimeFaces.monitorDownload(start(), stop);" value="Exporter vers Excel">
+                        <p:graphicImage name="images/exports/excel.png" width="24"/>
+                        <p:dataExporter type="xls" target="datalist" fileName="infofemme"/>
+                    </h:commandLink>
+                    <ui:remove>   
+                        <h:commandLink onclick="PrimeFaces.monitorDownload(start(), stop);">
+                            <p:graphicImage name="images/exports/pdf.png" width="24"/>
+                            <p:dataExporter type="pdf" target="datalist" fileName="infofemme"/>
+                        </h:commandLink>
+
+                        <h:commandLink onclick="PrimeFaces.monitorDownload(start(), stop);">
+                            <p:graphicImage name="images/exports/csv.png" width="24"/>
+                            <p:dataExporter type="csv" target="datalist" fileName="infofemme" />
+                        </h:commandLink>
+
+                        <h:commandLink onclick="PrimeFaces.monitorDownload(start(), stop);">
+                            <p:graphicImage name="images/exports/xml.png" width="24"/>
+                            <p:dataExporter type="xml" target="datalist" fileName="infofemme" />
+                        </h:commandLink>
+                    </ui:remove>
+                    <p:inputText  id="globalFilter" onkeyup="PF('cpnTable').filter()" style="width:150px; float: right" placeholder="Rechercher"/>
+
+                </f:facet>
+
+
+                <p:ajax event="rowSelect"   update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:InfosFemmeDataTableContextMenu"/>
+                <p:ajax event="rowUnselect" update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:InfosFemmeDataTableContextMenu"/>
+                <p:ajax event="contextMenu" update="@form:createButton @form:viewButton @form:editButton @form:deleteButton"/>
+                <p:ajax event="rowDblselect" onsuccess="document.getElementById('InfosFemmeListForm:viewButton').click();"/>
+                <ui:remove>
+
+                    <p:column  style="width: 60px;" >
+                        <f:facet name="header">
+                            <h:outputText value="Image"/>
+                        </f:facet>
+                        <p:graphicImage width="58" height="60" value="#{infosFemmeController.getGraphicImage('123')}" />
+                    </p:column>
+                </ui:remove>
+
+                <p:column sortBy="#{item.numDossier}"  filterable="false" style="width: 110px;" filterBy="#{item.numDossier}">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListInfosFemmeTitle_numDossier}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.numDossier}"/>
+                </p:column>
+                <p:column sortBy="#{item.nom}" filterable="false" filterBy="#{item.nom}" style="width: 150px;" >
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListInfosFemmeTitle_nom}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.nom}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.postNom}" filterable="false" filterBy="#{item.postNom}" style="width: 150px;" >
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListInfosFemmeTitle_postNom}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.postNom}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.prenom}" filterable="false" filterBy="#{item.prenom}" style="width: 150px;" >
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListInfosFemmeTitle_prenom}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.prenom}"/>
+                </p:column>
+
+                <p:column sortBy="#{item.genre}" filterable="false" filterBy="#{item.genre}" style="width: 40px;" >
+                    <f:facet name="header">
+                        <h:outputText value="Genre"/>
+                    </f:facet>
+                    <h:outputText value="#{item.genre}"/>
+                </p:column>
+
+                <p:column sortBy="#{item.profession}" style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListInfosFemmeTitle_profession}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.profession}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.professioConjoint}" style="width: 150px;" >
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListInfosFemmeTitle_professioConjoint}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.professioConjoint}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.zoneSante}" style="width: 150px;" >
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListInfosFemmeTitle_zoneSante}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.zoneSante}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.aireSante}" style="width: 150px;" >
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListInfosFemmeTitle_aireSante}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.aireSante}"/>
+                </p:column>
+
+                <p:column sortBy="#{item.province}" style="width: 150px;" >
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListInfosFemmeTitle_province}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.province}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.district}" style="width: 150px;" >
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListInfosFemmeTitle_district}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.district}"/>
+                </p:column>
+
+                <p:column sortBy="#{item.adresseCPN}" style="width: 150px;" >
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListInfosFemmeTitle_adresseCPN}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.adresseCPN}"/>
+                </p:column>
+
+                <p:column sortBy="#{item.telephone}" style="width: 150px;" >
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListInfosFemmeTitle_telephone}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.telephone}"/>
+                </p:column>
+
+                <p:column sortBy="#{item.age}" style="width: 100px;" >
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListInfosFemmeTitle_age}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.age}"/>
+                </p:column>
+
+                <p:column sortBy="#{item.provenance}" style="width: 100px;" >
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListInfosFemmeTitle_provenance}"/>
+                    </f:facet>
+                    <f:facet name="filter">
+                        <p:selectOneMenu onchange="PF('cpnTable').filter()" >
+                            <f:selectItem itemLabel="Toutes" itemValue="#{null}" noSelectionOption="true" />
+                            <f:selectItem itemLabel="AS" itemValue="AS" />
+                            <f:selectItem itemLabel="HAS" itemValue="HAS" />
+                            <f:selectItem itemLabel="HZ" itemValue="HZ" />
+                        </p:selectOneMenu>
+                    </f:facet>
+
+                    <h:outputText value="#{item.provenance}"/>
+                </p:column>
+
+                <p:column sortBy="#{item.etatCivil}" style="width: 100px;" >
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListInfosFemmeTitle_etatCivil}"/>
+                    </f:facet>
+                    <f:facet name="filter">
+                        <p:selectOneMenu onchange="PF('cpnTable').filter()" >
+                            <f:selectItem itemLabel="Tous" itemValue="#{null}" noSelectionOption="true" />
+                            <f:selectItem itemLabel="Mariée" itemValue="Mariée" />
+                            <f:selectItem itemLabel="Célibataire" itemValue="Célibataire" />
+                            <f:selectItem itemLabel="Veuve" itemValue="Veuve" />
+                        </p:selectOneMenu>
+                    </f:facet>
+                    <h:outputText value="#{item.etatCivil}"/>
+                </p:column>
+
+                <p:column sortBy="#{item.niveauEtude}" style="width: 100px;" >
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListInfosFemmeTitle_niveauEtude}"/>
+                    </f:facet>
+                    <f:facet name="filter">
+                        <p:selectOneMenu onchange="PF('cpnTable').filter()" >
+                            <f:selectItem itemLabel="Tous" itemValue="#{null}" noSelectionOption="true" />
+                            <f:selectItem itemLabel="Aucun" itemValue="Aucun" />
+                            <f:selectItem itemLabel="Primaire" itemValue="Primaire" />
+                            <f:selectItem itemLabel="Secondaire" itemValue="Secondaire" />
+                            <f:selectItem itemLabel="Supérieur" itemValue="Supérieur" />
+
+                        </p:selectOneMenu>
+                    </f:facet>
+                    <h:outputText value="#{item.niveauEtude}"/>
+                </p:column>
+
+                <ui:remove>
+
+                    <p:column sortBy="#{item.antecChurCPN}" style="width: 150px;"  filterMatchMode="contains">
+                        <f:facet name="header">
+                            <h:outputText value="#{resourcesBundle.ListInfosFemmeTitle_antecChurCPN}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.antecChurCPN}"/>
+                    </p:column>
+
+                    <p:column sortBy="#{item.antecMedCPN}" style="width: 150px;"  filterMatchMode="contains">
+                        <f:facet name="header">
+                            <h:outputText value="#{resourcesBundle.ListInfosFemmeTitle_antecMedCPN}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.antecMedCPN}"/>
+                    </p:column>
+                </ui:remove>
+
+                <ui:remove>
+                    <p:column style="width:25px; text-align: center" >
+                        <p:commandButton update="InfosFemmeViewForm" style="height: 10px" oncomplete="PF('InfosFemmeViewDialog').show()" icon="ui-icon-search" title="#{resourcesBundle.View}">
+                            <f:setPropertyActionListener value="#{item}" target="#{infosFemmeController.selected}" />
+                        </p:commandButton>
+                    </p:column>
+                </ui:remove>
+
+                <f:facet name="footer">
+                    Au total, il y a  #{infosFemmeController.items.size()} Femmes enregistrées.
+                </f:facet>
+            </p:dataTable>
+
+            <p:commandButton id="createButton"     icon="ui-icon-plus"   value="#{resourcesBundle.Create}" actionListener="#{infosFemmeController.prepareCreate}" update=":InfosFemmeCreateForm" oncomplete="PF('InfosFemmeCreateDialog').show()">
+                <f:actionListener binding="#{infosFemmeController.setSkip(false)}"/>
+            </p:commandButton>
+            <p:commandButton id="viewButton"    icon="ui-icon-search" value="#{resourcesBundle.View}" update=":InfosFemmeViewForm" oncomplete="PF('InfosFemmeViewDialog').show()" disabled="#{(empty infosFemmeController.selected)  }"/>
+            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{resourcesBundle.Edit}" update=":InfosFemmeEditForm" oncomplete="PF('InfosFemmeEditDialog').show()" rendered="#{login.admin}" disabled="#{(empty infosFemmeController.selected)}" />
+            <p:commandButton id="deleteButton"  icon="ui-icon-trash"  value="#{resourcesBundle.Delete}" actionListener="#{infosFemmeController.delete}" update=":growl,datalist" rendered="#{login.admin}" disabled="#{empty infosFemmeController.selected}" >
+                <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmDeleteMessage}" icon="ui-icon-alert" />
+            </p:commandButton>
+
+
+        </p:panel>
+        <ui:include src="/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>

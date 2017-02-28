@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="ExamenLaboListPage">
+        <pm:header title="#{resourcesBundle.ListExamenLaboTitle}">
+            <h:form>
+                <p:commandButton id="backButton"   styleClass="ui-btn-left  ui-btn-inline" icon="ui-icon-arrow-l" value="#{myBundle.Back}" action="#{mobilePageController.navigateBackInHistory('/mobile/index')}"/>
+                <p:commandButton id="createButton" styleClass="ui-btn-right ui-btn-inline" icon="ui-icon-plus"    value="#{resourcesBundle.Create}" update=":ExamenLaboCreatePage:ExamenLaboCreateForm" actionListener="#{examenLaboController.prepareCreate}" action="#{mobilePageController.navigateWithHistory('pm:ExamenLaboCreatePage')}">
+                    <f:actionListener binding="#{currentPageListener}"/>
+                </p:commandButton>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="ExamenLaboListForm">
+
+                <p:dataTable id="datalist"
+                             value="#{examenLaboController.items}"
+                             var="item"
+                             rowKey="#{item.idExamenLabo}"
+                             paginator="true"
+                             rows="10"
+                             rowsPerPageTemplate="10,20,30,40,50"
+                             selectionMode="single"
+                             selection="#{examenLaboController.selected}"
+                             reflow="true">
+
+                    <p:ajax event="rowSelect"   update="@form:editButton,@form:deleteButton,@form:navigationMenuButton,@form:navigationMenuPanel" listener="#{examenLaboController.resetParents}"/>
+                    <p:ajax event="rowUnselect" update="@form:editButton,@form:deleteButton,@form:navigationMenuButton,@form:navigationMenuPanel" listener="#{examenLaboController.resetParents}"/>
+                    <p:ajax event="swipeleft"   oncomplete="document.getElementById('ExamenLaboListPage:ExamenLaboListForm:deleteButton').click();"/>
+                    <p:ajax event="tap"         oncomplete="document.getElementById('ExamenLaboListPage:ExamenLaboListForm:editButton').click();"/>
+                    <p:ajax event="taphold"     oncomplete="document.getElementById('ExamenLaboListPage:ExamenLaboListForm:navigationMenuButton').click();"/>
+
+                    <p:column sortBy="#{item.idExamenLabo}" filterBy="#{item.idExamenLabo}" headerText="#{resourcesBundle.ListExamenLaboTitle_idExamenLabo}">
+                        <h:outputText value="#{item.idExamenLabo}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.dateExamenLabo}" filterBy="#{item.dateExamenLabo}" headerText="#{resourcesBundle.ListExamenLaboTitle_dateExamenLabo}">
+                        <h:outputText value="#{item.dateExamenLabo}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.nomtechnicien}" filterBy="#{item.nomtechnicien}" headerText="#{resourcesBundle.ListExamenLaboTitle_nomtechnicien}">
+                        <h:outputText value="#{item.nomtechnicien}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.nomMedecin}" filterBy="#{item.nomMedecin}" headerText="#{resourcesBundle.ListExamenLaboTitle_nomMedecin}">
+                        <h:outputText value="#{item.nomMedecin}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.hemoglobine}" filterBy="#{item.hemoglobine}" headerText="#{resourcesBundle.ListExamenLaboTitle_hemoglobine}">
+                        <h:outputText value="#{item.hemoglobine}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.groupeSanguin}" filterBy="#{item.groupeSanguin}" headerText="#{resourcesBundle.ListExamenLaboTitle_groupeSanguin}">
+                        <h:outputText value="#{item.groupeSanguin}"/>
+                    </p:column>
+
+                    <!--
+                                        <p:column sortBy="#{item.goutteEpaisse}" filterBy="#{item.goutteEpaisse}" headerText="#{resourcesBundle.ListExamenLaboTitle_goutteEpaisse}">
+                                            <h:outputText value="#{item.goutteEpaisse}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.sellesdirectes}" filterBy="#{item.sellesdirectes}" headerText="#{resourcesBundle.ListExamenLaboTitle_sellesdirectes}">
+                                            <h:outputText value="#{item.sellesdirectes}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.rubeole}" filterBy="#{item.rubeole}" headerText="#{resourcesBundle.ListExamenLaboTitle_rubeole}">
+                                            <h:outputText value="#{item.rubeole}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.vdrl}" filterBy="#{item.vdrl}" headerText="#{resourcesBundle.ListExamenLaboTitle_vdrl}">
+                                            <h:outputText value="#{item.vdrl}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.toxoplasmose}" filterBy="#{item.toxoplasmose}" headerText="#{resourcesBundle.ListExamenLaboTitle_toxoplasmose}">
+                                            <h:outputText value="#{item.toxoplasmose}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.utilisateur.uname}" filterBy="#{item.utilisateur.uname}" headerText="#{resourcesBundle.ListExamenLaboTitle_utilisateur}">
+                                            <h:outputText value="#{item.utilisateur.uname}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.numDossier.numDossier}" filterBy="#{item.numDossier.numDossier}" headerText="#{resourcesBundle.ListExamenLaboTitle_numDossier}">
+                                            <h:outputText value="#{item.numDossier.numDossier}"/>
+                                        </p:column>
+                    -->
+                </p:dataTable>
+                <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{resourcesBundle.Edit}" update=":ExamenLaboEditPage:ExamenLaboEditForm" disabled="#{empty examenLaboController.selected}" actionListener="#{mobilePageController.currentPageListener}" action="#{mobilePageController.navigateWithHistory('pm:ExamenLaboEditPage')}"/>
+                <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{resourcesBundle.Delete}" actionListener="#{examenLaboController.delete}" update=":growl,datalist" disabled="#{empty examenLaboController.selected}">
+                    <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+                </p:commandButton>
+                <p:commandButton id="navigationMenuButton" style="visibility: hidden;" value="#{resourcesBundle.Menu}" disabled="#{empty examenLaboController.selected}"/>
+
+                <p:overlayPanel id="navigationMenuPanel" for="navigationMenuButton" at="right" showEffect="overlay">
+                    <h2>#{resourcesBundle.ExamenLaboHeading} #{resourcesBundle.Menu}</h2>
+                    <p:menu>
+                        <p:menuitem value="#{resourcesBundle.ExamenLaboMenuItem_utilisateur}" icon="ui-icon-search" update=":UsersEditPage:UsersEditForm" disabled="#{empty examenLaboController.selected.utilisateur}" actionListener="#{examenLaboController.prepareUtilisateur}" action="#{mobilePageController.navigateWithHistory}">  
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="pm:UsersEditPage"/>
+                        </p:menuitem>
+                        <p:menuitem value="#{resourcesBundle.ExamenLaboMenuItem_numDossier}" icon="ui-icon-search" update=":InfosFemmeEditPage:InfosFemmeEditForm" disabled="#{empty examenLaboController.selected.numDossier}" actionListener="#{examenLaboController.prepareNumDossier}" action="#{mobilePageController.navigateWithHistory}">  
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="pm:InfosFemmeEditPage"/>
+                        </p:menuitem>
+                    </p:menu>
+                </p:overlayPanel>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

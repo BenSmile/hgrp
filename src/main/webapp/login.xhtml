@@ -1,0 +1,159 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title><ui:insert name="title">Login</ui:insert></title>
+        <h:outputStylesheet library="css" name="pfcrud.css"/>
+        <h:outputScript library="scripts" name="pfcrud.js"/>
+
+    </h:head>
+    <body>
+
+
+
+        <p:layout fullPage="true">
+
+            <p:layoutUnit   position="north" size="100" resizable="true" closable="true" collapsible="true">
+                <div id="top">
+
+
+                    <h:form>  
+                        <p:growl id="messages"/>
+
+                        <div id="top_left">
+                            <img src="../resources/images/logo.png" alt="Logo" />
+                        </div>
+                        <div id="top_center">
+                            <h2>
+                                Gestion des services CPN et PF HGRP
+                            </h2>
+                            <p:commandButton style="float: right" id="loginButton"  icon="fa fa-user"  action="#{login.setVisible}" value="Se connecter"  oncomplete="PF('dialog').show()"/>
+
+                        </div>
+
+
+                    </h:form>
+
+
+                </div>
+
+            </p:layoutUnit>
+
+            <p:layoutUnit position="south" style="text-align: center" size="50" closable="true" collapsible="false">
+                <div id="bottom">
+
+
+                    <p:outputLabel >Gestion des services CPN et PF 2016 <br/>
+                        &copy; HGRP, Tout Droit reservé
+                    </p:outputLabel>
+
+
+                </div>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="west" size="600" >
+                <p:galleria  panelWidth="500" panelHeight="300">
+                    <p:graphicImage value="/resources/images/photo1.jpg" />
+                    <p:graphicImage value="/resources/images/photo2.jpg" />
+                    <p:graphicImage value="/resources/images/photo3.jpg" />
+                    <p:graphicImage value="/resources/images/photo4.jpg" />
+                    <p:graphicImage value="/resources/images/photo5.jpg" />
+                    <p:graphicImage value="/resources/images/photo7.jpg" />
+
+                </p:galleria>
+
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center">
+
+                <h:form>
+                    <p:growl id="msgs" showDetail="true" />
+
+
+                    <!-- <p:tabView>
+                         <p:tab title="CPN">
+                             <h:panelGrid columns="2" cellpadding="10">
+                             <p:graphicImage value="/resources/images/features/photo3.jpg" />
+                                 <h:outputText
+                                     value=" " />
+                             </h:panelGrid>
+                         </p:tab>
+                         <p:tab title="Planification">
+                             <h:panelGrid columns="2" cellpadding="10">
+                             <p:graphicImage value="/resources/images/features/photo3.jpg" />
+                                 <h:outputText value="Francis Ford Coppola's legendary..." />
+                             </h:panelGrid>
+                         </p:tab>
+                         <p:tab title="Maternité">
+                             <h:panelGrid columns="2" cellpadding="10">
+                             <p:graphicImage value="/resources/images/features/photo3.jpg" />
+                                 <h:outputText value="After a break of more than 15 years..." />
+                             </h:panelGrid>
+                         </p:tab>
+                     </p:tabView>
+                    -->
+
+                    <p:accordionPanel>
+                        <p:tab title="Consulation pré-natale">
+                            <h:panelGrid columns="2" cellpadding="10">
+                                <p:graphicImage value="/resources/images/features/photo1.jpg" />
+                                <h:outputText
+                                    value="Système de Gestion dynamique des informations concernant les femmes qui ont suivi la CPN à Panzi et accouché au même lieu" />
+                            </h:panelGrid>
+                        </p:tab>
+                        <p:tab title="Planification familiale">
+                            <h:panelGrid columns="2" cellpadding="10">
+                                <p:graphicImage value="/resources/images/features/photo3.jpg" />
+                                <h:outputText
+                                    value="Enregistrement et  sauvegarde de manière organisée toutes les informations relatives aux femmes qui ont adhéré au planing familial" />
+                            </h:panelGrid>
+                        </p:tab>
+                        <p:tab title="Rapport mensuel">
+                            <h:panelGrid columns="2" cellpadding="10">
+                                <p:graphicImage value="/resources/images/features/photo2.jpg" />
+                                <h:outputText
+                                    value="Générer le rapport mensuel et les statistiques présentant la fréquence des visites des femmes à la CPN tout au long du mois   " />
+                            </h:panelGrid>
+                        </p:tab>
+
+
+                    </p:accordionPanel>
+                    <p:panel id="basic" header="HGRP" footer="Hôpital Général de Référence de Panzi" style="margin-bottom:20px">
+                        <h:panelGrid columns="2" cellpadding="10">
+                            <p:graphicImage value="/resources/images/features/photo5.jpg" />
+                            <h:outputText
+                                value="Gestion des services CPN et PF HGRP" />
+                        </h:panelGrid>
+                    </p:panel>
+
+
+                </h:form>
+
+            </p:layoutUnit>
+
+        </p:layout>
+
+        <h:form>
+            <p:dialog visible="#{login.visible}" id="dialog"  widgetVar="dialog" header="Authentification" modal="true" resizable="false" draggable="false" closable="true" closeOnEscape="true" width="450">
+                <p:panelGrid columns="2" styleClass="dialog-panel-grid">
+                    <p:outputLabel for="username" value="Nom d'utilisateur:"></p:outputLabel>
+                    <p:inputText id="username" value="#{login.user}"></p:inputText>
+                    <p:outputLabel for="password" value="Mot de Passe:"></p:outputLabel>
+                    <p:password id="password" value="#{login.pwd}"></p:password>
+                </p:panelGrid>
+                <f:facet name="footer" >
+                    <p:messages closable="true" style="font-size: 12px"/>
+                    <div class="button-bar">
+                        <p:commandButton value="Connexion" ajax="false" icon="fa fa-user" action="#{login.validateUsernamePassword}"></p:commandButton>
+                        <p:commandButton value="Annuler" onclick="PF('dialog').hide()" icon="fa fa-times-circle"></p:commandButton>
+                    </div>
+                </f:facet>
+            </p:dialog>               
+        </h:form>
+    </body>
+</html>

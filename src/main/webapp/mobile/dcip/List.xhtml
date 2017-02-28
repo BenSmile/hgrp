@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="DcipListPage">
+        <pm:header title="#{resourcesBundle.ListDcipTitle}">
+            <h:form>
+                <p:commandButton id="backButton"   styleClass="ui-btn-left  ui-btn-inline" icon="ui-icon-arrow-l" value="#{myBundle.Back}" action="#{mobilePageController.navigateBackInHistory('/mobile/index')}"/>
+                <p:commandButton id="createButton" styleClass="ui-btn-right ui-btn-inline" icon="ui-icon-plus"    value="#{resourcesBundle.Create}" update=":DcipCreatePage:DcipCreateForm" actionListener="#{dcipController.prepareCreate}" action="#{mobilePageController.navigateWithHistory('pm:DcipCreatePage')}">
+                    <f:actionListener binding="#{currentPageListener}"/>
+                </p:commandButton>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="DcipListForm">
+
+                <p:dataTable id="datalist"
+                             value="#{dcipController.items}"
+                             var="item"
+                             rowKey="#{item.idDCIP}"
+                             paginator="true"
+                             rows="10"
+                             rowsPerPageTemplate="10,20,30,40,50"
+                             selectionMode="single"
+                             selection="#{dcipController.selected}"
+                             reflow="true">
+
+                    <p:ajax event="rowSelect"   update="@form:editButton,@form:deleteButton,@form:navigationMenuButton,@form:navigationMenuPanel" listener="#{dcipController.resetParents}"/>
+                    <p:ajax event="rowUnselect" update="@form:editButton,@form:deleteButton,@form:navigationMenuButton,@form:navigationMenuPanel" listener="#{dcipController.resetParents}"/>
+                    <p:ajax event="swipeleft"   oncomplete="document.getElementById('DcipListPage:DcipListForm:deleteButton').click();"/>
+                    <p:ajax event="tap"         oncomplete="document.getElementById('DcipListPage:DcipListForm:editButton').click();"/>
+                    <p:ajax event="taphold"     oncomplete="document.getElementById('DcipListPage:DcipListForm:navigationMenuButton').click();"/>
+
+                    <p:column sortBy="#{item.idDCIP}" filterBy="#{item.idDCIP}" headerText="#{resourcesBundle.ListDcipTitle_idDCIP}">
+                        <h:outputText value="#{item.idDCIP}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.counselingpretest}" filterBy="#{item.counselingpretest}" headerText="#{resourcesBundle.ListDcipTitle_counselingpretest}">
+                        <h:outputText value="#{item.counselingpretest}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.code}" filterBy="#{item.code}" headerText="#{resourcesBundle.ListDcipTitle_code}">
+                        <h:outputText value="#{item.code}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.testVIH}" filterBy="#{item.testVIH}" headerText="#{resourcesBundle.ListDcipTitle_testVIH}">
+                        <h:outputText value="#{item.testVIH}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.resultat}" filterBy="#{item.resultat}" headerText="#{resourcesBundle.ListDcipTitle_resultat}">
+                        <h:outputText value="#{item.resultat}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.counselingposttest}" filterBy="#{item.counselingposttest}" headerText="#{resourcesBundle.ListDcipTitle_counselingposttest}">
+                        <h:outputText value="#{item.counselingposttest}"/>
+                    </p:column>
+
+                    <!--
+                                        <p:column sortBy="#{item.informerResultatposttest}" filterBy="#{item.informerResultatposttest}" headerText="#{resourcesBundle.ListDcipTitle_informerResultatposttest}">
+                                            <h:outputText value="#{item.informerResultatposttest}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.utilisateur.uname}" filterBy="#{item.utilisateur.uname}" headerText="#{resourcesBundle.ListDcipTitle_utilisateur}">
+                                            <h:outputText value="#{item.utilisateur.uname}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.numDossier.numDossier}" filterBy="#{item.numDossier.numDossier}" headerText="#{resourcesBundle.ListDcipTitle_numDossier}">
+                                            <h:outputText value="#{item.numDossier.numDossier}"/>
+                                        </p:column>
+                    -->
+                </p:dataTable>
+                <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{resourcesBundle.Edit}" update=":DcipEditPage:DcipEditForm" disabled="#{empty dcipController.selected}" actionListener="#{mobilePageController.currentPageListener}" action="#{mobilePageController.navigateWithHistory('pm:DcipEditPage')}"/>
+                <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{resourcesBundle.Delete}" actionListener="#{dcipController.delete}" update=":growl,datalist" disabled="#{empty dcipController.selected}">
+                    <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+                </p:commandButton>
+                <p:commandButton id="navigationMenuButton" style="visibility: hidden;" value="#{resourcesBundle.Menu}" disabled="#{empty dcipController.selected}"/>
+
+                <p:overlayPanel id="navigationMenuPanel" for="navigationMenuButton" at="right" showEffect="overlay">
+                    <h2>#{resourcesBundle.DcipHeading} #{resourcesBundle.Menu}</h2>
+                    <p:menu>
+                        <p:menuitem value="#{resourcesBundle.DcipMenuItem_utilisateur}" icon="ui-icon-search" update=":UsersEditPage:UsersEditForm" disabled="#{empty dcipController.selected.utilisateur}" actionListener="#{dcipController.prepareUtilisateur}" action="#{mobilePageController.navigateWithHistory}">  
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="pm:UsersEditPage"/>
+                        </p:menuitem>
+                        <p:menuitem value="#{resourcesBundle.DcipMenuItem_numDossier}" icon="ui-icon-search" update=":InfosFemmeEditPage:InfosFemmeEditForm" disabled="#{empty dcipController.selected.numDossier}" actionListener="#{dcipController.prepareNumDossier}" action="#{mobilePageController.navigateWithHistory}">  
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="pm:InfosFemmeEditPage"/>
+                        </p:menuitem>
+                    </p:menu>
+                </p:overlayPanel>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

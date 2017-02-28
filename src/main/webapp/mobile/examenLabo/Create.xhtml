@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="ExamenLaboCreatePage" lazy="true">
+        <pm:header title="#{resourcesBundle.CreateExamenLaboTitle}">
+            <h:form>
+                <p:commandButton styleClass="ui-btn-left ui-btn-inline" value="#{resourcesBundle.Cancel}" icon="ui-icon-arrow-l" action="#{mobilePageController.navigateBackInHistory('pm:ExamenLaboListPage')}"/>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="ExamenLaboCreateForm">
+
+                <h:panelGroup id="display" rendered="#{examenLaboController.selected != null}">
+                    <p:outputPanel>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.CreateExamenLaboLabel_dateExamenLabo}" for="dateExamenLabo" />
+                            <p:calendar id="dateExamenLabo" pattern="MM/dd/yyyy" value="#{examenLaboController.selected.dateExamenLabo}" title="#{resourcesBundle.CreateExamenLaboTitle_dateExamenLabo}"  showOn="button"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.CreateExamenLaboLabel_nomtechnicien}" for="nomtechnicien" />
+                            <p:inputText id="nomtechnicien" value="#{examenLaboController.selected.nomtechnicien}" title="#{resourcesBundle.CreateExamenLaboTitle_nomtechnicien}" size="30" maxlength="30"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.CreateExamenLaboLabel_nomMedecin}" for="nomMedecin" />
+                            <p:inputText id="nomMedecin" value="#{examenLaboController.selected.nomMedecin}" title="#{resourcesBundle.CreateExamenLaboTitle_nomMedecin}" size="30" maxlength="30"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.CreateExamenLaboLabel_hemoglobine}" for="hemoglobine" />
+                            <p:inputText id="hemoglobine" value="#{examenLaboController.selected.hemoglobine}" title="#{resourcesBundle.CreateExamenLaboTitle_hemoglobine}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.CreateExamenLaboLabel_groupeSanguin}" for="groupeSanguin" />
+                            <p:inputText id="groupeSanguin" value="#{examenLaboController.selected.groupeSanguin}" title="#{resourcesBundle.CreateExamenLaboTitle_groupeSanguin}" size="2" maxlength="2"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.CreateExamenLaboLabel_goutteEpaisse}" for="goutteEpaisse" />
+                            <p:inputText id="goutteEpaisse" value="#{examenLaboController.selected.goutteEpaisse}" title="#{resourcesBundle.CreateExamenLaboTitle_goutteEpaisse}" size="50" maxlength="50"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.CreateExamenLaboLabel_sellesdirectes}" for="sellesdirectes" />
+                            <p:inputText id="sellesdirectes" value="#{examenLaboController.selected.sellesdirectes}" title="#{resourcesBundle.CreateExamenLaboTitle_sellesdirectes}" size="50" maxlength="50"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.CreateExamenLaboLabel_rubeole}" for="rubeole" />
+                            <p:inputText id="rubeole" value="#{examenLaboController.selected.rubeole}" title="#{resourcesBundle.CreateExamenLaboTitle_rubeole}" size="35" maxlength="35"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.CreateExamenLaboLabel_vdrl}" for="vdrl" />
+                            <p:inputText id="vdrl" value="#{examenLaboController.selected.vdrl}" title="#{resourcesBundle.CreateExamenLaboTitle_vdrl}" size="35" maxlength="35"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.CreateExamenLaboLabel_toxoplasmose}" for="toxoplasmose" />
+                            <p:inputText id="toxoplasmose" value="#{examenLaboController.selected.toxoplasmose}" title="#{resourcesBundle.CreateExamenLaboTitle_toxoplasmose}" size="45" maxlength="45"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.CreateExamenLaboLabel_utilisateur}" for="utilisateur" />
+                            <p:selectOneMenu id="utilisateur" value="#{examenLaboController.selected.utilisateur}" required="true" requiredMessage="#{resourcesBundle.CreateExamenLaboRequiredMessage_utilisateur}" converter="usersConverter">
+                                <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{usersController.items}"
+                                               var="utilisateurItem"
+                                               itemValue="#{utilisateurItem}"
+                                               itemLabel="#{utilisateurItem.uname.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.CreateExamenLaboLabel_numDossier}" for="numDossier" />
+                            <p:selectOneMenu id="numDossier" value="#{examenLaboController.selected.numDossier}" required="true" requiredMessage="#{resourcesBundle.CreateExamenLaboRequiredMessage_numDossier}" converter="infosFemmeConverter">
+                                <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{infosFemmeController.items}"
+                                               var="numDossierItem"
+                                               itemValue="#{numDossierItem}"
+                                               itemLabel="#{numDossierItem.numDossier.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                        </pm:field>
+                    </p:outputPanel>
+                    <p:commandButton actionListener="#{examenLaboController.saveNew}" value="#{resourcesBundle.Save}" update="display,:ExamenLaboListPage:ExamenLaboListForm:datalist,:growl" action="#{mobilePageController.navigateWithHistory('pm:ExamenLaboListPage')}">
+                        <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                </h:panelGroup>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

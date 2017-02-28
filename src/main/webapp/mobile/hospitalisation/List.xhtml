@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="HospitalisationListPage">
+        <pm:header title="#{resourcesBundle.ListHospitalisationTitle}">
+            <h:form>
+                <p:commandButton id="backButton"   styleClass="ui-btn-left  ui-btn-inline" icon="ui-icon-arrow-l" value="#{myBundle.Back}" action="#{mobilePageController.navigateBackInHistory('/mobile/index')}"/>
+                <p:commandButton id="createButton" styleClass="ui-btn-right ui-btn-inline" icon="ui-icon-plus"    value="#{resourcesBundle.Create}" update=":HospitalisationCreatePage:HospitalisationCreateForm" actionListener="#{hospitalisationController.prepareCreate}" action="#{mobilePageController.navigateWithHistory('pm:HospitalisationCreatePage')}">
+                    <f:actionListener binding="#{currentPageListener}"/>
+                </p:commandButton>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="HospitalisationListForm">
+
+                <p:dataTable id="datalist"
+                             value="#{hospitalisationController.items}"
+                             var="item"
+                             rowKey="#{item.idHosp}"
+                             paginator="true"
+                             rows="10"
+                             rowsPerPageTemplate="10,20,30,40,50"
+                             selectionMode="single"
+                             selection="#{hospitalisationController.selected}"
+                             reflow="true">
+
+                    <p:ajax event="rowSelect"   update="@form:editButton,@form:deleteButton,@form:navigationMenuButton,@form:navigationMenuPanel" listener="#{hospitalisationController.resetParents}"/>
+                    <p:ajax event="rowUnselect" update="@form:editButton,@form:deleteButton,@form:navigationMenuButton,@form:navigationMenuPanel" listener="#{hospitalisationController.resetParents}"/>
+                    <p:ajax event="swipeleft"   oncomplete="document.getElementById('HospitalisationListPage:HospitalisationListForm:deleteButton').click();"/>
+                    <p:ajax event="tap"         oncomplete="document.getElementById('HospitalisationListPage:HospitalisationListForm:editButton').click();"/>
+                    <p:ajax event="taphold"     oncomplete="document.getElementById('HospitalisationListPage:HospitalisationListForm:navigationMenuButton').click();"/>
+
+                    <p:column sortBy="#{item.idHosp}" filterBy="#{item.idHosp}" headerText="#{resourcesBundle.ListHospitalisationTitle_idHosp}">
+                        <h:outputText value="#{item.idHosp}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.dateHospitalisation}" filterBy="#{item.dateHospitalisation}" headerText="#{resourcesBundle.ListHospitalisationTitle_dateHospitalisation}">
+                        <h:outputText value="#{item.dateHospitalisation}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.hospitalisation}" filterBy="#{item.hospitalisation}" headerText="#{resourcesBundle.ListHospitalisationTitle_hospitalisation}">
+                        <h:outputText value="#{item.hospitalisation}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.pourTraitementSpecifique}" filterBy="#{item.pourTraitementSpecifique}" headerText="#{resourcesBundle.ListHospitalisationTitle_pourTraitementSpecifique}">
+                        <h:outputText value="#{item.pourTraitementSpecifique}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.utilisateur.uname}" filterBy="#{item.utilisateur.uname}" headerText="#{resourcesBundle.ListHospitalisationTitle_utilisateur}">
+                        <h:outputText value="#{item.utilisateur.uname}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.numDossier.numDossier}" filterBy="#{item.numDossier.numDossier}" headerText="#{resourcesBundle.ListHospitalisationTitle_numDossier}">
+                        <h:outputText value="#{item.numDossier.numDossier}"/>
+                    </p:column>
+
+                </p:dataTable>
+                <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{resourcesBundle.Edit}" update=":HospitalisationEditPage:HospitalisationEditForm" disabled="#{empty hospitalisationController.selected}" actionListener="#{mobilePageController.currentPageListener}" action="#{mobilePageController.navigateWithHistory('pm:HospitalisationEditPage')}"/>
+                <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{resourcesBundle.Delete}" actionListener="#{hospitalisationController.delete}" update=":growl,datalist" disabled="#{empty hospitalisationController.selected}">
+                    <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+                </p:commandButton>
+                <p:commandButton id="navigationMenuButton" style="visibility: hidden;" value="#{resourcesBundle.Menu}" disabled="#{empty hospitalisationController.selected}"/>
+
+                <p:overlayPanel id="navigationMenuPanel" for="navigationMenuButton" at="right" showEffect="overlay">
+                    <h2>#{resourcesBundle.HospitalisationHeading} #{resourcesBundle.Menu}</h2>
+                    <p:menu>
+                        <p:menuitem value="#{resourcesBundle.HospitalisationMenuItem_utilisateur}" icon="ui-icon-search" update=":UsersEditPage:UsersEditForm" disabled="#{empty hospitalisationController.selected.utilisateur}" actionListener="#{hospitalisationController.prepareUtilisateur}" action="#{mobilePageController.navigateWithHistory}">  
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="pm:UsersEditPage"/>
+                        </p:menuitem>
+                        <p:menuitem value="#{resourcesBundle.HospitalisationMenuItem_numDossier}" icon="ui-icon-search" update=":InfosFemmeEditPage:InfosFemmeEditForm" disabled="#{empty hospitalisationController.selected.numDossier}" actionListener="#{hospitalisationController.prepareNumDossier}" action="#{mobilePageController.navigateWithHistory}">  
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="pm:InfosFemmeEditPage"/>
+                        </p:menuitem>
+                    </p:menu>
+                </p:overlayPanel>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

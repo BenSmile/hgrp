@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="GrossesseViewDlg" widgetVar="GrossesseViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{resourcesBundle.ViewGrossesseTitle}" closeOnEscape="true">
+
+            <h:form id="GrossesseViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{grossesseController.selected != null}">
+
+                        <h:outputText value="#{resourcesBundle.ViewGrossesseLabel_idGros}"/>
+                        <h:outputText value="#{grossesseController.selected.idGros}" title="#{resourcesBundle.ViewGrossesseTitle_idGros}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewGrossesseLabel_enfantsvivantsactuellement}"/>
+                        <h:outputText value="#{grossesseController.selected.enfantsvivantsactuellement}" title="#{resourcesBundle.ViewGrossesseTitle_enfantsvivantsactuellement}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewGrossesseLabel_p}"/>
+                        <h:outputText value="#{grossesseController.selected.p}" title="#{resourcesBundle.ViewGrossesseTitle_p}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewGrossesseLabel_g}"/>
+                        <h:outputText value="#{grossesseController.selected.g}" title="#{resourcesBundle.ViewGrossesseTitle_g}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewGrossesseLabel_a}"/>
+                        <h:outputText value="#{grossesseController.selected.a}" title="#{resourcesBundle.ViewGrossesseTitle_a}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewGrossesseLabel_d}"/>
+                        <h:outputText value="#{grossesseController.selected.d}" title="#{resourcesBundle.ViewGrossesseTitle_d}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewGrossesseLabel_datedernierAccouchement}"/>
+                        <h:outputText value="#{grossesseController.selected.datedernierAccouchement}" title="#{resourcesBundle.ViewGrossesseTitle_datedernierAccouchement}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{resourcesBundle.ViewGrossesseLabel_dateDernierRapportNonProteger}"/>
+                        <h:outputText value="#{grossesseController.selected.dateDernierRapportNonProteger}" title="#{resourcesBundle.ViewGrossesseTitle_dateDernierRapportNonProteger}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{resourcesBundle.ViewGrossesseLabel_dateDernierRegle}"/>
+                        <h:outputText value="#{grossesseController.selected.dateDernierRegle}" title="#{resourcesBundle.ViewGrossesseTitle_dateDernierRegle}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{resourcesBundle.ViewGrossesseLabel_nombrecesarienne}"/>
+                        <h:outputText value="#{grossesseController.selected.nombrecesarienne}" title="#{resourcesBundle.ViewGrossesseTitle_nombrecesarienne}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewGrossesseLabel_utilisateur}"/>
+                        <h:outputText value="#{grossesseController.selected.utilisateur.uname}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewGrossesseLabel_numDossier}"/>
+                        <h:outputText value="#{grossesseController.selected.numDossier.numDossier}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{resourcesBundle.Close}" onclick="PF('GrossesseViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

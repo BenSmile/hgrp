@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="AntecedentCpnListForm">
+
+        <p:panel header="#{resourcesBundle.ListAntecedentCpnTitle}">
+            <p:contextMenu id="AntecedentCpnDataTableContextMenu" for="datalist">  
+                <p:menuitem value="#{resourcesBundle.Create}" onclick="document.getElementById('AntecedentCpnListForm:createButton').click();" icon="ui-icon-plus"/>
+                <p:menuitem value="#{resourcesBundle.View}" onclick="document.getElementById('AntecedentCpnListForm:viewButton').click();" icon="ui-icon-search"/>
+                <p:menuitem value="#{resourcesBundle.Edit}" onclick="document.getElementById('AntecedentCpnListForm:editButton').click();" icon="ui-icon-pencil"/>
+                <p:menuitem value="#{resourcesBundle.Delete}" onclick="document.getElementById('AntecedentCpnListForm:deleteButton').click();" icon="ui-icon-trash"/>
+                <p:separator/>
+                <p:menuitem value="#{resourcesBundle.AntecedentCpnMenuItem_numDossier}" icon="ui-icon-search"  actionListener="#{antecedentCpnController.prepareNumDossier}" update=":InfosFemmeViewForm" oncomplete="PF('InfosFemmeViewDialog').show()" disabled="#{empty antecedentCpnController.selected.numDossier}"/>  
+                <p:menuitem value="#{resourcesBundle.AntecedentCpnMenuItem_utilisateur}" icon="ui-icon-search"  actionListener="#{antecedentCpnController.prepareUtilisateur}" update=":UsersViewForm" oncomplete="PF('UsersViewDialog').show()" disabled="#{empty antecedentCpnController.selected.utilisateur}"/>  
+            </p:contextMenu>
+            <p:dataTable id="datalist"
+                         value="#{antecedentCpnController.items}"
+                         var="item"
+                         paginator="true"
+                         rowKey="#{item.idAntecObstr}"
+                         selection="#{antecedentCpnController.selected}"
+                         liveScroll="true"
+                         scrollHeight="225"
+                         scrollRows="12"
+                         selectionMode="single"
+                         scrollable="true" 
+                         paginatorTemplate="{Exporters}">
+                <f:facet name="{Exporters}">
+                    <h:commandLink onclick="PrimeFaces.monitorDownload(start(), stop);" value="Exporter vers Excel">
+                        <p:graphicImage name="images/exports/excel.png" width="24"/>
+                        <p:dataExporter type="xls" target="datalist" fileName="infofemme"/>
+                    </h:commandLink>
+                    <ui:remove>   
+                        <h:commandLink onclick="PrimeFaces.monitorDownload(start(), stop);">
+                            <p:graphicImage name="images/exports/pdf.png" width="24"/>
+                            <p:dataExporter type="pdf" target="datalist" fileName="infofemme"/>
+                        </h:commandLink>
+
+                        <h:commandLink onclick="PrimeFaces.monitorDownload(start(), stop);">
+                            <p:graphicImage name="images/exports/csv.png" width="24"/>
+                            <p:dataExporter type="csv" target="datalist" fileName="infofemme" />
+                        </h:commandLink>
+
+                        <h:commandLink onclick="PrimeFaces.monitorDownload(start(), stop);">
+                            <p:graphicImage name="images/exports/xml.png" width="24"/>
+                            <p:dataExporter type="xml" target="datalist" fileName="infofemme" />
+                        </h:commandLink>
+                    </ui:remove>
+                </f:facet>
+
+
+                <p:ajax event="rowSelect"   update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:AntecedentCpnDataTableContextMenu" listener="#{antecedentCpnController.resetParents}"/>
+                <p:ajax event="rowUnselect" update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:AntecedentCpnDataTableContextMenu" listener="#{antecedentCpnController.resetParents}"/>
+                <p:ajax event="contextMenu" update="@form:createButton @form:viewButton @form:editButton @form:deleteButton" listener="#{antecedentCpnController.resetParents}"/>
+                <p:ajax event="rowDblselect" onsuccess="document.getElementById('AntecedentCpnListForm:viewButton').click();"/>
+
+                <p:column sortBy="#{item.numDossier.numDossier}" style="width: 150px;" filterBy="#{item.numDossier.numDossier}">
+                    <f:facet name="header">
+                        <h:outputText value="Num dossier"/>
+                    </f:facet>
+                    <h:outputText value="#{item.numDossier.numDossier}"/>
+                </p:column>
+
+
+                <p:column  style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListAntecedentCpnTitle_ddr}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.ddr.getDate()}/#{item.ddr.getMonth() +1}/#{item.ddr.getYear() + 1900}"/>
+                </p:column>
+
+                <p:column style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListAntecedentCpnTitle_dpa}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.dpa.getDate()}/#{item.dpa.getMonth() +1}/#{item.dpa.getYear() + 1900}"/>
+
+                </p:column>
+
+
+                <p:column style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListAntecedentCpnTitle_grossesse}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.grossesse}"/>
+                </p:column>
+
+
+                <p:column style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListAntecedentCpnTitle_enfantsvie}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.enfantsvie}"/>
+                </p:column>
+
+
+                <p:column style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListAntecedentCpnTitle_avortement1erTrim}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.avortement1erTrim}"/>
+                </p:column>
+
+
+                <p:column style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListAntecedentCpnTitle_primipare15ansOuMoin}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.primipare15ansOuMoin}"/>
+                </p:column>
+
+                <p:column style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListAntecedentCpnTitle_primipare30ansOuPlus}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.primipare30ansOuPlus}"/>
+                </p:column>
+
+                <p:column style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListAntecedentCpnTitle_dernieraccouchementdatede}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.dernieraccouchementdatede}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                </p:column>
+
+                <p:column style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListAntecedentCpnTitle_type}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.type}"/>
+                </p:column>
+
+                <p:column style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListAntecedentCpnTitle_intInf2ans}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.intInf2ans}"/>
+                </p:column>
+
+                <p:column style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListAntecedentCpnTitle_plusgrospoidsnaiss}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.plusgrospoidsnaiss}"/>
+                </p:column>
+
+                <p:column style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListAntecedentCpnTitle_plusde4kg}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.plusde4kg}"/>
+                </p:column>
+
+                <p:column style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListAntecedentCpnTitle_dernierEnfant}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.dernierEnfant}"/>
+                </p:column>
+
+                <p:column style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListAntecedentCpnTitle_complicationtraitement}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.complicationtraitement}"/>
+                </p:column>
+
+                <p:column style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListAntecedentCpnTitle_complicationpostPartum}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.complicationpostPartum}"/>
+                </p:column>
+
+                <p:column style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListAntecedentCpnTitle_traitementpoursterilite}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.traitementpoursterilite}"/>
+                </p:column>
+
+                <p:column style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListAntecedentCpnTitle_parite}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.parite}"/>
+                </p:column>
+
+                <p:column style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListAntecedentCpnTitle_avortement}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.avortement}"/>
+                </p:column>
+
+                <p:column style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListAntecedentCpnTitle_deces}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.deces}"/>
+                </p:column>
+
+                <p:column sortBy="#{item.vbg}" filterBy="#{item.vbg}">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListAntecedentCpnTitle_vbg}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.vbg}"/>
+                </p:column>
+
+                <p:column style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListAntecedentCpnTitle_antecedentChirurgicauxCPN}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.antecedentChirurgicauxCPN}"/>
+                </p:column>
+
+                <p:column style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListAntecedentCpnTitle_antecedentMedicauxCPN}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.antecedentMedicauxCPN}"/>
+                </p:column>
+
+                <p:column style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListAntecedentCpnTitle_grossesseissuduviol}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.grossesseissuduviol}"/>
+                </p:column>
+
+                <p:column style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListAntecedentCpnTitle_numDossier}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.numDossier.numDossier}"/>
+                </p:column>
+
+                <p:column style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListAntecedentCpnTitle_utilisateur}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.utilisateur.uname}"/>
+                </p:column>
+
+
+            </p:dataTable>
+
+            <p:commandButton id="createButton"                             icon="ui-icon-plus"   value="#{resourcesBundle.Create}" actionListener="#{antecedentCpnController.prepareCreate}" update=":AntecedentCpnCreateForm" oncomplete="PF('AntecedentCpnCreateDialog').show()"/>
+            <p:commandButton id="viewButton"    icon="ui-icon-search" value="#{resourcesBundle.View}" update=":AntecedentCpnViewForm" oncomplete="PF('AntecedentCpnViewDialog').show()" disabled="#{empty antecedentCpnController.selected}"/>
+            <p:commandButton id="editButton"    icon="ui-icon-pencil" value="#{resourcesBundle.Edit}" update=":AntecedentCpnEditForm" oncomplete="PF('AntecedentCpnEditDialog').show()" disabled="#{empty antecedentCpnController.selected}"/>
+            <p:commandButton id="deleteButton"  icon="ui-icon-trash"  value="#{resourcesBundle.Delete}" actionListener="#{antecedentCpnController.delete}" update=":growl,datalist" disabled="#{empty antecedentCpnController.selected}">
+                <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+            </p:commandButton>
+
+        </p:panel>
+        <ui:include src="/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>

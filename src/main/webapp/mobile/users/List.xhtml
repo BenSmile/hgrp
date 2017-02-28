@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="UsersListPage">
+        <pm:header title="#{resourcesBundle.ListUsersTitle}">
+            <h:form>
+                <p:commandButton id="backButton"   styleClass="ui-btn-left  ui-btn-inline" icon="ui-icon-arrow-l" value="#{myBundle.Back}" action="#{mobilePageController.navigateBackInHistory('/mobile/index')}"/>
+                <p:commandButton id="createButton" styleClass="ui-btn-right ui-btn-inline" icon="ui-icon-plus"    value="#{resourcesBundle.Create}" update=":UsersCreatePage:UsersCreateForm" actionListener="#{usersController.prepareCreate}" action="#{mobilePageController.navigateWithHistory('pm:UsersCreatePage')}">
+                    <f:actionListener binding="#{currentPageListener}"/>
+                </p:commandButton>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="UsersListForm">
+
+                <p:dataTable id="datalist"
+                             value="#{usersController.items}"
+                             var="item"
+                             rowKey="#{item.uname}"
+                             paginator="true"
+                             rows="10"
+                             rowsPerPageTemplate="10,20,30,40,50"
+                             selectionMode="single"
+                             selection="#{usersController.selected}"
+                             reflow="true">
+
+                    <p:ajax event="rowSelect"   update="@form:editButton,@form:deleteButton,@form:navigationMenuButton,@form:navigationMenuPanel"/>
+                    <p:ajax event="rowUnselect" update="@form:editButton,@form:deleteButton,@form:navigationMenuButton,@form:navigationMenuPanel"/>
+                    <p:ajax event="swipeleft"   oncomplete="document.getElementById('UsersListPage:UsersListForm:deleteButton').click();"/>
+                    <p:ajax event="tap"         oncomplete="document.getElementById('UsersListPage:UsersListForm:editButton').click();"/>
+                    <p:ajax event="taphold"     oncomplete="document.getElementById('UsersListPage:UsersListForm:navigationMenuButton').click();"/>
+
+                    <p:column sortBy="#{item.uname}" filterBy="#{item.uname}" headerText="#{resourcesBundle.ListUsersTitle_uname}">
+                        <h:outputText value="#{item.uname}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.password}" filterBy="#{item.password}" headerText="#{resourcesBundle.ListUsersTitle_password}">
+                        <h:outputText value="#{item.password}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.nom}" filterBy="#{item.nom}" headerText="#{resourcesBundle.ListUsersTitle_nom}">
+                        <h:outputText value="#{item.nom}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.postNom}" filterBy="#{item.postNom}" headerText="#{resourcesBundle.ListUsersTitle_postNom}">
+                        <h:outputText value="#{item.postNom}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.prenom}" filterBy="#{item.prenom}" headerText="#{resourcesBundle.ListUsersTitle_prenom}">
+                        <h:outputText value="#{item.prenom}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.role}" filterBy="#{item.role}" headerText="#{resourcesBundle.ListUsersTitle_role}">
+                        <h:outputText value="#{item.role}"/>
+                    </p:column>
+
+                </p:dataTable>
+                <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{resourcesBundle.Edit}" update=":UsersEditPage:UsersEditForm" disabled="#{empty usersController.selected}" actionListener="#{mobilePageController.currentPageListener}" action="#{mobilePageController.navigateWithHistory('pm:UsersEditPage')}"/>
+                <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{resourcesBundle.Delete}" actionListener="#{usersController.delete}" update=":growl,datalist" disabled="#{empty usersController.selected}">
+                    <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+                </p:commandButton>
+                <p:commandButton id="navigationMenuButton" style="visibility: hidden;" value="#{resourcesBundle.Menu}" disabled="#{empty usersController.selected}"/>
+
+                <p:overlayPanel id="navigationMenuPanel" for="navigationMenuButton" at="right" showEffect="overlay">
+                    <h2>#{resourcesBundle.UsersHeading} #{resourcesBundle.Menu}</h2>
+                    <p:menu>
+                        <p:menuitem value="#{resourcesBundle.UsersMenuItem_planficationFamilialeCollection}" icon="ui-icon-search"  action="#{mobilePageController.navigateWithHistory}" disabled="#{empty usersController.selected.planficationFamilialeCollection}" ajax="false">
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="#{usersController.navigatePlanficationFamilialeCollection()}"/>
+                        </p:menuitem>  
+                        <p:menuitem value="#{resourcesBundle.UsersMenuItem_mesuresPreventivesCollection}" icon="ui-icon-search"  action="#{mobilePageController.navigateWithHistory}" disabled="#{empty usersController.selected.mesuresPreventivesCollection}" ajax="false">
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="#{usersController.navigateMesuresPreventivesCollection()}"/>
+                        </p:menuitem>  
+                        <p:menuitem value="#{resourcesBundle.UsersMenuItem_donneesObjectivesCollection}" icon="ui-icon-search"  action="#{mobilePageController.navigateWithHistory}" disabled="#{empty usersController.selected.donneesObjectivesCollection}" ajax="false">
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="#{usersController.navigateDonneesObjectivesCollection()}"/>
+                        </p:menuitem>  
+                        <p:menuitem value="#{resourcesBundle.UsersMenuItem_grossesseCollection}" icon="ui-icon-search"  action="#{mobilePageController.navigateWithHistory}" disabled="#{empty usersController.selected.grossesseCollection}" ajax="false">
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="#{usersController.navigateGrossesseCollection()}"/>
+                        </p:menuitem>  
+                        <p:menuitem value="#{resourcesBundle.UsersMenuItem_infosAccouchementCollection}" icon="ui-icon-search"  action="#{mobilePageController.navigateWithHistory}" disabled="#{empty usersController.selected.infosAccouchementCollection}" ajax="false">
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="#{usersController.navigateInfosAccouchementCollection()}"/>
+                        </p:menuitem>  
+                        <p:menuitem value="#{resourcesBundle.UsersMenuItem_dcipCollection}" icon="ui-icon-search"  action="#{mobilePageController.navigateWithHistory}" disabled="#{empty usersController.selected.dcipCollection}" ajax="false">
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="#{usersController.navigateDcipCollection()}"/>
+                        </p:menuitem>  
+                        <p:menuitem value="#{resourcesBundle.UsersMenuItem_antecedentCpnCollection}" icon="ui-icon-search"  action="#{mobilePageController.navigateWithHistory}" disabled="#{empty usersController.selected.antecedentCpnCollection}" ajax="false">
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="#{usersController.navigateAntecedentCpnCollection()}"/>
+                        </p:menuitem>  
+                        <p:menuitem value="#{resourcesBundle.UsersMenuItem_hospitalisationCollection}" icon="ui-icon-search"  action="#{mobilePageController.navigateWithHistory}" disabled="#{empty usersController.selected.hospitalisationCollection}" ajax="false">
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="#{usersController.navigateHospitalisationCollection()}"/>
+                        </p:menuitem>  
+                        <p:menuitem value="#{resourcesBundle.UsersMenuItem_reglesCollection}" icon="ui-icon-search"  action="#{mobilePageController.navigateWithHistory}" disabled="#{empty usersController.selected.reglesCollection}" ajax="false">
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="#{usersController.navigateReglesCollection()}"/>
+                        </p:menuitem>  
+                        <p:menuitem value="#{resourcesBundle.UsersMenuItem_autresProblemesCollection}" icon="ui-icon-search"  action="#{mobilePageController.navigateWithHistory}" disabled="#{empty usersController.selected.autresProblemesCollection}" ajax="false">
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="#{usersController.navigateAutresProblemesCollection()}"/>
+                        </p:menuitem>  
+                        <p:menuitem value="#{resourcesBundle.UsersMenuItem_examenLaboCollection}" icon="ui-icon-search"  action="#{mobilePageController.navigateWithHistory}" disabled="#{empty usersController.selected.examenLaboCollection}" ajax="false">
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="#{usersController.navigateExamenLaboCollection()}"/>
+                        </p:menuitem>  
+                        <p:menuitem value="#{resourcesBundle.UsersMenuItem_infosFemmeCollection}" icon="ui-icon-search"  action="#{mobilePageController.navigateWithHistory}" disabled="#{empty usersController.selected.infosFemmeCollection}" ajax="false">
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="#{usersController.navigateInfosFemmeCollection()}"/>
+                        </p:menuitem>  
+                        <p:menuitem value="#{resourcesBundle.UsersMenuItem_motifConsultationCollection}" icon="ui-icon-search"  action="#{mobilePageController.navigateWithHistory}" disabled="#{empty usersController.selected.motifConsultationCollection}" ajax="false">
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="#{usersController.navigateMotifConsultationCollection()}"/>
+                        </p:menuitem>  
+                        <p:menuitem value="#{resourcesBundle.UsersMenuItem_antecedentPlCollection}" icon="ui-icon-search"  action="#{mobilePageController.navigateWithHistory}" disabled="#{empty usersController.selected.antecedentPlCollection}" ajax="false">
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="#{usersController.navigateAntecedentPlCollection()}"/>
+                        </p:menuitem>  
+                        <p:menuitem value="#{resourcesBundle.UsersMenuItem_consultationCollection}" icon="ui-icon-search"  action="#{mobilePageController.navigateWithHistory}" disabled="#{empty usersController.selected.consultationCollection}" ajax="false">
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="#{usersController.navigateConsultationCollection()}"/>
+                        </p:menuitem>  
+                    </p:menu>
+                </p:overlayPanel>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

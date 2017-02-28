@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PlanficationFamilialeViewDlg" widgetVar="PlanficationFamilialeViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{resourcesBundle.ViewPlanficationFamilialeTitle}" closeOnEscape="true">
+
+            <h:form id="PlanficationFamilialeViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{planficationFamilialeController.selected != null}">
+
+                        <h:outputText value="#{resourcesBundle.ViewPlanficationFamilialeLabel_idPF}"/>
+                        <h:outputText value="#{planficationFamilialeController.selected.idPF}" title="#{resourcesBundle.ViewPlanficationFamilialeTitle_idPF}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewPlanficationFamilialeLabel_nouvelleacceptante}"/>
+                        <h:outputText value="#{planficationFamilialeController.selected.nouvelleacceptante}" title="#{resourcesBundle.ViewPlanficationFamilialeTitle_nouvelleacceptante}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewPlanficationFamilialeLabel_renouvellement}"/>
+                        <h:outputText value="#{planficationFamilialeController.selected.renouvellement}" title="#{resourcesBundle.ViewPlanficationFamilialeTitle_renouvellement}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewPlanficationFamilialeLabel_methodeanterieure}"/>
+                        <h:outputText value="#{planficationFamilialeController.selected.methodeanterieure}" title="#{resourcesBundle.ViewPlanficationFamilialeTitle_methodeanterieure}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewPlanficationFamilialeLabel_autreMethodeAnterieure}"/>
+                        <h:outputText value="#{planficationFamilialeController.selected.autreMethodeAnterieure}" title="#{resourcesBundle.ViewPlanficationFamilialeTitle_autreMethodeAnterieure}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewPlanficationFamilialeLabel_sourcerenseignementsurPF}"/>
+                        <h:outputText value="#{planficationFamilialeController.selected.sourcerenseignementsurPF}" title="#{resourcesBundle.ViewPlanficationFamilialeTitle_sourcerenseignementsurPF}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewPlanficationFamilialeLabel_raisondechangement}"/>
+                        <h:outputText value="#{planficationFamilialeController.selected.raisondechangement}" title="#{resourcesBundle.ViewPlanficationFamilialeTitle_raisondechangement}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewPlanficationFamilialeLabel_planification}"/>
+                        <h:outputText value="#{planficationFamilialeController.selected.planification}" title="#{resourcesBundle.ViewPlanficationFamilialeTitle_planification}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewPlanficationFamilialeLabel_counsling}"/>
+                        <h:outputText value="#{planficationFamilialeController.selected.counsling}" title="#{resourcesBundle.ViewPlanficationFamilialeTitle_counsling}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewPlanficationFamilialeLabel_methodechoisie}"/>
+                        <h:outputText value="#{planficationFamilialeController.selected.methodechoisie}" title="#{resourcesBundle.ViewPlanficationFamilialeTitle_methodechoisie}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewPlanficationFamilialeLabel_utilisateur}"/>
+                        <h:outputText value="#{planficationFamilialeController.selected.utilisateur.uname}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewPlanficationFamilialeLabel_numDossier}"/>
+                        <h:outputText value="#{planficationFamilialeController.selected.numDossier.numDossier}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{resourcesBundle.Close}" onclick="PF('PlanficationFamilialeViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

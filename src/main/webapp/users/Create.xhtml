@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UsersCreateDlg" widgetVar="UsersCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{resourcesBundle.CreateUsersTitle}" closeOnEscape="true">
+
+            <h:form id="UsersCreateForm">
+
+                <h:panelGroup id="display" rendered="#{usersController.selected != null}">
+                    <p:tabView id="UsersTabView">
+
+                        <p:tab id="UsersTab1" title="#{resourcesBundle.TabHeaderPrefix} 1">
+                            <p:panelGrid columns="2" columnClasses="column">
+                                <p:outputLabel value="#{resourcesBundle.CreateUsersLabel_uname}" for="uname" />
+                                <p:inputText id="uname" value="#{usersController.selected.uname}" title="#{resourcesBundle.CreateUsersTitle_uname}" required="true" requiredMessage="#{resourcesBundle.CreateUsersRequiredMessage_uname}" size="40" maxlength="40"/>
+
+                                <p:outputLabel value="Mot de passe" for="password" />
+                                <p:inputText id="password" value="#{usersController.selected.password}" title="#{resourcesBundle.CreateUsersTitle_password}" required="true" requiredMessage="#{resourcesBundle.CreateUsersRequiredMessage_password}" size="40" maxlength="40"/>
+
+                                <p:outputLabel value="Nom" for="nom" />
+                                <p:inputText id="nom" value="#{usersController.selected.nom}" title="#{resourcesBundle.CreateUsersTitle_nom}" required="true" requiredMessage="#{resourcesBundle.CreateUsersRequiredMessage_nom}" size="40" maxlength="40"/>
+
+                                <p:outputLabel value="Post-nom" for="postNom" />
+                                <p:inputText id="postNom" value="#{usersController.selected.postNom}" title="#{resourcesBundle.CreateUsersTitle_postNom}" required="true" requiredMessage="#{resourcesBundle.CreateUsersRequiredMessage_postNom}" size="40" maxlength="40"/>
+
+                                <p:outputLabel value="Prenom" for="prenom" />
+                                <p:inputText id="prenom" value="#{usersController.selected.prenom}" title="#{resourcesBundle.CreateUsersTitle_prenom}" required="true" requiredMessage="#{resourcesBundle.CreateUsersRequiredMessage_prenom}" size="40" maxlength="40"/>
+
+                                <p:outputLabel value="Rôle" for="role" />
+                                <p:selectOneMenu id="role" value="#{usersController.selected.role}" title="#{resourcesBundle.CreateUsersTitle_role}" required="true" requiredMessage="#{resourcesBundle.CreateUsersRequiredMessage_role}">
+                                    <f:selectItem itemLabel="Choisir"/>                                
+                                    <f:selectItem itemLabel="Admin" itemValue="admin"/>
+                                    <f:selectItem itemLabel="Standard" itemValue="standard"/>
+                                </p:selectOneMenu>
+                            </p:panelGrid>
+                        </p:tab>
+                    </p:tabView>
+                    <p:commandButton actionListener="#{usersController.saveNew}" value="#{resourcesBundle.Save}" update="display,:UsersListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('UsersCreateDialog'));">
+                        <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{resourcesBundle.Cancel}" oncomplete="PF('UsersCreateDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

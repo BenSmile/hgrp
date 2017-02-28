@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="ConsultationListForm">
+
+        <p:panel header="#{resourcesBundle.ListConsultationTitle}">
+            <p:contextMenu id="ConsultationDataTableContextMenu" for="datalist">  
+                <p:menuitem value="#{resourcesBundle.Create}" onclick="document.getElementById('ConsultationListForm:createButton').click();" icon="ui-icon-plus"/>
+                <p:menuitem value="#{resourcesBundle.Edit}" rendered="#{login.admin}" onclick="document.getElementById('ConsultationListForm:editButton').click();" icon="ui-icon-pencil"/>
+                <p:menuitem value="#{resourcesBundle.Delete}"  rendered="#{login.admin}" onclick="document.getElementById('ConsultationListForm:deleteButton').click();" icon="ui-icon-trash"/>
+                <p:separator/>
+                <p:menuitem value="#{resourcesBundle.ConsultationMenuItem_mesuresPreventivesCollection}" icon="ui-icon-search"  action="#{consultationController.navigateMesuresPreventivesCollection}" disabled="#{empty consultationController.selected.mesuresPreventivesCollection}" ajax="false"/>  
+                <p:menuitem value="#{resourcesBundle.ConsultationMenuItem_utilisateur}" icon="ui-icon-search"  actionListener="#{consultationController.prepareUtilisateur}" update=":UsersViewForm" oncomplete="PF('UsersViewDialog').show()" disabled="#{empty consultationController.selected.utilisateur}"/>  
+                <p:menuitem value="#{resourcesBundle.ConsultationMenuItem_numDossier}" icon="ui-icon-search"  actionListener="#{consultationController.prepareNumDossier}" update=":InfosFemmeViewForm" oncomplete="PF('InfosFemmeViewDialog').show()" disabled="#{empty consultationController.selected.numDossier}"/>  
+            </p:contextMenu>
+            <p:dataTable id="datalist"
+                         value="#{consultationController.items}"
+                         var="item"
+                         widgetVar="consultationTable"
+                         rowKey="#{item.idRDV}"
+                         selection="#{consultationController.selected}"
+                         liveScroll="true"
+                         scrollHeight="225"
+                         scrollRows="12"
+                         selectionMode="single"
+                         scrollable="true" 
+                         paginator="true"
+                         paginatorTemplate="{Exporters}" 
+                         >
+                <f:facet name="{Exporters}">
+                    <h:commandLink onclick="PrimeFaces.monitorDownload(start(), stop);" value="Exporter vers Excel">
+                        <p:graphicImage name="images/exports/excel.png" width="24"/>
+                        <p:dataExporter type="xls" target="datalist" fileName="infofemme"/>
+                    </h:commandLink>
+                    <ui:remove>   
+                        <h:commandLink onclick="PrimeFaces.monitorDownload(start(), stop);">
+                            <p:graphicImage name="images/exports/pdf.png" width="24"/>
+                            <p:dataExporter type="pdf" target="datalist" fileName="infofemme"/>
+                        </h:commandLink>
+
+                        <h:commandLink onclick="PrimeFaces.monitorDownload(start(), stop);">
+                            <p:graphicImage name="images/exports/csv.png" width="24"/>
+                            <p:dataExporter type="csv" target="datalist" fileName="infofemme" />
+                        </h:commandLink>
+
+                        <h:commandLink onclick="PrimeFaces.monitorDownload(start(), stop);">
+                            <p:graphicImage name="images/exports/xml.png" width="24"/>
+                            <p:dataExporter type="xml" target="datalist" fileName="infofemme" />
+                        </h:commandLink>
+                    </ui:remove>
+
+                </f:facet>
+                <p:ajax event="rowSelect"   update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:ConsultationDataTableContextMenu" listener="#{consultationController.resetParents}"/>
+                <p:ajax event="rowUnselect" update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:ConsultationDataTableContextMenu" listener="#{consultationController.resetParents}"/>
+                <p:ajax event="contextMenu" update="@form:createButton @form:viewButton @form:editButton @form:deleteButton" listener="#{consultationController.resetParents}"/>
+                <p:ajax event="rowDblselect" onsuccess="document.getElementById('ConsultationListForm:viewButton').click();"/>
+                <ui:remove>
+                    <p:column filterBy="#{item.idRDV}" style="width: 50px;">
+                        <f:facet name="header">
+                            <h:outputText value="#{resourcesBundle.ListConsultationTitle_idRDV}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idRDV}"/>
+                    </p:column>
+                </ui:remove>
+
+                <p:column sortBy="#{item.numDossier.numDossier}" filterBy="#{item.numDossier.numDossier}" style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListConsultationTitle_numDossier}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.numDossier.numDossier}"/>
+                </p:column>
+                <p:column  style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListConsultationTitle_date}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.date.getDate()}/#{item.date.getMonth() +1}/#{item.date.getYear() + 1900}"/>
+                </p:column>
+
+                <p:column  style="width: 100px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListConsultationTitle_ageGrossesse}"/>
+                    </f:facet>
+                    <f:facet name="filter">
+                        <p:selectOneMenu onchange="PF('consultationTable').filter()" >
+                            <f:selectItem itemLabel="Tous" itemValue="#{null}" noSelectionOption="true" />
+                            <f:selectItem itemLabel="1er mois" itemValue="1er mois" />
+                            <f:selectItem itemLabel="2ème mois" itemValue="2ème mois" />
+                            <f:selectItem itemLabel="3ème mois" itemValue="3ème mois" />
+                            <f:selectItem itemLabel="4ème mois" itemValue="4ème mois" />
+                            <f:selectItem itemLabel="5ème mois" itemValue="5ème mois" />
+                            <f:selectItem itemLabel="6ème mois" itemValue="6ème mois" />
+                            <f:selectItem itemLabel="7ème mois" itemValue="7ème mois" />
+                            <f:selectItem itemLabel="8ème mois" itemValue="8ème mois" />
+                            <f:selectItem itemLabel="9ème mois" itemValue="9ème mois" />
+                        </p:selectOneMenu>
+                    </f:facet>
+
+                    <h:outputText value="#{item.ageGrossesse}"/>
+                </p:column>
+
+                <p:column   style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListConsultationTitle_conjonctivehb}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.conjonctivehb}"/>
+                </p:column>
+
+
+                <p:column  style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListConsultationTitle_hauteurUterine} (cm)"/>
+                    </f:facet>
+                    <h:outputText value="#{item.hauteurUterine}"/>
+                </p:column>
+
+
+                <p:column   style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListConsultationTitle_surfaceuterine}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.surfaceuterine}"/>
+                </p:column>
+
+
+                <p:column   style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListConsultationTitle_mouvementfoetaux}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.mouvementfoetaux}"/>
+                </p:column>
+
+
+                <p:column   style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListConsultationTitle_bruitfoetaux}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.bruitfoetaux}"/>
+                </p:column>
+
+                <p:column  style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListConsultationTitle_bcf}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.bcf}"/>
+                </p:column>
+
+                <p:column   style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListConsultationTitle_presentation}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.presentation}"/>
+                </p:column>
+
+                <p:column   style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListConsultationTitle_pertesliquidiènnes}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.pertesliquidiènnes}"/>
+                </p:column>
+                <p:column   style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListConsultationTitle_oedemes}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.oedemes}"/>
+                </p:column>
+
+                <p:column   style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListConsultationTitle_albuminure}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.albuminure}"/>
+                </p:column>
+
+                <p:column   style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListConsultationTitle_glycosurie}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.glycosurie}"/>
+                </p:column>
+                <ui:remove>
+                    <p:column sortBy="#{item.ta1}"  style="width: 150px;">
+                        <f:facet name="header">
+                            <h:outputText value="#{resourcesBundle.ListConsultationTitle_ta1}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.ta1}"/>
+                    </p:column>
+
+                    <p:column sortBy="#{item.ta2}"  style="width: 150px;">
+                        <f:facet name="header">
+                            <h:outputText value="#{resourcesBundle.ListConsultationTitle_ta2}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.ta2}"/>
+                    </p:column>
+                </ui:remove>
+                <p:column   style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="TA (cm de Hg)"/>
+                    </f:facet>
+                    <h:outputText value="#{item.ta1} / #{item.ta2}"/>
+                </p:column>
+                <p:column   style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListConsultationTitle_mictalgie}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.mictalgie}"/>
+                </p:column>
+
+                <p:column  style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListConsultationTitle_contraction}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.contraction}"/>
+                </p:column>
+
+                <p:column   style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListConsultationTitle_bassinPromonitoire}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.bassinPromonitoire}"/>
+                </p:column>
+
+                <p:column   style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListConsultationTitle_poids}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.poids}"/>
+                </p:column>
+
+                <p:column   style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListConsultationTitle_taille}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.taille}"/>
+                </p:column>
+
+                <p:column  style="width: 100px;" >
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListConsultationTitle_femmeARisque}"/>
+                    </f:facet>
+                    <f:facet name="filter">
+                        <p:selectOneMenu onchange="PF('consultationTable').filter()" >
+                            <f:selectItem itemLabel="Tous" itemValue="#{null}" noSelectionOption="true" />
+                            <f:selectItem itemLabel="Non" itemValue="Non"/>
+                            <f:selectItem itemLabel="détectée" itemValue="détectée"/>
+                            <f:selectItem itemLabel="référée" itemValue="référée"/>
+                        </p:selectOneMenu>
+                    </f:facet>
+
+                    <h:outputText value="#{item.femmeARisque}"/>
+                </p:column>
+
+                <p:column   style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListConsultationTitle_decisioncentresante}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.decisioncentresante}"/>
+                </p:column>
+
+                <p:column   style="width: 150px;">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListConsultationTitle_raison}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.raison}"/>
+                </p:column>
+            </p:dataTable>
+            <p:commandButton id="createButton"                             icon="ui-icon-plus" value="#{resourcesBundle.Create}" actionListener="#{consultationController.prepareCreate}" update=":ConsultationCreateForm" oncomplete="PF('ConsultationCreateDialog').show()"/>
+            <p:commandButton id="viewButton"    icon="ui-icon-search" value="#{resourcesBundle.View}" update=":ConsultationViewForm" oncomplete="PF('ConsultationViewDialog').show()" disabled="#{empty consultationController.selected}"/>
+            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{resourcesBundle.Edit}" update=":ConsultationEditForm" oncomplete="PF('ConsultationEditDialog').show()" rendered="#{login.admin}" disabled="#{empty consultationController.selected}"/>
+            <p:commandButton id="deleteButton"  icon="ui-icon-trash"  value="#{resourcesBundle.Delete}" actionListener="#{consultationController.delete}" update=":growl,datalist" rendered="#{login.admin}" disabled="#{empty consultationController.selected}">
+                <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+            </p:commandButton> 
+        </p:panel>
+        <ui:include src="/confirmation.xhtml"/>  
+
+
+    </h:form>
+
+</ui:composition>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="GrossesseEditDlg" widgetVar="GrossesseEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{resourcesBundle.EditGrossesseTitle}" closeOnEscape="true">
+
+            <h:form id="GrossesseEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{grossesseController.selected != null}">
+
+                        <p:outputLabel value="#{resourcesBundle.EditGrossesseLabel_numDossier}" for="numDossier" />
+                        <p:selectOneMenu id="numDossier" value="#{grossesseController.selected.numDossier}" required="true" requiredMessage="#{resourcesBundle.EditGrossesseRequiredMessage_numDossier}" converter="infosFemmeConverter">
+                            <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{infosFemmeController.items}"
+                                           var="numDossierItem"
+                                           itemValue="#{numDossierItem}"
+                                           itemLabel="#{numDossierItem.toString()}"/>
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{resourcesBundle.CreateGrossesseLabel_enfantsvivantsactuellement}" for="enfantsvivantsactuellement" />
+                        <p:spinner min="0" id="enfantsvivantsactuellement" value="#{grossesseController.selected.enfantsvivantsactuellement}" title="#{resourcesBundle.CreateGrossesseTitle_enfantsvivantsactuellement}"/>
+
+                        <p:outputLabel value="#{resourcesBundle.CreateGrossesseLabel_p}" for="p" />
+                        <p:spinner min="0" id="p" value="#{grossesseController.selected.p}" title="#{resourcesBundle.CreateGrossesseTitle_p}"/>
+
+                        <p:outputLabel value="#{resourcesBundle.CreateGrossesseLabel_g}" for="g" />
+                        <p:spinner min="0" id="g" value="#{grossesseController.selected.g}" title="#{resourcesBundle.CreateGrossesseTitle_g}"/>
+
+                        <p:outputLabel value="#{resourcesBundle.CreateGrossesseLabel_a}" for="a" />
+                        <p:spinner min="0" id="a" value="#{grossesseController.selected.a}" title="#{resourcesBundle.CreateGrossesseTitle_a}"/>
+
+                        <p:outputLabel value="#{resourcesBundle.CreateGrossesseLabel_d}" for="d" />
+                        <p:spinner min="0" id="d" value="#{grossesseController.selected.d}" title="#{resourcesBundle.CreateGrossesseTitle_d}"/>
+
+                        <p:outputLabel value="#{resourcesBundle.CreateGrossesseLabel_datedernierAccouchement}" for="datedernierAccouchement" />
+                        <p:calendar id="datedernierAccouchement" pattern="MM/dd/yyyy" value="#{grossesseController.selected.datedernierAccouchement}" title="#{resourcesBundle.CreateGrossesseTitle_datedernierAccouchement}"  showOn="button"/>
+
+                        <p:outputLabel value="#{resourcesBundle.CreateGrossesseLabel_dateDernierRapportNonProteger}" for="dateDernierRapportNonProteger" />
+                        <p:calendar id="dateDernierRapportNonProteger" pattern="MM/dd/yyyy" value="#{grossesseController.selected.dateDernierRapportNonProteger}" title="#{resourcesBundle.CreateGrossesseTitle_dateDernierRapportNonProteger}"  showOn="button"/>
+
+                        <p:outputLabel value="#{resourcesBundle.CreateGrossesseLabel_dateDernierRegle}" for="dateDernierRegle" />
+                        <p:calendar id="dateDernierRegle" pattern="MM/dd/yyyy" value="#{grossesseController.selected.dateDernierRegle}" title="#{resourcesBundle.CreateGrossesseTitle_dateDernierRegle}"  showOn="button"/>
+
+                        <p:outputLabel value="#{resourcesBundle.CreateGrossesseLabel_nombrecesarienne}" for="nombrecesarienne" />
+                        <p:spinner min="0" id="nombrecesarienne" value="#{grossesseController.selected.nombrecesarienne}" title="#{resourcesBundle.CreateGrossesseTitle_nombrecesarienne}"/>
+                        <ui:remove>
+                            <p:outputLabel value="#{resourcesBundle.EditGrossesseLabel_utilisateur}" for="utilisateur" />
+                            <p:selectOneMenu id="utilisateur" value="#{grossesseController.selected.utilisateur}" required="true" requiredMessage="#{resourcesBundle.EditGrossesseRequiredMessage_utilisateur}" converter="usersConverter">
+                                <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{usersController.items}"
+                                               var="utilisateurItem"
+                                               itemValue="#{utilisateurItem}"
+                                               itemLabel="#{utilisateurItem.uname.toString()}"/>
+                            </p:selectOneMenu>
+                        </ui:remove>
+
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{grossesseController.save}" value="#{resourcesBundle.Save}" update="display,:GrossesseListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('GrossesseEditDialog'));">
+                        <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{resourcesBundle.Cancel}" oncomplete="PF('GrossesseEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

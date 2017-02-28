@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MesuresPreventivesCreateDlg" widgetVar="MesuresPreventivesCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{resourcesBundle.CreateMesuresPreventivesTitle}" closeOnEscape="true">
+
+            <h:form id="MesuresPreventivesCreateForm">
+
+                <h:panelGroup id="display" rendered="#{mesuresPreventivesController.selected != null}">
+                    <p:panelGrid columns="4" columnClasses="column,#{null},column">
+
+                        <p:outputLabel value="Consultation" for="idRDV" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="idRDV" filter="true"  style="width: 160px;" required="true" value="#{mesuresPreventivesController.selected.idRDV}"  converter="consultationConverter">
+                                <f:selectItems value="#{consultationController.items}"
+                                               var="idRDVItem"
+                                               itemValue="#{idRDVItem}"
+                                               itemLabel="#{idRDVItem.date.getDate()}/#{idRDVItem.date.getMonth() +1}/#{idRDVItem.date.getYear() + 1900} #{idRDVItem.numDossier.numDossier.toString()} #{idRDVItem.numDossier.nom.toString()} #{idRDVItem.numDossier.postNom.toString()} #{idRDVItem.numDossier.prenom.toString()}"/>
+                            </p:selectOneMenu>
+                            <p:inputText style="visibility: hidden" id="user" value="#{mesuresPreventivesController.user}" title="user: " size="30" maxlength="30"/>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{resourcesBundle.CreateMesuresPreventivesLabel_dortsousMild}" for="dortsousMild" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="dortsousMild" style="width: 160px;" value="#{mesuresPreventivesController.selected.dortsousMild}" title="#{resourcesBundle.CreateMesuresPreventivesTitle_dortsousMild}">
+                                <f:selectItem itemLabel=""/>
+                                <f:selectItem itemLabel="Oui" itemValue="Oui"/>
+                                <f:selectItem itemLabel="Non" itemValue="Non"/>
+                            </p:selectOneMenu>
+                        </h:panelGroup>
+
+
+
+                        <p:outputLabel value="#{resourcesBundle.CreateMesuresPreventivesLabel_vat}" for="vat" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="vat" style="width: 160px;" value="#{mesuresPreventivesController.selected.vat}" title="#{resourcesBundle.CreateMesuresPreventivesTitle_vat}">
+                                <f:selectItem itemLabel=""/>
+                                <f:selectItem itemLabel="VAT1" itemValue="VAT1" />
+                                <f:selectItem itemLabel="VAT2" itemValue="VAT2" />
+                                <f:selectItem itemLabel="VAT3" itemValue="VAT3" />
+                                <f:selectItem itemLabel="VAT4" itemValue="VAT4" />
+                                <f:selectItem itemLabel="VAT5" itemValue="VAT5" />
+                            </p:selectOneMenu>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{resourcesBundle.CreateMesuresPreventivesLabel_vermifuge}" for="vermifuge" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="vermifuge" style="width: 160px;" value="#{mesuresPreventivesController.selected.vermifuge}" title="#{resourcesBundle.CreateMesuresPreventivesTitle_vermifuge}">
+                                <f:selectItem itemLabel=""/>
+                                <f:selectItem itemLabel="Oui" itemValue="Oui"/>
+                                <f:selectItem itemLabel="Non" itemValue="Non"/>
+                            </p:selectOneMenu>
+                        </h:panelGroup>
+
+
+                        <p:outputLabel value="#{resourcesBundle.CreateMesuresPreventivesLabel_supplementaion}" for="supplementaion" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="supplementaion" style="width: 160px;" value="#{mesuresPreventivesController.selected.supplementaion}" title="#{resourcesBundle.CreateMesuresPreventivesTitle_supplementaion}">
+                                <f:selectItem itemLabel=""/>
+                                <f:selectItem itemLabel="Oui" itemValue="Oui"/>
+                                <f:selectItem itemLabel="Non" itemValue="Non"/>
+                            </p:selectOneMenu>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{resourcesBundle.CreateMesuresPreventivesLabel_fefol}" for="fefol" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="fefol"  style="width: 160px;" value="#{mesuresPreventivesController.selected.fefol}" title="#{resourcesBundle.CreateMesuresPreventivesTitle_fefol}">
+                                <f:selectItem itemLabel=""/>
+                                <f:selectItem itemLabel="Oui" itemValue="Oui"/>
+                                <f:selectItem itemLabel="Non" itemValue="Non"/>
+                            </p:selectOneMenu>
+                        </h:panelGroup>
+
+
+                        <p:outputLabel value="#{resourcesBundle.CreateMesuresPreventivesLabel_conseilDepistageVolontaire}" for="conseilDepistageVolontaire" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="conseilDepistageVolontaire" style="width: 160px;" value="#{mesuresPreventivesController.selected.conseilDepistageVolontaire}" title="#{resourcesBundle.CreateMesuresPreventivesTitle_conseilDepistageVolontaire}" >
+                                <f:selectItem itemLabel=""/>
+                                <f:selectItem itemLabel="Oui" itemValue="Oui"/>
+                                <f:selectItem itemLabel="Non" itemValue="Non"/>
+                            </p:selectOneMenu>
+                        </h:panelGroup>
+
+
+
+
+
+                        <p:outputLabel value="#{resourcesBundle.CreateMesuresPreventivesLabel_sp}" for="sp" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="sp" style="width: 160px;" value="#{mesuresPreventivesController.selected.sp}" title="#{resourcesBundle.CreateMesuresPreventivesTitle_sp}">
+                                <f:selectItem itemLabel=""/>
+                                <f:selectItem itemLabel="SP1" itemValue="SP1" />
+                                <f:selectItem itemLabel="SP2" itemValue="SP2" />
+                                <f:selectItem itemLabel="SP3 Si PVV" itemValue="SP3 Si PVV" />
+                            </p:selectOneMenu>
+                        </h:panelGroup>
+
+
+
+                        <p:outputLabel value="#{resourcesBundle.CreateMesuresPreventivesLabel_depister}" for="depister" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="depister" style="width: 160px;" value="#{mesuresPreventivesController.selected.depister}" title="#{resourcesBundle.CreateMesuresPreventivesTitle_depister}">
+                                <f:selectItem itemLabel=""/>
+                                <f:selectItem itemLabel="Oui" itemValue="Oui"/>
+                                <f:selectItem itemLabel="Non" itemValue="Non"/>
+                            </p:selectOneMenu>
+                        </h:panelGroup>
+
+
+                        <p:outputLabel value="#{resourcesBundle.CreateMesuresPreventivesLabel_mebendaAu2emeTrimestre}" for="mebendaAu2emeTrimestre" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="mebendaAu2emeTrimestre"  style="width: 160px;" value="#{mesuresPreventivesController.selected.mebendaAu2emeTrimestre}" title="#{resourcesBundle.CreateMesuresPreventivesTitle_mebendaAu2emeTrimestre}">
+                                <f:selectItem itemLabel=""/>
+                                <f:selectItem itemLabel="Oui" itemValue="Oui"/>
+                                <f:selectItem itemLabel="Non" itemValue="Non"/>
+                            </p:selectOneMenu>
+                        </h:panelGroup>
+                        <p:outputLabel value="#{resourcesBundle.CreateMesuresPreventivesLabel_resultat}" for="resultat" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="resultat" style="width: 160px;" value="#{mesuresPreventivesController.selected.resultat}" title="#{resourcesBundle.CreateMesuresPreventivesTitle_resultat}">
+                                <f:selectItem itemLabel=""/>
+                                <f:selectItem itemLabel="Positif" itemValue="Positif"/>
+                                <f:selectItem itemLabel="Négatif" itemValue="Négatif"/>
+                                <f:selectItem itemLabel="Indéternimé" itemValue="Indéterminé"/>
+                            </p:selectOneMenu>
+                        </h:panelGroup>
+
+
+                        <p:outputLabel value="#{resourcesBundle.CreateMesuresPreventivesLabel_femmecompletementvaccinee}" for="femmecompletementvaccinee" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="femmecompletementvaccinee"  style="width: 160px;" value="#{mesuresPreventivesController.selected.femmecompletementvaccinee}" title="#{resourcesBundle.CreateMesuresPreventivesTitle_femmecompletementvaccinee}">
+                                <f:selectItem itemLabel=""/>
+                                <f:selectItem itemLabel="Oui" itemValue="Oui"/>
+                                <f:selectItem itemLabel="Non" itemValue="Non"/>
+                            </p:selectOneMenu>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{resourcesBundle.CreateMesuresPreventivesLabel_ferPlusAcideFollique}" for="ferPlusAcideFollique" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="ferPlusAcideFollique"  style="width: 160px;" value="#{mesuresPreventivesController.selected.ferPlusAcideFollique}" title="#{resourcesBundle.CreateMesuresPreventivesTitle_ferPlusAcideFollique}">
+                                <f:selectItem itemLabel=""/>
+                                <f:selectItem itemLabel="aucune dose " itemValue="aucune dose"/>
+                                <f:selectItem itemLabel="1ère dose" itemValue="1ère dose"/>
+                                <f:selectItem itemLabel="2ème dose" itemValue="2ème dose"/>
+                                <f:selectItem itemLabel="3ème dose" itemValue="3ème dose"/>
+
+                            </p:selectOneMenu>
+                        </h:panelGroup>
+
+                        <p:outputLabel value="#{resourcesBundle.CreateMesuresPreventivesLabel_femmeinformee}" for="femmeinformee" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="femmeinformee"  style="width: 160px;" value="#{mesuresPreventivesController.selected.femmeinformee}" title="#{resourcesBundle.CreateMesuresPreventivesTitle_femmeinformee}">
+                                <f:selectItem itemLabel=""/>
+                                <f:selectItem itemLabel="Oui" itemValue="Oui"/>
+                                <f:selectItem itemLabel="Non" itemValue="Non"/>
+                            </p:selectOneMenu>
+                        </h:panelGroup>
+                        <ui:remove>
+                        <p:outputLabel value="Utilisateur" for="utilisateur" />
+                        <p:selectOneMenu id="utilisateur" value="#{infosFemmeController.selected.utilisateur}" required="true" requiredMessage="#{resourcesBundle.CreateInfosFemmeRequiredMessage_utilisateur}" converter="usersConverter">
+                            <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{usersController.items}"
+                                           var="utilisateurItem"
+                                           itemValue="#{utilisateurItem}"
+                                           itemLabel="#{utilisateurItem.uname.toString()}"/>
+                        </p:selectOneMenu>
+                        </ui:remove>
+                    </p:panelGrid>
+
+                    <p:commandButton actionListener="#{mesuresPreventivesController.saveNew}" value="#{resourcesBundle.Save}" update="display,:MesuresPreventivesListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('MesuresPreventivesCreateDialog'));">
+                        <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton  value="#{resourcesBundle.Cancel}" onclick="PF('MesuresPreventivesCreateDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

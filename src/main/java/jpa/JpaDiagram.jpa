@@ -1,0 +1,1833 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<jpa:entity-mappings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:java="http://jcp.org/en/jsr/detail?id=270" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jpa="http://java.sun.com/xml/ns/persistence/orm" pkg="jpa" v="1.5.4" status="GENERATED" xs="false" id="_14707030550741" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd">
+    <jpa:entity xre="false" compositePrimaryKeyClass="MesuresPreventivesPK" sm="false" abs="false" class="MesuresPreventives" visibile="true" minimized="false" rootElement="_14707030550741" id="_14707030551112">
+        <annotation n="@javax.xml.bind.annotation.XmlRootElement"/>
+        <jpa:attributes>
+            <basic attribute-type="String" visibile="true" name="vat" id="_14707030551124">
+                <an n="@javax.validation.constraints.Size(max=5)"/>
+                <jpa:column name="VAT"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="femmecompletementvaccinee" id="_14707030551135">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="Femme_completement_vaccinee"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="sp" id="_14707030551136">
+                <an n="@javax.validation.constraints.Size(max=10)"/>
+                <jpa:column name="SP"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="dortsousMild" id="_14707030551147">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="Dort_sous_Mild"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="mebendaAu2emeTrimestre" id="_14707030551148">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="Mebenda_Au_2emeTrimestre"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="vermifuge" id="_14707030551149">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="Vermifuge"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="supplementaion" id="_147070305511410">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="Supplementaion"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="fefol" id="_147070305511411">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="Fefol"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="conseilDepistageVolontaire" id="_147070305511412">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="ConseilDepistageVolontaire"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="depister" id="_147070305511413">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="depister"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="resultat" id="_147070305511414">
+                <an n="@javax.validation.constraints.Size(max=11)"/>
+                <jpa:column name="Resultat"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="femmeinformee" id="_147070305511515">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="Femme_informee"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="ferPlusAcideFollique" id="_147070305511516">
+                <an n="@javax.validation.constraints.Size(max=12)"/>
+                <jpa:column name="FerPlusAcideFollique"/>
+            </basic>
+            <many-to-one optional="false" connected-entity-id="_1470703055423108" connected-attribute-id="_1470703055429116" visibile="true" name="utilisateur" id="_147070305511517">
+                <join-column name="utilisateur" referenced-column="_1470703055423109"/>
+            </many-to-one>
+            <many-to-one optional="false" connected-entity-id="_147070305527146" connected-attribute-id="_147070305527371" visibile="true" name="idRDV" id="_147070305511518">
+                <join-column name="idRDV" referenced-column="_147070305527147"/>
+            </many-to-one>
+            <jpa:id attribute-type="Integer" visibile="true" name="idMesPrev" id="_14707030551123">
+                <jpa:column name="idMesPrev"/>
+                <jpa:generated-value strategy="IDENTITY"/>
+                <jpa:sequence-generator name="idMesPrev"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq name="MesuresPreventives.findAll">
+            <jpa:query>SELECT m FROM MesuresPreventives m</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="MesuresPreventives.findByIdMesPrev">
+            <jpa:query>SELECT m FROM MesuresPreventives m WHERE m.idMesPrev = :idMesPrev</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="MesuresPreventives.findByVat">
+            <jpa:query>SELECT m FROM MesuresPreventives m WHERE m.vat = :vat</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="MesuresPreventives.findByFemmecompletementvaccinee">
+            <jpa:query>SELECT m FROM MesuresPreventives m WHERE m.femmecompletementvaccinee = :femmecompletementvaccinee</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="MesuresPreventives.findBySp">
+            <jpa:query>SELECT m FROM MesuresPreventives m WHERE m.sp = :sp</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="MesuresPreventives.findByDortsousMild">
+            <jpa:query>SELECT m FROM MesuresPreventives m WHERE m.dortsousMild = :dortsousMild</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="MesuresPreventives.findByMebendaAu2emeTrimestre">
+            <jpa:query>SELECT m FROM MesuresPreventives m WHERE m.mebendaAu2emeTrimestre = :mebendaAu2emeTrimestre</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="MesuresPreventives.findByVermifuge">
+            <jpa:query>SELECT m FROM MesuresPreventives m WHERE m.vermifuge = :vermifuge</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="MesuresPreventives.findBySupplementaion">
+            <jpa:query>SELECT m FROM MesuresPreventives m WHERE m.supplementaion = :supplementaion</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="MesuresPreventives.findByFefol">
+            <jpa:query>SELECT m FROM MesuresPreventives m WHERE m.fefol = :fefol</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="MesuresPreventives.findByConseilDepistageVolontaire">
+            <jpa:query>SELECT m FROM MesuresPreventives m WHERE m.conseilDepistageVolontaire = :conseilDepistageVolontaire</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="MesuresPreventives.findByDepister">
+            <jpa:query>SELECT m FROM MesuresPreventives m WHERE m.depister = :depister</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="MesuresPreventives.findByResultat">
+            <jpa:query>SELECT m FROM MesuresPreventives m WHERE m.resultat = :resultat</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="MesuresPreventives.findByFemmeinformee">
+            <jpa:query>SELECT m FROM MesuresPreventives m WHERE m.femmeinformee = :femmeinformee</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="MesuresPreventives.findByFerPlusAcideFollique">
+            <jpa:query>SELECT m FROM MesuresPreventives m WHERE m.ferPlusAcideFollique = :ferPlusAcideFollique</jpa:query>
+        </jpa:nq>
+        <jpa:table name="mesures_preventives"/>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyClass="AntecedentPlPK" sm="false" abs="false" class="AntecedentPl" visibile="true" minimized="false" rootElement="_14707030550741" id="_147070305514719">
+        <annotation n="@javax.xml.bind.annotation.XmlRootElement"/>
+        <jpa:attributes>
+            <basic attribute-type="String" visibile="true" name="antecedentsMedicauxPL" id="_147070305514821">
+                <an n="@javax.validation.constraints.Size(max=154)"/>
+                <jpa:column name="AntecedentsMedicauxPL"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="antecedentsObstétricauxPL" id="_147070305514822">
+                <an n="@javax.validation.constraints.Size(max=147)"/>
+                <jpa:column name="AntecedentsObstétricauxPL"/>
+            </basic>
+            <many-to-one optional="false" connected-entity-id="_1470703055506141" connected-attribute-id="_1470703055513169" visibile="true" name="numDossier" id="_147070305514823">
+                <join-column name="numDossier" referenced-column="_1470703055506142"/>
+            </many-to-one>
+            <many-to-one optional="false" connected-entity-id="_1470703055423108" connected-attribute-id="_1470703055429128" visibile="true" name="utilisateur" id="_147070305514824">
+                <join-column name="utilisateur" referenced-column="_1470703055423109"/>
+            </many-to-one>
+            <jpa:id attribute-type="Integer" visibile="true" name="idAntecedentPL" id="_147070305514720">
+                <jpa:column name="idAntecedentPL"/>
+                <jpa:generated-value strategy="IDENTITY"/>
+                <jpa:sequence-generator name="idAntecedentPL"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq name="AntecedentPl.findAll">
+            <jpa:query>SELECT a FROM AntecedentPl a</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="AntecedentPl.findByIdAntecedentPL">
+            <jpa:query>SELECT a FROM AntecedentPl a WHERE a.idAntecedentPL = :idAntecedentPL</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="AntecedentPl.findByAntecedentsMedicauxPL">
+            <jpa:query>SELECT a FROM AntecedentPl a WHERE a.antecedentsMedicauxPL = :antecedentsMedicauxPL</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="AntecedentPl.findByAntecedentsObstétricauxPL">
+            <jpa:query>SELECT a FROM AntecedentPl a WHERE a.antecedentsObstétricauxPL = :antecedentsObstétricauxPL</jpa:query>
+        </jpa:nq>
+        <jpa:table name="antecedent_pl"/>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyClass="ExamenLaboPK" sm="false" abs="false" class="ExamenLabo" visibile="true" minimized="false" rootElement="_14707030550741" id="_147070305517725">
+        <annotation n="@javax.xml.bind.annotation.XmlRootElement"/>
+        <jpa:attributes>
+            <basic attribute-type="java.util.Date" visibile="true" name="dateExamenLabo" id="_147070305517727">
+                <jpa:column name="DateExamenLabo"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="nomtechnicien" id="_147070305517728">
+                <an n="@javax.validation.constraints.Size(max=30)"/>
+                <jpa:column name="Nom_technicien"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="nomMedecin" id="_147070305517729">
+                <an n="@javax.validation.constraints.Size(max=30)"/>
+                <jpa:column name="Nom_Medecin"/>
+            </basic>
+            <basic attribute-type="Integer" visibile="true" name="hemoglobine" id="_147070305517730">
+                <jpa:column name="Hemoglobine"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="groupeSanguin" id="_147070305517731">
+                <an n="@javax.validation.constraints.Size(max=2)"/>
+                <jpa:column name="groupe_sanguin"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="goutteEpaisse" id="_147070305517732">
+                <an n="@javax.validation.constraints.Size(max=50)"/>
+                <jpa:column name="Goutte_Epaisse"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="sellesdirectes" id="_147070305517733">
+                <an n="@javax.validation.constraints.Size(max=50)"/>
+                <jpa:column name="Selles_directes"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="rubeole" id="_147070305517734">
+                <an n="@javax.validation.constraints.Size(max=35)"/>
+                <jpa:column name="Rubeole"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="vdrl" id="_147070305517735">
+                <an n="@javax.validation.constraints.Size(max=35)"/>
+                <jpa:column name="VDRL"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="toxoplasmose" id="_147070305517736">
+                <an n="@javax.validation.constraints.Size(max=45)"/>
+                <jpa:column name="Toxoplasmose"/>
+            </basic>
+            <many-to-one optional="false" connected-entity-id="_1470703055506141" connected-attribute-id="_1470703055513167" visibile="true" name="numDossier" id="_147070305517737">
+                <join-column name="NumDossier" referenced-column="_1470703055506142"/>
+            </many-to-one>
+            <many-to-one optional="false" connected-entity-id="_1470703055423108" connected-attribute-id="_1470703055429125" visibile="true" name="utilisateur" id="_147070305517738">
+                <join-column name="utilisateur" referenced-column="_1470703055423109"/>
+            </many-to-one>
+            <jpa:id attribute-type="Integer" visibile="true" name="idExamenLabo" id="_147070305517726">
+                <jpa:column name="idExamenLabo"/>
+                <jpa:generated-value strategy="IDENTITY"/>
+                <jpa:sequence-generator name="idExamenLabo"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq name="ExamenLabo.findAll">
+            <jpa:query>SELECT e FROM ExamenLabo e</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="ExamenLabo.findByIdExamenLabo">
+            <jpa:query>SELECT e FROM ExamenLabo e WHERE e.idExamenLabo = :idExamenLabo</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="ExamenLabo.findByDateExamenLabo">
+            <jpa:query>SELECT e FROM ExamenLabo e WHERE e.dateExamenLabo = :dateExamenLabo</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="ExamenLabo.findByNomtechnicien">
+            <jpa:query>SELECT e FROM ExamenLabo e WHERE e.nomtechnicien = :nomtechnicien</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="ExamenLabo.findByNomMedecin">
+            <jpa:query>SELECT e FROM ExamenLabo e WHERE e.nomMedecin = :nomMedecin</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="ExamenLabo.findByHemoglobine">
+            <jpa:query>SELECT e FROM ExamenLabo e WHERE e.hemoglobine = :hemoglobine</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="ExamenLabo.findByGroupeSanguin">
+            <jpa:query>SELECT e FROM ExamenLabo e WHERE e.groupeSanguin = :groupeSanguin</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="ExamenLabo.findByGoutteEpaisse">
+            <jpa:query>SELECT e FROM ExamenLabo e WHERE e.goutteEpaisse = :goutteEpaisse</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="ExamenLabo.findBySellesdirectes">
+            <jpa:query>SELECT e FROM ExamenLabo e WHERE e.sellesdirectes = :sellesdirectes</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="ExamenLabo.findByRubeole">
+            <jpa:query>SELECT e FROM ExamenLabo e WHERE e.rubeole = :rubeole</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="ExamenLabo.findByVdrl">
+            <jpa:query>SELECT e FROM ExamenLabo e WHERE e.vdrl = :vdrl</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="ExamenLabo.findByToxoplasmose">
+            <jpa:query>SELECT e FROM ExamenLabo e WHERE e.toxoplasmose = :toxoplasmose</jpa:query>
+        </jpa:nq>
+        <jpa:table name="examen_labo"/>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyClass="AutresProblemesPK" sm="false" abs="false" class="AutresProblemes" visibile="true" minimized="false" rootElement="_14707030550741" id="_147070305521639">
+        <annotation n="@javax.xml.bind.annotation.XmlRootElement"/>
+        <jpa:attributes>
+            <basic attribute-type="java.util.Date" visibile="true" name="dateAutreProbl" id="_147070305521741">
+                <jpa:column name="DateAutreProbl"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="probleme" id="_147070305521742">
+                <an n="@javax.validation.constraints.Size(max=100)"/>
+                <jpa:column name="Probleme"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="observationTraitement" id="_147070305521743">
+                <an n="@javax.validation.constraints.Size(max=150)"/>
+                <jpa:column name="Observation_Traitement"/>
+            </basic>
+            <many-to-one connected-entity-id="_1470703055506141" connected-attribute-id="_1470703055513166" visibile="true" name="numDossier" id="_147070305521744">
+                <join-column name="NumDossier" referenced-column="_1470703055506142"/>
+            </many-to-one>
+            <many-to-one optional="false" connected-entity-id="_1470703055423108" connected-attribute-id="_1470703055429124" visibile="true" name="utilisateur" id="_147070305521745">
+                <join-column name="utilisateur" referenced-column="_1470703055423109"/>
+            </many-to-one>
+            <jpa:id attribute-type="Integer" visibile="true" name="idAutreProbl" id="_147070305521640">
+                <jpa:column name="idAutreProbl"/>
+                <jpa:generated-value strategy="IDENTITY"/>
+                <jpa:sequence-generator name="idAutreProbl"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq name="AutresProblemes.findAll">
+            <jpa:query>SELECT a FROM AutresProblemes a</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="AutresProblemes.findByIdAutreProbl">
+            <jpa:query>SELECT a FROM AutresProblemes a WHERE a.idAutreProbl = :idAutreProbl</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="AutresProblemes.findByDateAutreProbl">
+            <jpa:query>SELECT a FROM AutresProblemes a WHERE a.dateAutreProbl = :dateAutreProbl</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="AutresProblemes.findByProbleme">
+            <jpa:query>SELECT a FROM AutresProblemes a WHERE a.probleme = :probleme</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="AutresProblemes.findByObservationTraitement">
+            <jpa:query>SELECT a FROM AutresProblemes a WHERE a.observationTraitement = :observationTraitement</jpa:query>
+        </jpa:nq>
+        <jpa:table name="autres_problemes"/>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyClass="ConsultationPK" sm="false" abs="false" class="Consultation" visibile="true" minimized="false" rootElement="_14707030550741" id="_147070305527146">
+        <annotation n="@javax.xml.bind.annotation.XmlRootElement"/>
+        <jpa:attributes>
+            <basic attribute-type="java.util.Date" visibile="true" name="date" id="_147070305527148">
+                <jpa:column name="Date"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </basic>
+            <basic optional="false" attribute-type="String" visibile="true" name="ageGrossesse" id="_147070305527149">
+                <an n="@javax.validation.constraints.NotNull"/>
+                <an n="@javax.validation.constraints.Size(min=1, max=20)"/>
+                <jpa:column name="Age_Grossesse"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="conjonctivehb" id="_147070305527150">
+                <an n="@javax.validation.constraints.Size(max=20)"/>
+                <jpa:column name="Conjonctive_hb"/>
+            </basic>
+            <basic attribute-type="Integer" visibile="true" name="hauteurUterine" id="_147070305527251">
+                <jpa:column name="hauteur_uterine"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="surfaceuterine" id="_147070305527252">
+                <an n="@javax.validation.constraints.Size(max=11)"/>
+                <jpa:column name="Surface_uterine"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="mouvementfoetaux" id="_147070305527253">
+                <an n="@javax.validation.constraints.Size(max=8)"/>
+                <jpa:column name="Mouvement_foetaux"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="bruitfoetaux" id="_147070305527254">
+                <an n="@javax.validation.constraints.Size(max=8)"/>
+                <jpa:column name="Bruit_foetaux"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="bcf" id="_147070305527255">
+                <an n="@javax.validation.constraints.Size(max=8)"/>
+                <jpa:column name="BCF"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="presentation" id="_147070305527256">
+                <an n="@javax.validation.constraints.Size(max=13)"/>
+                <jpa:column name="Presentation"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="pertesliquidiènnes" id="_147070305527257">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="Pertes_liquidiènnes"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="oedemes" id="_147070305527258">
+                <an n="@javax.validation.constraints.Size(max=8)"/>
+                <jpa:column name="Oedemes"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="albuminure" id="_147070305527259">
+                <an n="@javax.validation.constraints.Size(max=8)"/>
+                <jpa:column name="Albuminure"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="glycosurie" id="_147070305527260">
+                <an n="@javax.validation.constraints.Size(max=8)"/>
+                <jpa:column name="Glycosurie"/>
+            </basic>
+            <basic attribute-type="Integer" visibile="true" name="ta1" id="_147070305527261">
+                <jpa:column name="TA1"/>
+            </basic>
+            <basic attribute-type="Integer" visibile="true" name="ta2" id="_147070305527262">
+                <jpa:column name="TA2"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="mictalgie" id="_147070305527263">
+                <an n="@javax.validation.constraints.Size(max=8)"/>
+                <jpa:column name="Mictalgie"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="contraction" id="_147070305527264">
+                <an n="@javax.validation.constraints.Size(max=8)"/>
+                <jpa:column name="Contraction"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="bassinPromonitoire" id="_147070305527365">
+                <an n="@javax.validation.constraints.Size(max=14)"/>
+                <jpa:column name="Bassin_Promonitoire"/>
+            </basic>
+            <basic attribute-type="Integer" visibile="true" name="poids" id="_147070305527366">
+                <jpa:column name="Poids"/>
+            </basic>
+            <basic attribute-type="Integer" visibile="true" name="taille" id="_147070305527367">
+                <jpa:column name="Taille"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="femmeARisque" id="_147070305527368">
+                <an n="@javax.validation.constraints.Size(max=8)"/>
+                <jpa:column name="Femme_A_Risque"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="decisioncentresante" id="_147070305527369">
+                <an n="@javax.validation.constraints.Size(max=44)"/>
+                <jpa:column name="Decision_centre_sante"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="raison" id="_147070305527370">
+                <an n="@javax.validation.constraints.Size(max=450)"/>
+                <jpa:column name="Raison"/>
+            </basic>
+            <many-to-one optional="false" connected-entity-id="_1470703055506141" connected-attribute-id="_1470703055513170" visibile="true" name="numDossier" id="_147070305528272">
+                <join-column name="NumDossier" referenced-column="_1470703055506142"/>
+            </many-to-one>
+            <many-to-one optional="false" connected-entity-id="_1470703055423108" connected-attribute-id="_1470703055429129" visibile="true" name="utilisateur" id="_147070305528273">
+                <join-column name="utilisateur" referenced-column="_1470703055423109"/>
+            </many-to-one>
+            <one-to-many own="false" collection-type="java.util.Collection" connected-entity-id="_14707030551112" connected-attribute-id="_147070305511518" visibile="true" name="mesuresPreventivesCollection" id="_147070305527371">
+                <cascade>
+                    <jpa:cascade-all/>
+                </cascade>
+            </one-to-many>
+            <jpa:id attribute-type="Integer" visibile="true" name="idRDV" id="_147070305527147">
+                <jpa:column name="idRDV"/>
+                <jpa:generated-value strategy="IDENTITY"/>
+                <jpa:sequence-generator name="idRDV"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq name="Consultation.findAll">
+            <jpa:query>SELECT c FROM Consultation c</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Consultation.findByIdRDV">
+            <jpa:query>SELECT c FROM Consultation c WHERE c.idRDV = :idRDV</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Consultation.findByDate">
+            <jpa:query>SELECT c FROM Consultation c WHERE c.date = :date</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Consultation.findByAgeGrossesse">
+            <jpa:query>SELECT c FROM Consultation c WHERE c.ageGrossesse = :ageGrossesse</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Consultation.findByConjonctivehb">
+            <jpa:query>SELECT c FROM Consultation c WHERE c.conjonctivehb = :conjonctivehb</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Consultation.findByHauteurUterine">
+            <jpa:query>SELECT c FROM Consultation c WHERE c.hauteurUterine = :hauteurUterine</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Consultation.findBySurfaceuterine">
+            <jpa:query>SELECT c FROM Consultation c WHERE c.surfaceuterine = :surfaceuterine</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Consultation.findByMouvementfoetaux">
+            <jpa:query>SELECT c FROM Consultation c WHERE c.mouvementfoetaux = :mouvementfoetaux</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Consultation.findByBruitfoetaux">
+            <jpa:query>SELECT c FROM Consultation c WHERE c.bruitfoetaux = :bruitfoetaux</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Consultation.findByBcf">
+            <jpa:query>SELECT c FROM Consultation c WHERE c.bcf = :bcf</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Consultation.findByPresentation">
+            <jpa:query>SELECT c FROM Consultation c WHERE c.presentation = :presentation</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Consultation.findByPertesliquidiènnes">
+            <jpa:query>SELECT c FROM Consultation c WHERE c.pertesliquidiènnes = :pertesliquidiènnes</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Consultation.findByOedemes">
+            <jpa:query>SELECT c FROM Consultation c WHERE c.oedemes = :oedemes</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Consultation.findByAlbuminure">
+            <jpa:query>SELECT c FROM Consultation c WHERE c.albuminure = :albuminure</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Consultation.findByGlycosurie">
+            <jpa:query>SELECT c FROM Consultation c WHERE c.glycosurie = :glycosurie</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Consultation.findByTa1">
+            <jpa:query>SELECT c FROM Consultation c WHERE c.ta1 = :ta1</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Consultation.findByTa2">
+            <jpa:query>SELECT c FROM Consultation c WHERE c.ta2 = :ta2</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Consultation.findByMictalgie">
+            <jpa:query>SELECT c FROM Consultation c WHERE c.mictalgie = :mictalgie</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Consultation.findByContraction">
+            <jpa:query>SELECT c FROM Consultation c WHERE c.contraction = :contraction</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Consultation.findByBassinPromonitoire">
+            <jpa:query>SELECT c FROM Consultation c WHERE c.bassinPromonitoire = :bassinPromonitoire</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Consultation.findByPoids">
+            <jpa:query>SELECT c FROM Consultation c WHERE c.poids = :poids</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Consultation.findByTaille">
+            <jpa:query>SELECT c FROM Consultation c WHERE c.taille = :taille</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Consultation.findByFemmeARisque">
+            <jpa:query>SELECT c FROM Consultation c WHERE c.femmeARisque = :femmeARisque</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Consultation.findByDecisioncentresante">
+            <jpa:query>SELECT c FROM Consultation c WHERE c.decisioncentresante = :decisioncentresante</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Consultation.findByRaison">
+            <jpa:query>SELECT c FROM Consultation c WHERE c.raison = :raison</jpa:query>
+        </jpa:nq>
+        <jpa:table name="consultation"/>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyClass="InfosAccouchementPK" sm="false" abs="false" class="InfosAccouchement" visibile="true" minimized="false" rootElement="_14707030550741" id="_147070305538874">
+        <annotation n="@javax.xml.bind.annotation.XmlRootElement"/>
+        <jpa:attributes>
+            <basic attribute-type="java.util.Date" visibile="true" name="dateaccouchement" id="_147070305538876">
+                <jpa:column name="Date_accouchement"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </basic>
+            <basic attribute-type="java.util.Date" visibile="true" name="datesortie" id="_147070305538877">
+                <jpa:column name="Date_sortie"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="accoucheuse" id="_147070305538878">
+                <an n="@javax.validation.constraints.Size(max=30)"/>
+                <jpa:column name="Accoucheuse"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="etatMere" id="_147070305538879">
+                <an n="@javax.validation.constraints.Size(max=8)"/>
+                <jpa:column name="EtatMere"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="decesmaternelPostTravail" id="_147070305538880">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="Deces_maternel_PostTravail"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="decesMaternelApresIntervention" id="_147070305538881">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="Deces_Maternel_ApresIntervention"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="modeaccouchement" id="_147070305538982">
+                <an n="@javax.validation.constraints.Size(max=10)"/>
+                <jpa:column name="Mode_accouchement"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="eutocique" id="_147070305538983">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="Eutocique"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="dystocique" id="_147070305538984">
+                <an n="@javax.validation.constraints.Size(max=11)"/>
+                <jpa:column name="Dystocique"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="ha" id="_147070305538985">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="HA"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="trans" id="_147070305538986">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="Trans"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="infection" id="_147070305538987">
+                <an n="@javax.validation.constraints.Size(max=26)"/>
+                <jpa:column name="Infection"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="indication" id="_147070305538988">
+                <an n="@javax.validation.constraints.Size(max=149)"/>
+                <jpa:column name="Indication"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="etatEnfant" id="_147070305538989">
+                <an n="@javax.validation.constraints.Size(max=14)"/>
+                <jpa:column name="Etat_Enfant"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="vivant" id="_147070305538990">
+                <an n="@javax.validation.constraints.Size(max=11)"/>
+                <jpa:column name="Vivant"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="mortne" id="_147070305538991">
+                <an n="@javax.validation.constraints.Size(max=10)"/>
+                <jpa:column name="Mort_ne"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="poids" id="_147070305538992">
+                <an n="@javax.validation.constraints.Size(max=20)"/>
+                <jpa:column name="Poids"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="sexe" id="_147070305538993">
+                <an n="@javax.validation.constraints.Size(max=9)"/>
+                <jpa:column name="Sexe"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="presentation" id="_147070305538994">
+                <an n="@javax.validation.constraints.Size(max=11)"/>
+                <jpa:column name="Presentation"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="particulariteEnfant" id="_147070305538995">
+                <an n="@javax.validation.constraints.Size(max=94)"/>
+                <jpa:column name="Particularite_Enfant"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="observation" id="_147070305539096">
+                <an n="@javax.validation.constraints.Size(max=150)"/>
+                <jpa:column name="Observation"/>
+            </basic>
+            <basic optional="false" attribute-type="String" visibile="true" name="accouchementVIHPositif" id="_147070305539097">
+                <an n="@javax.validation.constraints.NotNull"/>
+                <an n="@javax.validation.constraints.Size(min=1, max=4)"/>
+                <jpa:column name="Accouchement_VIH_Positif"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="tritherapiePourVIH" id="_147070305539098">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="Tritherapie_Pour_VIH"/>
+            </basic>
+            <basic optional="false" attribute-type="String" visibile="true" name="enfantVIHPositif" id="_147070305539099">
+                <an n="@javax.validation.constraints.NotNull"/>
+                <an n="@javax.validation.constraints.Size(min=1, max=4)"/>
+                <jpa:column name="Enfant_VIH_Positif"/>
+            </basic>
+            <basic optional="false" attribute-type="String" visibile="true" name="tritherapieEnfantVIHPositif" id="_1470703055390100">
+                <an n="@javax.validation.constraints.NotNull"/>
+                <an n="@javax.validation.constraints.Size(min=1, max=4)"/>
+                <jpa:column name="Tritherapie_Enfant_VIH_Positif"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="cPoN18emeJour" id="_1470703055390101">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="CPoN1_8emeJour"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="cPoN242emeJour" id="_1470703055390102">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="CPoN2_42emeJour"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="recuVitamineA" id="_1470703055390103">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="Recu_VitamineA"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="recuFerAcideFollique" id="_1470703055390104">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="Recu_Fer_AcideFollique"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="complicationApresAcc" id="_1470703055390105">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="Complication_Apres_Acc"/>
+            </basic>
+            <many-to-one optional="false" connected-entity-id="_1470703055506141" connected-attribute-id="_1470703055512161" visibile="true" name="numDossier" id="_1470703055390106">
+                <join-column name="NumDossier" referenced-column="_1470703055506142"/>
+            </many-to-one>
+            <many-to-one optional="false" connected-entity-id="_1470703055423108" connected-attribute-id="_1470703055429119" visibile="true" name="utilisateur" id="_1470703055391107">
+                <join-column name="utilisateur" referenced-column="_1470703055423109"/>
+            </many-to-one>
+            <jpa:id attribute-type="Integer" visibile="true" name="idInfoAcc" id="_147070305538875">
+                <jpa:column name="idInfoAcc"/>
+                <jpa:generated-value strategy="IDENTITY"/>
+                <jpa:sequence-generator name="idInfoAcc"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq name="InfosAccouchement.findAll">
+            <jpa:query>SELECT i FROM InfosAccouchement i</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosAccouchement.findByIdInfoAcc">
+            <jpa:query>SELECT i FROM InfosAccouchement i WHERE i.idInfoAcc = :idInfoAcc</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosAccouchement.findByDateaccouchement">
+            <jpa:query>SELECT i FROM InfosAccouchement i WHERE i.dateaccouchement = :dateaccouchement</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosAccouchement.findByDatesortie">
+            <jpa:query>SELECT i FROM InfosAccouchement i WHERE i.datesortie = :datesortie</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosAccouchement.findByAccoucheuse">
+            <jpa:query>SELECT i FROM InfosAccouchement i WHERE i.accoucheuse = :accoucheuse</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosAccouchement.findByEtatMere">
+            <jpa:query>SELECT i FROM InfosAccouchement i WHERE i.etatMere = :etatMere</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosAccouchement.findByDecesmaternelPostTravail">
+            <jpa:query>SELECT i FROM InfosAccouchement i WHERE i.decesmaternelPostTravail = :decesmaternelPostTravail</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosAccouchement.findByDecesMaternelApresIntervention">
+            <jpa:query>SELECT i FROM InfosAccouchement i WHERE i.decesMaternelApresIntervention = :decesMaternelApresIntervention</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosAccouchement.findByModeaccouchement">
+            <jpa:query>SELECT i FROM InfosAccouchement i WHERE i.modeaccouchement = :modeaccouchement</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosAccouchement.findByEutocique">
+            <jpa:query>SELECT i FROM InfosAccouchement i WHERE i.eutocique = :eutocique</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosAccouchement.findByDystocique">
+            <jpa:query>SELECT i FROM InfosAccouchement i WHERE i.dystocique = :dystocique</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosAccouchement.findByHa">
+            <jpa:query>SELECT i FROM InfosAccouchement i WHERE i.ha = :ha</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosAccouchement.findByTrans">
+            <jpa:query>SELECT i FROM InfosAccouchement i WHERE i.trans = :trans</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosAccouchement.findByInfection">
+            <jpa:query>SELECT i FROM InfosAccouchement i WHERE i.infection = :infection</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosAccouchement.findByIndication">
+            <jpa:query>SELECT i FROM InfosAccouchement i WHERE i.indication = :indication</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosAccouchement.findByEtatEnfant">
+            <jpa:query>SELECT i FROM InfosAccouchement i WHERE i.etatEnfant = :etatEnfant</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosAccouchement.findByVivant">
+            <jpa:query>SELECT i FROM InfosAccouchement i WHERE i.vivant = :vivant</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosAccouchement.findByMortne">
+            <jpa:query>SELECT i FROM InfosAccouchement i WHERE i.mortne = :mortne</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosAccouchement.findByPoids">
+            <jpa:query>SELECT i FROM InfosAccouchement i WHERE i.poids = :poids</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosAccouchement.findBySexe">
+            <jpa:query>SELECT i FROM InfosAccouchement i WHERE i.sexe = :sexe</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosAccouchement.findByPresentation">
+            <jpa:query>SELECT i FROM InfosAccouchement i WHERE i.presentation = :presentation</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosAccouchement.findByParticulariteEnfant">
+            <jpa:query>SELECT i FROM InfosAccouchement i WHERE i.particulariteEnfant = :particulariteEnfant</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosAccouchement.findByObservation">
+            <jpa:query>SELECT i FROM InfosAccouchement i WHERE i.observation = :observation</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosAccouchement.findByAccouchementVIHPositif">
+            <jpa:query>SELECT i FROM InfosAccouchement i WHERE i.accouchementVIHPositif = :accouchementVIHPositif</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosAccouchement.findByTritherapiePourVIH">
+            <jpa:query>SELECT i FROM InfosAccouchement i WHERE i.tritherapiePourVIH = :tritherapiePourVIH</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosAccouchement.findByEnfantVIHPositif">
+            <jpa:query>SELECT i FROM InfosAccouchement i WHERE i.enfantVIHPositif = :enfantVIHPositif</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosAccouchement.findByTritherapieEnfantVIHPositif">
+            <jpa:query>SELECT i FROM InfosAccouchement i WHERE i.tritherapieEnfantVIHPositif = :tritherapieEnfantVIHPositif</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosAccouchement.findByCPoN18emeJour">
+            <jpa:query>SELECT i FROM InfosAccouchement i WHERE i.cPoN18emeJour = :cPoN18emeJour</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosAccouchement.findByCPoN242emeJour">
+            <jpa:query>SELECT i FROM InfosAccouchement i WHERE i.cPoN242emeJour = :cPoN242emeJour</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosAccouchement.findByRecuVitamineA">
+            <jpa:query>SELECT i FROM InfosAccouchement i WHERE i.recuVitamineA = :recuVitamineA</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosAccouchement.findByRecuFerAcideFollique">
+            <jpa:query>SELECT i FROM InfosAccouchement i WHERE i.recuFerAcideFollique = :recuFerAcideFollique</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosAccouchement.findByComplicationApresAcc">
+            <jpa:query>SELECT i FROM InfosAccouchement i WHERE i.complicationApresAcc = :complicationApresAcc</jpa:query>
+        </jpa:nq>
+        <jpa:table name="infos_accouchement"/>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyClass="UsersPK" sm="false" abs="false" class="Users" visibile="true" minimized="false" rootElement="_14707030550741" id="_1470703055423108">
+        <annotation n="@javax.xml.bind.annotation.XmlRootElement"/>
+        <jpa:attributes>
+            <basic optional="false" attribute-type="String" visibile="true" name="password" id="_1470703055423110">
+                <an n="@javax.validation.constraints.NotNull"/>
+                <an n="@javax.validation.constraints.Size(min=1, max=60)"/>
+                <jpa:column name="password"/>
+            </basic>
+            <basic optional="false" attribute-type="String" visibile="true" name="nom" id="_1470703055423111">
+                <an n="@javax.validation.constraints.NotNull"/>
+                <an n="@javax.validation.constraints.Size(min=1, max=30)"/>
+                <jpa:column name="nom"/>
+            </basic>
+            <basic optional="false" attribute-type="String" visibile="true" name="postNom" id="_1470703055424112">
+                <an n="@javax.validation.constraints.NotNull"/>
+                <an n="@javax.validation.constraints.Size(min=1, max=30)"/>
+                <jpa:column name="post_nom"/>
+            </basic>
+            <basic optional="false" attribute-type="String" visibile="true" name="prenom" id="_1470703055424113">
+                <an n="@javax.validation.constraints.NotNull"/>
+                <an n="@javax.validation.constraints.Size(min=1, max=20)"/>
+                <jpa:column name="prenom"/>
+            </basic>
+            <basic optional="false" attribute-type="String" visibile="true" name="role" id="_1470703055424114">
+                <an n="@javax.validation.constraints.NotNull"/>
+                <an n="@javax.validation.constraints.Size(min=1, max=8)"/>
+                <jpa:column name="role"/>
+            </basic>
+            <one-to-many own="false" collection-type="java.util.Collection" connected-entity-id="_1470703055712263" connected-attribute-id="_1470703055712275" visibile="true" name="planficationFamilialeCollection" id="_1470703055424115">
+                <cascade>
+                    <jpa:cascade-all/>
+                </cascade>
+            </one-to-many>
+            <one-to-many own="false" collection-type="java.util.Collection" connected-entity-id="_14707030551112" connected-attribute-id="_147070305511517" visibile="true" name="mesuresPreventivesCollection" id="_1470703055429116">
+                <cascade>
+                    <jpa:cascade-all/>
+                </cascade>
+            </one-to-many>
+            <one-to-many own="false" collection-type="java.util.Collection" connected-entity-id="_1470703055687235" connected-attribute-id="_1470703055689262" visibile="true" name="donneesObjectivesCollection" id="_1470703055429117">
+                <cascade>
+                    <jpa:cascade-all/>
+                </cascade>
+            </one-to-many>
+            <one-to-many own="false" collection-type="java.util.Collection" connected-entity-id="_1470703055601204" connected-attribute-id="_1470703055602216" visibile="true" name="grossesseCollection" id="_1470703055429118">
+                <cascade>
+                    <jpa:cascade-all/>
+                </cascade>
+            </one-to-many>
+            <one-to-many own="false" collection-type="java.util.Collection" connected-entity-id="_147070305538874" connected-attribute-id="_1470703055391107" visibile="true" name="infosAccouchementCollection" id="_1470703055429119">
+                <cascade>
+                    <jpa:cascade-all/>
+                </cascade>
+            </one-to-many>
+            <one-to-many own="false" collection-type="java.util.Collection" connected-entity-id="_1470703055660225" connected-attribute-id="_1470703055660233" visibile="true" name="dcipCollection" id="_1470703055429120">
+                <cascade>
+                    <jpa:cascade-all/>
+                </cascade>
+            </one-to-many>
+            <one-to-many own="false" collection-type="java.util.Collection" connected-entity-id="_1470703055572177" connected-attribute-id="_1470703055574203" visibile="true" name="antecedentCpnCollection" id="_1470703055429121">
+                <cascade>
+                    <jpa:cascade-all/>
+                </cascade>
+            </one-to-many>
+            <one-to-many own="false" collection-type="java.util.Collection" connected-entity-id="_1470703055748277" connected-attribute-id="_1470703055748283" visibile="true" name="hospitalisationCollection" id="_1470703055429122">
+                <cascade>
+                    <jpa:cascade-all/>
+                </cascade>
+            </one-to-many>
+            <one-to-many own="false" collection-type="java.util.Collection" connected-entity-id="_1470703055470130" connected-attribute-id="_1470703055471140" visibile="true" name="reglesCollection" id="_1470703055429123">
+                <cascade>
+                    <jpa:cascade-all/>
+                </cascade>
+            </one-to-many>
+            <one-to-many own="false" collection-type="java.util.Collection" connected-entity-id="_147070305521639" connected-attribute-id="_147070305521745" visibile="true" name="autresProblemesCollection" id="_1470703055429124">
+                <cascade>
+                    <jpa:cascade-all/>
+                </cascade>
+            </one-to-many>
+            <one-to-many own="false" collection-type="java.util.Collection" connected-entity-id="_147070305517725" connected-attribute-id="_147070305517738" visibile="true" name="examenLaboCollection" id="_1470703055429125">
+                <cascade>
+                    <jpa:cascade-all/>
+                </cascade>
+            </one-to-many>
+            <one-to-many own="false" collection-type="java.util.Collection" connected-entity-id="_1470703055506141" connected-attribute-id="_1470703055513168" visibile="true" name="infosFemmeCollection" id="_1470703055429126">
+                <cascade>
+                    <jpa:cascade-all/>
+                </cascade>
+            </one-to-many>
+            <one-to-many own="false" collection-type="java.util.Collection" connected-entity-id="_1470703055541171" connected-attribute-id="_1470703055541176" visibile="true" name="motifConsultationCollection" id="_1470703055429127">
+                <cascade>
+                    <jpa:cascade-all/>
+                </cascade>
+            </one-to-many>
+            <one-to-many own="false" collection-type="java.util.Collection" connected-entity-id="_147070305514719" connected-attribute-id="_147070305514824" visibile="true" name="antecedentPlCollection" id="_1470703055429128">
+                <cascade>
+                    <jpa:cascade-all/>
+                </cascade>
+            </one-to-many>
+            <one-to-many own="false" collection-type="java.util.Collection" connected-entity-id="_147070305527146" connected-attribute-id="_147070305528273" visibile="true" name="consultationCollection" id="_1470703055429129">
+                <cascade>
+                    <jpa:cascade-all/>
+                </cascade>
+            </one-to-many>
+            <jpa:id attribute-type="String" visibile="true" name="uname" id="_1470703055423109">
+                <an n="@javax.validation.constraints.NotNull"/>
+                <an n="@javax.validation.constraints.Size(min=1, max=60)"/>
+                <jpa:column name="uname"/>
+                <jpa:sequence-generator name="uname"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq name="Users.findAll">
+            <jpa:query>SELECT u FROM Users u</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Users.findByUname">
+            <jpa:query>SELECT u FROM Users u WHERE u.uname = :uname</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Users.findByPassword">
+            <jpa:query>SELECT u FROM Users u WHERE u.password = :password</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Users.findByNom">
+            <jpa:query>SELECT u FROM Users u WHERE u.nom = :nom</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Users.findByPostNom">
+            <jpa:query>SELECT u FROM Users u WHERE u.postNom = :postNom</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Users.findByPrenom">
+            <jpa:query>SELECT u FROM Users u WHERE u.prenom = :prenom</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Users.findByRole">
+            <jpa:query>SELECT u FROM Users u WHERE u.role = :role</jpa:query>
+        </jpa:nq>
+        <jpa:table name="users"/>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyClass="ReglesPK" sm="false" abs="false" class="Regles" visibile="true" minimized="false" rootElement="_14707030550741" id="_1470703055470130">
+        <annotation n="@javax.xml.bind.annotation.XmlRootElement"/>
+        <jpa:attributes>
+            <basic attribute-type="Integer" visibile="true" name="ageMenarche" id="_1470703055470132">
+                <jpa:column name="Age_Menarche"/>
+            </basic>
+            <basic attribute-type="java.util.Date" visibile="true" name="ddr" id="_1470703055470133">
+                <jpa:column name="DDR"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </basic>
+            <basic attribute-type="Integer" visibile="true" name="dureeRegle" id="_1470703055470134">
+                <jpa:column name="Duree_Regle"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="fluxMenstruel" id="_1470703055470135">
+                <an n="@javax.validation.constraints.Size(max=13)"/>
+                <jpa:column name="Flux_Menstruel"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="regularite" id="_1470703055470136">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="Regularite"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="dysmenorhee" id="_1470703055471137">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="Dysmenorhee"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="amenorheedepuisaccouchement" id="_1470703055471138">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="Amenorhee_depuis_accouchement"/>
+            </basic>
+            <many-to-one optional="false" connected-entity-id="_1470703055506141" connected-attribute-id="_1470703055513165" visibile="true" name="numDossier" id="_1470703055471139">
+                <join-column name="NumDossier" referenced-column="_1470703055506142"/>
+            </many-to-one>
+            <many-to-one optional="false" connected-entity-id="_1470703055423108" connected-attribute-id="_1470703055429123" visibile="true" name="utilisateur" id="_1470703055471140">
+                <join-column name="utilisateur" referenced-column="_1470703055423109"/>
+            </many-to-one>
+            <jpa:id attribute-type="Integer" visibile="true" name="idRegle" id="_1470703055470131">
+                <jpa:column name="idRegle"/>
+                <jpa:generated-value strategy="IDENTITY"/>
+                <jpa:sequence-generator name="idRegle"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq name="Regles.findAll">
+            <jpa:query>SELECT r FROM Regles r</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Regles.findByIdRegle">
+            <jpa:query>SELECT r FROM Regles r WHERE r.idRegle = :idRegle</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Regles.findByAgeMenarche">
+            <jpa:query>SELECT r FROM Regles r WHERE r.ageMenarche = :ageMenarche</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Regles.findByDdr">
+            <jpa:query>SELECT r FROM Regles r WHERE r.ddr = :ddr</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Regles.findByDureeRegle">
+            <jpa:query>SELECT r FROM Regles r WHERE r.dureeRegle = :dureeRegle</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Regles.findByFluxMenstruel">
+            <jpa:query>SELECT r FROM Regles r WHERE r.fluxMenstruel = :fluxMenstruel</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Regles.findByRegularite">
+            <jpa:query>SELECT r FROM Regles r WHERE r.regularite = :regularite</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Regles.findByDysmenorhee">
+            <jpa:query>SELECT r FROM Regles r WHERE r.dysmenorhee = :dysmenorhee</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Regles.findByAmenorheedepuisaccouchement">
+            <jpa:query>SELECT r FROM Regles r WHERE r.amenorheedepuisaccouchement = :amenorheedepuisaccouchement</jpa:query>
+        </jpa:nq>
+        <jpa:table name="regles"/>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyClass="InfosFemmePK" sm="false" abs="false" class="InfosFemme" visibile="true" minimized="false" rootElement="_14707030550741" id="_1470703055506141">
+        <annotation n="@javax.xml.bind.annotation.XmlRootElement"/>
+        <jpa:attributes>
+            <basic attribute-type="String" visibile="true" name="nom" id="_1470703055506143">
+                <an n="@javax.validation.constraints.Size(max=30)"/>
+                <jpa:column name="nom"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="postNom" id="_1470703055506144">
+                <an n="@javax.validation.constraints.Size(max=30)"/>
+                <jpa:column name="Post_Nom"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="prenom" id="_1470703055506145">
+                <an n="@javax.validation.constraints.Size(max=30)"/>
+                <jpa:column name="Prenom"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="profession" id="_1470703055507146">
+                <an n="@javax.validation.constraints.Size(max=30)"/>
+                <jpa:column name="Profession"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="professioConjoint" id="_1470703055507147">
+                <an n="@javax.validation.constraints.Size(max=30)"/>
+                <jpa:column name="Professio_Conjoint"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="zoneSante" id="_1470703055507148">
+                <an n="@javax.validation.constraints.Size(max=30)"/>
+                <jpa:column name="Zone_Sante"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="aireSante" id="_1470703055507149">
+                <an n="@javax.validation.constraints.Size(max=30)"/>
+                <jpa:column name="Aire_Sante"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="province" id="_1470703055507150">
+                <an n="@javax.validation.constraints.Size(max=30)"/>
+                <jpa:column name="Province"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="district" id="_1470703055507151">
+                <an n="@javax.validation.constraints.Size(max=30)"/>
+                <jpa:column name="District"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="adresseCPN" id="_1470703055507152">
+                <an n="@javax.validation.constraints.Size(max=30)"/>
+                <jpa:column name="AdresseCPN"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="telephone" id="_1470703055507153">
+                <an n="@javax.validation.constraints.Size(max=50)"/>
+                <jpa:column name="Telephone"/>
+            </basic>
+            <basic attribute-type="Integer" visibile="true" name="age" id="_1470703055507154">
+                <jpa:column name="age"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="provenance" id="_1470703055507155">
+                <an n="@javax.validation.constraints.Size(max=3)"/>
+                <jpa:column name="Provenance"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="etatCivil" id="_1470703055507156">
+                <an n="@javax.validation.constraints.Size(max=11)"/>
+                <jpa:column name="Etat_Civil"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="niveauEtude" id="_1470703055507157">
+                <an n="@javax.validation.constraints.Size(max=10)"/>
+                <jpa:column name="Niveau_Etude"/>
+            </basic>
+            <many-to-one optional="false" connected-entity-id="_1470703055423108" connected-attribute-id="_1470703055429126" visibile="true" name="utilisateur" id="_1470703055513168">
+                <join-column name="utilisateur" referenced-column="_1470703055423109"/>
+            </many-to-one>
+            <one-to-many own="false" collection-type="java.util.Collection" connected-entity-id="_1470703055712263" connected-attribute-id="_1470703055712274" visibile="true" name="planficationFamilialeCollection" id="_1470703055508158">
+                <cascade>
+                    <jpa:cascade-all/>
+                </cascade>
+            </one-to-many>
+            <one-to-many own="false" collection-type="java.util.Collection" connected-entity-id="_1470703055687235" connected-attribute-id="_1470703055689261" visibile="true" name="donneesObjectivesCollection" id="_1470703055512159"/>
+            <one-to-many own="false" collection-type="java.util.Collection" connected-entity-id="_1470703055601204" connected-attribute-id="_1470703055602215" visibile="true" name="grossesseCollection" id="_1470703055512160">
+                <cascade>
+                    <jpa:cascade-all/>
+                </cascade>
+            </one-to-many>
+            <one-to-many own="false" collection-type="java.util.Collection" connected-entity-id="_147070305538874" connected-attribute-id="_1470703055390106" visibile="true" name="infosAccouchementCollection" id="_1470703055512161">
+                <cascade>
+                    <jpa:cascade-all/>
+                </cascade>
+            </one-to-many>
+            <one-to-many own="false" collection-type="java.util.Collection" connected-entity-id="_1470703055660225" connected-attribute-id="_1470703055660234" visibile="true" name="dcipCollection" id="_1470703055513162">
+                <cascade>
+                    <jpa:cascade-all/>
+                </cascade>
+            </one-to-many>
+            <one-to-many own="false" collection-type="java.util.Collection" connected-entity-id="_1470703055572177" connected-attribute-id="_1470703055574202" visibile="true" name="antecedentCpnCollection" id="_1470703055513163"/>
+            <one-to-many own="false" collection-type="java.util.Collection" connected-entity-id="_1470703055748277" connected-attribute-id="_1470703055748282" visibile="true" name="hospitalisationCollection" id="_1470703055513164">
+                <cascade>
+                    <jpa:cascade-all/>
+                </cascade>
+            </one-to-many>
+            <one-to-many own="false" collection-type="java.util.Collection" connected-entity-id="_1470703055470130" connected-attribute-id="_1470703055471139" visibile="true" name="reglesCollection" id="_1470703055513165">
+                <cascade>
+                    <jpa:cascade-all/>
+                </cascade>
+            </one-to-many>
+            <one-to-many own="false" collection-type="java.util.Collection" connected-entity-id="_147070305521639" connected-attribute-id="_147070305521744" visibile="true" name="autresProblemesCollection" id="_1470703055513166"/>
+            <one-to-many own="false" collection-type="java.util.Collection" connected-entity-id="_147070305517725" connected-attribute-id="_147070305517737" visibile="true" name="examenLaboCollection" id="_1470703055513167">
+                <cascade>
+                    <jpa:cascade-all/>
+                </cascade>
+            </one-to-many>
+            <one-to-many own="false" collection-type="java.util.Collection" connected-entity-id="_147070305514719" connected-attribute-id="_147070305514823" visibile="true" name="antecedentPlCollection" id="_1470703055513169">
+                <cascade>
+                    <jpa:cascade-all/>
+                </cascade>
+            </one-to-many>
+            <one-to-many own="false" collection-type="java.util.Collection" connected-entity-id="_147070305527146" connected-attribute-id="_147070305528272" visibile="true" name="consultationCollection" id="_1470703055513170">
+                <cascade>
+                    <jpa:cascade-all/>
+                </cascade>
+            </one-to-many>
+            <jpa:id attribute-type="String" visibile="true" name="numDossier" id="_1470703055506142">
+                <an n="@javax.validation.constraints.NotNull"/>
+                <an n="@javax.validation.constraints.Size(min=1, max=15)"/>
+                <jpa:column name="NumDossier"/>
+                <jpa:sequence-generator name="NumDossier"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq name="InfosFemme.findAll">
+            <jpa:query>SELECT i FROM InfosFemme i</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosFemme.findByNumDossier">
+            <jpa:query>SELECT i FROM InfosFemme i WHERE i.numDossier = :numDossier</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosFemme.findByNom">
+            <jpa:query>SELECT i FROM InfosFemme i WHERE i.nom = :nom</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosFemme.findByPostNom">
+            <jpa:query>SELECT i FROM InfosFemme i WHERE i.postNom = :postNom</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosFemme.findByPrenom">
+            <jpa:query>SELECT i FROM InfosFemme i WHERE i.prenom = :prenom</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosFemme.findByProfession">
+            <jpa:query>SELECT i FROM InfosFemme i WHERE i.profession = :profession</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosFemme.findByProfessioConjoint">
+            <jpa:query>SELECT i FROM InfosFemme i WHERE i.professioConjoint = :professioConjoint</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosFemme.findByZoneSante">
+            <jpa:query>SELECT i FROM InfosFemme i WHERE i.zoneSante = :zoneSante</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosFemme.findByAireSante">
+            <jpa:query>SELECT i FROM InfosFemme i WHERE i.aireSante = :aireSante</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosFemme.findByProvince">
+            <jpa:query>SELECT i FROM InfosFemme i WHERE i.province = :province</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosFemme.findByDistrict">
+            <jpa:query>SELECT i FROM InfosFemme i WHERE i.district = :district</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosFemme.findByAdresseCPN">
+            <jpa:query>SELECT i FROM InfosFemme i WHERE i.adresseCPN = :adresseCPN</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosFemme.findByTelephone">
+            <jpa:query>SELECT i FROM InfosFemme i WHERE i.telephone = :telephone</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosFemme.findByAge">
+            <jpa:query>SELECT i FROM InfosFemme i WHERE i.age = :age</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosFemme.findByProvenance">
+            <jpa:query>SELECT i FROM InfosFemme i WHERE i.provenance = :provenance</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosFemme.findByEtatCivil">
+            <jpa:query>SELECT i FROM InfosFemme i WHERE i.etatCivil = :etatCivil</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="InfosFemme.findByNiveauEtude">
+            <jpa:query>SELECT i FROM InfosFemme i WHERE i.niveauEtude = :niveauEtude</jpa:query>
+        </jpa:nq>
+        <jpa:table name="infos_femme"/>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyClass="MotifConsultationPK" sm="false" abs="false" class="MotifConsultation" visibile="true" minimized="false" rootElement="_14707030550741" id="_1470703055541171">
+        <annotation n="@javax.xml.bind.annotation.XmlRootElement"/>
+        <jpa:attributes>
+            <basic attribute-type="String" visibile="true" name="motif" id="_1470703055541173">
+                <an n="@javax.validation.constraints.Size(max=31)"/>
+                <jpa:column name="Motif"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="autreprecision" id="_1470703055541174">
+                <an n="@javax.validation.constraints.Size(max=35)"/>
+                <jpa:column name="Autre_precision"/>
+            </basic>
+            <many-to-one optional="false" connected-entity-id="_1470703055712263" connected-attribute-id="_1470703055712276" visibile="true" name="idPF" id="_1470703055541175">
+                <join-column name="idPF" referenced-column="_1470703055712264"/>
+            </many-to-one>
+            <many-to-one optional="false" connected-entity-id="_1470703055423108" connected-attribute-id="_1470703055429127" visibile="true" name="utilisateur" id="_1470703055541176">
+                <join-column name="utilisateur" referenced-column="_1470703055423109"/>
+            </many-to-one>
+            <jpa:id attribute-type="Integer" visibile="true" name="idMotCons" id="_1470703055541172">
+                <jpa:column name="idMotCons"/>
+                <jpa:generated-value strategy="IDENTITY"/>
+                <jpa:sequence-generator name="idMotCons"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq name="MotifConsultation.findAll">
+            <jpa:query>SELECT m FROM MotifConsultation m</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="MotifConsultation.findByIdMotCons">
+            <jpa:query>SELECT m FROM MotifConsultation m WHERE m.idMotCons = :idMotCons</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="MotifConsultation.findByMotif">
+            <jpa:query>SELECT m FROM MotifConsultation m WHERE m.motif = :motif</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="MotifConsultation.findByAutreprecision">
+            <jpa:query>SELECT m FROM MotifConsultation m WHERE m.autreprecision = :autreprecision</jpa:query>
+        </jpa:nq>
+        <jpa:table name="motif_consultation"/>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyClass="AntecedentCpnPK" sm="false" abs="false" class="AntecedentCpn" visibile="true" minimized="false" rootElement="_14707030550741" id="_1470703055572177">
+        <annotation n="@javax.xml.bind.annotation.XmlRootElement"/>
+        <jpa:attributes>
+            <basic attribute-type="java.util.Date" visibile="true" name="ddr" id="_1470703055572179">
+                <jpa:column name="DDR"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </basic>
+            <basic attribute-type="java.util.Date" visibile="true" name="dpa" id="_1470703055573180">
+                <jpa:column name="DPA"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </basic>
+            <basic attribute-type="Integer" visibile="true" name="grossesse" id="_1470703055573181">
+                <jpa:column name="Grossesse"/>
+            </basic>
+            <basic attribute-type="Integer" visibile="true" name="enfantsvie" id="_1470703055573182">
+                <jpa:column name="Enfants_vie"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="avortement1erTrim" id="_1470703055573183">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="Avortement_1er_Trim"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="primipare15ansOuMoin" id="_1470703055573184">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="primipare_15ans_ou_moin"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="primipare30ansOuPlus" id="_1470703055573185">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="primipare_30ans_ou_plus"/>
+            </basic>
+            <basic attribute-type="java.util.Date" visibile="true" name="dernieraccouchementdatede" id="_1470703055573186">
+                <jpa:column name="Dernier_accouchement_date_de"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="type" id="_1470703055573187">
+                <an n="@javax.validation.constraints.Size(max=9)"/>
+                <jpa:column name="type"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="intInf2ans" id="_1470703055573188">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="int_inf_2ans"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="plusgrospoidsnaiss" id="_1470703055573189">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="Plus_gros_poids_naiss"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="plusde4kg" id="_1470703055573190">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="Plus_de_4kg"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="dernierEnfant" id="_1470703055573191">
+                <an n="@javax.validation.constraints.Size(max=18)"/>
+                <jpa:column name="Dernier_Enfant"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="complicationtraitement" id="_1470703055573192">
+                <an n="@javax.validation.constraints.Size(max=50)"/>
+                <jpa:column name="Complication_traitement"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="complicationpostPartum" id="_1470703055573193">
+                <an n="@javax.validation.constraints.Size(max=40)"/>
+                <jpa:column name="Complication_postPartum"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="traitementpoursterilite" id="_1470703055573194">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="Traitement_pour_sterilite"/>
+            </basic>
+            <basic attribute-type="Integer" visibile="true" name="parite" id="_1470703055573195">
+                <jpa:column name="parite"/>
+            </basic>
+            <basic attribute-type="Integer" visibile="true" name="avortement" id="_1470703055573196">
+                <jpa:column name="Avortement"/>
+            </basic>
+            <basic attribute-type="Integer" visibile="true" name="deces" id="_1470703055573197">
+                <jpa:column name="Deces"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="vbg" id="_1470703055573198">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="VBG"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="antecedentChirurgicauxCPN" id="_1470703055573199">
+                <an n="@javax.validation.constraints.Size(max=55)"/>
+                <jpa:column name="AntecedentChirurgicauxCPN"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="antecedentMedicauxCPN" id="_1470703055573200">
+                <an n="@javax.validation.constraints.Size(max=61)"/>
+                <jpa:column name="AntecedentMedicauxCPN"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="grossesseissuduviol" id="_1470703055573201">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="Grossesse_issu_du_viol"/>
+            </basic>
+            <many-to-one connected-entity-id="_1470703055506141" connected-attribute-id="_1470703055513163" visibile="true" name="numDossier" id="_1470703055574202">
+                <join-column name="NumDossier" referenced-column="_1470703055506142"/>
+            </many-to-one>
+            <many-to-one optional="false" connected-entity-id="_1470703055423108" connected-attribute-id="_1470703055429121" visibile="true" name="utilisateur" id="_1470703055574203">
+                <join-column name="utilisateur" referenced-column="_1470703055423109"/>
+            </many-to-one>
+            <jpa:id attribute-type="Integer" visibile="true" name="idAntecObstr" id="_1470703055572178">
+                <jpa:column name="idAntecObstr"/>
+                <jpa:generated-value strategy="IDENTITY"/>
+                <jpa:sequence-generator name="idAntecObstr"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq name="AntecedentCpn.findAll">
+            <jpa:query>SELECT a FROM AntecedentCpn a</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="AntecedentCpn.findByIdAntecObstr">
+            <jpa:query>SELECT a FROM AntecedentCpn a WHERE a.idAntecObstr = :idAntecObstr</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="AntecedentCpn.findByDdr">
+            <jpa:query>SELECT a FROM AntecedentCpn a WHERE a.ddr = :ddr</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="AntecedentCpn.findByDpa">
+            <jpa:query>SELECT a FROM AntecedentCpn a WHERE a.dpa = :dpa</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="AntecedentCpn.findByGrossesse">
+            <jpa:query>SELECT a FROM AntecedentCpn a WHERE a.grossesse = :grossesse</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="AntecedentCpn.findByEnfantsvie">
+            <jpa:query>SELECT a FROM AntecedentCpn a WHERE a.enfantsvie = :enfantsvie</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="AntecedentCpn.findByAvortement1erTrim">
+            <jpa:query>SELECT a FROM AntecedentCpn a WHERE a.avortement1erTrim = :avortement1erTrim</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="AntecedentCpn.findByPrimipare15ansOuMoin">
+            <jpa:query>SELECT a FROM AntecedentCpn a WHERE a.primipare15ansOuMoin = :primipare15ansOuMoin</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="AntecedentCpn.findByPrimipare30ansOuPlus">
+            <jpa:query>SELECT a FROM AntecedentCpn a WHERE a.primipare30ansOuPlus = :primipare30ansOuPlus</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="AntecedentCpn.findByDernieraccouchementdatede">
+            <jpa:query>SELECT a FROM AntecedentCpn a WHERE a.dernieraccouchementdatede = :dernieraccouchementdatede</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="AntecedentCpn.findByType">
+            <jpa:query>SELECT a FROM AntecedentCpn a WHERE a.type = :type</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="AntecedentCpn.findByIntInf2ans">
+            <jpa:query>SELECT a FROM AntecedentCpn a WHERE a.intInf2ans = :intInf2ans</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="AntecedentCpn.findByPlusgrospoidsnaiss">
+            <jpa:query>SELECT a FROM AntecedentCpn a WHERE a.plusgrospoidsnaiss = :plusgrospoidsnaiss</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="AntecedentCpn.findByPlusde4kg">
+            <jpa:query>SELECT a FROM AntecedentCpn a WHERE a.plusde4kg = :plusde4kg</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="AntecedentCpn.findByDernierEnfant">
+            <jpa:query>SELECT a FROM AntecedentCpn a WHERE a.dernierEnfant = :dernierEnfant</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="AntecedentCpn.findByComplicationtraitement">
+            <jpa:query>SELECT a FROM AntecedentCpn a WHERE a.complicationtraitement = :complicationtraitement</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="AntecedentCpn.findByComplicationpostPartum">
+            <jpa:query>SELECT a FROM AntecedentCpn a WHERE a.complicationpostPartum = :complicationpostPartum</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="AntecedentCpn.findByTraitementpoursterilite">
+            <jpa:query>SELECT a FROM AntecedentCpn a WHERE a.traitementpoursterilite = :traitementpoursterilite</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="AntecedentCpn.findByParite">
+            <jpa:query>SELECT a FROM AntecedentCpn a WHERE a.parite = :parite</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="AntecedentCpn.findByAvortement">
+            <jpa:query>SELECT a FROM AntecedentCpn a WHERE a.avortement = :avortement</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="AntecedentCpn.findByDeces">
+            <jpa:query>SELECT a FROM AntecedentCpn a WHERE a.deces = :deces</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="AntecedentCpn.findByVbg">
+            <jpa:query>SELECT a FROM AntecedentCpn a WHERE a.vbg = :vbg</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="AntecedentCpn.findByAntecedentChirurgicauxCPN">
+            <jpa:query>SELECT a FROM AntecedentCpn a WHERE a.antecedentChirurgicauxCPN = :antecedentChirurgicauxCPN</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="AntecedentCpn.findByAntecedentMedicauxCPN">
+            <jpa:query>SELECT a FROM AntecedentCpn a WHERE a.antecedentMedicauxCPN = :antecedentMedicauxCPN</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="AntecedentCpn.findByGrossesseissuduviol">
+            <jpa:query>SELECT a FROM AntecedentCpn a WHERE a.grossesseissuduviol = :grossesseissuduviol</jpa:query>
+        </jpa:nq>
+        <jpa:table name="antecedent_cpn"/>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyClass="GrossessePK" sm="false" abs="false" class="Grossesse" visibile="true" minimized="false" rootElement="_14707030550741" id="_1470703055601204">
+        <annotation n="@javax.xml.bind.annotation.XmlRootElement"/>
+        <jpa:attributes>
+            <basic attribute-type="Integer" visibile="true" name="enfantsvivantsactuellement" id="_1470703055602206">
+                <jpa:column name="Enfants_vivants_actuellement"/>
+            </basic>
+            <basic attribute-type="Integer" visibile="true" name="p" id="_1470703055602207">
+                <jpa:column name="P"/>
+            </basic>
+            <basic attribute-type="Integer" visibile="true" name="g" id="_1470703055602208">
+                <jpa:column name="G"/>
+            </basic>
+            <basic attribute-type="Integer" visibile="true" name="a" id="_1470703055602209">
+                <jpa:column name="A"/>
+            </basic>
+            <basic attribute-type="Integer" visibile="true" name="d" id="_1470703055602210">
+                <jpa:column name="D"/>
+            </basic>
+            <basic attribute-type="java.util.Date" visibile="true" name="datedernierAccouchement" id="_1470703055602211">
+                <jpa:column name="Date_dernier_Accouchement"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </basic>
+            <basic attribute-type="java.util.Date" visibile="true" name="dateDernierRapportNonProteger" id="_1470703055602212">
+                <jpa:column name="Date_Dernier_Rapport_Non_Proteger"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </basic>
+            <basic attribute-type="java.util.Date" visibile="true" name="dateDernierRegle" id="_1470703055602213">
+                <jpa:column name="Date_Dernier_Regle"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </basic>
+            <basic attribute-type="Integer" visibile="true" name="nombrecesarienne" id="_1470703055602214">
+                <jpa:column name="Nombre_cesarienne"/>
+            </basic>
+            <many-to-one optional="false" connected-entity-id="_1470703055506141" connected-attribute-id="_1470703055512160" visibile="true" name="numDossier" id="_1470703055602215">
+                <join-column name="NumDossier" referenced-column="_1470703055506142"/>
+            </many-to-one>
+            <many-to-one optional="false" connected-entity-id="_1470703055423108" connected-attribute-id="_1470703055429118" visibile="true" name="utilisateur" id="_1470703055602216">
+                <join-column name="utilisateur" referenced-column="_1470703055423109"/>
+            </many-to-one>
+            <jpa:id attribute-type="Integer" visibile="true" name="idGros" id="_1470703055601205">
+                <jpa:column name="idGros"/>
+                <jpa:generated-value strategy="IDENTITY"/>
+                <jpa:sequence-generator name="idGros"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq name="Grossesse.findAll">
+            <jpa:query>SELECT g FROM Grossesse g</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Grossesse.findByIdGros">
+            <jpa:query>SELECT g FROM Grossesse g WHERE g.idGros = :idGros</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Grossesse.findByEnfantsvivantsactuellement">
+            <jpa:query>SELECT g FROM Grossesse g WHERE g.enfantsvivantsactuellement = :enfantsvivantsactuellement</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Grossesse.findByP">
+            <jpa:query>SELECT g FROM Grossesse g WHERE g.p = :p</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Grossesse.findByG">
+            <jpa:query>SELECT g FROM Grossesse g WHERE g.g = :g</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Grossesse.findByA">
+            <jpa:query>SELECT g FROM Grossesse g WHERE g.a = :a</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Grossesse.findByD">
+            <jpa:query>SELECT g FROM Grossesse g WHERE g.d = :d</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Grossesse.findByDatedernierAccouchement">
+            <jpa:query>SELECT g FROM Grossesse g WHERE g.datedernierAccouchement = :datedernierAccouchement</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Grossesse.findByDateDernierRapportNonProteger">
+            <jpa:query>SELECT g FROM Grossesse g WHERE g.dateDernierRapportNonProteger = :dateDernierRapportNonProteger</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Grossesse.findByDateDernierRegle">
+            <jpa:query>SELECT g FROM Grossesse g WHERE g.dateDernierRegle = :dateDernierRegle</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Grossesse.findByNombrecesarienne">
+            <jpa:query>SELECT g FROM Grossesse g WHERE g.nombrecesarienne = :nombrecesarienne</jpa:query>
+        </jpa:nq>
+        <jpa:table name="grossesse"/>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyClass="SuiviMaternitePK" sm="false" abs="false" class="SuiviMaternite" visibile="true" minimized="false" rootElement="_14707030550741" id="_1470703055633217">
+        <annotation n="@javax.xml.bind.annotation.XmlRootElement"/>
+        <jpa:attributes>
+            <basic attribute-type="String" visibile="true" name="examenPhysique" id="_1470703055633219">
+                <an n="@javax.validation.constraints.Size(max=50)"/>
+                <jpa:column name="Examen_Physique"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="examenParacliniques" id="_1470703055633220">
+                <an n="@javax.validation.constraints.Size(max=50)"/>
+                <jpa:column name="Examen_Para_cliniques"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="autreObservation" id="_1470703055633221">
+                <an n="@javax.validation.constraints.Size(max=100)"/>
+                <jpa:column name="Autre_Observation"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="conclusion" id="_1470703055634222">
+                <an n="@javax.validation.constraints.Size(max=75)"/>
+                <jpa:column name="conclusion"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="decision" id="_1470703055634223">
+                <an n="@javax.validation.constraints.Size(max=50)"/>
+                <jpa:column name="Decision"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="numDossierCPN" id="_1470703055634224">
+                <an n="@javax.validation.constraints.Size(max=15)"/>
+                <jpa:column name="NumDossierCPN"/>
+            </basic>
+            <jpa:id attribute-type="Integer" visibile="true" name="idSuiv" id="_1470703055633218">
+                <jpa:column name="idSuiv"/>
+                <jpa:generated-value strategy="IDENTITY"/>
+                <jpa:sequence-generator name="idSuiv"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq name="SuiviMaternite.findAll">
+            <jpa:query>SELECT s FROM SuiviMaternite s</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="SuiviMaternite.findByIdSuiv">
+            <jpa:query>SELECT s FROM SuiviMaternite s WHERE s.idSuiv = :idSuiv</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="SuiviMaternite.findByExamenPhysique">
+            <jpa:query>SELECT s FROM SuiviMaternite s WHERE s.examenPhysique = :examenPhysique</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="SuiviMaternite.findByExamenParacliniques">
+            <jpa:query>SELECT s FROM SuiviMaternite s WHERE s.examenParacliniques = :examenParacliniques</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="SuiviMaternite.findByAutreObservation">
+            <jpa:query>SELECT s FROM SuiviMaternite s WHERE s.autreObservation = :autreObservation</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="SuiviMaternite.findByConclusion">
+            <jpa:query>SELECT s FROM SuiviMaternite s WHERE s.conclusion = :conclusion</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="SuiviMaternite.findByDecision">
+            <jpa:query>SELECT s FROM SuiviMaternite s WHERE s.decision = :decision</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="SuiviMaternite.findByNumDossierCPN">
+            <jpa:query>SELECT s FROM SuiviMaternite s WHERE s.numDossierCPN = :numDossierCPN</jpa:query>
+        </jpa:nq>
+        <jpa:table name="suivi_maternite"/>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyClass="DcipPK" sm="false" abs="false" class="Dcip" visibile="true" minimized="false" rootElement="_14707030550741" id="_1470703055660225">
+        <annotation n="@javax.xml.bind.annotation.XmlRootElement"/>
+        <jpa:attributes>
+            <basic attribute-type="String" visibile="true" name="counselingpretest" id="_1470703055660227">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="Counseling_pre_test"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="code" id="_1470703055660228">
+                <an n="@javax.validation.constraints.Size(max=10)"/>
+                <jpa:column name="Code"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="testVIH" id="_1470703055660229">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="Test_VIH"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="resultat" id="_1470703055660230">
+                <an n="@javax.validation.constraints.Size(max=11)"/>
+                <jpa:column name="Resultat"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="counselingposttest" id="_1470703055660231">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="Counseling_post_test"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="informerResultatposttest" id="_1470703055660232">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="Informer_Resultat_post_test"/>
+            </basic>
+            <many-to-one optional="false" connected-entity-id="_1470703055423108" connected-attribute-id="_1470703055429120" visibile="true" name="utilisateur" id="_1470703055660233">
+                <join-column name="utilisateur" referenced-column="_1470703055423109"/>
+            </many-to-one>
+            <many-to-one optional="false" connected-entity-id="_1470703055506141" connected-attribute-id="_1470703055513162" visibile="true" name="numDossier" id="_1470703055660234">
+                <join-column name="NumDossier" referenced-column="_1470703055506142"/>
+            </many-to-one>
+            <jpa:id attribute-type="Integer" visibile="true" name="idDCIP" id="_1470703055660226">
+                <jpa:column name="idDCIP"/>
+                <jpa:generated-value strategy="IDENTITY"/>
+                <jpa:sequence-generator name="idDCIP"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq name="Dcip.findAll">
+            <jpa:query>SELECT d FROM Dcip d</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Dcip.findByIdDCIP">
+            <jpa:query>SELECT d FROM Dcip d WHERE d.idDCIP = :idDCIP</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Dcip.findByCounselingpretest">
+            <jpa:query>SELECT d FROM Dcip d WHERE d.counselingpretest = :counselingpretest</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Dcip.findByCode">
+            <jpa:query>SELECT d FROM Dcip d WHERE d.code = :code</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Dcip.findByTestVIH">
+            <jpa:query>SELECT d FROM Dcip d WHERE d.testVIH = :testVIH</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Dcip.findByResultat">
+            <jpa:query>SELECT d FROM Dcip d WHERE d.resultat = :resultat</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Dcip.findByCounselingposttest">
+            <jpa:query>SELECT d FROM Dcip d WHERE d.counselingposttest = :counselingposttest</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Dcip.findByInformerResultatposttest">
+            <jpa:query>SELECT d FROM Dcip d WHERE d.informerResultatposttest = :informerResultatposttest</jpa:query>
+        </jpa:nq>
+        <jpa:table name="dcip"/>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyClass="DonneesObjectivesPK" sm="false" abs="false" class="DonneesObjectives" visibile="true" minimized="false" rootElement="_14707030550741" id="_1470703055687235">
+        <annotation n="@javax.xml.bind.annotation.XmlRootElement"/>
+        <jpa:attributes>
+            <basic attribute-type="java.util.Date" visibile="true" name="dateRDVPL" id="_1470703055688237">
+                <jpa:column name="DateRDVPL"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </basic>
+            <basic attribute-type="Integer" visibile="true" name="poids" id="_1470703055688238">
+                <jpa:column name="Poids"/>
+            </basic>
+            <basic attribute-type="Integer" visibile="true" name="ta" id="_1470703055688239">
+                <jpa:column name="TA"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="signeinfectiongyneco" id="_1470703055688240">
+                <an n="@javax.validation.constraints.Size(max=10)"/>
+                <jpa:column name="Signe_infection_gyneco"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="ist" id="_1470703055688241">
+                <an n="@javax.validation.constraints.Size(max=10)"/>
+                <jpa:column name="IST"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="amenorhee6emSEm" id="_1470703055688242">
+                <an n="@javax.validation.constraints.Size(max=10)"/>
+                <jpa:column name="Amenorhee_6emSEm"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="signeGrossesse" id="_1470703055688243">
+                <an n="@javax.validation.constraints.Size(max=10)"/>
+                <jpa:column name="Signe_Grossesse"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="visiontroublee" id="_1470703055688244">
+                <an n="@javax.validation.constraints.Size(max=10)"/>
+                <jpa:column name="Vision_troublee"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="cephaleesintenses" id="_1470703055688245">
+                <an n="@javax.validation.constraints.Size(max=10)"/>
+                <jpa:column name="Cephalees_intenses"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="masseSuspecte" id="_1470703055688246">
+                <an n="@javax.validation.constraints.Size(max=10)"/>
+                <jpa:column name="Masse_Suspecte"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="nauseeVaumissement" id="_1470703055688247">
+                <an n="@javax.validation.constraints.Size(max=10)"/>
+                <jpa:column name="Nausee_Vaumissement"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="douleurPelvienne" id="_1470703055688248">
+                <an n="@javax.validation.constraints.Size(max=10)"/>
+                <jpa:column name="douleur_Pelvienne"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="icteres" id="_1470703055688249">
+                <an n="@javax.validation.constraints.Size(max=10)"/>
+                <jpa:column name="Icteres"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="fatigabilite" id="_1470703055688250">
+                <an n="@javax.validation.constraints.Size(max=10)"/>
+                <jpa:column name="Fatigabilite"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="examenSeins" id="_1470703055688251">
+                <an n="@javax.validation.constraints.Size(max=10)"/>
+                <jpa:column name="Examen_Seins"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="examenAbdomen" id="_1470703055688252">
+                <an n="@javax.validation.constraints.Size(max=10)"/>
+                <jpa:column name="Examen_Abdomen"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="examengyneco" id="_1470703055688253">
+                <an n="@javax.validation.constraints.Size(max=10)"/>
+                <jpa:column name="Examen_gyneco"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="gainanormalePoids" id="_1470703055688254">
+                <an n="@javax.validation.constraints.Size(max=10)"/>
+                <jpa:column name="Gain_anormale_Poids"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="tAtropelevee" id="_1470703055688255">
+                <an n="@javax.validation.constraints.Size(max=10)"/>
+                <jpa:column name="TA_trop_elevee"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="signeAnemie" id="_1470703055689256">
+                <an n="@javax.validation.constraints.Size(max=10)"/>
+                <jpa:column name="Signe_Anemie"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="autressignesAnormaux" id="_1470703055689257">
+                <an n="@javax.validation.constraints.Size(max=10)"/>
+                <jpa:column name="Autres_signes_Anormaux"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="methode" id="_1470703055689258">
+                <an n="@javax.validation.constraints.Size(max=17)"/>
+                <jpa:column name="Methode"/>
+            </basic>
+            <basic attribute-type="Integer" visibile="true" name="quantite" id="_1470703055689259">
+                <jpa:column name="Quantite"/>
+            </basic>
+            <basic attribute-type="java.util.Date" visibile="true" name="dateProchaineVisite" id="_1470703055689260">
+                <jpa:column name="Date_Prochaine_Visite"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </basic>
+            <many-to-one connected-entity-id="_1470703055506141" connected-attribute-id="_1470703055512159" visibile="true" name="numDossier" id="_1470703055689261">
+                <join-column name="NumDossier" referenced-column="_1470703055506142"/>
+            </many-to-one>
+            <many-to-one optional="false" connected-entity-id="_1470703055423108" connected-attribute-id="_1470703055429117" visibile="true" name="utilisateur" id="_1470703055689262">
+                <join-column name="utilisateur" referenced-column="_1470703055423109"/>
+            </many-to-one>
+            <jpa:id attribute-type="Integer" visibile="true" name="idDonnObject" id="_1470703055687236">
+                <jpa:column name="idDonnObject"/>
+                <jpa:generated-value strategy="IDENTITY"/>
+                <jpa:sequence-generator name="idDonnObject"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq name="DonneesObjectives.findAll">
+            <jpa:query>SELECT d FROM DonneesObjectives d</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="DonneesObjectives.findByIdDonnObject">
+            <jpa:query>SELECT d FROM DonneesObjectives d WHERE d.idDonnObject = :idDonnObject</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="DonneesObjectives.findByDateRDVPL">
+            <jpa:query>SELECT d FROM DonneesObjectives d WHERE d.dateRDVPL = :dateRDVPL</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="DonneesObjectives.findByPoids">
+            <jpa:query>SELECT d FROM DonneesObjectives d WHERE d.poids = :poids</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="DonneesObjectives.findByTa">
+            <jpa:query>SELECT d FROM DonneesObjectives d WHERE d.ta = :ta</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="DonneesObjectives.findBySigneinfectiongyneco">
+            <jpa:query>SELECT d FROM DonneesObjectives d WHERE d.signeinfectiongyneco = :signeinfectiongyneco</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="DonneesObjectives.findByIst">
+            <jpa:query>SELECT d FROM DonneesObjectives d WHERE d.ist = :ist</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="DonneesObjectives.findByAmenorhee6emSEm">
+            <jpa:query>SELECT d FROM DonneesObjectives d WHERE d.amenorhee6emSEm = :amenorhee6emSEm</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="DonneesObjectives.findBySigneGrossesse">
+            <jpa:query>SELECT d FROM DonneesObjectives d WHERE d.signeGrossesse = :signeGrossesse</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="DonneesObjectives.findByVisiontroublee">
+            <jpa:query>SELECT d FROM DonneesObjectives d WHERE d.visiontroublee = :visiontroublee</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="DonneesObjectives.findByCephaleesintenses">
+            <jpa:query>SELECT d FROM DonneesObjectives d WHERE d.cephaleesintenses = :cephaleesintenses</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="DonneesObjectives.findByMasseSuspecte">
+            <jpa:query>SELECT d FROM DonneesObjectives d WHERE d.masseSuspecte = :masseSuspecte</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="DonneesObjectives.findByNauseeVaumissement">
+            <jpa:query>SELECT d FROM DonneesObjectives d WHERE d.nauseeVaumissement = :nauseeVaumissement</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="DonneesObjectives.findByDouleurPelvienne">
+            <jpa:query>SELECT d FROM DonneesObjectives d WHERE d.douleurPelvienne = :douleurPelvienne</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="DonneesObjectives.findByIcteres">
+            <jpa:query>SELECT d FROM DonneesObjectives d WHERE d.icteres = :icteres</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="DonneesObjectives.findByFatigabilite">
+            <jpa:query>SELECT d FROM DonneesObjectives d WHERE d.fatigabilite = :fatigabilite</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="DonneesObjectives.findByExamenSeins">
+            <jpa:query>SELECT d FROM DonneesObjectives d WHERE d.examenSeins = :examenSeins</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="DonneesObjectives.findByExamenAbdomen">
+            <jpa:query>SELECT d FROM DonneesObjectives d WHERE d.examenAbdomen = :examenAbdomen</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="DonneesObjectives.findByExamengyneco">
+            <jpa:query>SELECT d FROM DonneesObjectives d WHERE d.examengyneco = :examengyneco</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="DonneesObjectives.findByGainanormalePoids">
+            <jpa:query>SELECT d FROM DonneesObjectives d WHERE d.gainanormalePoids = :gainanormalePoids</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="DonneesObjectives.findByTAtropelevee">
+            <jpa:query>SELECT d FROM DonneesObjectives d WHERE d.tAtropelevee = :tAtropelevee</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="DonneesObjectives.findBySigneAnemie">
+            <jpa:query>SELECT d FROM DonneesObjectives d WHERE d.signeAnemie = :signeAnemie</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="DonneesObjectives.findByAutressignesAnormaux">
+            <jpa:query>SELECT d FROM DonneesObjectives d WHERE d.autressignesAnormaux = :autressignesAnormaux</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="DonneesObjectives.findByMethode">
+            <jpa:query>SELECT d FROM DonneesObjectives d WHERE d.methode = :methode</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="DonneesObjectives.findByQuantite">
+            <jpa:query>SELECT d FROM DonneesObjectives d WHERE d.quantite = :quantite</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="DonneesObjectives.findByDateProchaineVisite">
+            <jpa:query>SELECT d FROM DonneesObjectives d WHERE d.dateProchaineVisite = :dateProchaineVisite</jpa:query>
+        </jpa:nq>
+        <jpa:table name="donnees_objectives"/>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyClass="PlanficationFamilialePK" sm="false" abs="false" class="PlanficationFamiliale" visibile="true" minimized="false" rootElement="_14707030550741" id="_1470703055712263">
+        <annotation n="@javax.xml.bind.annotation.XmlRootElement"/>
+        <jpa:attributes>
+            <basic attribute-type="String" visibile="true" name="nouvelleacceptante" id="_1470703055712265">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="Nouvelle_acceptante"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="renouvellement" id="_1470703055712266">
+                <an n="@javax.validation.constraints.Size(max=16)"/>
+                <jpa:column name="Renouvellement"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="methodeanterieure" id="_1470703055712267">
+                <an n="@javax.validation.constraints.Size(max=17)"/>
+                <jpa:column name="Methode_anterieure"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="autreMethodeAnterieure" id="_1470703055712268">
+                <an n="@javax.validation.constraints.Size(max=50)"/>
+                <jpa:column name="AutreMethodeAnterieure"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="sourcerenseignementsurPF" id="_1470703055712269">
+                <an n="@javax.validation.constraints.Size(max=30)"/>
+                <jpa:column name="Source_renseignement_sur_PF"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="raisondechangement" id="_1470703055712270">
+                <an n="@javax.validation.constraints.Size(max=45)"/>
+                <jpa:column name="Raison_de_changement"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="planification" id="_1470703055712271">
+                <an n="@javax.validation.constraints.Size(max=26)"/>
+                <jpa:column name="Planification"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="counsling" id="_1470703055712272">
+                <an n="@javax.validation.constraints.Size(max=4)"/>
+                <jpa:column name="Counsling"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="methodechoisie" id="_1470703055712273">
+                <an n="@javax.validation.constraints.Size(max=17)"/>
+                <jpa:column name="Methode_choisie"/>
+            </basic>
+            <many-to-one optional="false" connected-entity-id="_1470703055506141" connected-attribute-id="_1470703055508158" visibile="true" name="numDossier" id="_1470703055712274">
+                <join-column name="NumDossier" referenced-column="_1470703055506142"/>
+            </many-to-one>
+            <many-to-one optional="false" connected-entity-id="_1470703055423108" connected-attribute-id="_1470703055424115" visibile="true" name="utilisateur" id="_1470703055712275">
+                <join-column name="utilisateur" referenced-column="_1470703055423109"/>
+            </many-to-one>
+            <one-to-many own="false" collection-type="java.util.Collection" connected-entity-id="_1470703055541171" connected-attribute-id="_1470703055541175" visibile="true" name="motifConsultationCollection" id="_1470703055712276">
+                <cascade>
+                    <jpa:cascade-all/>
+                </cascade>
+            </one-to-many>
+            <jpa:id attribute-type="Integer" visibile="true" name="idPF" id="_1470703055712264">
+                <jpa:column name="idPF"/>
+                <jpa:generated-value strategy="IDENTITY"/>
+                <jpa:sequence-generator name="idPF"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq name="PlanficationFamiliale.findAll">
+            <jpa:query>SELECT p FROM PlanficationFamiliale p</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="PlanficationFamiliale.findByIdPF">
+            <jpa:query>SELECT p FROM PlanficationFamiliale p WHERE p.idPF = :idPF</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="PlanficationFamiliale.findByNouvelleacceptante">
+            <jpa:query>SELECT p FROM PlanficationFamiliale p WHERE p.nouvelleacceptante = :nouvelleacceptante</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="PlanficationFamiliale.findByRenouvellement">
+            <jpa:query>SELECT p FROM PlanficationFamiliale p WHERE p.renouvellement = :renouvellement</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="PlanficationFamiliale.findByMethodeanterieure">
+            <jpa:query>SELECT p FROM PlanficationFamiliale p WHERE p.methodeanterieure = :methodeanterieure</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="PlanficationFamiliale.findByAutreMethodeAnterieure">
+            <jpa:query>SELECT p FROM PlanficationFamiliale p WHERE p.autreMethodeAnterieure = :autreMethodeAnterieure</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="PlanficationFamiliale.findBySourcerenseignementsurPF">
+            <jpa:query>SELECT p FROM PlanficationFamiliale p WHERE p.sourcerenseignementsurPF = :sourcerenseignementsurPF</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="PlanficationFamiliale.findByRaisondechangement">
+            <jpa:query>SELECT p FROM PlanficationFamiliale p WHERE p.raisondechangement = :raisondechangement</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="PlanficationFamiliale.findByPlanification">
+            <jpa:query>SELECT p FROM PlanficationFamiliale p WHERE p.planification = :planification</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="PlanficationFamiliale.findByCounsling">
+            <jpa:query>SELECT p FROM PlanficationFamiliale p WHERE p.counsling = :counsling</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="PlanficationFamiliale.findByMethodechoisie">
+            <jpa:query>SELECT p FROM PlanficationFamiliale p WHERE p.methodechoisie = :methodechoisie</jpa:query>
+        </jpa:nq>
+        <jpa:table name="planfication_familiale"/>
+    </jpa:entity>
+    <jpa:entity xre="false" compositePrimaryKeyClass="HospitalisationPK" sm="false" abs="false" class="Hospitalisation" visibile="true" minimized="false" rootElement="_14707030550741" id="_1470703055748277">
+        <annotation n="@javax.xml.bind.annotation.XmlRootElement"/>
+        <jpa:attributes>
+            <basic attribute-type="java.util.Date" visibile="true" name="dateHospitalisation" id="_1470703055748279">
+                <jpa:column name="DateHospitalisation"/>
+                <jpa:temporal>DATE</jpa:temporal>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="hospitalisation" id="_1470703055748280">
+                <an n="@javax.validation.constraints.Size(max=44)"/>
+                <jpa:column name="Hospitalisation"/>
+            </basic>
+            <basic attribute-type="String" visibile="true" name="pourTraitementSpecifique" id="_1470703055748281">
+                <an n="@javax.validation.constraints.Size(max=50)"/>
+                <jpa:column name="Pour_Traitement_Specifique"/>
+            </basic>
+            <many-to-one optional="false" connected-entity-id="_1470703055506141" connected-attribute-id="_1470703055513164" visibile="true" name="numDossier" id="_1470703055748282">
+                <join-column name="NumDossier" referenced-column="_1470703055506142"/>
+            </many-to-one>
+            <many-to-one optional="false" connected-entity-id="_1470703055423108" connected-attribute-id="_1470703055429122" visibile="true" name="utilisateur" id="_1470703055748283">
+                <join-column name="utilisateur" referenced-column="_1470703055423109"/>
+            </many-to-one>
+            <jpa:id attribute-type="Integer" visibile="true" name="idHosp" id="_1470703055748278">
+                <jpa:column name="idHosp"/>
+                <jpa:generated-value strategy="IDENTITY"/>
+                <jpa:sequence-generator name="idHosp"/>
+            </jpa:id>
+        </jpa:attributes>
+        <jpa:nq name="Hospitalisation.findAll">
+            <jpa:query>SELECT h FROM Hospitalisation h</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Hospitalisation.findByIdHosp">
+            <jpa:query>SELECT h FROM Hospitalisation h WHERE h.idHosp = :idHosp</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Hospitalisation.findByDateHospitalisation">
+            <jpa:query>SELECT h FROM Hospitalisation h WHERE h.dateHospitalisation = :dateHospitalisation</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Hospitalisation.findByHospitalisation">
+            <jpa:query>SELECT h FROM Hospitalisation h WHERE h.hospitalisation = :hospitalisation</jpa:query>
+        </jpa:nq>
+        <jpa:nq name="Hospitalisation.findByPourTraitementSpecifique">
+            <jpa:query>SELECT h FROM Hospitalisation h WHERE h.pourTraitementSpecifique = :pourTraitementSpecifique</jpa:query>
+        </jpa:nq>
+        <jpa:table name="hospitalisation"/>
+    </jpa:entity>
+    <jpa:diagram>
+        <plane elementRef="_14707030550741"/>
+    </jpa:diagram>
+</jpa:entity-mappings>

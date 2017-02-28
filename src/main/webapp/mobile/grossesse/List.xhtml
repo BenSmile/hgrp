@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="GrossesseListPage">
+        <pm:header title="#{resourcesBundle.ListGrossesseTitle}">
+            <h:form>
+                <p:commandButton id="backButton"   styleClass="ui-btn-left  ui-btn-inline" icon="ui-icon-arrow-l" value="#{myBundle.Back}" action="#{mobilePageController.navigateBackInHistory('/mobile/index')}"/>
+                <p:commandButton id="createButton" styleClass="ui-btn-right ui-btn-inline" icon="ui-icon-plus"    value="#{resourcesBundle.Create}" update=":GrossesseCreatePage:GrossesseCreateForm" actionListener="#{grossesseController.prepareCreate}" action="#{mobilePageController.navigateWithHistory('pm:GrossesseCreatePage')}">
+                    <f:actionListener binding="#{currentPageListener}"/>
+                </p:commandButton>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="GrossesseListForm">
+
+                <p:dataTable id="datalist"
+                             value="#{grossesseController.items}"
+                             var="item"
+                             rowKey="#{item.idGros}"
+                             paginator="true"
+                             rows="10"
+                             rowsPerPageTemplate="10,20,30,40,50"
+                             selectionMode="single"
+                             selection="#{grossesseController.selected}"
+                             reflow="true">
+
+                    <p:ajax event="rowSelect"   update="@form:editButton,@form:deleteButton,@form:navigationMenuButton,@form:navigationMenuPanel" listener="#{grossesseController.resetParents}"/>
+                    <p:ajax event="rowUnselect" update="@form:editButton,@form:deleteButton,@form:navigationMenuButton,@form:navigationMenuPanel" listener="#{grossesseController.resetParents}"/>
+                    <p:ajax event="swipeleft"   oncomplete="document.getElementById('GrossesseListPage:GrossesseListForm:deleteButton').click();"/>
+                    <p:ajax event="tap"         oncomplete="document.getElementById('GrossesseListPage:GrossesseListForm:editButton').click();"/>
+                    <p:ajax event="taphold"     oncomplete="document.getElementById('GrossesseListPage:GrossesseListForm:navigationMenuButton').click();"/>
+
+                    <p:column sortBy="#{item.idGros}" filterBy="#{item.idGros}" headerText="#{resourcesBundle.ListGrossesseTitle_idGros}">
+                        <h:outputText value="#{item.idGros}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.enfantsvivantsactuellement}" filterBy="#{item.enfantsvivantsactuellement}" headerText="#{resourcesBundle.ListGrossesseTitle_enfantsvivantsactuellement}">
+                        <h:outputText value="#{item.enfantsvivantsactuellement}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.p}" filterBy="#{item.p}" headerText="#{resourcesBundle.ListGrossesseTitle_p}">
+                        <h:outputText value="#{item.p}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.g}" filterBy="#{item.g}" headerText="#{resourcesBundle.ListGrossesseTitle_g}">
+                        <h:outputText value="#{item.g}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.a}" filterBy="#{item.a}" headerText="#{resourcesBundle.ListGrossesseTitle_a}">
+                        <h:outputText value="#{item.a}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.d}" filterBy="#{item.d}" headerText="#{resourcesBundle.ListGrossesseTitle_d}">
+                        <h:outputText value="#{item.d}"/>
+                    </p:column>
+
+                    <!--
+                                        <p:column sortBy="#{item.datedernierAccouchement}" filterBy="#{item.datedernierAccouchement}" headerText="#{resourcesBundle.ListGrossesseTitle_datedernierAccouchement}">
+                                            <h:outputText value="#{item.datedernierAccouchement}">
+                                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                                            </h:outputText>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.dateDernierRapportNonProteger}" filterBy="#{item.dateDernierRapportNonProteger}" headerText="#{resourcesBundle.ListGrossesseTitle_dateDernierRapportNonProteger}">
+                                            <h:outputText value="#{item.dateDernierRapportNonProteger}">
+                                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                                            </h:outputText>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.dateDernierRegle}" filterBy="#{item.dateDernierRegle}" headerText="#{resourcesBundle.ListGrossesseTitle_dateDernierRegle}">
+                                            <h:outputText value="#{item.dateDernierRegle}">
+                                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                                            </h:outputText>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.nombrecesarienne}" filterBy="#{item.nombrecesarienne}" headerText="#{resourcesBundle.ListGrossesseTitle_nombrecesarienne}">
+                                            <h:outputText value="#{item.nombrecesarienne}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.utilisateur.uname}" filterBy="#{item.utilisateur.uname}" headerText="#{resourcesBundle.ListGrossesseTitle_utilisateur}">
+                                            <h:outputText value="#{item.utilisateur.uname}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.numDossier.numDossier}" filterBy="#{item.numDossier.numDossier}" headerText="#{resourcesBundle.ListGrossesseTitle_numDossier}">
+                                            <h:outputText value="#{item.numDossier.numDossier}"/>
+                                        </p:column>
+                    -->
+                </p:dataTable>
+                <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{resourcesBundle.Edit}" update=":GrossesseEditPage:GrossesseEditForm" disabled="#{empty grossesseController.selected}" actionListener="#{mobilePageController.currentPageListener}" action="#{mobilePageController.navigateWithHistory('pm:GrossesseEditPage')}"/>
+                <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{resourcesBundle.Delete}" actionListener="#{grossesseController.delete}" update=":growl,datalist" disabled="#{empty grossesseController.selected}">
+                    <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+                </p:commandButton>
+                <p:commandButton id="navigationMenuButton" style="visibility: hidden;" value="#{resourcesBundle.Menu}" disabled="#{empty grossesseController.selected}"/>
+
+                <p:overlayPanel id="navigationMenuPanel" for="navigationMenuButton" at="right" showEffect="overlay">
+                    <h2>#{resourcesBundle.GrossesseHeading} #{resourcesBundle.Menu}</h2>
+                    <p:menu>
+                        <p:menuitem value="#{resourcesBundle.GrossesseMenuItem_utilisateur}" icon="ui-icon-search" update=":UsersEditPage:UsersEditForm" disabled="#{empty grossesseController.selected.utilisateur}" actionListener="#{grossesseController.prepareUtilisateur}" action="#{mobilePageController.navigateWithHistory}">  
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="pm:UsersEditPage"/>
+                        </p:menuitem>
+                        <p:menuitem value="#{resourcesBundle.GrossesseMenuItem_numDossier}" icon="ui-icon-search" update=":InfosFemmeEditPage:InfosFemmeEditForm" disabled="#{empty grossesseController.selected.numDossier}" actionListener="#{grossesseController.prepareNumDossier}" action="#{mobilePageController.navigateWithHistory}">  
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="pm:InfosFemmeEditPage"/>
+                        </p:menuitem>
+                    </p:menu>
+                </p:overlayPanel>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

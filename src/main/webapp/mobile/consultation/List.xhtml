@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="ConsultationListPage">
+        <pm:header title="#{resourcesBundle.ListConsultationTitle}">
+            <h:form>
+                <p:commandButton id="backButton"   styleClass="ui-btn-left  ui-btn-inline" icon="ui-icon-arrow-l" value="#{myBundle.Back}" action="#{mobilePageController.navigateBackInHistory('/mobile/index')}"/>
+                <p:commandButton id="createButton" styleClass="ui-btn-right ui-btn-inline" icon="ui-icon-plus"    value="#{resourcesBundle.Create}" update=":ConsultationCreatePage:ConsultationCreateForm" actionListener="#{consultationController.prepareCreate}" action="#{mobilePageController.navigateWithHistory('pm:ConsultationCreatePage')}">
+                    <f:actionListener binding="#{currentPageListener}"/>
+                </p:commandButton>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="ConsultationListForm">
+
+                <p:dataTable id="datalist"
+                             value="#{consultationController.items}"
+                             var="item"
+                             rowKey="#{item.idRDV}"
+                             paginator="true"
+                             rows="10"
+                             rowsPerPageTemplate="10,20,30,40,50"
+                             selectionMode="single"
+                             selection="#{consultationController.selected}"
+                             reflow="true">
+
+                    <p:ajax event="rowSelect"   update="@form:editButton,@form:deleteButton,@form:navigationMenuButton,@form:navigationMenuPanel" listener="#{consultationController.resetParents}"/>
+                    <p:ajax event="rowUnselect" update="@form:editButton,@form:deleteButton,@form:navigationMenuButton,@form:navigationMenuPanel" listener="#{consultationController.resetParents}"/>
+                    <p:ajax event="swipeleft"   oncomplete="document.getElementById('ConsultationListPage:ConsultationListForm:deleteButton').click();"/>
+                    <p:ajax event="tap"         oncomplete="document.getElementById('ConsultationListPage:ConsultationListForm:editButton').click();"/>
+                    <p:ajax event="taphold"     oncomplete="document.getElementById('ConsultationListPage:ConsultationListForm:navigationMenuButton').click();"/>
+
+                    <p:column sortBy="#{item.idRDV}" filterBy="#{item.idRDV}" headerText="#{resourcesBundle.ListConsultationTitle_idRDV}">
+                        <h:outputText value="#{item.idRDV}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.date}" filterBy="#{item.date}" headerText="#{resourcesBundle.ListConsultationTitle_date}">
+                        <h:outputText value="#{item.date}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.ageGrossesse}" filterBy="#{item.ageGrossesse}" headerText="#{resourcesBundle.ListConsultationTitle_ageGrossesse}">
+                        <h:outputText value="#{item.ageGrossesse}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.conjonctivehb}" filterBy="#{item.conjonctivehb}" headerText="#{resourcesBundle.ListConsultationTitle_conjonctivehb}">
+                        <h:outputText value="#{item.conjonctivehb}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.hauteurUterine}" filterBy="#{item.hauteurUterine}" headerText="#{resourcesBundle.ListConsultationTitle_hauteurUterine}">
+                        <h:outputText value="#{item.hauteurUterine}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.surfaceuterine}" filterBy="#{item.surfaceuterine}" headerText="#{resourcesBundle.ListConsultationTitle_surfaceuterine}">
+                        <h:outputText value="#{item.surfaceuterine}"/>
+                    </p:column>
+
+                    <!--
+                                        <p:column sortBy="#{item.mouvementfoetaux}" filterBy="#{item.mouvementfoetaux}" headerText="#{resourcesBundle.ListConsultationTitle_mouvementfoetaux}">
+                                            <h:outputText value="#{item.mouvementfoetaux}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.bruitfoetaux}" filterBy="#{item.bruitfoetaux}" headerText="#{resourcesBundle.ListConsultationTitle_bruitfoetaux}">
+                                            <h:outputText value="#{item.bruitfoetaux}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.bcf}" filterBy="#{item.bcf}" headerText="#{resourcesBundle.ListConsultationTitle_bcf}">
+                                            <h:outputText value="#{item.bcf}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.presentation}" filterBy="#{item.presentation}" headerText="#{resourcesBundle.ListConsultationTitle_presentation}">
+                                            <h:outputText value="#{item.presentation}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.pertesliquidiènnes}" filterBy="#{item.pertesliquidiènnes}" headerText="#{resourcesBundle.ListConsultationTitle_pertesliquidiènnes}">
+                                            <h:outputText value="#{item.pertesliquidiènnes}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.oedemes}" filterBy="#{item.oedemes}" headerText="#{resourcesBundle.ListConsultationTitle_oedemes}">
+                                            <h:outputText value="#{item.oedemes}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.albuminure}" filterBy="#{item.albuminure}" headerText="#{resourcesBundle.ListConsultationTitle_albuminure}">
+                                            <h:outputText value="#{item.albuminure}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.glycosurie}" filterBy="#{item.glycosurie}" headerText="#{resourcesBundle.ListConsultationTitle_glycosurie}">
+                                            <h:outputText value="#{item.glycosurie}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.ta1}" filterBy="#{item.ta1}" headerText="#{resourcesBundle.ListConsultationTitle_ta1}">
+                                            <h:outputText value="#{item.ta1}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.ta2}" filterBy="#{item.ta2}" headerText="#{resourcesBundle.ListConsultationTitle_ta2}">
+                                            <h:outputText value="#{item.ta2}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.mictalgie}" filterBy="#{item.mictalgie}" headerText="#{resourcesBundle.ListConsultationTitle_mictalgie}">
+                                            <h:outputText value="#{item.mictalgie}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.contraction}" filterBy="#{item.contraction}" headerText="#{resourcesBundle.ListConsultationTitle_contraction}">
+                                            <h:outputText value="#{item.contraction}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.bassinPromonitoire}" filterBy="#{item.bassinPromonitoire}" headerText="#{resourcesBundle.ListConsultationTitle_bassinPromonitoire}">
+                                            <h:outputText value="#{item.bassinPromonitoire}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.poids}" filterBy="#{item.poids}" headerText="#{resourcesBundle.ListConsultationTitle_poids}">
+                                            <h:outputText value="#{item.poids}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.taille}" filterBy="#{item.taille}" headerText="#{resourcesBundle.ListConsultationTitle_taille}">
+                                            <h:outputText value="#{item.taille}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.femmeARisque}" filterBy="#{item.femmeARisque}" headerText="#{resourcesBundle.ListConsultationTitle_femmeARisque}">
+                                            <h:outputText value="#{item.femmeARisque}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.decisioncentresante}" filterBy="#{item.decisioncentresante}" headerText="#{resourcesBundle.ListConsultationTitle_decisioncentresante}">
+                                            <h:outputText value="#{item.decisioncentresante}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.raison}" filterBy="#{item.raison}" headerText="#{resourcesBundle.ListConsultationTitle_raison}">
+                                            <h:outputText value="#{item.raison}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.utilisateur.uname}" filterBy="#{item.utilisateur.uname}" headerText="#{resourcesBundle.ListConsultationTitle_utilisateur}">
+                                            <h:outputText value="#{item.utilisateur.uname}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.numDossier.numDossier}" filterBy="#{item.numDossier.numDossier}" headerText="#{resourcesBundle.ListConsultationTitle_numDossier}">
+                                            <h:outputText value="#{item.numDossier.numDossier}"/>
+                                        </p:column>
+                    -->
+                </p:dataTable>
+                <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{resourcesBundle.Edit}" update=":ConsultationEditPage:ConsultationEditForm" disabled="#{empty consultationController.selected}" actionListener="#{mobilePageController.currentPageListener}" action="#{mobilePageController.navigateWithHistory('pm:ConsultationEditPage')}"/>
+                <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{resourcesBundle.Delete}" actionListener="#{consultationController.delete}" update=":growl,datalist" disabled="#{empty consultationController.selected}">
+                    <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+                </p:commandButton>
+                <p:commandButton id="navigationMenuButton" style="visibility: hidden;" value="#{resourcesBundle.Menu}" disabled="#{empty consultationController.selected}"/>
+
+                <p:overlayPanel id="navigationMenuPanel" for="navigationMenuButton" at="right" showEffect="overlay">
+                    <h2>#{resourcesBundle.ConsultationHeading} #{resourcesBundle.Menu}</h2>
+                    <p:menu>
+                        <p:menuitem value="#{resourcesBundle.ConsultationMenuItem_mesuresPreventivesCollection}" icon="ui-icon-search"  action="#{mobilePageController.navigateWithHistory}" disabled="#{empty consultationController.selected.mesuresPreventivesCollection}" ajax="false">
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="#{consultationController.navigateMesuresPreventivesCollection()}"/>
+                        </p:menuitem>  
+                        <p:menuitem value="#{resourcesBundle.ConsultationMenuItem_utilisateur}" icon="ui-icon-search" update=":UsersEditPage:UsersEditForm" disabled="#{empty consultationController.selected.utilisateur}" actionListener="#{consultationController.prepareUtilisateur}" action="#{mobilePageController.navigateWithHistory}">  
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="pm:UsersEditPage"/>
+                        </p:menuitem>
+                        <p:menuitem value="#{resourcesBundle.ConsultationMenuItem_numDossier}" icon="ui-icon-search" update=":InfosFemmeEditPage:InfosFemmeEditForm" disabled="#{empty consultationController.selected.numDossier}" actionListener="#{consultationController.prepareNumDossier}" action="#{mobilePageController.navigateWithHistory}">  
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="pm:InfosFemmeEditPage"/>
+                        </p:menuitem>
+                    </p:menu>
+                </p:overlayPanel>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

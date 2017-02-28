@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="InfosAccouchementViewPage" lazy="true">
+        <pm:header title="#{resourcesBundle.ViewInfosAccouchementTitle}">
+            <h:form>
+                <p:commandButton styleClass="ui-btn-left ui-btn-inline" value="#{resourcesBundle.Cancel}" icon="ui-icon-arrow-l" action="#{mobilePageController.navigateBackInHistory('pm:InfosAccouchementListPage')}"/>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="InfosAccouchementViewForm">
+
+                <h:panelGroup id="display">
+                    <p:tabView id="InfosAccouchementTabView">
+
+                        <p:tab id="InfosAccouchementTab1" title="#{resourcesBundle.TabHeaderPrefix} 1">
+                            <p:outputPanel rendered="#{infosAccouchementController.selected != null}">
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosAccouchementLabel_idInfoAcc}"/>
+                                    <h:outputText value="#{infosAccouchementController.selected.idInfoAcc}" title="#{resourcesBundle.ViewInfosAccouchementTitle_idInfoAcc}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosAccouchementLabel_dateaccouchement}"/>
+                                    <h:outputText value="#{infosAccouchementController.selected.dateaccouchement}" title="#{resourcesBundle.ViewInfosAccouchementTitle_dateaccouchement}">
+                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                    </h:outputText>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosAccouchementLabel_datesortie}"/>
+                                    <h:outputText value="#{infosAccouchementController.selected.datesortie}" title="#{resourcesBundle.ViewInfosAccouchementTitle_datesortie}">
+                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                    </h:outputText>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosAccouchementLabel_accoucheuse}"/>
+                                    <h:outputText value="#{infosAccouchementController.selected.accoucheuse}" title="#{resourcesBundle.ViewInfosAccouchementTitle_accoucheuse}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosAccouchementLabel_etatMere}"/>
+                                    <h:outputText value="#{infosAccouchementController.selected.etatMere}" title="#{resourcesBundle.ViewInfosAccouchementTitle_etatMere}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosAccouchementLabel_decesmaternelPostTravail}"/>
+                                    <h:outputText value="#{infosAccouchementController.selected.decesmaternelPostTravail}" title="#{resourcesBundle.ViewInfosAccouchementTitle_decesmaternelPostTravail}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosAccouchementLabel_decesMaternelApresIntervention}"/>
+                                    <h:outputText value="#{infosAccouchementController.selected.decesMaternelApresIntervention}" title="#{resourcesBundle.ViewInfosAccouchementTitle_decesMaternelApresIntervention}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosAccouchementLabel_modeaccouchement}"/>
+                                    <h:outputText value="#{infosAccouchementController.selected.modeaccouchement}" title="#{resourcesBundle.ViewInfosAccouchementTitle_modeaccouchement}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosAccouchementLabel_eutocique}"/>
+                                    <h:outputText value="#{infosAccouchementController.selected.eutocique}" title="#{resourcesBundle.ViewInfosAccouchementTitle_eutocique}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosAccouchementLabel_dystocique}"/>
+                                    <h:outputText value="#{infosAccouchementController.selected.dystocique}" title="#{resourcesBundle.ViewInfosAccouchementTitle_dystocique}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosAccouchementLabel_ha}"/>
+                                    <h:outputText value="#{infosAccouchementController.selected.ha}" title="#{resourcesBundle.ViewInfosAccouchementTitle_ha}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosAccouchementLabel_trans}"/>
+                                    <h:outputText value="#{infosAccouchementController.selected.trans}" title="#{resourcesBundle.ViewInfosAccouchementTitle_trans}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosAccouchementLabel_infection}"/>
+                                    <h:outputText value="#{infosAccouchementController.selected.infection}" title="#{resourcesBundle.ViewInfosAccouchementTitle_infection}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosAccouchementLabel_indication}"/>
+                                    <h:outputText value="#{infosAccouchementController.selected.indication}" title="#{resourcesBundle.ViewInfosAccouchementTitle_indication}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosAccouchementLabel_etatEnfant}"/>
+                                    <h:outputText value="#{infosAccouchementController.selected.etatEnfant}" title="#{resourcesBundle.ViewInfosAccouchementTitle_etatEnfant}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosAccouchementLabel_vivant}"/>
+                                    <h:outputText value="#{infosAccouchementController.selected.vivant}" title="#{resourcesBundle.ViewInfosAccouchementTitle_vivant}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosAccouchementLabel_mortne}"/>
+                                    <h:outputText value="#{infosAccouchementController.selected.mortne}" title="#{resourcesBundle.ViewInfosAccouchementTitle_mortne}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosAccouchementLabel_poids}"/>
+                                    <h:outputText value="#{infosAccouchementController.selected.poids}" title="#{resourcesBundle.ViewInfosAccouchementTitle_poids}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosAccouchementLabel_sexe}"/>
+                                    <h:outputText value="#{infosAccouchementController.selected.sexe}" title="#{resourcesBundle.ViewInfosAccouchementTitle_sexe}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosAccouchementLabel_presentation}"/>
+                                    <h:outputText value="#{infosAccouchementController.selected.presentation}" title="#{resourcesBundle.ViewInfosAccouchementTitle_presentation}"/>
+                                </pm:field>
+
+                            </p:outputPanel>
+                        </p:tab>
+                        <p:tab id="InfosAccouchementTab2" title="#{resourcesBundle.TabHeaderPrefix} 2">
+                            <p:outputPanel rendered="#{infosAccouchementController.selected != null}">
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosAccouchementLabel_particulariteEnfant}"/>
+                                    <h:outputText value="#{infosAccouchementController.selected.particulariteEnfant}" title="#{resourcesBundle.ViewInfosAccouchementTitle_particulariteEnfant}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosAccouchementLabel_observation}"/>
+                                    <h:outputText value="#{infosAccouchementController.selected.observation}" title="#{resourcesBundle.ViewInfosAccouchementTitle_observation}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosAccouchementLabel_accouchementVIHPositif}"/>
+                                    <h:outputText value="#{infosAccouchementController.selected.accouchementVIHPositif}" title="#{resourcesBundle.ViewInfosAccouchementTitle_accouchementVIHPositif}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosAccouchementLabel_tritherapiePourVIH}"/>
+                                    <h:outputText value="#{infosAccouchementController.selected.tritherapiePourVIH}" title="#{resourcesBundle.ViewInfosAccouchementTitle_tritherapiePourVIH}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosAccouchementLabel_enfantVIHPositif}"/>
+                                    <h:outputText value="#{infosAccouchementController.selected.enfantVIHPositif}" title="#{resourcesBundle.ViewInfosAccouchementTitle_enfantVIHPositif}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosAccouchementLabel_tritherapieEnfantVIHPositif}"/>
+                                    <h:outputText value="#{infosAccouchementController.selected.tritherapieEnfantVIHPositif}" title="#{resourcesBundle.ViewInfosAccouchementTitle_tritherapieEnfantVIHPositif}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosAccouchementLabel_CPoN18emeJour}"/>
+                                    <h:outputText value="#{infosAccouchementController.selected.CPoN18emeJour}" title="#{resourcesBundle.ViewInfosAccouchementTitle_CPoN18emeJour}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosAccouchementLabel_CPoN242emeJour}"/>
+                                    <h:outputText value="#{infosAccouchementController.selected.CPoN242emeJour}" title="#{resourcesBundle.ViewInfosAccouchementTitle_CPoN242emeJour}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosAccouchementLabel_recuVitamineA}"/>
+                                    <h:outputText value="#{infosAccouchementController.selected.recuVitamineA}" title="#{resourcesBundle.ViewInfosAccouchementTitle_recuVitamineA}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosAccouchementLabel_recuFerAcideFollique}"/>
+                                    <h:outputText value="#{infosAccouchementController.selected.recuFerAcideFollique}" title="#{resourcesBundle.ViewInfosAccouchementTitle_recuFerAcideFollique}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosAccouchementLabel_complicationApresAcc}"/>
+                                    <h:outputText value="#{infosAccouchementController.selected.complicationApresAcc}" title="#{resourcesBundle.ViewInfosAccouchementTitle_complicationApresAcc}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosAccouchementLabel_utilisateur}"/>
+                                    <h:outputText value="#{infosAccouchementController.selected.utilisateur.uname}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosAccouchementLabel_numDossier}"/>
+                                    <h:outputText value="#{infosAccouchementController.selected.numDossier.numDossier}"/>
+                                </pm:field>
+                            </p:outputPanel>
+                        </p:tab>
+                    </p:tabView>
+                </h:panelGroup>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MotifConsultationViewDlg" widgetVar="MotifConsultationViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{resourcesBundle.ViewMotifConsultationTitle}" closeOnEscape="true">
+
+            <h:form id="MotifConsultationViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{motifConsultationController.selected != null}">
+
+                        <h:outputText value="#{resourcesBundle.ViewMotifConsultationLabel_idMotCons}"/>
+                        <h:outputText value="#{motifConsultationController.selected.idMotCons}" title="#{resourcesBundle.ViewMotifConsultationTitle_idMotCons}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewMotifConsultationLabel_motif}"/>
+                        <h:outputText value="#{motifConsultationController.selected.motif}" title="#{resourcesBundle.ViewMotifConsultationTitle_motif}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewMotifConsultationLabel_autreprecision}"/>
+                        <h:outputText value="#{motifConsultationController.selected.autreprecision}" title="#{resourcesBundle.ViewMotifConsultationTitle_autreprecision}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewMotifConsultationLabel_idPF}"/>
+                        <h:outputText value="#{motifConsultationController.selected.idPF.idPF}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewMotifConsultationLabel_utilisateur}"/>
+                        <h:outputText value="#{motifConsultationController.selected.utilisateur.uname}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{resourcesBundle.Close}" onclick="PF('MotifConsultationViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

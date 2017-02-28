@@ -1,0 +1,179 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:a="http://java.sun.com/jsf/passthrough">
+    <h:head>
+        <title><ui:insert name="title">Default Title</ui:insert></title>
+        <h:outputStylesheet library="css" name="pfcrud.css"/>
+        <h:outputScript library="scripts" name="pfcrud.js"/>
+    </h:head>
+    <h:body>
+        <!--
+                <div id="top">
+                    <ui:insert name="top">Top</ui:insert>
+                </div>
+                <div>
+                    <div id="left">
+                        <ui:insert name="left">Left</ui:insert>
+                    </div>
+                    <div id="content" class="left_content">
+                        <ui:insert name="content">Content</ui:insert>
+                    </div>
+                </div>
+                <div id="bottom">
+                    <ui:insert name="bottom">Bottom</ui:insert>
+                </div>
+        -->
+        <p:growl id="growl" life="3000" />
+        <p:dialog modal="true" id="downloading" widgetVar="statusDialog" header="#{resourcesBundle.Downloading}" draggable="false" closable="false" resizable="false">
+            <p:graphicImage name="images/loading/loading42.gif" />
+        </p:dialog>
+
+        <script type="text/javascript">
+            function start() {
+                PF('statusDialog').show();
+            }
+
+            function stop() {
+                PF('statusDialog').hide();
+            }
+        </script> 
+        <p:layout fullPage="true">
+            <p:layoutUnit   position="north" size="100" resizable="true" closable="true" collapsible="true">
+                <div id="top">
+                    <h:form>  
+                        <p:growl id="messages"/>
+                        <div id="top_left">
+                            <img src="../resources/images/logo.png" alt="Logo" />
+                        </div>
+                        <div id="top_center">
+                            <h2>
+                                Gestion des services CPN et PF HGRP
+                            </h2>
+                        </div>
+                        <div style="float: left; width:  930px;">
+                            <ui:insert name="breadCrumb">
+                            </ui:insert>
+                        </div>
+                        <p:menuButton value="Options">
+                            <p:menuitem value="Utilisateurs" rendered="#{login.admin}" outcome="/users/index.xhtml" icon="fa fa-user"/>
+
+                            <ui:remove> 
+                                <p:menuitem value="Statistiques PF" onclick="PF('stat').show()" icon="fa fa-bar-chart-o"/>
+                            </ui:remove>
+
+                            <p:menuitem value="Rapport CPN"  
+                                        action="#{rapport.print()}"
+                                        ajax="false"
+                                        target="blink"
+                                        process="@this"  icon="fa fa-edit"/>
+                            <p:menuitem value="Rapport PF" onclick="PF('dialog').show()" icon="fa fa-edit"/>
+                            <p:separator />
+                            <p:menuitem value="Deconnexion" ajax="false" action="#{login.logout()}"   icon="fa fa-power-off"/>
+                        </p:menuButton>
+                    </h:form>
+                    <h:form>
+                        <p:dialog header="Statistique PF/ Choisissez le mois" widgetVar="stat" resizable="false" draggable="false" closable="true" closeOnEscape="true" width="300">
+                            <p:panelGrid columns="2">
+                                <p:outputLabel value="Mois"/>
+                                <p:selectOneMenu value="#{rapportPF.mois}" effect="fold">
+                                    <c:forEach items="#{rapportPF.mapMap}" var="mois">
+                                        <f:selectItem itemValue="#{mois['key']}" itemLabel="#{mois['value']}"/>
+                                    </c:forEach>
+                                </p:selectOneMenu>
+                                <p:outputLabel value="Annee"/>
+                                <p:selectOneMenu value="#{rapportPF.annee}" effect="fold">
+                                    <f:selectItem itemValue="2015" itemLabel="2015"/>
+                                    <f:selectItem itemValue="2016" itemLabel="2016"/>
+                                    <f:selectItem itemValue="2017" itemLabel="2017"/>
+                                    <f:selectItem itemValue="2018" itemLabel="2018"/>                                 
+                                    <f:selectItem itemValue="2019" itemLabel="2019"/>
+                                    <f:selectItem itemValue="2020" itemLabel="2020"/>
+                                    <f:selectItem itemValue="2021" itemLabel="2021"/>
+                                    <f:selectItem itemValue="2022" itemLabel="2022"/>
+                                </p:selectOneMenu>
+                            </p:panelGrid>
+                            <f:facet name="footer">
+                                <p:commandButton value="Voir" action="#{rapportPF.stat()}"  ajax="false" process="@this" icon="fa fa-edit" a:target="blink"/>
+                            </f:facet>
+                        </p:dialog>
+                    </h:form>
+                    <h:form>
+                        <p:dialog header="Rapport PF / Choisissez le mois" widgetVar="dialog" resizable="false" draggable="false" closable="true" closeOnEscape="true" width="300">
+                            <p:panelGrid columns="2">
+                                <p:outputLabel value="Mois"/>
+                                <p:selectOneMenu value="#{rapportPF.mois}" effect="fold">
+                                    <c:forEach items="#{rapportPF.mapMap}" var="mois">
+                                        <f:selectItem itemValue="#{mois['key']}" itemLabel="#{mois['value']}"/>
+                                    </c:forEach>
+                                </p:selectOneMenu>
+                                <p:outputLabel value="Annee"/>
+                                <p:selectOneMenu value="#{rapportPF.annee}" effect="fold">
+                                    <f:selectItem itemValue="2015" itemLabel="2015"/>
+                                    <f:selectItem itemValue="2016" itemLabel="2016"/>
+                                    <f:selectItem itemValue="2017" itemLabel="2017"/>
+                                    <f:selectItem itemValue="2018" itemLabel="2018"/>                                 
+                                    <f:selectItem itemValue="2019" itemLabel="2019"/>
+                                    <f:selectItem itemValue="2020" itemLabel="2020"/>
+                                    <f:selectItem itemValue="2021" itemLabel="2021"/>
+                                    <f:selectItem itemValue="2022" itemLabel="2022"/>
+                                </p:selectOneMenu>
+                            </p:panelGrid>
+                            <f:facet name="footer">
+                                <p:commandButton value="Voir" action="#{rapportPF.print()}" ajax="false" process="@this" icon="fa fa-edit" a:target="blink"/>
+                            </f:facet>
+                        </p:dialog>
+                    </h:form>
+                </div>
+            </p:layoutUnit>
+            <p:layoutUnit position="south" style="text-align: center" size="50" closable="true" collapsible="false">
+                <div id="bottom">
+                    <ui:insert name="bottom">
+                        <p:outputLabel >Gestion des services CPN et PF  2016<br/>
+                            &copy; HGRP, Tout Droit reservé; 
+                            Designed by 
+                        </p:outputLabel> <a href="http://www.afrintic.com" target="_blank">AfriNTIC.com</a>
+                    </ui:insert>
+                </div>
+            </p:layoutUnit>
+            <p:layoutUnit position="west" size="175" header="Left" collapsible="true">
+                <ui:insert name="left">
+                    <h:form>
+                        <p:menu>
+                            <p:menuitem value="Dossiers clients" outcome="/infosFemme/index.xhtml" icon="fa fa-info"/>
+                            <p:submenu label="CPN">
+                                <p:menuitem value="Consultaiton rdv" outcome="/consultation/index.xhtml" icon="fa fa-folder-open"/>
+                                <p:menuitem value="Mesure préventives" outcome="/mesuresPreventives/index.xhtml" icon="fa fa-check-circle-o"/>
+                                <ui:remove>     
+                                    <p:menuitem value="Examen labo" outcome="/examenLabo/index.xhtml" icon="fa fa-stethoscope" /> 
+                                </ui:remove>
+                                <p:menuitem value="Antécédents obs" outcome="/antecedentCpn/index.xhtml" icon="fa fa-stethoscope" />
+                                <p:menuitem value="Autres problèmes"  outcome="/autresProblemes/index.xhtml" icon="fa fa-bug"/>
+                            </p:submenu>
+                            <p:submenu  label="Planification">
+                                <p:menuitem value="Plani"  icon="fa fa-tasks" outcome="/planficationFamiliale/index.xhtml" />
+                                <p:menuitem value="Motif" icon="fa fa-reorder" outcome="/motifConsultation/index.xhtml" />
+                                <p:menuitem value="Antécédents PF" icon="fa fa-stethoscope" outcome="/antecedentPl/index.xhtml" />
+                                <p:menuitem value="Dcip"  icon="fa fa-fax" outcome="/dcip/index.xhtml" />
+                                <p:menuitem value="Règles"  icon="fa fa-deviantart" outcome="/regles/index.xhtml" />
+                                <p:menuitem value="Données objectives" icon="fa fa-database" outcome="/donneesObjectives/index.xhtml" />
+                                <p:menuitem value="Grossesse" icon="fa fa-female" outcome="/grossesse/index.xhtml" />
+                            </p:submenu>
+                            <p:submenu label="Maternité">
+                                <p:menuitem value="Accouchement"  outcome="/infosAccouchement/index.xhtml" />
+                            </p:submenu>
+                        </p:menu>
+                    </h:form>
+                </ui:insert>
+            </p:layoutUnit>
+            <p:layoutUnit position="center">
+                <ui:insert name="content">center</ui:insert>
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
+</html>

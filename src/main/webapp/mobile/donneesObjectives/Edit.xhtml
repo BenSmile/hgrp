@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="DonneesObjectivesEditPage" lazy="true">
+        <pm:header title="#{resourcesBundle.EditDonneesObjectivesTitle}">
+            <h:form>
+                <p:commandButton styleClass="ui-btn-left ui-btn-inline" value="#{resourcesBundle.Cancel}" icon="ui-icon-arrow-l" action="#{mobilePageController.navigateBackInHistory('pm:DonneesObjectivesListPage')}"/>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="DonneesObjectivesEditForm">
+
+                <h:panelGroup id="display">
+                    <p:tabView id="DonneesObjectivesTabView">
+
+                        <p:tab id="DonneesObjectivesTab1" title="#{resourcesBundle.TabHeaderPrefix} 1">
+                            <p:outputPanel rendered="#{donneesObjectivesController.selected != null}">
+                                <pm:field>
+                                    <h:outputLabel value="#{resourcesBundle.EditDonneesObjectivesLabel_idDonnObject}" for="idDonnObject" />
+                                    <h:outputText id="idDonnObject" value="#{donneesObjectivesController.selected.idDonnObject}" />
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditDonneesObjectivesLabel_dateRDVPL}" for="dateRDVPL" />
+                                    <p:calendar id="dateRDVPL" pattern="MM/dd/yyyy" value="#{donneesObjectivesController.selected.dateRDVPL}" title="#{resourcesBundle.EditDonneesObjectivesTitle_dateRDVPL}"  showOn="button"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditDonneesObjectivesLabel_poids}" for="poids" />
+                                    <p:inputText id="poids" value="#{donneesObjectivesController.selected.poids}" title="#{resourcesBundle.EditDonneesObjectivesTitle_poids}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditDonneesObjectivesLabel_ta}" for="ta" />
+                                    <p:inputText id="ta" value="#{donneesObjectivesController.selected.ta}" title="#{resourcesBundle.EditDonneesObjectivesTitle_ta}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditDonneesObjectivesLabel_signeinfectiongyneco}" for="signeinfectiongyneco" />
+                                    <p:inputText id="signeinfectiongyneco" value="#{donneesObjectivesController.selected.signeinfectiongyneco}" title="#{resourcesBundle.EditDonneesObjectivesTitle_signeinfectiongyneco}" size="10" maxlength="10"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditDonneesObjectivesLabel_ist}" for="ist" />
+                                    <p:inputText id="ist" value="#{donneesObjectivesController.selected.ist}" title="#{resourcesBundle.EditDonneesObjectivesTitle_ist}" size="10" maxlength="10"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditDonneesObjectivesLabel_amenorhee6emSEm}" for="amenorhee6emSEm" />
+                                    <p:inputText id="amenorhee6emSEm" value="#{donneesObjectivesController.selected.amenorhee6emSEm}" title="#{resourcesBundle.EditDonneesObjectivesTitle_amenorhee6emSEm}" size="10" maxlength="10"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditDonneesObjectivesLabel_signeGrossesse}" for="signeGrossesse" />
+                                    <p:inputText id="signeGrossesse" value="#{donneesObjectivesController.selected.signeGrossesse}" title="#{resourcesBundle.EditDonneesObjectivesTitle_signeGrossesse}" size="10" maxlength="10"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditDonneesObjectivesLabel_visiontroublee}" for="visiontroublee" />
+                                    <p:inputText id="visiontroublee" value="#{donneesObjectivesController.selected.visiontroublee}" title="#{resourcesBundle.EditDonneesObjectivesTitle_visiontroublee}" size="10" maxlength="10"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditDonneesObjectivesLabel_cephaleesintenses}" for="cephaleesintenses" />
+                                    <p:inputText id="cephaleesintenses" value="#{donneesObjectivesController.selected.cephaleesintenses}" title="#{resourcesBundle.EditDonneesObjectivesTitle_cephaleesintenses}" size="10" maxlength="10"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditDonneesObjectivesLabel_masseSuspecte}" for="masseSuspecte" />
+                                    <p:inputText id="masseSuspecte" value="#{donneesObjectivesController.selected.masseSuspecte}" title="#{resourcesBundle.EditDonneesObjectivesTitle_masseSuspecte}" size="10" maxlength="10"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditDonneesObjectivesLabel_nauseeVaumissement}" for="nauseeVaumissement" />
+                                    <p:inputText id="nauseeVaumissement" value="#{donneesObjectivesController.selected.nauseeVaumissement}" title="#{resourcesBundle.EditDonneesObjectivesTitle_nauseeVaumissement}" size="10" maxlength="10"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditDonneesObjectivesLabel_douleurPelvienne}" for="douleurPelvienne" />
+                                    <p:inputText id="douleurPelvienne" value="#{donneesObjectivesController.selected.douleurPelvienne}" title="#{resourcesBundle.EditDonneesObjectivesTitle_douleurPelvienne}" size="10" maxlength="10"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditDonneesObjectivesLabel_icteres}" for="icteres" />
+                                    <p:inputText id="icteres" value="#{donneesObjectivesController.selected.icteres}" title="#{resourcesBundle.EditDonneesObjectivesTitle_icteres}" size="10" maxlength="10"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditDonneesObjectivesLabel_fatigabilite}" for="fatigabilite" />
+                                    <p:inputText id="fatigabilite" value="#{donneesObjectivesController.selected.fatigabilite}" title="#{resourcesBundle.EditDonneesObjectivesTitle_fatigabilite}" size="10" maxlength="10"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditDonneesObjectivesLabel_examenSeins}" for="examenSeins" />
+                                    <p:inputText id="examenSeins" value="#{donneesObjectivesController.selected.examenSeins}" title="#{resourcesBundle.EditDonneesObjectivesTitle_examenSeins}" size="10" maxlength="10"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditDonneesObjectivesLabel_examenAbdomen}" for="examenAbdomen" />
+                                    <p:inputText id="examenAbdomen" value="#{donneesObjectivesController.selected.examenAbdomen}" title="#{resourcesBundle.EditDonneesObjectivesTitle_examenAbdomen}" size="10" maxlength="10"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditDonneesObjectivesLabel_examengyneco}" for="examengyneco" />
+                                    <p:inputText id="examengyneco" value="#{donneesObjectivesController.selected.examengyneco}" title="#{resourcesBundle.EditDonneesObjectivesTitle_examengyneco}" size="10" maxlength="10"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditDonneesObjectivesLabel_gainanormalePoids}" for="gainanormalePoids" />
+                                    <p:inputText id="gainanormalePoids" value="#{donneesObjectivesController.selected.gainanormalePoids}" title="#{resourcesBundle.EditDonneesObjectivesTitle_gainanormalePoids}" size="10" maxlength="10"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditDonneesObjectivesLabel_TAtropelevee}" for="TAtropelevee" />
+                                    <p:inputText id="TAtropelevee" value="#{donneesObjectivesController.selected.TAtropelevee}" title="#{resourcesBundle.EditDonneesObjectivesTitle_TAtropelevee}" size="10" maxlength="10"/>
+                                </pm:field>
+
+                            </p:outputPanel>
+                        </p:tab>
+                        <p:tab id="DonneesObjectivesTab2" title="#{resourcesBundle.TabHeaderPrefix} 2">
+                            <p:outputPanel rendered="#{donneesObjectivesController.selected != null}">
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditDonneesObjectivesLabel_signeAnemie}" for="signeAnemie" />
+                                    <p:inputText id="signeAnemie" value="#{donneesObjectivesController.selected.signeAnemie}" title="#{resourcesBundle.EditDonneesObjectivesTitle_signeAnemie}" size="10" maxlength="10"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditDonneesObjectivesLabel_autressignesAnormaux}" for="autressignesAnormaux" />
+                                    <p:inputText id="autressignesAnormaux" value="#{donneesObjectivesController.selected.autressignesAnormaux}" title="#{resourcesBundle.EditDonneesObjectivesTitle_autressignesAnormaux}" size="10" maxlength="10"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditDonneesObjectivesLabel_methode}" for="methode" />
+                                    <p:inputText id="methode" value="#{donneesObjectivesController.selected.methode}" title="#{resourcesBundle.EditDonneesObjectivesTitle_methode}" size="17" maxlength="17"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditDonneesObjectivesLabel_quantite}" for="quantite" />
+                                    <p:inputText id="quantite" value="#{donneesObjectivesController.selected.quantite}" title="#{resourcesBundle.EditDonneesObjectivesTitle_quantite}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditDonneesObjectivesLabel_dateProchaineVisite}" for="dateProchaineVisite" />
+                                    <p:calendar id="dateProchaineVisite" pattern="MM/dd/yyyy" value="#{donneesObjectivesController.selected.dateProchaineVisite}" title="#{resourcesBundle.EditDonneesObjectivesTitle_dateProchaineVisite}"  showOn="button"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditDonneesObjectivesLabel_utilisateur}" for="utilisateur" />
+                                    <p:selectOneMenu id="utilisateur" value="#{donneesObjectivesController.selected.utilisateur}" required="true" requiredMessage="#{resourcesBundle.EditDonneesObjectivesRequiredMessage_utilisateur}" converter="usersConverter">
+                                        <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                        <f:selectItems value="#{usersController.items}"
+                                                       var="utilisateurItem"
+                                                       itemValue="#{utilisateurItem}"
+                                                       itemLabel="#{utilisateurItem.uname.toString()}"
+                                                       />
+
+                                    </p:selectOneMenu>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditDonneesObjectivesLabel_numDossier}" for="numDossier" />
+                                    <p:selectOneMenu id="numDossier" value="#{donneesObjectivesController.selected.numDossier}"  converter="infosFemmeConverter">
+                                        <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                        <f:selectItems value="#{infosFemmeController.items}"
+                                                       var="numDossierItem"
+                                                       itemValue="#{numDossierItem}"
+                                                       itemLabel="#{numDossierItem.numDossier.toString()}"
+                                                       />
+
+                                    </p:selectOneMenu>
+                                </pm:field>
+                            </p:outputPanel>
+                        </p:tab>
+                    </p:tabView>
+                    <p:commandButton actionListener="#{donneesObjectivesController.save}" value="#{resourcesBundle.Save}" update="#{mobilePageController.updatableWidgets(component,'display,:DonneesObjectivesListPage:DonneesObjectivesListForm:datalist,:growl')}" action="#{mobilePageController.navigateWithHistory('pm:DonneesObjectivesListPage')}">
+                        <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                </h:panelGroup>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

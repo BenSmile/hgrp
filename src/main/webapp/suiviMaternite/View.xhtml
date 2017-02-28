@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="SuiviMaterniteViewDlg" widgetVar="SuiviMaterniteViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{resourcesBundle.ViewSuiviMaterniteTitle}" closeOnEscape="true">
+
+            <h:form id="SuiviMaterniteViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{suiviMaterniteController.selected != null}">
+
+                        <h:outputText value="#{resourcesBundle.ViewSuiviMaterniteLabel_idSuiv}"/>
+                        <h:outputText value="#{suiviMaterniteController.selected.idSuiv}" title="#{resourcesBundle.ViewSuiviMaterniteTitle_idSuiv}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewSuiviMaterniteLabel_examenPhysique}"/>
+                        <h:outputText value="#{suiviMaterniteController.selected.examenPhysique}" title="#{resourcesBundle.ViewSuiviMaterniteTitle_examenPhysique}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewSuiviMaterniteLabel_examenParacliniques}"/>
+                        <h:outputText value="#{suiviMaterniteController.selected.examenParacliniques}" title="#{resourcesBundle.ViewSuiviMaterniteTitle_examenParacliniques}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewSuiviMaterniteLabel_autreObservation}"/>
+                        <h:outputText value="#{suiviMaterniteController.selected.autreObservation}" title="#{resourcesBundle.ViewSuiviMaterniteTitle_autreObservation}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewSuiviMaterniteLabel_conclusion}"/>
+                        <h:outputText value="#{suiviMaterniteController.selected.conclusion}" title="#{resourcesBundle.ViewSuiviMaterniteTitle_conclusion}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewSuiviMaterniteLabel_decision}"/>
+                        <h:outputText value="#{suiviMaterniteController.selected.decision}" title="#{resourcesBundle.ViewSuiviMaterniteTitle_decision}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewSuiviMaterniteLabel_numDossierCPN}"/>
+                        <h:outputText value="#{suiviMaterniteController.selected.numDossierCPN}" title="#{resourcesBundle.ViewSuiviMaterniteTitle_numDossierCPN}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{resourcesBundle.Close}" onclick="PF('SuiviMaterniteViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

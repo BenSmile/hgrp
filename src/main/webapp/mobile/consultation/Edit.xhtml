@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="ConsultationEditPage" lazy="true">
+        <pm:header title="#{resourcesBundle.EditConsultationTitle}">
+            <h:form>
+                <p:commandButton styleClass="ui-btn-left ui-btn-inline" value="#{resourcesBundle.Cancel}" icon="ui-icon-arrow-l" action="#{mobilePageController.navigateBackInHistory('pm:ConsultationListPage')}"/>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="ConsultationEditForm">
+
+                <h:panelGroup id="display">
+                    <p:tabView id="ConsultationTabView">
+
+                        <p:tab id="ConsultationTab1" title="#{resourcesBundle.TabHeaderPrefix} 1">
+                            <p:outputPanel rendered="#{consultationController.selected != null}">
+                                <pm:field>
+                                    <h:outputLabel value="#{resourcesBundle.EditConsultationLabel_idRDV}" for="idRDV" />
+                                    <h:outputText id="idRDV" value="#{consultationController.selected.idRDV}" />
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditConsultationLabel_date}" for="date" />
+                                    <p:calendar id="date" pattern="MM/dd/yyyy" value="#{consultationController.selected.date}" title="#{resourcesBundle.EditConsultationTitle_date}"  showOn="button"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditConsultationLabel_ageGrossesse}" for="ageGrossesse" />
+                                    <p:inputText id="ageGrossesse" value="#{consultationController.selected.ageGrossesse}" title="#{resourcesBundle.EditConsultationTitle_ageGrossesse}" required="true" requiredMessage="#{resourcesBundle.EditConsultationRequiredMessage_ageGrossesse}" size="20" maxlength="20"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditConsultationLabel_conjonctivehb}" for="conjonctivehb" />
+                                    <p:inputText id="conjonctivehb" value="#{consultationController.selected.conjonctivehb}" title="#{resourcesBundle.EditConsultationTitle_conjonctivehb}" size="20" maxlength="20"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditConsultationLabel_hauteurUterine}" for="hauteurUterine" />
+                                    <p:inputText id="hauteurUterine" value="#{consultationController.selected.hauteurUterine}" title="#{resourcesBundle.EditConsultationTitle_hauteurUterine}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditConsultationLabel_surfaceuterine}" for="surfaceuterine" />
+                                    <p:inputText id="surfaceuterine" value="#{consultationController.selected.surfaceuterine}" title="#{resourcesBundle.EditConsultationTitle_surfaceuterine}" size="11" maxlength="11"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditConsultationLabel_mouvementfoetaux}" for="mouvementfoetaux" />
+                                    <p:inputText id="mouvementfoetaux" value="#{consultationController.selected.mouvementfoetaux}" title="#{resourcesBundle.EditConsultationTitle_mouvementfoetaux}" size="8" maxlength="8"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditConsultationLabel_bruitfoetaux}" for="bruitfoetaux" />
+                                    <p:inputText id="bruitfoetaux" value="#{consultationController.selected.bruitfoetaux}" title="#{resourcesBundle.EditConsultationTitle_bruitfoetaux}" size="8" maxlength="8"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditConsultationLabel_bcf}" for="bcf" />
+                                    <p:inputText id="bcf" value="#{consultationController.selected.bcf}" title="#{resourcesBundle.EditConsultationTitle_bcf}" size="8" maxlength="8"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditConsultationLabel_presentation}" for="presentation" />
+                                    <p:inputText id="presentation" value="#{consultationController.selected.presentation}" title="#{resourcesBundle.EditConsultationTitle_presentation}" size="13" maxlength="13"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditConsultationLabel_pertesliquidiènnes}" for="pertesliquidiènnes" />
+                                    <p:inputText id="pertesliquidiènnes" value="#{consultationController.selected.pertesliquidiènnes}" title="#{resourcesBundle.EditConsultationTitle_pertesliquidiènnes}" size="4" maxlength="4"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditConsultationLabel_oedemes}" for="oedemes" />
+                                    <p:inputText id="oedemes" value="#{consultationController.selected.oedemes}" title="#{resourcesBundle.EditConsultationTitle_oedemes}" size="8" maxlength="8"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditConsultationLabel_albuminure}" for="albuminure" />
+                                    <p:inputText id="albuminure" value="#{consultationController.selected.albuminure}" title="#{resourcesBundle.EditConsultationTitle_albuminure}" size="8" maxlength="8"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditConsultationLabel_glycosurie}" for="glycosurie" />
+                                    <p:inputText id="glycosurie" value="#{consultationController.selected.glycosurie}" title="#{resourcesBundle.EditConsultationTitle_glycosurie}" size="8" maxlength="8"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditConsultationLabel_ta1}" for="ta1" />
+                                    <p:inputText id="ta1" value="#{consultationController.selected.ta1}" title="#{resourcesBundle.EditConsultationTitle_ta1}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditConsultationLabel_ta2}" for="ta2" />
+                                    <p:inputText id="ta2" value="#{consultationController.selected.ta2}" title="#{resourcesBundle.EditConsultationTitle_ta2}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditConsultationLabel_mictalgie}" for="mictalgie" />
+                                    <p:inputText id="mictalgie" value="#{consultationController.selected.mictalgie}" title="#{resourcesBundle.EditConsultationTitle_mictalgie}" size="8" maxlength="8"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditConsultationLabel_contraction}" for="contraction" />
+                                    <p:inputText id="contraction" value="#{consultationController.selected.contraction}" title="#{resourcesBundle.EditConsultationTitle_contraction}" size="8" maxlength="8"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditConsultationLabel_bassinPromonitoire}" for="bassinPromonitoire" />
+                                    <p:inputText id="bassinPromonitoire" value="#{consultationController.selected.bassinPromonitoire}" title="#{resourcesBundle.EditConsultationTitle_bassinPromonitoire}" size="14" maxlength="14"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditConsultationLabel_poids}" for="poids" />
+                                    <p:inputText id="poids" value="#{consultationController.selected.poids}" title="#{resourcesBundle.EditConsultationTitle_poids}"/>
+                                </pm:field>
+
+                            </p:outputPanel>
+                        </p:tab>
+                        <p:tab id="ConsultationTab2" title="#{resourcesBundle.TabHeaderPrefix} 2">
+                            <p:outputPanel rendered="#{consultationController.selected != null}">
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditConsultationLabel_taille}" for="taille" />
+                                    <p:inputText id="taille" value="#{consultationController.selected.taille}" title="#{resourcesBundle.EditConsultationTitle_taille}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditConsultationLabel_femmeARisque}" for="femmeARisque" />
+                                    <p:inputText id="femmeARisque" value="#{consultationController.selected.femmeARisque}" title="#{resourcesBundle.EditConsultationTitle_femmeARisque}" size="8" maxlength="8"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditConsultationLabel_decisioncentresante}" for="decisioncentresante" />
+                                    <p:inputText id="decisioncentresante" value="#{consultationController.selected.decisioncentresante}" title="#{resourcesBundle.EditConsultationTitle_decisioncentresante}" size="44" maxlength="44"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditConsultationLabel_raison}" for="raison" />
+                                    <p:inputTextarea rows="4" cols="30" id="raison" value="#{consultationController.selected.raison}" title="#{resourcesBundle.EditConsultationTitle_raison}" />
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditConsultationLabel_utilisateur}" for="utilisateur" />
+                                    <p:selectOneMenu id="utilisateur" value="#{consultationController.selected.utilisateur}" required="true" requiredMessage="#{resourcesBundle.EditConsultationRequiredMessage_utilisateur}" converter="usersConverter">
+                                        <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                        <f:selectItems value="#{usersController.items}"
+                                                       var="utilisateurItem"
+                                                       itemValue="#{utilisateurItem}"
+                                                       itemLabel="#{utilisateurItem.uname.toString()}"
+                                                       />
+
+                                    </p:selectOneMenu>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.EditConsultationLabel_numDossier}" for="numDossier" />
+                                    <p:selectOneMenu id="numDossier" value="#{consultationController.selected.numDossier}" required="true" requiredMessage="#{resourcesBundle.EditConsultationRequiredMessage_numDossier}" converter="infosFemmeConverter">
+                                        <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                        <f:selectItems value="#{infosFemmeController.items}"
+                                                       var="numDossierItem"
+                                                       itemValue="#{numDossierItem}"
+                                                       itemLabel="#{numDossierItem.numDossier.toString()}"
+                                                       />
+
+                                    </p:selectOneMenu>
+                                </pm:field>
+                            </p:outputPanel>
+                        </p:tab>
+                    </p:tabView>
+                    <p:commandButton actionListener="#{consultationController.save}" value="#{resourcesBundle.Save}" update="#{mobilePageController.updatableWidgets(component,'display,:ConsultationListPage:ConsultationListForm:datalist,:growl')}" action="#{mobilePageController.navigateWithHistory('pm:ConsultationListPage')}">
+                        <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                </h:panelGroup>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

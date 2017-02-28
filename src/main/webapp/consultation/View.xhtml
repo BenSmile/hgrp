@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ConsultationViewDlg" widgetVar="ConsultationViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{resourcesBundle.ViewConsultationTitle}" closeOnEscape="true">
+
+            <h:form id="ConsultationViewForm">
+
+                <h:panelGroup id="display">
+                    <p:tabView id="ConsultationTabView">
+
+                        <p:tab id="ConsultationTab1" title="#{resourcesBundle.TabHeaderPrefix} 1">
+                            <p:panelGrid columns="4" columnClasses="column" rendered="#{consultationController.selected != null}">
+                                <h:outputText value="#{resourcesBundle.ViewConsultationLabel_idRDV}"/>
+                                <h:outputText value="#{consultationController.selected.idRDV}" title="#{resourcesBundle.ViewConsultationTitle_idRDV}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewConsultationLabel_date}"/>
+                                <h:outputText value="#{consultationController.selected.date}" title="#{resourcesBundle.ViewConsultationTitle_date}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+
+                                <h:outputText value="#{resourcesBundle.ViewConsultationLabel_ageGrossesse}"/>
+                                <h:outputText value="#{consultationController.selected.ageGrossesse}" title="#{resourcesBundle.ViewConsultationTitle_ageGrossesse}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewConsultationLabel_conjonctivehb}"/>
+                                <h:outputText value="#{consultationController.selected.conjonctivehb}" title="#{resourcesBundle.ViewConsultationTitle_conjonctivehb}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewConsultationLabel_hauteurUterine}"/>
+                                <h:outputText value="#{consultationController.selected.hauteurUterine}" title="#{resourcesBundle.ViewConsultationTitle_hauteurUterine}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewConsultationLabel_surfaceuterine}"/>
+                                <h:outputText value="#{consultationController.selected.surfaceuterine}" title="#{resourcesBundle.ViewConsultationTitle_surfaceuterine}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewConsultationLabel_mouvementfoetaux}"/>
+                                <h:outputText value="#{consultationController.selected.mouvementfoetaux}" title="#{resourcesBundle.ViewConsultationTitle_mouvementfoetaux}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewConsultationLabel_bruitfoetaux}"/>
+                                <h:outputText value="#{consultationController.selected.bruitfoetaux}" title="#{resourcesBundle.ViewConsultationTitle_bruitfoetaux}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewConsultationLabel_bcf}"/>
+                                <h:outputText value="#{consultationController.selected.bcf}" title="#{resourcesBundle.ViewConsultationTitle_bcf}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewConsultationLabel_presentation}"/>
+                                <h:outputText value="#{consultationController.selected.presentation}" title="#{resourcesBundle.ViewConsultationTitle_presentation}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewConsultationLabel_pertesliquidiènnes}"/>
+                                <h:outputText value="#{consultationController.selected.pertesliquidiènnes}" title="#{resourcesBundle.ViewConsultationTitle_pertesliquidiènnes}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewConsultationLabel_oedemes}"/>
+                                <h:outputText value="#{consultationController.selected.oedemes}" title="#{resourcesBundle.ViewConsultationTitle_oedemes}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewConsultationLabel_albuminure}"/>
+                                <h:outputText value="#{consultationController.selected.albuminure}" title="#{resourcesBundle.ViewConsultationTitle_albuminure}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewConsultationLabel_glycosurie}"/>
+                                <h:outputText value="#{consultationController.selected.glycosurie}" title="#{resourcesBundle.ViewConsultationTitle_glycosurie}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewConsultationLabel_ta1}"/>
+                                <h:outputText value="#{consultationController.selected.ta1}" title="#{resourcesBundle.ViewConsultationTitle_ta1}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewConsultationLabel_ta2}"/>
+                                <h:outputText value="#{consultationController.selected.ta2}" title="#{resourcesBundle.ViewConsultationTitle_ta2}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewConsultationLabel_mictalgie}"/>
+                                <h:outputText value="#{consultationController.selected.mictalgie}" title="#{resourcesBundle.ViewConsultationTitle_mictalgie}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewConsultationLabel_contraction}"/>
+                                <h:outputText value="#{consultationController.selected.contraction}" title="#{resourcesBundle.ViewConsultationTitle_contraction}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewConsultationLabel_bassinPromonitoire}"/>
+                                <h:outputText value="#{consultationController.selected.bassinPromonitoire}" title="#{resourcesBundle.ViewConsultationTitle_bassinPromonitoire}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewConsultationLabel_poids}"/>
+                                <h:outputText value="#{consultationController.selected.poids}" title="#{resourcesBundle.ViewConsultationTitle_poids}"/>
+                                <h:outputText value="#{resourcesBundle.ViewConsultationLabel_taille}"/>
+                                <h:outputText value="#{consultationController.selected.taille}" title="#{resourcesBundle.ViewConsultationTitle_taille}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewConsultationLabel_femmeARisque}"/>
+                                <h:outputText value="#{consultationController.selected.femmeARisque}" title="#{resourcesBundle.ViewConsultationTitle_femmeARisque}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewConsultationLabel_decisioncentresante}"/>
+                                <h:outputText value="#{consultationController.selected.decisioncentresante}" title="#{resourcesBundle.ViewConsultationTitle_decisioncentresante}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewConsultationLabel_raison}"/>
+                                <h:outputText value="#{consultationController.selected.raison}" title="#{resourcesBundle.ViewConsultationTitle_raison}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewConsultationLabel_utilisateur}"/>
+                                <h:outputText value="#{consultationController.selected.utilisateur.uname}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewConsultationLabel_numDossier}"/>
+                                <h:outputText value="#{consultationController.selected.numDossier.numDossier}"/>
+                            </p:panelGrid>
+                        </p:tab>
+                    </p:tabView>
+                    <p:commandButton value="#{resourcesBundle.Close}" onclick="PF('ConsultationViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

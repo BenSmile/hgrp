@@ -1,0 +1,1347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9c816e8f-e06b-4a89-ab23-b95b11a313a7">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.x" value="149"/>
+	<property name="ireport.y" value="456"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Crosstab Data Text" hAlign="Center"/>
+	<queryString>
+		<![CDATA[select COUNT(NumDossierCPN) AS NbGestanteHZ FROM infofemmecpn WHERE Provenance = 'HZ';]]>
+	</queryString>
+	<field name="NbGestantesZS" class="java.lang.String"/>
+	<field name="NbGestantesHZ" class="java.lang.String"/>
+	<field name="NbGestantesCPN2Plus" class="java.lang.String"/>
+	<field name="DontRefereParCsZS" class="java.lang.String"/>
+	<field name="DontRefereParCsHZ" class="java.lang.String"/>
+	<field name="DontRefereParCsCPN2Plus" class="java.lang.String"/>
+	<field name="FeAvec3CPNAu8emEt9emMoisZS" class="java.lang.String"/>
+	<field name="FeAvec3CPNAu8emEt9emMoisHZ" class="java.lang.String"/>
+	<field name="FeAyantConcultePour2emCpnZS" class="java.lang.String"/>
+	<field name="FeAyantConcultePour2emCpnHZ" class="java.lang.String"/>
+	<field name="FeAyantConcultePour3emCpnZS" class="java.lang.String"/>
+	<field name="FeAyantConcultePour3emCpnHZ" class="java.lang.String"/>
+	<field name="FeAyantConcultePour4emCpnOuPlusZS" class="java.lang.String"/>
+	<field name="FeAyantConcultePour4emCpnOuPlusHZ" class="java.lang.String"/>
+	<field name="FeARisqueDetecteesZS" class="java.lang.String"/>
+	<field name="FeARisqueDetecteesHZ" class="java.lang.String"/>
+	<field name="FeARisqueRefereesZS" class="java.lang.String"/>
+	<field name="FeARisqueRefereesHZ" class="java.lang.String"/>
+	<field name="FerAcideFolique1ereDoseZS" class="java.lang.String"/>
+	<field name="FerAcideFolique1ereDoseHZ" class="java.lang.String"/>
+	<field name="FerAcideFolique2ereDoseZS" class="java.lang.String"/>
+	<field name="FerAcideFolique2ereDoseHZ" class="java.lang.String"/>
+	<field name="FerAcideFolique3ereDoseZS" class="java.lang.String"/>
+	<field name="FerAcideFolique3ereDoseHZ" class="java.lang.String"/>
+	<field name="SulfadoxPyrimet1ereDoseZS" class="java.lang.String"/>
+	<field name="SulfadoxPyrimet1ereDoseHZ" class="java.lang.String"/>
+	<field name="SulfadoxPyrimet2ereDoseZS" class="java.lang.String"/>
+	<field name="SulfadoxPyrimet2ereDoseHZ" class="java.lang.String"/>
+	<field name="SulfadoxPyrimet3ereDoseVIHPlusZS" class="java.lang.String"/>
+	<field name="SulfadoxPyrimet3ereDoseVIHPlusHZ" class="java.lang.String"/>
+	<field name="FeAyantRecuVAT2emeA5emeDoseZS" class="java.lang.String"/>
+	<field name="FeAyantRecuVAT2emeA5emeDoseHZ" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="31" splitType="Stretch">
+			<staticText>
+				<reportElement x="26" y="1" width="125" height="15" uuid="34f33b0f-9dbc-47fc-933f-482a87ac7d62"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ACTIVITES PREVENTIVES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="16" width="100" height="14" uuid="a151c5b3-f214-489c-9c6a-1d5008433b82"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CPN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="323" y="16" width="70" height="10" uuid="9af74a6c-9322-41aa-8aac-e06df037dd3d"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Séances réalisées]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="401" y="11" width="73" height="15" uuid="ff75d68d-2833-465e-8a2e-d9c2ad9534ce"/>
+			</rectangle>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="132" splitType="Stretch">
+			<rectangle>
+				<reportElement x="26" y="39" width="177" height="15" uuid="3fc2105b-024f-4078-99a3-10124ab98a7b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="26" y="24" width="177" height="15" uuid="7a2fc8cd-7e5d-4915-ade9-193557138151"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="203" y="39" width="66" height="15" uuid="2744b767-d92e-4095-be85-3d0b58214ee2"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="269" y="39" width="66" height="15" uuid="b1998410-a4b5-4610-aace-6bbe3c2c2cf4"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="335" y="39" width="66" height="15" uuid="3a5ca57b-eae2-4f90-a13a-3e11500d1876"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="401" y="39" width="73" height="15" uuid="b1361570-6e66-4ae9-b808-d153cac5b336"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="203" y="24" width="66" height="15" uuid="9c20afd3-536a-472d-b96d-3963f661407c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="269" y="24" width="66" height="15" uuid="83b6dd77-6c51-4024-bda6-0958293377c7"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="335" y="24" width="66" height="15" uuid="011d626e-e776-4971-8961-19bb3a6a51db"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="401" y="24" width="73" height="15" uuid="26669253-96b8-429f-8e88-78287b08e122"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="203" y="13" width="66" height="11" uuid="4c19ce96-7fb0-433a-b30e-c7876bde2650"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="269" y="13" width="66" height="11" uuid="b24d51b9-e9a9-442a-816a-99652b0f77c7"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="203" y="1" width="132" height="12" uuid="b2302316-c8f5-4e1a-9359-8d997b931704"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="335" y="1" width="66" height="23" uuid="fe46b11c-3007-4d60-a255-86ccc897ecaf"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="401" y="1" width="73" height="23" uuid="8b2982e3-b50f-4107-878a-2abb2e85a678"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="258" y="1" width="44" height="12" uuid="e5e83e4c-0961-4098-9b71-898e35a49973"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CPN 1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="229" y="14" width="21" height="11" uuid="28f90cca-efd4-4ffe-8567-44798703173f"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ZS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="295" y="14" width="26" height="12" uuid="11a2cb43-2abe-4ff0-af3a-9025d3f024c9"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[HZ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="341" y="7" width="52" height="17" uuid="61dd76f4-3fd6-4f00-8011-d5d3fa260fc9"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CPN 2 ou +]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="411" y="7" width="52" height="17" uuid="18dd0fde-8501-4e08-92b2-3ef497b41a7d"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Total Cas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="26" width="155" height="11" uuid="e766971c-1858-4808-9ab2-071c0b01f82c"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Nb Gestantes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="56" y="42" width="95" height="11" uuid="b8ac1a0d-9ad5-4b3d-b430-7755153a734a"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[dont référées par CS]]></text>
+			</staticText>
+			<line>
+				<reportElement x="34" y="48" width="12" height="1" uuid="a65fdc0b-db0e-4db9-9d6b-35ec83d60b86"/>
+			</line>
+			<rectangle>
+				<reportElement x="401" y="87" width="73" height="15" uuid="813854a7-13b1-4428-a74f-068ffb848506"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="26" y="102" width="243" height="15" uuid="73a9f5b0-16fd-4277-bc17-49ac1ea50efd"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="269" y="72" width="66" height="15" uuid="11b1b2cd-35f5-498f-9f6e-4f06c1d9934f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="335" y="72" width="66" height="15" uuid="b9a00149-d985-4bd9-b997-776b1183e111"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="335" y="87" width="66" height="15" uuid="ef90ddb7-520c-478f-a8ce-79addd84405b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="269" y="87" width="66" height="15" uuid="2442fca3-f5cf-4cfb-8354-385c677c8f25"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="401" y="72" width="73" height="15" uuid="ed54b702-4832-4c6f-aecf-c5e2d29c5697"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="26" y="72" width="243" height="15" uuid="07135021-a67e-435d-a86d-14c5fc72dbc8"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="26" y="87" width="243" height="15" uuid="c49e5b85-6fae-42dc-8728-fc370b408c45"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="269" y="102" width="66" height="15" uuid="2dd56b99-001c-46b8-96be-160bf5e8238d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="335" y="102" width="66" height="15" uuid="028a147c-d998-4910-b3c5-dc50c3b6eb3c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="401" y="102" width="73" height="15" uuid="fd88b8b5-bc36-40c9-a78c-6528d62211ea"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="335" y="57" width="66" height="15" uuid="d0d6c6f5-7825-4779-8b2f-ceefeded5cbf"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="401" y="57" width="73" height="15" uuid="a0e8fc4c-4f11-4223-8fd7-dbcc330c9773"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="269" y="57" width="66" height="15" uuid="9f22f7b9-3922-4e93-81f4-9d0937f76a8f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="401" y="117" width="73" height="15" uuid="0a85def8-340d-479b-8ca7-61c7ff4f66a6"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="335" y="117" width="66" height="15" uuid="2ac86a85-de00-4b71-85f7-717ee5f3dbd2"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="269" y="117" width="66" height="15" uuid="d9b3dc27-8585-4d8b-927e-e37699c7edee"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="298" y="60" width="26" height="12" uuid="6ca516c6-3047-457b-ba6e-83c5e9435c41"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ZS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="362" y="60" width="26" height="12" uuid="c776e33e-7e03-41b5-ae8b-32622a67cbf3"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[HZ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="426" y="60" width="26" height="12" uuid="65b3739e-a717-4e8b-80f0-e14e195d0fcd"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="34" y="73" width="224" height="12" uuid="9b157340-b46d-4667-bd79-8a87ee1453fb"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fe avec 3 CPN dont une au 8ème-9ème mois]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="34" y="90" width="237" height="12" uuid="0c676b4e-f88f-48fc-951f-5a425915d039"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fe ayant consultés pour la 2ème CPN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="34" y="102" width="237" height="12" uuid="ad105913-f93b-4651-9a68-6ca3652d5c23"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fe ayant consultés pour la 3ème CPN]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="26" y="117" width="243" height="15" uuid="92a991f5-bf93-4e28-a222-e3c53223aaa8"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="34" y="118" width="237" height="12" uuid="4d9ff51d-a7f7-42f2-af40-c8b5d2bf4493"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fe ayant consultés pour la 4ème CPN ou plus]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="205" y="25" width="62" height="13" uuid="bd11b2b4-4fa6-43d2-b757-ac110e0b3a62"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{NbGestantesZS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="268" y="26" width="66" height="12" uuid="886531a7-ccb2-4731-9cdd-5f51fccb04e3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{NbGestantesHZ}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="334" y="26" width="66" height="12" uuid="fc244c35-83f4-477c-8da5-55e69dcb5072"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{NbGestantesCPN2Plus}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="204" y="38" width="64" height="16" uuid="8d373eb3-2602-4741-a73a-f0a4b7b4a733"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{DontRefereParCsZS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="269" y="40" width="65" height="14" uuid="35f7fffa-59fd-4088-9d92-2a9b02e4297b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{DontRefereParCsHZ}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="335" y="40" width="64" height="14" uuid="3862d8a8-2b52-46ac-b2c4-3c025f2067cf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{DontRefereParCsCPN2Plus}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="401" y="26" width="73" height="15" uuid="5d7cd6f8-3093-4d06-bb37-dc958a717725"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[Integer.parseInt($F{NbGestantesZS})+Integer.parseInt($F{NbGestantesHZ})+Integer.parseInt($F{NbGestantesCPN2Plus})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="402" y="39" width="73" height="15" uuid="0ff6e33a-4028-46f0-9658-85a582fd5170"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[Integer.parseInt($F{DontRefereParCsZS})+Integer.parseInt($F{DontRefereParCsHZ})+Integer.parseInt($F{DontRefereParCsCPN2Plus})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="270" y="73" width="64" height="14" uuid="ad9d8d8e-6488-4563-894b-929388c85d63"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{FeAvec3CPNAu8emEt9emMoisZS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="335" y="73" width="65" height="14" uuid="3f083eb1-3d99-431d-93e7-43e3df2f033f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{FeAvec3CPNAu8emEt9emMoisHZ}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="268" y="86" width="67" height="15" uuid="234d2f51-6d7d-4509-b68f-b2ee0d7894af"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{FeAyantConcultePour2emCpnZS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="334" y="86" width="67" height="15" uuid="86920c8e-6b23-4438-ac36-57ef4c3b7647"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{FeAyantConcultePour2emCpnHZ}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="270" y="102" width="63" height="15" uuid="9035de6c-9864-4b0e-b90f-55be0d255e77"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{FeAyantConcultePour3emCpnZS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="335" y="102" width="65" height="15" uuid="432635e2-c0b5-4a28-8149-c0c1f1ba10e4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{FeAyantConcultePour3emCpnHZ}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="270" y="117" width="64" height="14" uuid="56062a92-4fff-4200-9587-06ac490a2ea2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{FeAyantConcultePour4emCpnOuPlusZS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="335" y="117" width="65" height="14" uuid="fb27cbd2-bc01-4fa8-b132-631e7bb5f81b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{FeAyantConcultePour4emCpnOuPlusHZ}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="405" y="73" width="65" height="14" uuid="0ead28da-9e36-4770-ae48-686c0b2b9b72"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[Integer.parseInt($F{FeAvec3CPNAu8emEt9emMoisZS})+Integer.parseInt($F{FeAvec3CPNAu8emEt9emMoisHZ})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="405" y="88" width="65" height="14" uuid="67964631-f734-4ed7-a040-4f0107831a83"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[Integer.parseInt($F{FeAyantConcultePour2emCpnZS})+Integer.parseInt($F{FeAyantConcultePour2emCpnHZ})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="405" y="103" width="65" height="14" uuid="b9de317d-c041-4fd1-a3a5-866f644c207b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[Integer.parseInt($F{FeAyantConcultePour3emCpnZS})+Integer.parseInt($F{FeAyantConcultePour3emCpnHZ})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="405" y="118" width="65" height="14" uuid="e4385b96-e8d1-4dfb-9522-df6b16dc6d3b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[Integer.parseInt($F{FeAyantConcultePour4emCpnOuPlusZS})+Integer.parseInt($F{FeAyantConcultePour4emCpnOuPlusHZ})]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="255" y="17" width="66" height="15" uuid="fbc43dc0-f6f5-44e1-a445-3d5f8b27bcfc"/>
+			</rectangle>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="120" splitType="Stretch">
+			<rectangle>
+				<reportElement x="269" y="3" width="66" height="11" uuid="0aab4a2c-92eb-492a-a6d6-b03e25d316e1"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="335" y="3" width="66" height="11" uuid="2e159560-4c58-46b1-a468-76f8818e3bc8"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="401" y="3" width="73" height="11" uuid="f6589a86-c937-4690-baeb-d8374685e619"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="26" y="14" width="243" height="15" uuid="66101319-f1a3-4262-96c5-a10bc85b9d98"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="269" y="14" width="66" height="15" uuid="a9030bb1-d8d0-478d-aed2-16bda245dffc"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="335" y="14" width="66" height="15" uuid="e3fb8b13-4e7d-45f6-87f7-816242aa374f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="401" y="14" width="73" height="15" uuid="c8363d24-08cf-4730-8131-b2d8126c5433"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="26" y="29" width="243" height="15" uuid="ef5e46dc-a4ef-4938-99c9-1dd70b619d87"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="26" y="44" width="243" height="15" uuid="508384d3-9a83-47bc-92fd-0fbb00802663"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="26" y="59" width="243" height="15" uuid="121e5be9-76dc-4c58-b131-99ef0eeccb91"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="269" y="29" width="66" height="15" uuid="feb5cad4-393b-4be9-ab65-1f04efceaac2"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="269" y="44" width="66" height="15" uuid="3842d621-26ff-490d-861b-08770791208b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="269" y="59" width="66" height="15" uuid="809d2204-0d78-4d75-a06a-8566dd49d932"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="335" y="29" width="66" height="15" uuid="398f06f5-eb1e-46d8-ac21-e420d3cf4e98"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="335" y="44" width="66" height="15" uuid="1d3d2751-2650-4edb-ad59-b45382cf380f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="335" y="59" width="66" height="15" uuid="cfd7deca-6795-4ed6-a014-0a1e1f516913"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="401" y="29" width="73" height="15" uuid="03d524cb-b3f4-42ff-834b-4f19f90399a6"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="401" y="44" width="73" height="15" uuid="a400889d-0a63-4ef1-b163-bda8ece40652"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="401" y="59" width="73" height="15" uuid="d53d05d0-7cb8-43dd-9d3b-355486d9931f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="269" y="-1" width="66" height="15" uuid="169139f3-e150-4784-8079-972b2ccf213b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="269" y="89" width="66" height="15" uuid="db74f711-943b-450a-9b59-c15580574495"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="269" y="14" width="66" height="15" uuid="4602f314-b24b-4fa9-a588-2033e702f4ec"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="269" y="29" width="66" height="15" uuid="9549cd7f-6c15-4b46-ba73-5f9557c25d62"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="269" y="44" width="66" height="15" uuid="d6b02ac9-fab0-431f-a8a4-b0c30ad18094"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="269" y="59" width="66" height="15" uuid="ea2986ff-5f2d-4cbf-b916-203833ca625c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="269" y="74" width="66" height="15" uuid="90186d48-32c2-41be-bffd-a68743169b7a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="269" y="104" width="66" height="15" uuid="7cf51214-5f42-4857-b570-2153de03859a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="335" y="-1" width="66" height="15" uuid="d24eaf3d-0b02-4527-bf81-2c9bd1a48ec4"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="335" y="14" width="66" height="15" uuid="994f3d34-95d6-491a-85a5-c09b10d05182"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="335" y="29" width="66" height="15" uuid="7406a232-d247-4fd4-8abf-3c9d1c9ff7b5"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="335" y="44" width="66" height="15" uuid="90e3ccdf-3551-4c26-8b73-4dd1c048711a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="335" y="59" width="66" height="15" uuid="de1a917b-9673-438b-9641-9d2147c62a53"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="335" y="74" width="66" height="15" uuid="e40b9fc1-c4f2-49dc-93df-7b6e8bc5c743"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="335" y="89" width="66" height="15" uuid="5c9d6860-4563-43d2-9af1-4b728dfe5824"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="335" y="104" width="66" height="15" uuid="625606a6-13e7-48c2-9801-94ec69e22020"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="401" y="-1" width="73" height="15" uuid="04b13a68-ea60-42f1-925f-3b75c4bec8ee"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="401" y="14" width="73" height="15" uuid="d236ffe6-8a51-47dc-bbce-30c32e61c848"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="401" y="29" width="73" height="15" uuid="5b4b38eb-e1bb-4fb9-93f5-db9d6969aa26"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="401" y="44" width="73" height="15" uuid="be15a61a-be97-49e6-9492-d8c055e56c23"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="401" y="59" width="73" height="15" uuid="af122da1-d7c7-4991-8078-7d67d1d227af"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="401" y="74" width="73" height="15" uuid="6b8dfedc-fe31-4ddf-86dc-7d5dae6fe56b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="401" y="89" width="73" height="15" uuid="bdae50a4-8577-41b8-b6d3-4c0a35d1f9c0"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="401" y="104" width="73" height="15" uuid="27adea73-c6b1-405a-bf66-fab6582f3b4a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="144" y="-1" width="125" height="15" uuid="e66960be-4f49-4fae-95de-8166048eb6e3"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="144" y="14" width="125" height="15" uuid="7ae3dc08-b436-4a36-b6c7-73f527f18f1e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="26" y="-1" width="118" height="30" uuid="bf540aac-64b3-4663-8f45-bdf1899862c9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="144" y="29" width="125" height="15" uuid="09d04b7f-14be-4837-b00c-4c41cda4da48"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="144" y="44" width="125" height="15" uuid="b3db3b23-ff32-43e6-bd6b-6cda683168fc"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="144" y="59" width="125" height="15" uuid="8c94bd32-9fa9-469c-a277-846f8246938a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="144" y="74" width="125" height="15" uuid="51f937ec-58af-4f5f-b8d3-0bee163011c3"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="144" y="89" width="125" height="15" uuid="5dd552a8-6846-4bfc-a4b5-bc5250353573"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="144" y="104" width="125" height="15" uuid="d11d9759-e225-4fb0-a9e8-e82568fd1690"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="26" y="29" width="118" height="45" uuid="ecb2fd34-985b-4cb7-96ef-5a481542522b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="26" y="74" width="118" height="45" uuid="e8af338f-7884-4693-8f60-b873d6418d4f"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="34" y="9" width="60" height="12" uuid="c5382afe-62fa-49aa-88df-f9ff5a5af70a"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fe à Risque]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="34" y="44" width="92" height="12" uuid="c8b0175a-6877-4815-b192-d4a956981104"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fer + Acide Folique]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="34" y="92" width="92" height="12" uuid="c814d0f3-3229-4fd5-a95a-c1cf997a6bac"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Sulfadox + Pyrimét]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="151" y="0" width="90" height="12" uuid="9ae7eeeb-047e-48f7-ad6d-877c27cae4e6"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fe à risque détectées]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="152" y="17" width="90" height="12" uuid="cffa42d4-e2eb-4058-9523-3dc39ffd2307"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fe à risque référées]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="151" y="32" width="90" height="12" uuid="35278429-da80-4ec2-91df-3588187ed6fd"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[1ère dose reçue]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="152" y="47" width="90" height="12" uuid="fa10c9f4-2183-4351-943f-2861187a8958"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[2ère dose reçues]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="151" y="60" width="90" height="12" uuid="5297c69c-4b69-4075-9651-589a6df15ab5"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[3ère dose reçue]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="152" y="77" width="90" height="12" uuid="42426444-0ce2-4837-9a0c-1c3575642528"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[1ère dose reçue]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="151" y="92" width="90" height="12" uuid="2915e185-005a-43c5-af3d-4afa0de39100"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[2ère dose reçues]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="151" y="107" width="90" height="12" uuid="2a3b7803-2401-47bf-9e72-f19912a66d13"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[3ère dose reçue (VIH+)]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="405" y="1" width="65" height="14" uuid="30b0fd13-be27-46ea-b4ea-14abfd36c27f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[Integer.parseInt($F{FeAvec3CPNAu8emEt9emMoisZS})+Integer.parseInt($F{FeAvec3CPNAu8emEt9emMoisHZ})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="405" y="16" width="65" height="14" uuid="e971963c-ff97-4a0b-868d-0af470fc9857"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[Integer.parseInt($F{FeAyantConcultePour2emCpnZS})+Integer.parseInt($F{FeAyantConcultePour2emCpnHZ})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="405" y="31" width="65" height="14" uuid="497b2a4c-b440-481c-9450-8d2e52b86c2a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[Integer.parseInt($F{FerAcideFolique1ereDoseZS})+Integer.parseInt($F{FerAcideFolique1ereDoseHZ})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="405" y="46" width="65" height="14" uuid="b88b4d65-fe98-4308-b932-82e5ab5c34db"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[Integer.parseInt($F{FerAcideFolique2ereDoseZS})+Integer.parseInt($F{FerAcideFolique2ereDoseHZ})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="270" y="0" width="64" height="14" uuid="b6fa1bd6-bdbd-4c3f-98ef-c048a930a539"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{FeAyantConcultePour4emCpnOuPlusZS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="270" y="1" width="64" height="14" uuid="27cbad41-efad-45a8-ae81-3953decba290"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{FeARisqueDetecteesZS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="270" y="14" width="64" height="14" uuid="218c806b-b5c2-4fdb-8100-f8358c70c06a"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{FeARisqueRefereesZS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="271" y="29" width="64" height="14" uuid="fde8afb5-60d4-4a16-b934-c6d4bc8941cb"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{FerAcideFolique1ereDoseZS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="271" y="45" width="64" height="14" uuid="f1fc1bc5-5bcf-4923-9208-cedb1c8432e4"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{FerAcideFolique2ereDoseZS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="335" y="1" width="64" height="14" uuid="1cdfe1fa-eecf-4e35-9338-094e77c6349e"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{FeARisqueDetecteesHZ}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="336" y="15" width="64" height="14" uuid="730617f8-ee92-4c63-b861-c28df657b650"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{FeARisqueRefereesHZ}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="336" y="29" width="64" height="14" uuid="4c800fb9-ce65-464a-86df-faac468d66a1"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{FerAcideFolique1ereDoseHZ}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="337" y="45" width="64" height="14" uuid="cc5928a6-8e79-441e-8b06-c8eef0623e85"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{FerAcideFolique2ereDoseHZ}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="271" y="60" width="64" height="14" uuid="5b2d6f69-2281-4759-8574-f62aa709f3c1"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{FerAcideFolique3ereDoseZS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="406" y="60" width="64" height="14" uuid="7a564fa9-fe26-46d1-9799-e75e0ce3f41e"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[Integer.parseInt($F{FerAcideFolique3ereDoseZS})+Integer.parseInt($F{FerAcideFolique3ereDoseHZ})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="336" y="59" width="64" height="14" uuid="06332e73-22e5-4a98-905e-52793131b620"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{FerAcideFolique3ereDoseHZ}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="269" y="75" width="64" height="14" uuid="d71256df-7755-4a6e-9f50-9ba3ce8ca9ae"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{SulfadoxPyrimet1ereDoseZS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="336" y="74" width="64" height="14" uuid="b5ae95bd-9f3f-496a-9ff3-45c2ad72c6b1"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{SulfadoxPyrimet1ereDoseHZ}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="406" y="74" width="64" height="14" uuid="37ac427a-9f41-41d0-bdc3-f221adc84c2d"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[Integer.parseInt($F{SulfadoxPyrimet1ereDoseZS})+Integer.parseInt($F{SulfadoxPyrimet1ereDoseHZ})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="270" y="90" width="64" height="14" uuid="af3f0ac7-bc23-4918-9ae0-e2a2b0efbbaa"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{SulfadoxPyrimet2ereDoseZS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="336" y="90" width="64" height="14" uuid="4665563a-0448-4c11-a499-dc4737e9f2ea"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{SulfadoxPyrimet2ereDoseHZ}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="406" y="89" width="64" height="14" uuid="0b68d5f4-e7c6-4abe-b6dd-2ae7fbb662b7"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[Integer.parseInt($F{SulfadoxPyrimet2ereDoseZS})+Integer.parseInt($F{SulfadoxPyrimet2ereDoseHZ})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="270" y="104" width="64" height="14" uuid="e97276d2-b354-43e0-a039-042aee31b366"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{SulfadoxPyrimet3ereDoseVIHPlusZS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="335" y="104" width="64" height="14" uuid="c878a8e1-bdea-4948-8495-1634cfb55cf9"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{SulfadoxPyrimet3ereDoseVIHPlusHZ}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="406" y="105" width="64" height="14" uuid="94c45c4e-7f67-4578-bdfd-2fb7f77433b1"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[Integer.parseInt($F{SulfadoxPyrimet3ereDoseVIHPlusZS})+Integer.parseInt($F{SulfadoxPyrimet3ereDoseVIHPlusHZ})]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="443" splitType="Stretch">
+			<rectangle>
+				<reportElement x="269" y="-1" width="66" height="15" uuid="8c8432cd-00e3-451b-bb5f-0d9ebe3cdf23"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="269" y="14" width="66" height="15" uuid="9f2a03c5-4357-49ad-abd0-b06c50ce2ce8"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="269" y="29" width="66" height="15" uuid="6b69c461-f7cc-4be9-8a82-890f161504ea"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="335" y="14" width="66" height="15" uuid="b2ee8f0a-f855-485b-8c76-3c1a45b81c95"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="335" y="29" width="66" height="15" uuid="87ec2a5e-6b20-44c1-a1cd-a52023a81f42"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="401" y="-1" width="73" height="15" uuid="68f994e5-07b4-4843-89eb-dd8baeddf249"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="401" y="14" width="73" height="15" uuid="80306165-47fe-492f-840e-fd03da42adfb"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="401" y="29" width="73" height="15" uuid="3042741d-2963-4755-8bb6-bdf162a634c6"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="26" y="-1" width="243" height="15" uuid="6c2ec28f-f7e0-4c84-a75c-ef79ca4da289"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="26" y="14" width="243" height="15" uuid="b751c6e0-3079-40d1-a96d-91736054d000"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="26" y="29" width="243" height="15" uuid="4b4f6abd-f643-4259-9f01-745de66ac411"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="269" y="44" width="66" height="22" uuid="903d3e33-981c-4772-8945-b97dfe9cfdd5"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="335" y="44" width="66" height="22" uuid="493bb54a-e9be-4f05-9498-1f46d39c2114"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="401" y="44" width="73" height="22" uuid="9e68c57b-32a6-4a86-981d-53721ce8b34e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="26" y="44" width="243" height="22" uuid="c4a9fb3d-7057-4b57-9f8b-aac433950751"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="26" y="95" width="73" height="15" uuid="ca39bcac-07ae-4566-afb0-f02a9b993b7c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="99" y="95" width="73" height="15" uuid="3c0c7c6c-197e-41b8-ad2f-a028110b535c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="99" y="80" width="73" height="15" uuid="c39f59c6-058c-460d-8ed0-0fe8c83f7d21"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="172" y="80" width="73" height="15" uuid="b2e9551a-9f76-4319-a8c7-ca566db26eb6"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="245" y="80" width="73" height="15" uuid="e83a6193-0606-4e9c-a8b6-75792b355a4f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="172" y="95" width="73" height="15" uuid="00e6806f-54b2-4683-b184-1d45531d5c75"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="245" y="95" width="73" height="15" uuid="0027e3e9-2354-4487-bf67-a610c4f18b50"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="26" y="110" width="73" height="15" uuid="8a1db6dd-b8f2-4c93-8006-f0f9caa01c50"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="26" y="71" width="160" height="20" uuid="5eef89cb-7829-4f70-b9fc-e4a483a42e7a"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[VACCINATION DES FEMMES ENCEINTES]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="26" y="125" width="73" height="15" uuid="84ba142f-da96-4e70-81db-916fbf59a85d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="26" y="140" width="73" height="15" uuid="c4019c07-904a-4b85-8ab7-43118a89b095"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="26" y="155" width="73" height="15" uuid="5c72eeea-5e48-4a8c-b9df-cc851baf4a39"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="99" y="110" width="73" height="15" uuid="dfc39a5c-3e5d-46c0-bd10-d2beb5bb2377"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="99" y="125" width="73" height="15" uuid="f1932fa9-36ec-4669-9e18-08e1c3ce207e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="172" y="110" width="73" height="15" uuid="7e1052f1-9502-4eee-99fd-785076c5f6d5"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="172" y="125" width="73" height="15" uuid="90feaef5-03bf-4a52-9ce2-2884485b8e00"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="99" y="140" width="73" height="15" uuid="fc549751-ec81-454e-bf06-aab463610d22"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="172" y="140" width="73" height="15" uuid="2c75a496-a278-4f0f-9c3f-0205c7ea16e9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="99" y="155" width="73" height="15" uuid="f9fafff1-b518-47b0-a9de-49a46177ca99"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="172" y="155" width="73" height="15" uuid="b642b4f5-c4e0-4475-a370-768ebd7e5921"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="245" y="110" width="73" height="15" uuid="9dd1b05d-81d3-42f3-a929-93ec25262597"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="245" y="125" width="73" height="15" uuid="96b4368b-4034-42a9-82a6-e348efb35abb"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="245" y="140" width="73" height="15" uuid="b1c43fee-f35b-4b40-b50e-26d8c4594be1"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="245" y="155" width="73" height="15" uuid="a2a7e3c3-5c3e-4adc-af18-b6ab08fea4fe"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="26" y="199" width="175" height="15" uuid="0cab26c4-deab-492e-ba03-b95def2c3ce4"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="26" y="175" width="160" height="10" uuid="7d0afbc9-5228-4b98-a984-4e9cfb14e990"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[PTME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="187" width="160" height="10" uuid="0d501df2-4ce5-42a6-981c-fc584519daf6"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Femmes enceintes inscrites à la CPN]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="201" y="199" width="41" height="15" uuid="7bef31ec-1263-4086-a367-9b934106e0b9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="201" y="184" width="41" height="15" uuid="c216f3f9-8589-4b93-abc7-936af3834a55"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="242" y="184" width="41" height="15" uuid="893a58d1-5f75-40d8-80eb-f1cb4d2bdc4b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="242" y="199" width="41" height="15" uuid="6a62fb07-7cc8-48bf-bb54-55668136ac7c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="26" y="214" width="175" height="24" uuid="83a5f979-7e62-41a6-aafb-740b43042c9e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="201" y="214" width="41" height="24" uuid="efc1900a-0606-4309-9d4b-907c82639f74"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="242" y="214" width="41" height="24" uuid="2357e977-3d73-4a6f-b322-c1fc9c1760eb"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="26" y="238" width="175" height="15" uuid="896d0a6d-3caa-4f7f-a4e4-b03c8eb519ab"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="26" y="253" width="175" height="15" uuid="1a3d0d50-8058-4675-904e-bee4d9b2d10e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="201" y="238" width="41" height="15" uuid="b1e4337f-00e4-449b-aa2d-ea938c7beff0"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="201" y="253" width="41" height="15" uuid="56515bef-1315-4971-9f2a-56724cabd0be"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="242" y="238" width="41" height="15" uuid="90922140-76aa-4106-a70a-ce7d5581eff5"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="242" y="253" width="41" height="15" uuid="84fb2eb6-0246-4999-ad75-b43fddbc1ffa"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="26" y="268" width="175" height="24" uuid="7fb47f2f-cd73-4168-84bd-0c45c3c0846f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="201" y="268" width="41" height="24" uuid="cae80bef-b1b5-4c44-98a1-29ea238839e6"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="242" y="268" width="41" height="24" uuid="6007d455-0152-4269-9945-5595680f207f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="26" y="292" width="175" height="15" uuid="6601ac8d-fa23-46cd-8ee1-1c77ca1a52a0"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="201" y="292" width="41" height="15" uuid="11f0dba7-1965-443c-9684-8b13ffbdd1ed"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="242" y="292" width="41" height="15" uuid="84b55390-b5ef-4d06-a606-66549234544c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="27" y="349" width="174" height="15" uuid="e7cd07d0-7d72-4c4c-8b74-69c35575d0c7"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="201" y="349" width="58" height="15" uuid="22399e83-c3b7-4572-a209-9f8bb07bd8e8"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="259" y="349" width="58" height="15" uuid="0c4a1b4a-6c83-477a-bade-2b0d52742474"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="201" y="334" width="58" height="15" uuid="de130814-4b70-4a01-b51a-06dd2440aac4"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="259" y="334" width="58" height="15" uuid="81c7f061-a5e8-4d5a-8129-ffe50fa1e737"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="201" y="319" width="116" height="15" uuid="e518d4a8-d335-4da8-a460-a9b4b754f2cf"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="27" y="334" width="155" height="10" uuid="2d012def-267d-42de-a92a-f116db0b4406"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CONSULTATION POST-NATALES]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="26" y="382" width="175" height="15" uuid="5c8b8616-f86a-4a67-bffa-4b33a6a84e3e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="26" y="397" width="175" height="19" uuid="27880ac7-7a1b-44d9-9295-66968d7e9b7d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="201" y="382" width="58" height="15" uuid="7e4ea6f9-8d88-4c89-8be9-a3948a8dbb52"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="259" y="382" width="58" height="15" uuid="a0294b6b-9735-4e50-9cfa-ab690dd5cfb1"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="201" y="397" width="58" height="19" uuid="d4aee152-0d82-4985-8d46-6ad15e10f044"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="259" y="397" width="58" height="19" uuid="b4b90591-26fe-46c5-8f30-b98772c15c3e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="317" y="319" width="84" height="30" uuid="79940fbd-3a5a-4255-a0de-8b5e0a154864"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="317" y="349" width="84" height="15" uuid="2d6328d3-db5d-4854-b08d-beaa3e397bf6"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="401" y="319" width="74" height="30" uuid="41f01710-da1c-42fc-be01-7eb8e72003bb"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="401" y="349" width="74" height="15" uuid="9107f3e0-e0e5-46b8-a945-0060afb94c18"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="429" y="382" width="46" height="34" uuid="27ad75dd-20b8-46de-a019-03e91f999560"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="319" y="382" width="107" height="42" uuid="7f6402e3-c3e3-4726-9cbd-ef7bc537fdb3"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Nb femmes ayant présenté complication après l'accouchement]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="434" y="199" width="41" height="15" uuid="d13268b4-7fee-4556-9ef4-13dd9e39f676"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="434" y="214" width="41" height="24" uuid="aa9a408b-0b30-4403-b18f-9fd71b2689c1"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="434" y="253" width="41" height="15" uuid="21a79af5-5343-48a5-aaf2-20d9f392ef0f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="434" y="268" width="41" height="24" uuid="2fbd7dc6-505c-42cb-98ce-cd844e7f9bf1"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="328" y="204" width="98" height="10" uuid="dc81c0be-eea2-41e9-8ec1-b30373b4dd22"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Nb accouchement VIH +]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="331" y="217" width="90" height="24" uuid="12cb33a8-130d-4fb1-9ece-784a000599f8"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[dont ayant reçu la trithérapie]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="294" y="253" width="126" height="10" uuid="7dc15232-7840-45e5-85b4-289812b79c68"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Nb d'enfants nés de mère VIH +]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="331" y="268" width="90" height="24" uuid="fa6997b5-0b3e-4850-8ea5-e8aa574c6778"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[dont ayant pris la trithérapie]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="411" y="331" width="44" height="10" uuid="e695429a-d48e-4c80-8f1a-a9883d7b7276"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Total Cas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="34" y="2" width="216" height="12" uuid="e63f8b42-1104-4424-8170-a17ba8df8439"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fe ayant reçu VAT (2ème à 5ème dose)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="34" y="15" width="216" height="12" uuid="4eead3f7-2f56-4760-a112-60880210e95d"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fe ayant complètement vaccinées avant Grossesse]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="34" y="29" width="216" height="12" uuid="424a484c-2dcb-4ac7-8c90-c20836f3df14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Femmes enceintes ayant acquis une Mll]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="34" y="46" width="216" height="20" uuid="b34e565a-e1d6-4a16-9ff1-e8d700586c97"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Femmes enceintes ayant reçu le Mébendazole à partir du 2ème trimestre de la grossesse]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="126" y="83" width="26" height="12" uuid="d18fc604-b747-4c10-be36-b6c506608efe"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ZS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="201" y="83" width="26" height="12" uuid="0590bd13-c90f-4164-a16b-ca32fe1f6b73"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[HZ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="269" y="83" width="26" height="12" uuid="95d4d67a-39e0-4583-8950-ee515ff74926"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="49" y="98" width="26" height="12" uuid="3cfc7570-4d30-4ccd-b380-7cb34c0f4edf"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[VAT 1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="49" y="113" width="26" height="12" uuid="9ecfce4e-5eb1-4007-a935-6d1a7f2469bc"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[VAT 2]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="49" y="125" width="26" height="12" uuid="e233f77e-b759-4c42-8e9c-35a33428864f"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[VAT 3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="49" y="140" width="26" height="12" uuid="20f3be55-c05c-4bcb-b20e-3ec425a9c5fd"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[VAT 4]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="49" y="158" width="26" height="12" uuid="43e071d3-2d6e-4636-a706-14f84f2c0d15"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[VAT 5]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="216" y="187" width="26" height="12" uuid="8d37216a-9fd3-4081-ac7c-f73f5dd0c857"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ZS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="247" y="187" width="26" height="12" uuid="786ee327-bcc2-4fcf-b726-a38f6fa0aaaa"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[HZ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="34" y="202" width="167" height="12" uuid="3610d989-e545-42ef-a9c2-781a5b30f245"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Qui ont été conseillée pour un test VIH]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="34" y="220" width="155" height="12" uuid="3aa6f1cc-db22-49d9-8759-e78775cdd6e2"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Qui ont été testées pour le VIH]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="33" y="241" width="168" height="12" uuid="32c6dad6-9605-4736-b3db-ef293e2ef585"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Qui ont eu un test positif au VIH]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="34" y="256" width="138" height="12" uuid="46e64ff5-be20-43c0-9fca-8c926665b578"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Qui ont été informées du résultat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="33" y="268" width="168" height="24" uuid="70775788-e1b2-4972-a7c2-f7f1ab5f98fc"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Qui ont eu un test positif au VIH et ont été informées du résultat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="33" y="292" width="170" height="12" uuid="ede30131-3272-4a74-8f8a-eedefe541ef1"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Qui ont eu la grossesse à l'issue d'un viol]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="382" width="158" height="12" uuid="4e5f041a-c65b-4c1c-8f3d-887b8e1fc63b"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Nb accouchées ayant reçu de la vitamine A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="352" width="142" height="12" uuid="35d07715-18da-4906-9f88-b050166f1e5d"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Nb consultations]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="404" width="171" height="12" uuid="ddba101b-aba2-47cc-ad88-7eae5490645a"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Nb accouchées ayant reçu Fer acide folique]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="207" y="322" width="110" height="10" uuid="2c7fcadc-356f-4c01-b1a5-b732fb3e92f4"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CPoN 1 (8ème jr après acc)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="219" y="337" width="26" height="12" uuid="ad77c548-feef-4102-a761-786ebba22323"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[ZS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="273" y="337" width="26" height="12" uuid="cd4df883-d99a-47c7-84ba-f76c5a17d236"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[HZ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="321" y="330" width="71" height="10" uuid="18578243-6db3-46cc-ac9e-1456970fa1be"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[CPoN 2 + (42e jr)]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="271" y="0" width="64" height="14" uuid="012cb727-e46c-4b55-8221-867db42a3176"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{FeAyantRecuVAT2emeA5emeDoseZS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="406" y="1" width="64" height="14" uuid="2eb28f9b-ab01-4f9d-866f-929c39d11c8e"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[Integer.parseInt($F{FeAyantRecuVAT2emeA5emeDoseZS})+Integer.parseInt($F{FeAyantRecuVAT2emeA5emeDoseHZ})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="336" y="1" width="64" height="14" uuid="ae46b8b9-5a9c-4918-a0e0-a80bd2ab790e"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{FeAyantRecuVAT2emeA5emeDoseHZ}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="270" y="15" width="64" height="14" uuid="e33467fb-62a5-4570-808e-34c7ad604e3d"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{FeAvec3CPNAu8emEt9emMoisZS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="335" y="15" width="64" height="14" uuid="c1a2cd26-2326-4711-8d14-71f2dc809976"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{FeAvec3CPNAu8emEt9emMoisZS}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="406" y="14" width="64" height="14" uuid="bc6609c4-b3ce-427d-8612-cdbb4b5b9c94"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{FeAvec3CPNAu8emEt9emMoisZS}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="44" splitType="Stretch">
+			<image>
+				<reportElement x="3" y="0" width="46" height="34" uuid="0dff00d9-c42c-4c06-8337-4725ab7af1c1"/>
+				<imageExpression><![CDATA["nts.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="92" y="10" width="264" height="16" uuid="64c8f644-27a7-49f7-9e5d-e123ad6262ec"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[SNIS  RDC-Province du Sud Kivu : canevas mensuel HGR, CSR, CH]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="362" y="10" width="37" height="12" uuid="7955c87d-27de-413b-901f-5b20f2263b7b"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Version]]></text>
+			</staticText>
+			<textField pattern="MMMMM, yyyy">
+				<reportElement x="398" y="10" width="80" height="16" uuid="1e0c698f-ead4-4f14-a11a-61908fa648e4"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="435" y="10" width="80" height="20" uuid="e303fa1b-2c49-45e0-8c86-6f150577283e"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="515" y="10" width="40" height="20" uuid="8518fdf5-7af5-41fc-919f-e39b23529a62"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="24" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>

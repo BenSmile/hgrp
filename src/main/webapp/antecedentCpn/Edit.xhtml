@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="AntecedentCpnEditDlg" widgetVar="AntecedentCpnEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{resourcesBundle.EditAntecedentCpnTitle}" closeOnEscape="true">
+
+            <h:form id="AntecedentCpnEditForm">
+
+                <h:panelGroup id="display">
+                    <p:tabView id="AntecedentCpnTabView">
+                        <p:tab id="AntecedentCpnTab1" title="#{resourcesBundle.TabHeaderPrefix} 1">
+                            <p:panelGrid  columns="4" columnClasses="column,#{null},column" rendered="#{antecedentCpnController.selected != null}">
+
+                                <p:outputLabel value="#{resourcesBundle.CreateAntecedentCpnHelpText_numDossier}" for="numDossier" />
+                                <h:panelGroup>
+                                    <p:selectOneMenu id="numDossier" value="#{antecedentCpnController.selected.numDossier}" required="true"  filter="true" filterMatchMode="startsWith" panelStyle="width:250px" 
+                                                     requiredMessage="#{resourcesBundle.CreateInfosAccouchementRequiredMessage_numDossier}" converter="infosFemmeConverter">
+                                        <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                        <f:selectItems value="#{infosFemmeController.items}"
+                                                       var="numDossierItem"
+                                                       itemValue="#{numDossierItem}"
+                                                       itemLabel="#{numDossierItem.toString()}"/>
+                                    </p:selectOneMenu>
+                                </h:panelGroup>
+
+                                <p:outputLabel value="#{resourcesBundle.EditAntecedentCpnLabel_ddr}" for="ddr" />
+                                <p:calendar id="ddr" pattern="MM/dd/yyyy" value="#{antecedentCpnController.selected.ddr}" required="true" requiredMessage="Cette date est obligatoire" title="#{resourcesBundle.EditAntecedentCpnTitle_ddr}"  showOn="button"/>
+
+                                <p:outputLabel value="#{resourcesBundle.EditAntecedentCpnLabel_grossesse}" for="grossesse" />
+                                <p:inputText id="grossesse" value="#{antecedentCpnController.selected.grossesse}" title="#{resourcesBundle.EditAntecedentCpnTitle_grossesse}"/>
+
+                                <p:outputLabel value="#{resourcesBundle.EditAntecedentCpnLabel_enfantsvie}" for="enfantsvie" />
+                                <p:inputText id="enfantsvie" value="#{antecedentCpnController.selected.enfantsvie}" title="#{resourcesBundle.EditAntecedentCpnTitle_enfantsvie}"/>
+
+                                <p:outputLabel value="#{resourcesBundle.EditAntecedentCpnLabel_avortement1erTrim}" for="avortement1erTrim" />
+                                <p:selectOneMenu id="avortement1erTrim" value="#{antecedentCpnController.selected.avortement1erTrim}" 
+                                                 title="#{resourcesBundle.EditAntecedentCpnTitle_avortement1erTrim}" >
+                                    <f:selectItem itemValue=""/>                                   
+                                    <f:selectItem itemValue="Oui" itemLabel="Oui"/>
+                                    <f:selectItem itemValue="Non" itemLabel="Non"/>
+
+                                </p:selectOneMenu>
+
+
+
+                                <p:outputLabel value="#{resourcesBundle.EditAntecedentCpnLabel_dernieraccouchementdatede}" for="dernieraccouchementdatede" />
+                                <p:calendar id="dernieraccouchementdatede" pattern="MM/dd/yyyy" value="#{antecedentCpnController.selected.dernieraccouchementdatede}" title="#{resourcesBundle.EditAntecedentCpnTitle_dernieraccouchementdatede}"  showOn="button"/>
+
+                                <p:outputLabel value="#{resourcesBundle.EditAntecedentCpnLabel_complicationpostPartum}" for="complicationpostPartum" />
+                                <p:inputText id="complicationpostPartum" value="#{antecedentCpnController.selected.complicationpostPartum}" title="#{resourcesBundle.EditAntecedentCpnTitle_complicationpostPartum}" size="40" maxlength="40"/>
+
+                                <p:outputLabel value="#{resourcesBundle.EditAntecedentCpnLabel_parite}" for="parite" />
+                                <p:inputText id="parite" value="#{antecedentCpnController.selected.parite}" title="#{resourcesBundle.EditAntecedentCpnTitle_parite}"/>
+
+                                <p:outputLabel value="#{resourcesBundle.EditAntecedentCpnLabel_avortement}" for="avortement" />
+                                <p:inputText id="avortement" value="#{antecedentCpnController.selected.avortement}" title="#{resourcesBundle.EditAntecedentCpnTitle_avortement}"/>
+
+                                <p:outputLabel value="#{resourcesBundle.EditAntecedentCpnLabel_deces}" for="deces" />
+                                <p:inputText id="deces" value="#{antecedentCpnController.selected.deces}" title="#{resourcesBundle.EditAntecedentCpnTitle_deces}"/>
+
+
+                                <p:outputLabel value="#{resourcesBundle.EditAntecedentCpnLabel_vbg}" for="vbg" />
+                                <p:selectOneMenu id="vbg" value="#{antecedentCpnController.selected.vbg}" 
+                                                 title="#{resourcesBundle.EditAntecedentCpnTitle_vbg}" >
+                                    <f:selectItem itemValue=""/>                                   
+                                    <f:selectItem itemValue="Oui" itemLabel="Oui"/>
+                                    <f:selectItem itemValue="Non" itemLabel="Non"/>
+                                </p:selectOneMenu>
+
+                                <p:outputLabel value="#{resourcesBundle.EditAntecedentCpnLabel_antecedentChirurgicauxCPN}" for="antecedentChirurgicauxCPN" />
+                                <p:selectCheckboxMenu id="antecedentChirurgicauxCPN" required="true" value="#{antecedentCpnController.antecedentsChirurgicauxCPN}" label="Antecedants Chirurgicaux CPN"
+                                                      filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+                                    <f:selectItem itemLabel="Césariènne" itemValue="Césariènne"/>
+                                    <f:selectItem itemLabel="Fracture bassin" itemValue="Fracture bassin"/>
+                                    <f:selectItem  itemLabel="GEU" itemValue="GEU"/>
+                                    <f:selectItem  itemLabel="Cerclage" itemValue="Cerclage"/>
+                                    <f:selectItem itemLabel="Fibrome utérine" itemValue="Fibrome utérine"/>
+                                </p:selectCheckboxMenu>
+
+
+                                <p:outputLabel value="#{resourcesBundle.EditAntecedentCpnLabel_antecedentMedicauxCPN}" for="antecedentMedicauxCPN" />
+                                <p:selectCheckboxMenu required="true" id="antecedentMedicauxCPN" value="#{antecedentCpnController.antecedentsMedicauxCPN}" label="Antecedants Medicaux CPN"
+                                                      filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+                                    <f:selectItem itemLabel="TB" itemValue="TB"/>
+                                    <f:selectItem itemLabel="HTA" itemValue="HTA"/>
+                                    <f:selectItem  itemLabel="Sous COTRI" itemValue="Sous COTRI"/>
+                                    <f:selectItem  itemLabel="DBT" itemValue="DBT"/>
+                                    <f:selectItem itemLabel="CAR" itemValue="CAR"/>
+                                    <f:selectItem  itemLabel="Sous ARV" itemValue="Sous ARV"/>
+                                    <f:selectItem  itemLabel="HMO" itemValue="HMO"/>             
+                                    <f:selectItem  itemLabel="MFG" itemValue="MFG"/>
+                                    <f:selectItem  itemLabel="MFGRA" itemValue="MFGRA"/>
+                                    <f:selectItem  itemLabel="IST-VIH-SIDA" itemValue="IST-VIH-SIDA"/>
+                                </p:selectCheckboxMenu>
+
+
+                                <p:outputLabel value="#{resourcesBundle.EditAntecedentCpnLabel_grossesseissuduviol}" for="grossesseissuduviol" />
+                                <p:selectOneMenu id="grossesseissuduviol" value="#{antecedentCpnController.selected.grossesseissuduviol}"
+                                                 title="#{resourcesBundle.EditAntecedentCpnTitle_grossesseissuduviol}" >
+                                    <f:selectItem itemValue=""/>                                   
+                                    <f:selectItem itemValue="Oui" itemLabel="Oui"/>
+                                    <f:selectItem itemValue="Non" itemLabel="Non"/>
+                                </p:selectOneMenu>
+
+                                <ui:remove>
+                                    <p:outputLabel value="#{resourcesBundle.EditAntecedentCpnLabel_utilisateur}" for="utilisateur" />
+                                    <p:selectOneMenu id="utilisateur" value="#{antecedentCpnController.selected.utilisateur}" required="true" requiredMessage="#{resourcesBundle.EditAntecedentCpnRequiredMessage_utilisateur}" converter="usersConverter">
+                                        <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                        <f:selectItems value="#{usersController.items}"
+                                                       var="utilisateurItem"
+                                                       itemValue="#{utilisateurItem}"
+                                                       itemLabel="#{utilisateurItem.uname.toString()}"/>
+                                    </p:selectOneMenu>
+                                </ui:remove>
+                            </p:panelGrid>
+                        </p:tab>
+                    </p:tabView>
+                    <p:commandButton actionListener="#{antecedentCpnController.save}" value="#{resourcesBundle.Save}" update="display,:AntecedentCpnListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('AntecedentCpnEditDialog'));">
+                        <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{resourcesBundle.Cancel}" oncomplete="PF('AntecedentCpnEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

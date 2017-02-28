@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="MesuresPreventivesViewPage" lazy="true">
+        <pm:header title="#{resourcesBundle.ViewMesuresPreventivesTitle}">
+            <h:form>
+                <p:commandButton styleClass="ui-btn-left ui-btn-inline" value="#{resourcesBundle.Cancel}" icon="ui-icon-arrow-l" action="#{mobilePageController.navigateBackInHistory('pm:MesuresPreventivesListPage')}"/>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="MesuresPreventivesViewForm">
+
+                <h:panelGroup id="display">
+                    <p:outputPanel rendered="#{mesuresPreventivesController.selected != null}">
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewMesuresPreventivesLabel_idMesPrev}"/>
+                            <h:outputText value="#{mesuresPreventivesController.selected.idMesPrev}" title="#{resourcesBundle.ViewMesuresPreventivesTitle_idMesPrev}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewMesuresPreventivesLabel_vat}"/>
+                            <h:outputText value="#{mesuresPreventivesController.selected.vat}" title="#{resourcesBundle.ViewMesuresPreventivesTitle_vat}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewMesuresPreventivesLabel_femmecompletementvaccinee}"/>
+                            <h:outputText value="#{mesuresPreventivesController.selected.femmecompletementvaccinee}" title="#{resourcesBundle.ViewMesuresPreventivesTitle_femmecompletementvaccinee}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewMesuresPreventivesLabel_sp}"/>
+                            <h:outputText value="#{mesuresPreventivesController.selected.sp}" title="#{resourcesBundle.ViewMesuresPreventivesTitle_sp}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewMesuresPreventivesLabel_dortsousMild}"/>
+                            <h:outputText value="#{mesuresPreventivesController.selected.dortsousMild}" title="#{resourcesBundle.ViewMesuresPreventivesTitle_dortsousMild}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewMesuresPreventivesLabel_mebendaAu2emeTrimestre}"/>
+                            <h:outputText value="#{mesuresPreventivesController.selected.mebendaAu2emeTrimestre}" title="#{resourcesBundle.ViewMesuresPreventivesTitle_mebendaAu2emeTrimestre}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewMesuresPreventivesLabel_vermifuge}"/>
+                            <h:outputText value="#{mesuresPreventivesController.selected.vermifuge}" title="#{resourcesBundle.ViewMesuresPreventivesTitle_vermifuge}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewMesuresPreventivesLabel_supplementaion}"/>
+                            <h:outputText value="#{mesuresPreventivesController.selected.supplementaion}" title="#{resourcesBundle.ViewMesuresPreventivesTitle_supplementaion}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewMesuresPreventivesLabel_fefol}"/>
+                            <h:outputText value="#{mesuresPreventivesController.selected.fefol}" title="#{resourcesBundle.ViewMesuresPreventivesTitle_fefol}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewMesuresPreventivesLabel_conseilDepistageVolontaire}"/>
+                            <h:outputText value="#{mesuresPreventivesController.selected.conseilDepistageVolontaire}" title="#{resourcesBundle.ViewMesuresPreventivesTitle_conseilDepistageVolontaire}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewMesuresPreventivesLabel_depister}"/>
+                            <h:outputText value="#{mesuresPreventivesController.selected.depister}" title="#{resourcesBundle.ViewMesuresPreventivesTitle_depister}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewMesuresPreventivesLabel_resultat}"/>
+                            <h:outputText value="#{mesuresPreventivesController.selected.resultat}" title="#{resourcesBundle.ViewMesuresPreventivesTitle_resultat}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewMesuresPreventivesLabel_femmeinformee}"/>
+                            <h:outputText value="#{mesuresPreventivesController.selected.femmeinformee}" title="#{resourcesBundle.ViewMesuresPreventivesTitle_femmeinformee}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewMesuresPreventivesLabel_ferPlusAcideFollique}"/>
+                            <h:outputText value="#{mesuresPreventivesController.selected.ferPlusAcideFollique}" title="#{resourcesBundle.ViewMesuresPreventivesTitle_ferPlusAcideFollique}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewMesuresPreventivesLabel_utilisateur}"/>
+                            <h:outputText value="#{mesuresPreventivesController.selected.utilisateur.uname}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewMesuresPreventivesLabel_idRDV}"/>
+                            <h:outputText value="#{mesuresPreventivesController.selected.idRDV.idRDV}"/>
+                        </pm:field>
+                    </p:outputPanel>
+                </h:panelGroup>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

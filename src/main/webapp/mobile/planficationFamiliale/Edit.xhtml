@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="PlanficationFamilialeEditPage" lazy="true">
+        <pm:header title="#{resourcesBundle.EditPlanficationFamilialeTitle}">
+            <h:form>
+                <p:commandButton styleClass="ui-btn-left ui-btn-inline" value="#{resourcesBundle.Cancel}" icon="ui-icon-arrow-l" action="#{mobilePageController.navigateBackInHistory('pm:PlanficationFamilialeListPage')}"/>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="PlanficationFamilialeEditForm">
+
+                <h:panelGroup id="display">
+                    <p:outputPanel rendered="#{planficationFamilialeController.selected != null}">
+
+                        <pm:field>
+                            <h:outputLabel value="#{resourcesBundle.EditPlanficationFamilialeLabel_idPF}" for="idPF" />
+                            <h:outputText id="idPF" value="#{planficationFamilialeController.selected.idPF}" />
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditPlanficationFamilialeLabel_nouvelleacceptante}" for="nouvelleacceptante" />
+                            <p:inputText id="nouvelleacceptante" value="#{planficationFamilialeController.selected.nouvelleacceptante}" title="#{resourcesBundle.EditPlanficationFamilialeTitle_nouvelleacceptante}" size="4" maxlength="4"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditPlanficationFamilialeLabel_renouvellement}" for="renouvellement" />
+                            <p:inputText id="renouvellement" value="#{planficationFamilialeController.selected.renouvellement}" title="#{resourcesBundle.EditPlanficationFamilialeTitle_renouvellement}" size="16" maxlength="16"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditPlanficationFamilialeLabel_methodeanterieure}" for="methodeanterieure" />
+                            <p:inputText id="methodeanterieure" value="#{planficationFamilialeController.selected.methodeanterieure}" title="#{resourcesBundle.EditPlanficationFamilialeTitle_methodeanterieure}" size="17" maxlength="17"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditPlanficationFamilialeLabel_autreMethodeAnterieure}" for="autreMethodeAnterieure" />
+                            <p:inputText id="autreMethodeAnterieure" value="#{planficationFamilialeController.selected.autreMethodeAnterieure}" title="#{resourcesBundle.EditPlanficationFamilialeTitle_autreMethodeAnterieure}" size="50" maxlength="50"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditPlanficationFamilialeLabel_sourcerenseignementsurPF}" for="sourcerenseignementsurPF" />
+                            <p:inputText id="sourcerenseignementsurPF" value="#{planficationFamilialeController.selected.sourcerenseignementsurPF}" title="#{resourcesBundle.EditPlanficationFamilialeTitle_sourcerenseignementsurPF}" size="30" maxlength="30"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditPlanficationFamilialeLabel_raisondechangement}" for="raisondechangement" />
+                            <p:inputText id="raisondechangement" value="#{planficationFamilialeController.selected.raisondechangement}" title="#{resourcesBundle.EditPlanficationFamilialeTitle_raisondechangement}" size="45" maxlength="45"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditPlanficationFamilialeLabel_planification}" for="planification" />
+                            <p:inputText id="planification" value="#{planficationFamilialeController.selected.planification}" title="#{resourcesBundle.EditPlanficationFamilialeTitle_planification}" size="26" maxlength="26"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditPlanficationFamilialeLabel_counsling}" for="counsling" />
+                            <p:inputText id="counsling" value="#{planficationFamilialeController.selected.counsling}" title="#{resourcesBundle.EditPlanficationFamilialeTitle_counsling}" size="4" maxlength="4"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditPlanficationFamilialeLabel_methodechoisie}" for="methodechoisie" />
+                            <p:inputText id="methodechoisie" value="#{planficationFamilialeController.selected.methodechoisie}" title="#{resourcesBundle.EditPlanficationFamilialeTitle_methodechoisie}" size="17" maxlength="17"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditPlanficationFamilialeLabel_utilisateur}" for="utilisateur" />
+                            <p:selectOneMenu id="utilisateur" value="#{planficationFamilialeController.selected.utilisateur}" required="true" requiredMessage="#{resourcesBundle.EditPlanficationFamilialeRequiredMessage_utilisateur}" converter="usersConverter">
+                                <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{usersController.items}"
+                                               var="utilisateurItem"
+                                               itemValue="#{utilisateurItem}"
+                                               itemLabel="#{utilisateurItem.uname.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditPlanficationFamilialeLabel_numDossier}" for="numDossier" />
+                            <p:selectOneMenu id="numDossier" value="#{planficationFamilialeController.selected.numDossier}" required="true" requiredMessage="#{resourcesBundle.EditPlanficationFamilialeRequiredMessage_numDossier}" converter="infosFemmeConverter">
+                                <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{infosFemmeController.items}"
+                                               var="numDossierItem"
+                                               itemValue="#{numDossierItem}"
+                                               itemLabel="#{numDossierItem.numDossier.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                        </pm:field>
+                    </p:outputPanel>
+                    <p:commandButton actionListener="#{planficationFamilialeController.save}" value="#{resourcesBundle.Save}" update="#{mobilePageController.updatableWidgets(component,'display,:PlanficationFamilialeListPage:PlanficationFamilialeListForm:datalist,:growl')}" action="#{mobilePageController.navigateWithHistory('pm:PlanficationFamilialeListPage')}">
+                        <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                </h:panelGroup>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

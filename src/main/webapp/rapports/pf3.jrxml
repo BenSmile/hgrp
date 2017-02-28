@@ -1,0 +1,1867 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f928e16a-a63f-47f8-9c3f-561486eb215f">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="79"/>
+	<field name="EffectifConsulationPF" class="java.lang.String"/>
+	<field name="Vasectomie" class="java.lang.String"/>
+	<field name="VasectomieCite" class="java.lang.String"/>
+	<field name="VasectomieHC" class="java.lang.String"/>
+	<field name="Preservatif" class="java.lang.String"/>
+	<field name="PreservatifHC" class="java.lang.String"/>
+	<field name="PreservatifCite" class="java.lang.String"/>
+	<field name="EffectifConsulationPFFemme" class="java.lang.String"/>
+	<field name="EffectifConsulationPFHomme" class="java.lang.String"/>
+	<field name="ACTraites" class="java.lang.String"/>
+	<field name="ACImplants" class="java.lang.String"/>
+	<field name="ACRetraits" class="java.lang.String"/>
+	<field name="NCSoustraits" class="java.lang.String"/>
+	<field name="Date" class="java.lang.String"/>
+	<field name="Complication" class="java.lang.String"/>
+	<field name="LimiteInformation" class="java.lang.String"/>
+	<field name="LTB" class="java.lang.String"/>
+	<field name="Implants" class="java.lang.String"/>
+	<field name="COC" class="java.lang.String"/>
+	<field name="COP" class="java.lang.String"/>
+	<field name="CollierCycle" class="java.lang.String"/>
+	<field name="DMPA" class="java.lang.String"/>
+	<field name="Nosterilat" class="java.lang.String"/>
+	<field name="MethodeNaturelle" class="java.lang.String"/>
+	<field name="DIU" class="java.lang.String"/>
+	<field name="Femidon" class="java.lang.String"/>
+	<field name="Mama" class="java.lang.String"/>
+	<field name="Autres" class="java.lang.String"/>
+	<field name="SuiviConseil" class="java.lang.String"/>
+	<field name="ACTraitesCite" class="java.lang.String"/>
+	<field name="ACTraitesHC" class="java.lang.String"/>
+	<field name="ACImplantsCite" class="java.lang.String"/>
+	<field name="ACImplantsHC" class="java.lang.String"/>
+	<field name="ACRetraitsCite" class="java.lang.String"/>
+	<field name="ACRetraitsHC" class="java.lang.String"/>
+        <field name="NCSoustraitsHomme" class="java.lang.String"/>
+	<field name="NCSoustraitsFemme" class="java.lang.String"/>
+	<field name="NCSoustraitsCite" class="java.lang.String"/>
+	<field name="NCSoustraitsHC" class="java.lang.String"/>
+	<field name="ComplicationCite" class="java.lang.String"/>
+	<field name="ComplicationHC" class="java.lang.String"/>
+	<field name="LimiteInformationCite" class="java.lang.String"/>
+	<field name="LimiteInformationHC" class="java.lang.String"/>
+	<field name="LTBCite" class="java.lang.String"/>
+	<field name="LTBHC" class="java.lang.String"/>
+	<field name="ImplantsCite" class="java.lang.String"/>
+	<field name="ImplantsHC" class="java.lang.String"/>
+	<field name="COCCite" class="java.lang.String"/>
+	<field name="COCHC" class="java.lang.String"/>
+	<field name="COPCite" class="java.lang.String"/>
+	<field name="COPHC" class="java.lang.String"/>
+	<field name="CollierCycleCite" class="java.lang.String"/>
+	<field name="CollierCycleHC" class="java.lang.String"/>
+	<field name="DMPACite" class="java.lang.String"/>
+	<field name="DMPAHC" class="java.lang.String"/>
+	<field name="NosterilatCite" class="java.lang.String"/>
+	<field name="NosterilatHC" class="java.lang.String"/>
+	<field name="MethodeNaturelleCite" class="java.lang.String"/>
+	<field name="MethodeNaturelleHC" class="java.lang.String"/>
+	<field name="DIUCite" class="java.lang.String"/>
+	<field name="DIUHC" class="java.lang.String"/>
+	<field name="FemidonCite" class="java.lang.String"/>
+	<field name="FemidonHC" class="java.lang.String"/>
+	<field name="MamaCite" class="java.lang.String"/>
+	<field name="MamaHC" class="java.lang.String"/>
+	<field name="AutreCite" class="java.lang.String"/>
+	<field name="AutreHC" class="java.lang.String"/>
+	<field name="SuiviConseilCite" class="java.lang.String"/>
+	<field name="SuiviConseilHC" class="java.lang.String"/>
+	<field name="EffectifConsulationPFHommeCite" class="java.lang.String"/>
+	<field name="EffectifConsulationPFHommeHC" class="java.lang.String"/>
+	<field name="EffectifConsulationPFFemmeCite" class="java.lang.String"/>
+	<field name="EffectifConsulationPFFemmeHC" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="165" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="110" width="65" height="20" uuid="0c66fc1e-46f5-4eef-9af1-0ad0f2bb333b"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Période de ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="130" width="182" height="20" uuid="dad68e49-a339-461a-b43b-30c8edce5d50"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Nom de la clinique : HGRPanzi / PF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="36" y="10" width="476" height="20" uuid="16505e6a-c971-49e3-aeb2-fcd89108ac4d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[8eme CEPAC]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="284" y="149" width="80" height="15" uuid="a91b8d77-e39e-4cde-a48e-ac2ce9dc779a"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Zone de santé :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="284" y="130" width="65" height="20" uuid="d4241107-743c-4bf5-a5df-ba3bf82c41ef"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Fonction : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="36" y="50" width="476" height="20" uuid="fd4d6394-7103-4ab9-9c6d-7bc011031016"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Projet Santé Maternel et Infatile (SMI) PF Lakarmissionen]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="36" y="70" width="476" height="20" uuid="e1b32364-92e9-4dd4-af14-1921ae300034"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[B.P : 266 / Bukavu]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="36" y="30" width="476" height="20" uuid="9d0b99c7-24da-4586-938a-52672a43bc4d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[DEPARTEMENT DES OEUVRES MEDICALES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="284" y="110" width="65" height="20" uuid="a49a1495-3b79-48b7-ae84-34e640c26950"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Etablie par : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="36" y="90" width="476" height="20" uuid="2516b3f6-c2c4-489d-bd0d-c0ee5148c3a1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[RAPPORT MENSUEL DES ACTIVITES DE PLANIFICATION FAMILIALE]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="75" y="110" width="135" height="20" uuid="159b39a0-5fc9-429b-a190-b8bbd2e0f7d6"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{Date}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="54" splitType="Stretch">
+			<rectangle>
+				<reportElement x="260" y="12" width="40" height="22" uuid="20bb2981-e00e-46eb-9be9-c0c602882c53"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="10" y="12" width="26" height="22" uuid="f1c708b9-bb4c-47f8-adce-c7f3e4adc414"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="36" y="12" width="182" height="22" uuid="6451ffee-3776-4a04-980a-d2dca26d8615"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="300" y="12" width="40" height="22" uuid="73d7e1fe-e758-42ef-a88e-f8f23d3ddfe2"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="480" y="12" width="64" height="22" uuid="d92a54f0-ba39-4392-8dfc-9eb01af9555b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="409" y="12" width="71" height="22" uuid="06c56c89-38a8-4664-af7d-667b7a329db8"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="340" y="12" width="69" height="22" uuid="afb56e50-97b6-4752-9868-fff3d1878f9d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="218" y="12" width="42" height="22" uuid="c7f87645-23e8-4391-b019-f5359e3b9a42"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="218" y="34" width="42" height="20" uuid="69f2fa1e-7d2f-46bc-9225-a86bb231870f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="10" y="34" width="26" height="20" uuid="2235615d-dacc-4e2d-b0bb-6ec8362b5312"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="444" y="34" width="36" height="20" uuid="aeff0432-b1cb-48ac-b7e3-b58e1ad4c8e9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="36" y="34" width="182" height="20" uuid="8190af95-7819-46a9-89dc-574594c9ab14"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="409" y="34" width="35" height="20" uuid="d974ec4d-a1e9-4f5d-8301-2a5422ff0c01"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="480" y="34" width="32" height="20" uuid="44eff8f7-5d73-4808-8162-fb466b2cc498"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="512" y="34" width="32" height="20" uuid="6fbf0839-3fe4-4748-bfab-8688f47e72ad"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="260" y="34" width="40" height="20" uuid="0fbd5d79-9864-4cb6-a120-b8a3f29596b0"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="300" y="34" width="40" height="20" uuid="d7f2e75b-c1b4-4edb-a33d-9fdf82fb7245"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="340" y="34" width="34" height="20" uuid="1e66144e-72ec-495a-8ee6-a7fe48cb78bc"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="374" y="34" width="35" height="20" uuid="b87b42ce-1ff9-4d06-abf7-1969e7b4fa84"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="15" y="19" width="21" height="15" uuid="15838970-6608-44bc-ba7a-295a155ec7e1"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="75" y="19" width="100" height="15" uuid="b37fcd76-88f2-4b8a-ae1c-02f0d16e4b29"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Activités]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="220" y="19" width="40" height="15" uuid="45ec70dc-8a34-4d22-93ef-4a94a5092448"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HOMME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="260" y="19" width="40" height="15" uuid="990ef2f2-3023-4f0c-b21b-6f4162c4d6db"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FEMME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="300" y="19" width="40" height="15" uuid="65a3f0ef-bf76-4524-922d-6996c977b608"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TOTAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="340" y="19" width="69" height="15" uuid="876eb5d3-badc-4604-b6d2-978157d2d659"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VILLE BKV]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="409" y="19" width="71" height="15" uuid="c28d13ec-0a0c-4990-9f40-a4c11b310406"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CITE CIBLE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="480" y="19" width="64" height="15" uuid="d43494d2-161b-4bde-9894-a8ab847e1716"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[HORS CIBLE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="75" y="39" width="100" height="15" uuid="49131f31-5e34-453e-9183-fccf7f011efc"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Consultation en PF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="39" width="26" height="15" uuid="d36ec765-bf46-45cf-afd6-a8ad88949116"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="340" y="39" width="34" height="15" uuid="28000df5-caf5-4d3c-8a95-5e841cc9ec11"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[H]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="409" y="39" width="34" height="15" uuid="71985a5c-5880-4622-b9dd-1a11fc1fbdd9"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[H]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="480" y="39" width="32" height="15" uuid="1a7cc28f-5356-42e2-9e5d-313ea54eb56e"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[H]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="375" y="39" width="34" height="15" uuid="25d5fd74-d7c0-403e-837d-c69bab11bfe6"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[F]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="446" y="39" width="34" height="15" uuid="757023d1-d7f6-404c-8e2c-e102d6f360e4"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[F]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="512" y="39" width="32" height="15" uuid="1b1f47ca-4aad-4b7a-a125-95180d680e24"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[F]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="60" splitType="Stretch">
+			<rectangle>
+				<reportElement x="374" y="0" width="35" height="20" uuid="0e129e8f-4757-499d-b5cc-9c6171433f13"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="480" y="0" width="32" height="20" uuid="90546402-05eb-42ca-b2df-81dd6f60df34"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="444" y="0" width="36" height="20" uuid="54a6672b-f4ed-451d-9b09-73fe8e4381f7"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="512" y="0" width="32" height="20" uuid="acab45c6-96b2-4eb0-a932-1ee436dab52f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="340" y="0" width="34" height="20" uuid="3ed53755-bc08-415d-84dc-fe6a28d15259"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="10" y="0" width="26" height="20" uuid="c2c5fde2-2b82-4ad6-90ed-a3860edc5196"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="218" y="0" width="42" height="20" uuid="99f8e1f6-24b6-4684-beee-e4b9fd34c47b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="260" y="0" width="40" height="20" uuid="9d783d1c-c852-4b50-9929-7314a7788102"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="36" y="0" width="182" height="20" uuid="e08df326-3616-4f6d-acf0-7866e4af9978"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="300" y="0" width="40" height="20" uuid="7eea6644-ec31-4c7a-b925-535e623751d9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="409" y="0" width="35" height="20" uuid="12e0bffb-dc5f-47f1-84f8-162ec18e3c76"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="374" y="20" width="35" height="20" uuid="dff48bfc-1553-4587-b65a-5ec7457440ac"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="480" y="20" width="32" height="20" uuid="b1c1ff8a-ba3d-43e5-9efe-9059fb98434b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="444" y="20" width="36" height="20" uuid="61c7e651-f844-4934-8423-edebb166043d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="512" y="20" width="32" height="20" uuid="27b2d2be-bd99-4d54-856f-fb0f5285b0dd"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="340" y="20" width="34" height="20" uuid="eeb41695-4905-4c6d-86e4-4d5e874f4748"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="10" y="20" width="26" height="20" uuid="200f62e0-9ce8-4b70-b901-383c40d7c514"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="218" y="20" width="42" height="20" uuid="df559cec-a2ab-4ff4-8dae-44fccce0af34"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="260" y="20" width="40" height="20" uuid="07832421-d14a-4f9f-a923-02130e65053d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="36" y="20" width="182" height="20" uuid="60e0ddd9-1641-4ce6-bf69-4da83c92a83a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="300" y="20" width="40" height="20" uuid="9b6c1e8f-528c-4c6e-b612-8f24d0f353b0"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="409" y="20" width="35" height="20" uuid="b9e9a66f-7a87-4592-9938-bab8a1edbf48"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="374" y="40" width="35" height="20" uuid="a2772ca2-6469-4e05-b952-6107d4127651"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="480" y="40" width="32" height="20" uuid="d87a9fdf-f877-43b9-9fa0-151203d4266f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="444" y="40" width="36" height="20" uuid="acc2c5ba-57df-46b9-a8c3-1c0e66f712d2"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="512" y="40" width="32" height="20" uuid="4ba94878-b4aa-4c17-bc2d-cb50ea1e242b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="340" y="40" width="34" height="20" uuid="11394c5e-473d-460f-ae79-605953eb023c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="10" y="40" width="26" height="20" uuid="6de908bf-9cc1-4fc8-85b7-d08019244631"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="218" y="40" width="42" height="20" uuid="6ec1bcae-4126-4042-a600-d795d7a9e768"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="260" y="40" width="40" height="20" uuid="128416ed-7cf7-4506-bbf8-8ef1bfd17639"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="36" y="40" width="182" height="20" uuid="6c487130-82c1-476e-8ef4-45ddec59d835"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="300" y="40" width="40" height="20" uuid="7cea8422-ba4e-43ec-854b-b2329118a586"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="409" y="40" width="35" height="20" uuid="5a20d69c-a1ad-4033-acaa-d7f38d8897be"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="64" y="5" width="128" height="15" uuid="631a17af-03dd-4980-98eb-ea391258cfbc"/>
+				<text><![CDATA[Effectif de consultation PF]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="54" y="25" width="138" height="15" uuid="62eddee8-ba0e-4b08-897c-d1eca2c15191"/>
+				<text><![CDATA[AC Revenu en consultation (a+b+c)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="54" y="45" width="138" height="15" uuid="b2a0952b-55f6-4c66-84e6-29e32101828d"/>
+				<text><![CDATA[a. AC avec complication]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="5" width="26" height="15" uuid="de2e1e69-2d75-4fa1-9e2f-5eff0518367f"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[1]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="25" width="26" height="15" uuid="84d83fad-2882-471b-841a-634abbb9704e"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[2]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="302" y="5" width="38" height="15" uuid="dd5192cf-0e3b-4764-b63f-3e1b878abaf6"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{EffectifConsulationPF}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="220" y="5" width="38" height="15" uuid="c2a3da25-ea8a-49bc-817c-71080a03a67c"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{EffectifConsulationPFHomme}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="5" width="40" height="15" uuid="417ef597-16df-4526-8309-7fe625baa3b8"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{EffectifConsulationPFFemme}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="302" y="45" width="37" height="15" uuid="d834fd29-356d-4ab6-b33d-2790cebaf49f"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Complication}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="303" y="25" width="37" height="15" uuid="81e9ddef-9522-4b90-a424-235ec96d16de"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ACTraites}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="45" width="40" height="15" uuid="89c868e2-9b46-4991-9d3c-dc30f2e15902"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Complication}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="262" y="25" width="36" height="15" uuid="dc7e95ac-92b6-46ed-b5fa-f196a752d9f2"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ACTraites}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="445" y="25" width="32" height="15" uuid="4a9bf35f-89a3-4a40-9e19-b8a0e022e5e6"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ACTraitesCite}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="511" y="25" width="32" height="15" uuid="3c187eb0-596b-4d82-83e3-96227cb4183e"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ACTraitesHC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="444" y="45" width="36" height="15" uuid="0af273bf-f62c-4678-b041-f0175335b9f9"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ComplicationCite}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="514" y="45" width="29" height="15" uuid="1ea5e404-ed1a-476d-bc97-86c39990136a"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ComplicationHC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="446" y="5" width="33" height="15" uuid="28ad81db-803f-43fc-99aa-fdbe42bf36ef"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{EffectifConsulationPFFemmeCite}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="410" y="5" width="33" height="15" uuid="1238cb76-263a-47f8-9508-bdc2d840c4bb"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{EffectifConsulationPFHommeCite}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="514" y="5" width="29" height="15" uuid="bf53bfb0-4011-44fd-a596-92f2a24d0a0d"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{EffectifConsulationPFFemmeHC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="482" y="5" width="29" height="15" uuid="723f94d1-c22f-4de0-8e18-228d473c2b51"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{EffectifConsulationPFHommeHC}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="402" splitType="Stretch">
+			<rectangle>
+				<reportElement x="374" y="0" width="35" height="20" uuid="d7c211ba-80c9-4d29-a9bd-28c572074262"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="480" y="0" width="32" height="20" uuid="d73fdab7-6a29-4038-bc36-de09d33f4bcd"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="444" y="0" width="36" height="20" uuid="17e1f98e-fb8d-4524-bbd1-5b682fc9a4e2"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="512" y="0" width="32" height="20" uuid="67fa68f4-9d2e-41f0-a37a-a2e32ec71da7"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="340" y="0" width="34" height="20" uuid="f5b57dbd-4938-40fe-a29d-11623b7fdba1"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="10" y="0" width="26" height="20" uuid="dabc0f24-6c71-45d4-aec4-d621744b3b58"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="218" y="0" width="42" height="20" uuid="0e7a7ff9-f488-457b-8812-9683a1983905"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="260" y="0" width="40" height="20" uuid="f5459b04-2040-48ed-b2e7-0c01b29b689c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="36" y="0" width="182" height="20" uuid="abaec4d9-46ca-482e-a0e7-c3a97dbe4de5"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="300" y="0" width="40" height="20" uuid="098349b8-bf23-4a6a-94f6-992377c143cb"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="409" y="0" width="35" height="20" uuid="2a19023e-ef45-4289-9843-5333a70d2f0f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="374" y="20" width="35" height="20" uuid="5d940e2b-73a4-4ddf-a531-70c8401454a0"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="480" y="20" width="32" height="20" uuid="ad58bdce-380b-4f02-a7fa-9a645a3c14fa"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="444" y="20" width="36" height="20" uuid="fbd3db7b-2eb1-4397-985e-244e52032f61"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="512" y="20" width="32" height="20" uuid="b0283afd-de8c-420a-97e0-6ea36b73041e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="340" y="20" width="34" height="20" uuid="5a80687b-6043-4707-8732-bfcbc46205c8"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="10" y="20" width="26" height="20" uuid="41a427c8-c9ef-4229-851e-6edd8b56fdaf"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="218" y="20" width="42" height="20" uuid="a0891ac0-d120-449e-ac2f-728f873411e4"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="260" y="20" width="40" height="20" uuid="7a68e892-efd7-4dc2-8802-ca339bbb0437"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="36" y="20" width="182" height="20" uuid="58ef3e4f-9245-445b-9567-9fa6d64f3d1e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="300" y="20" width="40" height="20" uuid="6bd17d66-0c94-4465-8577-97bc2cddd1f2"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="409" y="20" width="35" height="20" uuid="6c884438-1843-4a66-bd00-bf297d30f79b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="374" y="40" width="35" height="20" uuid="2c03053f-122d-454c-b59b-be8e526d7d24"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="480" y="40" width="32" height="20" uuid="5b16a9db-13c6-438d-92cd-00f1cac0f518"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="444" y="40" width="36" height="20" uuid="e5e762cc-67ac-49fc-b4f8-324b5db2dc43"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="512" y="40" width="32" height="20" uuid="6e31727a-cc00-42fe-ba98-a936a9e61a3f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="340" y="40" width="34" height="20" uuid="1e3651c3-668f-49fa-9b3b-1d8b4ca7e610"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="10" y="40" width="26" height="20" uuid="ca4e9a39-c407-4874-bae3-271aa5772903"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="218" y="40" width="42" height="20" uuid="3e6aa6b0-deb5-4fa0-940d-79d35344eabe"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="260" y="40" width="40" height="20" uuid="644e3da9-c7dd-4070-b31d-08a5673afc2a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="36" y="40" width="182" height="20" uuid="21e7bcf4-b605-4a3c-a5f2-16bdce16deb2"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="300" y="40" width="40" height="20" uuid="8eb09ec2-f7c1-4bdc-b4cb-45e256a55bba"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="409" y="40" width="35" height="20" uuid="065bee19-9956-4fd0-bc08-0ff061aa7a6f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="374" y="60" width="35" height="20" uuid="ed4c9073-05bd-4475-904b-8102af13662c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="480" y="60" width="32" height="20" uuid="16ac0852-49b2-42be-b31a-dcb510bcddf4"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="444" y="60" width="36" height="20" uuid="0efaabf1-71ea-42b2-8180-9020092fd30d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="512" y="60" width="32" height="20" uuid="20fef5cd-fcdd-4cf4-b4b5-bf67c1f65de0"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="340" y="60" width="34" height="20" uuid="864e2642-6c6c-46f9-a607-75b2131f6cb0"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="10" y="60" width="26" height="20" uuid="8dbd5c5b-68b2-45cc-b861-d247d7548da7"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="218" y="60" width="42" height="20" uuid="f3309efd-29e0-4a4a-936e-0150df7e9ce4"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="260" y="60" width="40" height="20" uuid="cc865f1e-23c2-43f0-bd0f-b6db3c05bef3"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="36" y="60" width="182" height="20" uuid="b962b20d-e6aa-41c2-a357-4514c7aa680d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="300" y="60" width="40" height="20" uuid="e97a0a6a-26cb-4abb-bdad-70d2893a414f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="409" y="60" width="35" height="20" uuid="5e98c60d-f5b9-487b-ae38-0dd6724e0acb"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="54" y="5" width="138" height="15" uuid="b9697dee-e237-474a-8fdd-d4e044250dee"/>
+				<text><![CDATA[b. Avec pour suivi/conseil]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="54" y="25" width="138" height="15" uuid="6b616049-8dd3-4043-b405-6d6a59cea794"/>
+				<text><![CDATA[c. AC traités]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="54" y="45" width="164" height="15" uuid="0f84b759-c267-4ee8-81f7-702474a0c49c"/>
+				<textElement>
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[d.AC pour retrait implant/ norplant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="54" y="65" width="121" height="15" uuid="bcda1a68-908d-42f9-8f10-e8db59d269a9"/>
+				<text><![CDATA[e. AC pour retrait DIU]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="36" y="80" width="182" height="20" uuid="97222cbd-5bdd-48d6-aa38-3ae2cf97edda"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="218" y="80" width="42" height="20" uuid="ef2b2566-727a-4fb8-87f5-a74bf32f361c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="260" y="80" width="40" height="20" uuid="9811d4c3-95c8-408d-bc28-8f6e8fdfaf8a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="10" y="80" width="26" height="20" uuid="500af575-0809-4cba-b714-608d3b2ec1df"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="300" y="80" width="40" height="20" uuid="e2efefcc-ed27-411d-9fba-b7c5d923fcff"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="512" y="80" width="32" height="20" uuid="9188e5a3-6167-4570-8fe3-a77ec4d81c2f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="340" y="80" width="34" height="20" uuid="3f8ec7b2-38d7-46de-9bf2-489cfa358609"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="374" y="80" width="35" height="20" uuid="d4ae1aa6-e4fc-4e97-ac16-0f70b27817da"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="480" y="80" width="32" height="20" uuid="90b6c7f6-8d25-4d8c-9ac0-98595371b8a1"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="409" y="80" width="35" height="20" uuid="60fffd19-a028-4db7-b7fc-062a2eb88580"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="444" y="80" width="36" height="20" uuid="1363fd24-d27e-4897-a0eb-0230d59a2005"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="54" y="85" width="156" height="15" uuid="408856e7-531e-4a42-bbee-30b661020b75"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NC enregistrés pendant le mois]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="374" y="100" width="35" height="20" uuid="71734918-8395-4fd4-abb3-13156a42aa13"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="36" y="100" width="182" height="20" uuid="88fb465d-6b78-4cda-8947-fe0972654fb4"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="444" y="100" width="36" height="20" uuid="86c45ec3-a5c4-4d71-9792-3021d2583a11"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="512" y="100" width="32" height="20" uuid="2061c060-a3ef-4689-8920-181b7bac3b4d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="260" y="100" width="40" height="20" uuid="b19a66c1-836e-4d42-bdd9-aaae749a90ab"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="340" y="100" width="34" height="20" uuid="14d60e9d-2e59-4597-bd75-5e9f1c113b35"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="409" y="100" width="35" height="20" uuid="7679c609-4ed2-4201-98be-a5b4da519ce7"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="480" y="100" width="32" height="20" uuid="4e6a6718-c08d-4790-9751-dec77fe7e215"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="10" y="100" width="26" height="20" uuid="3b23d9c1-df3f-4b3c-a611-b336092e48f2"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="218" y="100" width="42" height="20" uuid="57595060-cc44-45cd-aea1-0c8f092e05fe"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="300" y="100" width="40" height="20" uuid="28513b57-ad1c-468f-8613-f5074646bf4c"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="47" y="105" width="163" height="15" uuid="d12e0484-6c83-4618-8083-52568513ee92"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[g. NC ayant souscrit (h+i+j+ …..t)]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="374" y="120" width="35" height="20" uuid="13bb9d7f-538d-42bd-9fe6-ce86ee2c1e0b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="409" y="120" width="35" height="20" uuid="6c300341-fda1-4ee1-bd70-5f5a48aa0d68"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="36" y="120" width="182" height="20" uuid="accffb83-0654-4930-a467-92f30f77ca2a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="444" y="120" width="36" height="20" uuid="cc045048-c8cd-4a8e-827a-724279a0796f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="512" y="120" width="32" height="20" uuid="4324d077-2871-452d-aa97-a1655aad01ed"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="300" y="120" width="40" height="20" uuid="696c427b-3631-4f05-874b-fdeb4a2431d9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="340" y="120" width="34" height="20" uuid="bb038f42-d327-4934-82e3-a4e22b931d54"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="480" y="120" width="32" height="20" uuid="cb4f9f42-4a14-4f15-89ce-60c61b83e03d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="218" y="120" width="42" height="20" uuid="42ac764b-1255-4ba5-89ff-809496047bf9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="260" y="120" width="40" height="20" uuid="cc2082d9-091c-418e-986c-f8382196b70d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="10" y="120" width="26" height="20" uuid="9c7ed228-1959-4fc7-bb22-58baca676f75"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="374" y="140" width="35" height="20" uuid="2f825b3d-14c7-40c7-a073-334e13ba1699"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="374" y="140" width="35" height="20" uuid="fa119b75-a83d-4d0c-80fd-811e6c5379fa"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="409" y="140" width="35" height="20" uuid="658171f1-d5b8-49d1-8853-2c1be7ab81a9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="36" y="140" width="182" height="20" uuid="51ba7227-ae28-4878-9224-42f11f31f0ba"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="444" y="140" width="36" height="20" uuid="1902ccd7-c9db-4dd8-bc0f-bde30f3c1db3"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="512" y="140" width="32" height="20" uuid="99d21094-2b98-411d-9929-2da26e0d66c9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="300" y="140" width="40" height="20" uuid="02090c70-31df-448d-983a-8f60855f0ab8"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="340" y="140" width="34" height="20" uuid="fb2d3f51-f76f-4451-8f1b-cc479ef6eb9a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="480" y="140" width="32" height="20" uuid="67fe1273-8f23-4f7c-b364-c146567c8df9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="218" y="140" width="42" height="20" uuid="0c909940-37c1-42f6-8fd3-a87bf62fe20e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="260" y="140" width="40" height="20" uuid="ddc70f38-0747-4b05-b1b3-8392a2e8d7a1"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="10" y="140" width="26" height="20" uuid="7bd52472-e772-4d5f-8c25-6a3529611e0d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="300" y="160" width="40" height="20" uuid="202ab009-c04a-472b-a76b-5d3215d421b9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="340" y="160" width="34" height="20" uuid="9e07db72-8517-4342-bd16-7ea9070c7957"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="374" y="160" width="35" height="20" uuid="3e9dddc1-2d20-4817-876a-32e037bca530"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="218" y="160" width="42" height="20" uuid="8137f113-440f-4a0f-aa36-5ba8503a4c21"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="260" y="160" width="40" height="20" uuid="08ebe064-1990-44fd-95a9-7a07797649e6"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="444" y="160" width="36" height="20" uuid="56b28381-b0fc-4c1c-a57f-6c29a2ddbee8"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="10" y="160" width="26" height="20" uuid="8291d549-8592-4c6f-af8e-05ecb6e94087"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="480" y="160" width="32" height="20" uuid="73629daa-d0d2-4302-80d5-d17b92c27ab1"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="409" y="160" width="35" height="20" uuid="ca09be1d-e69d-4c50-9250-41e655cfe879"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="512" y="160" width="32" height="20" uuid="1c5cfdd1-c925-4e1f-86f4-3cdcde0b91f2"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="36" y="160" width="182" height="20" uuid="a633e145-65af-461e-94a1-05b7f32f5a53"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="300" y="180" width="40" height="20" uuid="c919032f-9e93-4e3e-9a50-1c8699d79002"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="340" y="180" width="34" height="20" uuid="5a8fbf0c-e300-48a3-8222-4d5e31100f2f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="374" y="180" width="35" height="20" uuid="f3bd3743-9eb0-4cf7-8c6d-a187560e8c39"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="218" y="180" width="42" height="20" uuid="b9b6ea7d-2c3c-4c8a-8ee5-c57c52bb3807"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="260" y="180" width="40" height="20" uuid="26c8db52-b6d7-4b0b-ae61-faa91dda1d8e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="444" y="180" width="36" height="20" uuid="3f50bdc5-3192-44bc-9c42-97c856feb3c6"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="10" y="180" width="26" height="20" uuid="cf85a22c-b88e-4055-9f15-103d5374c23e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="480" y="180" width="32" height="20" uuid="256bdb98-4453-4c0b-ad9a-dca117334750"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="409" y="180" width="35" height="20" uuid="30b68233-28aa-41dc-bffb-8559266dbf76"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="512" y="180" width="32" height="20" uuid="db6e4850-1ba1-48c6-a960-8112e38113bb"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="36" y="180" width="182" height="20" uuid="2198920b-86ac-4a62-9f1a-95ef2792fbb9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="300" y="200" width="40" height="20" uuid="d23c8d6d-7f8d-4114-bdb0-5ac3bca3eb28"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="340" y="200" width="34" height="20" uuid="e43a44d3-9be9-4fcd-af65-2ab9d60b3fbf"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="374" y="200" width="35" height="20" uuid="b06531ee-39cf-460a-a040-b6b77ec332e8"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="218" y="200" width="42" height="20" uuid="e5b1dc5f-7ea8-447e-9111-6551e17c535a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="260" y="200" width="40" height="20" uuid="fde774ba-d862-4f00-ae94-8e8414bfb6a9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="444" y="200" width="36" height="20" uuid="3ce6bf35-8303-47d2-b221-b794b22cef97"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="10" y="200" width="26" height="20" uuid="dcf891b1-7b7a-4440-bd23-56aaf44c762a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="480" y="200" width="32" height="20" uuid="b47fe1d3-ef1d-4294-9f61-11e1dd976872"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="409" y="200" width="35" height="20" uuid="60fdd5ce-f245-499f-93d8-45582ae1cd32"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="512" y="200" width="32" height="20" uuid="f3fd78a3-2b3d-4cd0-8e3d-25a6660ce47f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="36" y="200" width="182" height="20" uuid="1d29d12d-2619-407c-b657-f26cd0c88a4d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="10" y="220" width="26" height="20" uuid="56ce3f3e-aafe-42b4-a7c9-64791b11cdcc"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="300" y="220" width="40" height="20" uuid="5395c851-d7a6-40ea-944e-e13cb6a67b53"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="374" y="220" width="35" height="20" uuid="a0a5500d-1b87-4913-9782-4d560c322515"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="36" y="220" width="182" height="20" uuid="d16580ee-6356-4bee-b37a-41c13b0b4155"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="218" y="220" width="42" height="20" uuid="aa4f89a9-7bea-414f-9df0-23a3a1bfcc93"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="409" y="220" width="35" height="20" uuid="f84b9154-91bd-44c8-a75b-fe83d4acf4c3"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="512" y="220" width="32" height="20" uuid="f6c9a3aa-5422-4f4d-9623-983fe5ce3bb4"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="340" y="220" width="34" height="20" uuid="b3262c5e-0feb-4852-9c86-496c8081d33d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="480" y="220" width="32" height="20" uuid="fb60fa55-1fe8-4c2a-b66b-d9ab240e928e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="444" y="220" width="36" height="20" uuid="8607e375-2300-4081-8e32-1fb0f9fe8fc8"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="260" y="220" width="40" height="20" uuid="020c28bc-16c9-453f-b764-012fa38d5b62"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="10" y="240" width="26" height="20" uuid="87b4e980-9c76-4c0e-a756-0823d410522b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="300" y="240" width="40" height="20" uuid="661a1f9d-db51-4d08-8276-5aaa2b02f728"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="374" y="240" width="35" height="20" uuid="73644462-f838-4465-9ed0-cff2cf060392"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="36" y="240" width="182" height="20" uuid="0b051353-0fc8-404b-99d5-d88ba7df2760"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="218" y="240" width="42" height="20" uuid="9b37c477-812a-4a8b-8831-450a69ebc0ff"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="409" y="240" width="35" height="20" uuid="2dc12cfd-baf7-47e5-9f52-456451b02958"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="512" y="240" width="32" height="20" uuid="b8735da2-a7b6-48a4-b61c-cffbc7975bb0"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="340" y="240" width="34" height="20" uuid="709b3592-0c3d-4f82-beca-a30c9dd72526"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="480" y="240" width="32" height="20" uuid="392568f9-6e2b-47d6-9636-92b8e2caa7ad"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="444" y="240" width="36" height="20" uuid="1659cdd2-724c-4f4f-90e2-0cb783631354"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="260" y="240" width="40" height="20" uuid="a88dad94-20bb-4cb6-b280-0097583b4c8e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="10" y="260" width="26" height="20" uuid="0767a402-1d76-4a1d-a737-f4547f7dd54d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="300" y="260" width="40" height="20" uuid="d3490e9b-45c8-4510-b0dc-fddb9b99f709"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="374" y="260" width="35" height="20" uuid="d04a8387-4875-48de-b2cb-5e82a3bcd923"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="36" y="260" width="182" height="20" uuid="51b70175-59cd-42a8-a503-4952e836ca8d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="218" y="260" width="42" height="20" uuid="c98ed588-1e34-430c-8c83-688cb83bee74"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="409" y="260" width="35" height="20" uuid="561ef4e8-4ce3-4020-a710-47ee0f68a7d9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="512" y="260" width="32" height="20" uuid="d60a73ee-7143-4546-a01d-29720e1a4e6b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="340" y="260" width="34" height="20" uuid="c57d04c4-e4be-4db2-85cf-f73b8b2edb20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="480" y="260" width="32" height="20" uuid="6a75085e-3193-4711-bdfb-4dda4ee4161b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="444" y="260" width="36" height="20" uuid="bd4c9723-1dce-464e-8bf7-04ef08f1dc92"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="260" y="260" width="40" height="20" uuid="71b33ae0-0b59-4c1a-82d5-fb4c69f06c02"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="36" y="125" width="182" height="15" uuid="f913bd5c-6d80-4e79-8fdd-9717f449f78d"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Consommation des méthodes contraceptive]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="145" width="163" height="15" uuid="2a3ee671-37db-44c5-bd57-06b963471507"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[h. Depo provera administré ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="165" width="135" height="15" uuid="fc74a068-e09e-408c-ba44-b468ecec35d7"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[i. norestera administré]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="185" width="163" height="15" uuid="2a7a514c-b325-4e6f-ba7c-55db7875ec2c"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[j. pilule(COC) donnée]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="205" width="128" height="15" uuid="3cea4054-fa14-4ee5-8ac3-010a811a5c65"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[k. pilule (COP= ovrette) donnée]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="245" width="128" height="15" uuid="5965b6ce-e9d6-4413-b72b-15f0fd776295"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[m. préservatif donné]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="265" width="119" height="15" uuid="97ae13dc-9478-470c-8f74-0b1e49fea5c7"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[n. implant/ norplant donné]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="225" width="156" height="15" uuid="d209e46e-d80f-40aa-ac59-373a4472e45d"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[l. DIU placé]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="340" y="280" width="34" height="20" uuid="9eb7f94c-45de-42c0-b0e8-3fb7bccc6d1b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="480" y="280" width="32" height="20" uuid="77dba8a8-1158-4e02-9356-993dd256b424"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="36" y="280" width="182" height="20" uuid="7007687f-cefd-458c-8430-959d6184d1a5"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="512" y="280" width="32" height="20" uuid="1b2666bd-73bc-4e05-8d4b-ef0cbac2411a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="260" y="280" width="40" height="20" uuid="8f099011-33d3-49c5-b92c-f03b3887c7cf"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="300" y="280" width="40" height="20" uuid="b8888a46-3016-4c89-a649-882f07cdece5"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="218" y="280" width="42" height="20" uuid="aab400f8-8d90-4fc0-ad70-abf9912eea54"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="10" y="280" width="26" height="20" uuid="6cac3c4d-df6a-479b-8119-374924692dc4"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="444" y="280" width="36" height="20" uuid="ac2903b3-d984-4bbd-ac7d-575fe7955403"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="374" y="280" width="35" height="20" uuid="cdb08a78-6ebb-46da-93d6-115c840cfc96"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="409" y="280" width="35" height="20" uuid="eba566c2-c410-43fd-8077-e5cbb1c6b596"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="340" y="300" width="34" height="20" uuid="c1ed9ac5-b63d-41f3-91c7-2145d1d2a1a7"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="480" y="300" width="32" height="20" uuid="7e612df9-865c-49f1-9a0c-0887576af722"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="36" y="300" width="182" height="20" uuid="13e225e1-3667-42cc-a58f-a813efe7b762"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="512" y="300" width="32" height="20" uuid="74379f29-6936-4e8c-ac34-025193152afe"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="260" y="300" width="40" height="20" uuid="4a8f785a-a064-4be0-9536-609b442065f5"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="300" y="300" width="40" height="20" uuid="13002992-d6b8-41d7-9c13-452349283563"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="218" y="300" width="42" height="20" uuid="c80a3d9f-95d4-477f-a837-2e7b66a9438f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="10" y="300" width="26" height="20" uuid="7d14bf5d-0960-4430-a22f-368907fc2440"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="444" y="300" width="36" height="20" uuid="f1845737-8996-48d7-8093-7abeb9acae80"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="374" y="300" width="35" height="20" uuid="20b3c69f-6bb7-48cc-9e79-2620215c7ebc"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="409" y="300" width="35" height="20" uuid="326a43c3-e4fe-4fe7-a09a-04ca1d8cc728"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="340" y="320" width="34" height="20" uuid="904d4bb9-01f2-4c61-a018-65fa6dc7585b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="480" y="320" width="32" height="20" uuid="97a72be0-bb6a-4721-8fef-2b83c874b912"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="36" y="320" width="182" height="20" uuid="f78e0ff8-685e-4269-b899-a3285a703d22"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="512" y="320" width="32" height="20" uuid="270c7557-89d0-43c0-a2f2-768db5a1f96e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="260" y="320" width="40" height="20" uuid="26de10d4-e587-4f0d-a665-16a5a7df1ab3"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="300" y="320" width="40" height="20" uuid="69102970-bf62-4f6b-8c76-e42f2635843f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="218" y="320" width="42" height="20" uuid="177851e1-124f-4bd2-bd98-f6ef24d8ea09"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="10" y="320" width="26" height="20" uuid="76d5c4ef-9316-455b-bc2c-d1eb52f3d144"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="444" y="320" width="36" height="20" uuid="616f339a-928a-47b0-84bc-63de40f6aeff"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="374" y="320" width="35" height="20" uuid="56b3c5b2-d71a-4e7c-b2b2-487ec13d179c"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="409" y="320" width="35" height="20" uuid="3e6b6320-2755-44b5-955b-504c81067241"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="340" y="340" width="34" height="20" uuid="2fdd2a10-299b-4ad0-899e-c93228dad718"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="480" y="340" width="32" height="20" uuid="41f7bc1c-04eb-4b25-a044-882d0a7d2416"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="36" y="340" width="182" height="20" uuid="a7d514ed-571d-41db-af70-d8f05ade9d82"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="512" y="340" width="32" height="20" uuid="7757871e-7bfe-492e-9a5f-8e7419ac135d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="260" y="340" width="40" height="20" uuid="aeade5bd-fa4b-4a13-89d3-d0c7699b82c1"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="300" y="340" width="40" height="20" uuid="d0d1c68c-44d1-4fb8-9ad9-68b9452f0bd9"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="218" y="340" width="42" height="20" uuid="4de14083-eecc-4aed-bed4-c86be05b4aee"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="10" y="340" width="26" height="20" uuid="ea79a7d1-1a18-4462-964a-490739d3cbcf"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="444" y="340" width="36" height="20" uuid="de6c899e-625c-42c9-a196-bc0cd8535ac6"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="374" y="340" width="35" height="20" uuid="db5eeb16-7409-42e0-ad39-38c98cb59469"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="409" y="340" width="35" height="20" uuid="70457f75-8a36-4fda-9ace-451cfb464e5a"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="47" y="285" width="128" height="15" uuid="85b4bc4a-4470-4607-a423-16bceef61379"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[o. ligature tubaire réalisée]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="305" width="119" height="15" uuid="d04fd444-dea0-4310-a732-3ae42b463242"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[p. vasectomie réalisée]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="325" width="119" height="15" uuid="f43b4916-f7b6-4e26-991d-ac17c8699bd2"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[q. collier du cycle donné]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="260" y="360" width="40" height="20" uuid="90514af8-8a84-4e7a-9858-71e190c41ed8"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="480" y="360" width="32" height="20" uuid="2e9d7220-710b-4a4b-9777-6031b0e56689"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="340" y="360" width="34" height="20" uuid="58f41c47-db00-47e9-979a-70669f158048"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="36" y="360" width="182" height="20" uuid="8f6dc8ab-f2f6-46b6-8e53-0f9855c9e38d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="10" y="360" width="26" height="20" uuid="fd4b3639-c2cb-478e-8c5a-3a2e7ee89273"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="300" y="360" width="40" height="20" uuid="17c975da-ae5d-4b3b-b5a9-430b01ee376b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="444" y="360" width="36" height="20" uuid="623b31bd-e181-4637-bf95-1427ab6278a7"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="512" y="360" width="32" height="20" uuid="359a3398-3f25-4b26-9111-1469b5a4f629"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="374" y="360" width="35" height="20" uuid="1e87067d-baed-43fd-87e7-b26c2891e69e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="409" y="360" width="35" height="20" uuid="b68e15ea-eaff-417d-840d-2a8907d9772b"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="218" y="360" width="42" height="20" uuid="1dabe33c-0205-46f8-be3a-cbb87b1bdac0"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="47" y="385" width="119" height="15" uuid="0614500d-fc85-4851-a91c-d7bd34031136"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Visite à domicile]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="85" width="26" height="15" uuid="7c983869-aa6e-463c-8d2a-f7784b4b098b"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[3]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="125" width="26" height="15" uuid="9a3d29fc-13f9-4ed2-92c1-21a8029ecfab"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[B]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="220" y="185" width="38" height="15" uuid="02b59cc9-dc18-4ef2-aa18-eed2fc7e5166"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="220" y="165" width="40" height="15" uuid="3b745789-e4a7-45ac-9a15-7f439bbf00f8"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="218" y="145" width="42" height="15" uuid="0f9eaaa9-160d-4108-8c18-14418991d315"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="218" y="65" width="42" height="15" uuid="fc070d81-82e1-4837-9677-8c230507294f"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="220" y="45" width="42" height="15" uuid="7995a35b-76b3-4fc2-a5b2-8cf559d309ae"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="220" y="205" width="38" height="15" uuid="bf98d3ed-8478-4092-b9b4-aed8d1e19906"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="218" y="225" width="40" height="15" uuid="45ecd6a7-36be-44a6-96ad-3cdaafc24f4d"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="260" y="245" width="40" height="15" uuid="31f762c1-9f23-42d0-9642-e5928482ef6e"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="260" y="305" width="38" height="15" uuid="82389d5d-9570-421c-a01a-baad6fbdc716"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[0]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="340" y="380" width="34" height="20" uuid="8ac2321a-4889-49f9-ad78-66eabd424f61"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="218" y="380" width="42" height="20" uuid="f7087a9a-e9c4-42dd-9d16-9ec6f523969f"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="10" y="380" width="26" height="20" uuid="1b51056e-b77f-4e6c-8bac-54ae3dd0add8"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="480" y="380" width="32" height="20" uuid="605e63da-5269-4995-98ed-d6f1b59f1c30"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="512" y="380" width="32" height="20" uuid="12de2ead-90a3-4006-b665-798f0b5a6cdb"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="36" y="380" width="182" height="20" uuid="c6a6d2d0-46c5-4e71-a195-eb8b7f756f8d"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="300" y="380" width="40" height="20" uuid="d0926e4c-22ba-4413-832e-9bad1d423040"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="260" y="380" width="40" height="20" uuid="f6bc3fe8-129a-46b2-ac5b-c0c3c69419bc"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="374" y="380" width="35" height="20" uuid="4614bf9d-6d22-416b-beba-9212c0c5eb8a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="409" y="380" width="35" height="20" uuid="125438bf-ef5c-49f3-8433-caad48394702"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="444" y="380" width="36" height="20" uuid="87eee537-773c-4e6c-a87d-b1b33ec72459"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="54" y="345" width="119" height="15" uuid="0b7d853b-ac5b-4d82-ab59-ca330de15498"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[r. Autres methodes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="365" width="156" height="15" uuid="b3e64640-ec01-405f-aa84-a6198e354721"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Activités promotionnelles]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="64" y="385" width="119" height="15" uuid="bc108f86-c40a-496d-b870-3a7a931aa79e"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Visite à domicile]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="365" width="26" height="15" uuid="6f4b100c-023a-4abe-8db7-cd60d9543361"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[C]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="446" y="245" width="35" height="15" uuid="270c0dea-400c-404a-8358-8bd3d516b8ee"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="512" y="245" width="32" height="15" uuid="f8e8b335-6d3e-4334-98d4-fd0e76c00bc2"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="220" y="265" width="38" height="15" uuid="e96206fe-659a-404f-8df9-0b31d7f32cf7"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="220" y="285" width="38" height="15" uuid="f9581e2f-ce76-42cf-aadb-757c888785f1"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="446" y="305" width="34" height="15" uuid="f0a72fe0-ee9f-4570-b505-1da633778fa7"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="512" y="305" width="34" height="15" uuid="e47cad7e-1f8f-46a9-a509-c7e1b591f319"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="409" y="65" width="34" height="15" uuid="6d4e3efd-ac67-48b3-a3e2-b4c7ac79c8f1"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="480" y="65" width="31" height="15" uuid="7d38c049-aee9-4d5a-a953-76dd1e52aa58"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="409" y="45" width="34" height="15" uuid="df291fcd-41db-44c4-9dd8-7a3a214d0700"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="480" y="45" width="34" height="15" uuid="caf90a52-4f29-47d3-b071-496f9e44f797"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="480" y="145" width="32" height="15" uuid="396b0249-f13f-496d-8ed2-7dd7161ce6cc"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="145" width="34" height="15" uuid="ead8af5e-c64f-41cd-89c4-c2cb6fcd8779"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="480" y="285" width="32" height="15" uuid="558a9f88-ef56-45e6-b049-778d78ce972c"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="412" y="285" width="31" height="15" uuid="782fca7f-c89f-466e-98a3-44db242b0bd0"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="481" y="265" width="31" height="15" uuid="58b1600c-0779-4103-92a1-e5747dfff1d9"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="220" y="325" width="38" height="15" uuid="f618bb1b-b62a-4c1e-9778-9026706530c8"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="325" width="33" height="15" uuid="08a40e93-e4ef-46dc-9c72-eea7f298788a"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="480" y="325" width="31" height="15" uuid="fb56cd19-d68c-4f30-862e-a3ab65b777d7"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[0]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="218" y="305" width="40" height="15" uuid="b6dd6efe-071b-4312-9f38-0a2b70083104"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Vasectomie}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="305" width="38" height="15" uuid="86cdd2cc-ae20-41e4-93c6-1d0b530f86de"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Vasectomie}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="412" y="305" width="32" height="15" uuid="91ef2915-d886-495a-913a-051111972ffc"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{VasectomieCite}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="480" y="305" width="31" height="15" uuid="22d91161-6e5f-4933-accd-942168ab4d35"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{VasectomieHC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="220" y="245" width="40" height="15" uuid="a986caed-1329-4ea4-b0d4-fe779e855d48"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Preservatif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="303" y="245" width="35" height="15" uuid="b0f1967b-95e5-4c80-99cf-b9bf48046bba"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Preservatif}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="410" y="245" width="33" height="15" uuid="33bbdb38-5e6c-4969-acd6-ce2ea0fa6745"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{PreservatifCite}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="480" y="245" width="31" height="15" uuid="f7f75e08-a3ee-4fcd-9fa9-212996140fed"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{PreservatifHC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="5" width="38" height="15" uuid="261fb1d4-9ed0-4cf8-906d-d8e94b4ab603"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{SuiviConseil}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="303" y="345" width="36" height="15" uuid="2c459dd6-2c86-49ba-8258-4c5f86881b21"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Autres}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="301" y="325" width="38" height="15" uuid="1675ce5b-e0d5-4441-83f3-d611755fe44d"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{CollierCycle}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="303" y="285" width="36" height="15" uuid="211409df-19bd-4a82-b9cb-bb265fd0ab39"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{LTB}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="265" width="38" height="15" uuid="83d9fb96-2d49-4b1a-b850-01f442c76b8a"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Implants}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="305" y="225" width="35" height="15" uuid="cfb2fd0c-f11b-4d1b-9d4a-19f83f59eac6"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{DIU}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="300" y="205" width="40" height="15" uuid="a4284e93-820a-4b2f-8415-90cb886866ab"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{COP}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="303" y="185" width="35" height="15" uuid="c0359c0b-3bd1-4227-8ac2-81be62190ccd"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{COC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="303" y="165" width="37" height="15" uuid="b51e91ae-1ab0-4f29-9d10-564de4ffed2d"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Nosterilat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="302" y="145" width="38" height="15" uuid="6b2305f3-ee19-4cf9-ae48-fc4cf892b7f1"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{DMPA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="302" y="105" width="35" height="15" uuid="7ede9f9b-0f2e-4e93-9cbc-46717df23226"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{NCSoustraits}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="302" y="65" width="38" height="15" uuid="76e3fdbe-98ae-4315-a602-6bc717fc4faa"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ACRetraits}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="301" y="45" width="38" height="15" uuid="f9e7059b-b487-448b-bb07-408b5a840aff"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ACImplants}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="301" y="25" width="39" height="15" uuid="05a600c8-962f-40c5-9ef1-7629ba6c71e0"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ACTraites}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="263" y="285" width="38" height="15" uuid="ea3c384c-45ac-4be8-aab3-13a890cd9019"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{LTB}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="264" y="265" width="38" height="15" uuid="d926ceb1-846d-4732-826b-b607a6eb23f1"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Implants}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="262" y="225" width="35" height="15" uuid="7e5114e4-f083-4c67-8975-f317e622bd62"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{DIU}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="205" width="40" height="15" uuid="39afe1e6-118b-4dc4-b73d-083e6048ec9c"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{COP}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="185" width="38" height="15" uuid="44a555fb-5360-4c41-9b43-4f73923789ff"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{COC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="165" width="40" height="15" uuid="42020e15-46ea-425c-9fa9-d8af6e35006e"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Nosterilat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="263" y="145" width="35" height="15" uuid="b05f8d8a-db01-440e-a302-40b3cada9a1d"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{DMPA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="264" y="105" width="35" height="15" uuid="02a2a1c9-466a-414e-8dc5-a11123a33e19"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{NCSoustraits}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="264" y="65" width="35" height="15" uuid="7b308fb3-7ee3-4eeb-a594-b0042c4f6eb5"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ACRetraits}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="263" y="45" width="36" height="15" uuid="475c09cc-9d73-40d9-b9f5-38797bec4168"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ACImplants}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="262" y="25" width="38" height="15" uuid="b13c4bd7-00c7-4890-b920-d7cf6e0ef27a"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ACTraites}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="262" y="5" width="37" height="15" uuid="6f544121-ea88-4f34-8c66-92489604c0d2"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{SuiviConseil}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="446" y="5" width="32" height="15" uuid="6ff2b7ce-01f2-4094-b404-00a05f56ff57"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{SuiviConseilCite}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="512" y="5" width="32" height="15" uuid="efe3e123-3357-412b-bf5b-d7b34f11f124"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{SuiviConseilHC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="446" y="25" width="34" height="15" uuid="3ae6c6db-bf9d-4f64-b4d1-ae719b9ec8da"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ACTraitesCite}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="511" y="25" width="32" height="15" uuid="02af5a93-555c-40a4-bf37-c9d5160a695e"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ACTraitesHC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="446" y="45" width="34" height="15" uuid="18d44290-7687-490f-9e68-f4f5dde6bcfd"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ACImplantsCite}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="512" y="45" width="34" height="15" uuid="bb30bcf6-47b0-4388-a3cc-1f98b012f880"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ACImplantsHC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="445" y="65" width="35" height="15" uuid="df991bf7-e2cc-4d1e-b7ef-f42612075fcb"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ACRetraitsCite}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="514" y="65" width="29" height="15" uuid="c3757ffa-6e0a-451a-a045-3c1157504e94"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ACRetraitsHC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="446" y="105" width="35" height="15" uuid="d49cc249-e3f4-464c-b518-a958303ed803"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{NCSoustraitsCite}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="514" y="105" width="29" height="15" uuid="e348a37b-b731-4cee-87ac-719d1a8fb86a"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{NCSoustraitsHC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="446" y="145" width="32" height="15" uuid="54581b99-72b8-4bbc-9347-dcdd2db5d7b7"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{DMPACite}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="511" y="145" width="32" height="15" uuid="e202a978-d7f1-4ad1-b336-ac2172b0b677"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{DMPAHC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="446" y="165" width="35" height="15" uuid="5cca18bf-9dac-4f28-8308-ba2f664683cf"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{NosterilatCite}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="514" y="165" width="29" height="15" uuid="bd55286b-08bc-415b-a5d7-5b6d9b3a3adb"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{NosterilatHC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="446" y="185" width="35" height="15" uuid="fcb90cb1-923d-40c2-8c61-fe6b7001641b"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{COCCite}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="511" y="185" width="35" height="15" uuid="caea2509-7220-4a79-8eb5-a051d644b6e5"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{COCHC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="446" y="205" width="34" height="15" uuid="55e69c67-64d6-4adf-8cd7-c9fe39fff4be"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{COPCite}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="512" y="205" width="31" height="15" uuid="1d560bcf-7e42-4755-be6c-893ab19d971a"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{COPHC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="446" y="225" width="35" height="15" uuid="641dcac6-f9f4-461d-9495-bec662c3fe16"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{DIUCite}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="514" y="225" width="29" height="15" uuid="e8eafd97-0cd3-4a05-901c-d296b8138b9f"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{DIUHC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="446" y="265" width="34" height="15" uuid="1e146a4b-c75a-4cec-aa5f-cd577810b813"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ImplantsCite}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="514" y="265" width="29" height="15" uuid="acfec9e9-808c-47e0-bddd-19828e25fb50"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ImplantsHC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="446" y="285" width="36" height="15" uuid="5ac4214f-9b8f-466a-a5be-b308c739565f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{LTBCite}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="514" y="285" width="30" height="15" uuid="1d134361-02f2-4c92-8a9b-074700e52ca2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{LTBHC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="262" y="325" width="37" height="15" uuid="c54dfe3c-5cf0-4f32-8e85-b6802e58f3ea"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{CollierCycle}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="446" y="325" width="33" height="15" uuid="f051625a-1fde-4049-ae26-2e5769fd79d9"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{CollierCycleCite}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="512" y="325" width="31" height="15" uuid="01055d80-6f90-4614-ac89-ae2bb549ecfc"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{CollierCycleHC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="262" y="345" width="37" height="15" uuid="eb7115bc-645d-44a6-944c-c3144df08039"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Autres}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="446" y="345" width="33" height="15" uuid="62cda0d8-6fe5-4583-af38-e9c3ba52ff9b"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{AutreCite}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="514" y="345" width="29" height="15" uuid="b0b3930b-da2d-40db-9d94-4962620bdb7b"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{AutreHC}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="409" y="165" width="34" height="15" uuid="e2db595e-8145-4e26-b82e-221bfa46bf13"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="185" width="33" height="15" uuid="76d3660b-a826-44ce-a3a1-f35fac226695"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="410" y="205" width="34" height="15" uuid="b9fd74ab-cffa-4316-b75e-7a7016c151ce"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="482" y="165" width="29" height="15" uuid="54660805-b72d-4f17-ac1f-706818faa375"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="482" y="185" width="29" height="15" uuid="eb77d644-578f-4d82-acc3-1ac3e59a1f2e"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="482" y="205" width="29" height="15" uuid="0b00a055-4819-48d1-994f-88823dd9a010"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[0]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="479" y="225" width="34" height="15" uuid="cbef24ea-4281-44d7-bd67-fb697e641231"/>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<text><![CDATA[0]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="15" y="1" width="119" height="15" uuid="46ebee6c-01d3-4e74-a982-8466dd5ef06e"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[H: Homme]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="15" y="16" width="119" height="15" uuid="a9084e9d-d2c9-463b-8960-ce8493b26fbf"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[F: Femme]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="15" y="31" width="119" height="15" uuid="d31f1d21-ec7a-4183-83af-35b13a094a86"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[NC : Nouveau Cas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="15" y="46" width="119" height="15" uuid="1ab8341c-61b5-4cae-88d1-2f5c37de5749"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[AC : Ancien cas]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="365" y="31" width="179" height="15" uuid="77ed0753-fff1-4755-b267-8cf1725ed1cc"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Fait à ................., le ....../......./.........]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+</jasperReport>

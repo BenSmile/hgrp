@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="MotifConsultationCreatePage" lazy="true">
+        <pm:header title="#{resourcesBundle.CreateMotifConsultationTitle}">
+            <h:form>
+                <p:commandButton styleClass="ui-btn-left ui-btn-inline" value="#{resourcesBundle.Cancel}" icon="ui-icon-arrow-l" action="#{mobilePageController.navigateBackInHistory('pm:MotifConsultationListPage')}"/>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="MotifConsultationCreateForm">
+
+                <h:panelGroup id="display" rendered="#{motifConsultationController.selected != null}">
+                    <p:outputPanel>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.CreateMotifConsultationLabel_motif}" for="motif" />
+                            <p:inputText id="motif" value="#{motifConsultationController.selected.motif}" title="#{resourcesBundle.CreateMotifConsultationTitle_motif}" size="31" maxlength="31"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.CreateMotifConsultationLabel_autreprecision}" for="autreprecision" />
+                            <p:inputText id="autreprecision" value="#{motifConsultationController.selected.autreprecision}" title="#{resourcesBundle.CreateMotifConsultationTitle_autreprecision}" size="35" maxlength="35"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.CreateMotifConsultationLabel_idPF}" for="idPF" />
+                            <p:selectOneMenu id="idPF" value="#{motifConsultationController.selected.idPF}" required="true" requiredMessage="#{resourcesBundle.CreateMotifConsultationRequiredMessage_idPF}" converter="planficationFamilialeConverter">
+                                <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{planficationFamilialeController.items}"
+                                               var="idPFItem"
+                                               itemValue="#{idPFItem}"
+                                               itemLabel="#{idPFItem.idPF.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.CreateMotifConsultationLabel_utilisateur}" for="utilisateur" />
+                            <p:selectOneMenu id="utilisateur" value="#{motifConsultationController.selected.utilisateur}" required="true" requiredMessage="#{resourcesBundle.CreateMotifConsultationRequiredMessage_utilisateur}" converter="usersConverter">
+                                <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{usersController.items}"
+                                               var="utilisateurItem"
+                                               itemValue="#{utilisateurItem}"
+                                               itemLabel="#{utilisateurItem.uname.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                        </pm:field>
+                    </p:outputPanel>
+                    <p:commandButton actionListener="#{motifConsultationController.saveNew}" value="#{resourcesBundle.Save}" update="display,:MotifConsultationListPage:MotifConsultationListForm:datalist,:growl" action="#{mobilePageController.navigateWithHistory('pm:MotifConsultationListPage')}">
+                        <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                </h:panelGroup>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

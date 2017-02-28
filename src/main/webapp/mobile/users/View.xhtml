@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="UsersViewPage" lazy="true">
+        <pm:header title="#{resourcesBundle.ViewUsersTitle}">
+            <h:form>
+                <p:commandButton styleClass="ui-btn-left ui-btn-inline" value="#{resourcesBundle.Cancel}" icon="ui-icon-arrow-l" action="#{mobilePageController.navigateBackInHistory('pm:UsersListPage')}"/>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="UsersViewForm">
+
+                <h:panelGroup id="display">
+                    <p:tabView id="UsersTabView">
+
+                        <p:tab id="UsersTab1" title="#{resourcesBundle.TabHeaderPrefix} 1">
+                            <p:outputPanel rendered="#{usersController.selected != null}">
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewUsersLabel_uname}"/>
+                                    <h:outputText value="#{usersController.selected.uname}" title="#{resourcesBundle.ViewUsersTitle_uname}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewUsersLabel_password}"/>
+                                    <h:outputText value="#{usersController.selected.password}" title="#{resourcesBundle.ViewUsersTitle_password}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewUsersLabel_nom}"/>
+                                    <h:outputText value="#{usersController.selected.nom}" title="#{resourcesBundle.ViewUsersTitle_nom}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewUsersLabel_postNom}"/>
+                                    <h:outputText value="#{usersController.selected.postNom}" title="#{resourcesBundle.ViewUsersTitle_postNom}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewUsersLabel_prenom}"/>
+                                    <h:outputText value="#{usersController.selected.prenom}" title="#{resourcesBundle.ViewUsersTitle_prenom}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <h:outputText value="#{resourcesBundle.ViewUsersLabel_role}"/>
+                                    <h:outputText value="#{usersController.selected.role}" title="#{resourcesBundle.ViewUsersTitle_role}"/>
+                                </pm:field>
+                            </p:outputPanel>
+                        </p:tab>
+                    </p:tabView>
+                </h:panelGroup>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

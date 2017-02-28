@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="DonneesObjectivesListPage">
+        <pm:header title="#{resourcesBundle.ListDonneesObjectivesTitle}">
+            <h:form>
+                <p:commandButton id="backButton"   styleClass="ui-btn-left  ui-btn-inline" icon="ui-icon-arrow-l" value="#{myBundle.Back}" action="#{mobilePageController.navigateBackInHistory('/mobile/index')}"/>
+                <p:commandButton id="createButton" styleClass="ui-btn-right ui-btn-inline" icon="ui-icon-plus"    value="#{resourcesBundle.Create}" update=":DonneesObjectivesCreatePage:DonneesObjectivesCreateForm" actionListener="#{donneesObjectivesController.prepareCreate}" action="#{mobilePageController.navigateWithHistory('pm:DonneesObjectivesCreatePage')}">
+                    <f:actionListener binding="#{currentPageListener}"/>
+                </p:commandButton>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="DonneesObjectivesListForm">
+
+                <p:dataTable id="datalist"
+                             value="#{donneesObjectivesController.items}"
+                             var="item"
+                             rowKey="#{item.idDonnObject}"
+                             paginator="true"
+                             rows="10"
+                             rowsPerPageTemplate="10,20,30,40,50"
+                             selectionMode="single"
+                             selection="#{donneesObjectivesController.selected}"
+                             reflow="true">
+
+                    <p:ajax event="rowSelect"   update="@form:editButton,@form:deleteButton,@form:navigationMenuButton,@form:navigationMenuPanel" listener="#{donneesObjectivesController.resetParents}"/>
+                    <p:ajax event="rowUnselect" update="@form:editButton,@form:deleteButton,@form:navigationMenuButton,@form:navigationMenuPanel" listener="#{donneesObjectivesController.resetParents}"/>
+                    <p:ajax event="swipeleft"   oncomplete="document.getElementById('DonneesObjectivesListPage:DonneesObjectivesListForm:deleteButton').click();"/>
+                    <p:ajax event="tap"         oncomplete="document.getElementById('DonneesObjectivesListPage:DonneesObjectivesListForm:editButton').click();"/>
+                    <p:ajax event="taphold"     oncomplete="document.getElementById('DonneesObjectivesListPage:DonneesObjectivesListForm:navigationMenuButton').click();"/>
+
+                    <p:column sortBy="#{item.idDonnObject}" filterBy="#{item.idDonnObject}" headerText="#{resourcesBundle.ListDonneesObjectivesTitle_idDonnObject}">
+                        <h:outputText value="#{item.idDonnObject}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.dateRDVPL}" filterBy="#{item.dateRDVPL}" headerText="#{resourcesBundle.ListDonneesObjectivesTitle_dateRDVPL}">
+                        <h:outputText value="#{item.dateRDVPL}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.poids}" filterBy="#{item.poids}" headerText="#{resourcesBundle.ListDonneesObjectivesTitle_poids}">
+                        <h:outputText value="#{item.poids}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.ta}" filterBy="#{item.ta}" headerText="#{resourcesBundle.ListDonneesObjectivesTitle_ta}">
+                        <h:outputText value="#{item.ta}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.signeinfectiongyneco}" filterBy="#{item.signeinfectiongyneco}" headerText="#{resourcesBundle.ListDonneesObjectivesTitle_signeinfectiongyneco}">
+                        <h:outputText value="#{item.signeinfectiongyneco}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.ist}" filterBy="#{item.ist}" headerText="#{resourcesBundle.ListDonneesObjectivesTitle_ist}">
+                        <h:outputText value="#{item.ist}"/>
+                    </p:column>
+
+                    <!--
+                                        <p:column sortBy="#{item.amenorhee6emSEm}" filterBy="#{item.amenorhee6emSEm}" headerText="#{resourcesBundle.ListDonneesObjectivesTitle_amenorhee6emSEm}">
+                                            <h:outputText value="#{item.amenorhee6emSEm}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.signeGrossesse}" filterBy="#{item.signeGrossesse}" headerText="#{resourcesBundle.ListDonneesObjectivesTitle_signeGrossesse}">
+                                            <h:outputText value="#{item.signeGrossesse}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.visiontroublee}" filterBy="#{item.visiontroublee}" headerText="#{resourcesBundle.ListDonneesObjectivesTitle_visiontroublee}">
+                                            <h:outputText value="#{item.visiontroublee}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.cephaleesintenses}" filterBy="#{item.cephaleesintenses}" headerText="#{resourcesBundle.ListDonneesObjectivesTitle_cephaleesintenses}">
+                                            <h:outputText value="#{item.cephaleesintenses}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.masseSuspecte}" filterBy="#{item.masseSuspecte}" headerText="#{resourcesBundle.ListDonneesObjectivesTitle_masseSuspecte}">
+                                            <h:outputText value="#{item.masseSuspecte}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.nauseeVaumissement}" filterBy="#{item.nauseeVaumissement}" headerText="#{resourcesBundle.ListDonneesObjectivesTitle_nauseeVaumissement}">
+                                            <h:outputText value="#{item.nauseeVaumissement}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.douleurPelvienne}" filterBy="#{item.douleurPelvienne}" headerText="#{resourcesBundle.ListDonneesObjectivesTitle_douleurPelvienne}">
+                                            <h:outputText value="#{item.douleurPelvienne}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.icteres}" filterBy="#{item.icteres}" headerText="#{resourcesBundle.ListDonneesObjectivesTitle_icteres}">
+                                            <h:outputText value="#{item.icteres}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.fatigabilite}" filterBy="#{item.fatigabilite}" headerText="#{resourcesBundle.ListDonneesObjectivesTitle_fatigabilite}">
+                                            <h:outputText value="#{item.fatigabilite}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.examenSeins}" filterBy="#{item.examenSeins}" headerText="#{resourcesBundle.ListDonneesObjectivesTitle_examenSeins}">
+                                            <h:outputText value="#{item.examenSeins}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.examenAbdomen}" filterBy="#{item.examenAbdomen}" headerText="#{resourcesBundle.ListDonneesObjectivesTitle_examenAbdomen}">
+                                            <h:outputText value="#{item.examenAbdomen}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.examengyneco}" filterBy="#{item.examengyneco}" headerText="#{resourcesBundle.ListDonneesObjectivesTitle_examengyneco}">
+                                            <h:outputText value="#{item.examengyneco}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.gainanormalePoids}" filterBy="#{item.gainanormalePoids}" headerText="#{resourcesBundle.ListDonneesObjectivesTitle_gainanormalePoids}">
+                                            <h:outputText value="#{item.gainanormalePoids}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.TAtropelevee}" filterBy="#{item.TAtropelevee}" headerText="#{resourcesBundle.ListDonneesObjectivesTitle_TAtropelevee}">
+                                            <h:outputText value="#{item.TAtropelevee}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.signeAnemie}" filterBy="#{item.signeAnemie}" headerText="#{resourcesBundle.ListDonneesObjectivesTitle_signeAnemie}">
+                                            <h:outputText value="#{item.signeAnemie}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.autressignesAnormaux}" filterBy="#{item.autressignesAnormaux}" headerText="#{resourcesBundle.ListDonneesObjectivesTitle_autressignesAnormaux}">
+                                            <h:outputText value="#{item.autressignesAnormaux}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.methode}" filterBy="#{item.methode}" headerText="#{resourcesBundle.ListDonneesObjectivesTitle_methode}">
+                                            <h:outputText value="#{item.methode}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.quantite}" filterBy="#{item.quantite}" headerText="#{resourcesBundle.ListDonneesObjectivesTitle_quantite}">
+                                            <h:outputText value="#{item.quantite}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.dateProchaineVisite}" filterBy="#{item.dateProchaineVisite}" headerText="#{resourcesBundle.ListDonneesObjectivesTitle_dateProchaineVisite}">
+                                            <h:outputText value="#{item.dateProchaineVisite}">
+                                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                                            </h:outputText>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.utilisateur.uname}" filterBy="#{item.utilisateur.uname}" headerText="#{resourcesBundle.ListDonneesObjectivesTitle_utilisateur}">
+                                            <h:outputText value="#{item.utilisateur.uname}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.numDossier.numDossier}" filterBy="#{item.numDossier.numDossier}" headerText="#{resourcesBundle.ListDonneesObjectivesTitle_numDossier}">
+                                            <h:outputText value="#{item.numDossier.numDossier}"/>
+                                        </p:column>
+                    -->
+                </p:dataTable>
+                <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{resourcesBundle.Edit}" update=":DonneesObjectivesEditPage:DonneesObjectivesEditForm" disabled="#{empty donneesObjectivesController.selected}" actionListener="#{mobilePageController.currentPageListener}" action="#{mobilePageController.navigateWithHistory('pm:DonneesObjectivesEditPage')}"/>
+                <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{resourcesBundle.Delete}" actionListener="#{donneesObjectivesController.delete}" update=":growl,datalist" disabled="#{empty donneesObjectivesController.selected}">
+                    <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+                </p:commandButton>
+                <p:commandButton id="navigationMenuButton" style="visibility: hidden;" value="#{resourcesBundle.Menu}" disabled="#{empty donneesObjectivesController.selected}"/>
+
+                <p:overlayPanel id="navigationMenuPanel" for="navigationMenuButton" at="right" showEffect="overlay">
+                    <h2>#{resourcesBundle.DonneesObjectivesHeading} #{resourcesBundle.Menu}</h2>
+                    <p:menu>
+                        <p:menuitem value="#{resourcesBundle.DonneesObjectivesMenuItem_utilisateur}" icon="ui-icon-search" update=":UsersEditPage:UsersEditForm" disabled="#{empty donneesObjectivesController.selected.utilisateur}" actionListener="#{donneesObjectivesController.prepareUtilisateur}" action="#{mobilePageController.navigateWithHistory}">  
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="pm:UsersEditPage"/>
+                        </p:menuitem>
+                        <p:menuitem value="#{resourcesBundle.DonneesObjectivesMenuItem_numDossier}" icon="ui-icon-search" update=":InfosFemmeEditPage:InfosFemmeEditForm" disabled="#{empty donneesObjectivesController.selected.numDossier}" actionListener="#{donneesObjectivesController.prepareNumDossier}" action="#{mobilePageController.navigateWithHistory}">  
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="pm:InfosFemmeEditPage"/>
+                        </p:menuitem>
+                    </p:menu>
+                </p:overlayPanel>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

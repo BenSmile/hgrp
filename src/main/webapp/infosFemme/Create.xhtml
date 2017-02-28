@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+
+        <p:dialog id="InfosFemmeCreateDlg" widgetVar="InfosFemmeCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="Ajouter un nouveau dossier" closeOnEscape="true">
+            <h:form id="InfosFemmeCreateForm">
+                <p:growl id="growl"  showDetail="true"/>
+                <p:wizard id="display" flowListener="#{infosFemmeController.onFlowProcess}">
+                    <p:tab id="personal" title="Identité">
+                        <p:panel header="Details personnels" style="width: 450px;">
+                            <p:messages /><p:spacer width="80" height="0"/>
+                            <h:panelGrid columns="2" columnClasses="label, value">
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosFemmeLabel_numDossier}" for="numDossier" />
+                                <h:panelGroup>
+                                    <p:inputText id="numDossier" value="#{infosFemmeController.selected.numDossier}" title="#{resourcesBundle.CreateInfosFemmeTitle_numDossier}" required="true" requiredMessage="#{resourcesBundle.CreateInfosFemmeRequiredMessage_numDossier}" size="30" maxlength="15"/>
+                                    <p:inputText style="visibility: hidden" id="user" value="#{infosFemmeController.user}" title="user: " size="30" maxlength="30"/>
+                                </h:panelGroup>                                    
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosFemmeLabel_nom}" for="nom" />
+                                <h:panelGroup>
+                                    <p:inputText id="nom" value="#{infosFemmeController.selected.nom}" title="#{resourcesBundle.CreateInfosFemmeTitle_nom}" size="30" maxlength="30"/>
+                                </h:panelGroup>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosFemmeLabel_postNom}" for="postNom" />
+                                <h:panelGroup>
+                                    <p:inputText id="postNom" value="#{infosFemmeController.selected.postNom}" title="#{resourcesBundle.CreateInfosFemmeTitle_postNom}" size="30" maxlength="30"/>
+                                </h:panelGroup>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosFemmeLabel_prenom}" for="prenom" />
+                                <h:panelGroup>
+                                    <p:inputText id="prenom" value="#{infosFemmeController.selected.prenom}" title="#{resourcesBundle.CreateInfosFemmeTitle_prenom}" size="30" maxlength="30"/>
+                                </h:panelGroup>
+
+                                <p:outputLabel value="Genre" for="genre"/>
+                                <h:panelGroup>
+                                    <p:selectOneMenu id="genre" value="#{infosFemmeController.selected.genre}" required="true" requiredMessage="Ce champ est obligatoire">
+                                        <f:selectItem itemLabel="Choisir"/>                                   
+                                        <f:selectItem itemValue="M" itemLabel="M"/>
+                                        <f:selectItem itemValue="F" itemLabel="F"/>
+                                    </p:selectOneMenu>
+                                </h:panelGroup>
+                                
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosFemmeLabel_profession}" for="profession" />
+                                <h:panelGroup>
+                                    <p:inputText id="profession" value="#{infosFemmeController.selected.profession}" title="#{resourcesBundle.CreateInfosFemmeTitle_profession}" size="30" maxlength="30"/>
+                                </h:panelGroup>
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosFemmeLabel_professioConjoint}" for="professioConjoint" />
+                                <h:panelGroup>
+                                    <p:inputText id="professioConjoint" value="#{infosFemmeController.selected.professioConjoint}" title="#{resourcesBundle.CreateInfosFemmeTitle_professioConjoint}" size="30" maxlength="30"/>
+                                </h:panelGroup>
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosFemmeLabel_age}" for="age" />
+                                <h:panelGroup>
+                                    <p:inputText id="age" value="#{infosFemmeController.selected.age}" title="#{resourcesBundle.CreateInfosFemmeTitle_age}"/>
+                                </h:panelGroup>
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosFemmeLabel_etatCivil}" for="etatCivil" />
+                                <h:panelGroup>
+                                    <p:selectOneMenu id="etatCivil" value="#{infosFemmeController.selected.etatCivil}" title="#{resourcesBundle.CreateInfosFemmeTitle_etatCivil}"  maxlength="11">
+                                        <f:selectItem itemLabel="Marié(e)" itemValue="Marié(e)"/>
+                                        <f:selectItem itemLabel="Célibataire" itemValue="Célibataire"/>
+                                        <f:selectItem itemLabel="Veuf(ve)" itemValue="Veuf(ve)"/>
+                                    </p:selectOneMenu>
+                                </h:panelGroup>
+                            </h:panelGrid>
+                        </p:panel>
+                    </p:tab>
+                    <p:tab id="address" title="Addresse">
+                        <p:panel header="Detail de l'addresse" style="width: 450px;">
+                            <p:messages />
+                            <h:panelGrid columns="2" columnClasses="label, value">
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosFemmeLabel_zoneSante}" for="zoneSante" />
+                                <h:panelGroup>
+                                    <p:inputText id="zoneSante" value="#{infosFemmeController.selected.zoneSante}" title="#{resourcesBundle.CreateInfosFemmeTitle_zoneSante}" size="30" maxlength="30"/>
+                                </h:panelGroup>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosFemmeLabel_aireSante}" for="aireSante" />
+                                <h:panelGroup>
+                                    <p:inputText id="aireSante" value="#{infosFemmeController.selected.aireSante}" title="#{resourcesBundle.CreateInfosFemmeTitle_aireSante}" size="30" maxlength="30"/>
+                                </h:panelGroup>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosFemmeLabel_province}" for="province" />
+                                <h:panelGroup>
+                                    <p:inputText id="province" value="#{infosFemmeController.selected.province}" title="#{resourcesBundle.CreateInfosFemmeTitle_province}" size="30" maxlength="30"/>
+                                </h:panelGroup>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosFemmeLabel_district}" for="district" />
+                                <h:panelGroup>
+                                    <p:inputText id="district" value="#{infosFemmeController.selected.district}" title="#{resourcesBundle.CreateInfosFemmeTitle_district}" size="30" maxlength="30"/>
+                                </h:panelGroup>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosFemmeLabel_adresseCPN}" for="adresseCPN" />
+                                <h:panelGroup>
+                                    <p:inputText id="adresseCPN" value="#{infosFemmeController.selected.adresseCPN}" title="#{resourcesBundle.CreateInfosFemmeTitle_adresseCPN}" size="30" maxlength="30"/>
+                                </h:panelGroup>
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosFemmeLabel_provenance}" for="provenance" />
+                                <h:panelGroup>
+
+                                    <p:selectOneMenu id="provenance" value="#{infosFemmeController.selected.provenance}" title="#{resourcesBundle.CreateInfosFemmeTitle_provenance}" maxlength="3">
+                                        <f:selectItem itemLabel="ZS" itemValue="ZS" />
+                                        <f:selectItem itemLabel="AS" itemValue="AS" />
+                                        <f:selectItem itemLabel="HAS" itemValue="HAS" />
+                                        <f:selectItem itemLabel="HZ" itemValue="HZ" />
+                                    </p:selectOneMenu>
+
+                                </h:panelGroup>
+
+                            </h:panelGrid>
+                        </p:panel>
+                    </p:tab>
+                    <p:tab id="contact" title="Autres infos">
+                        <p:panel header="Information de contact" >
+                            <p:messages />
+                            <h:panelGrid columns="2" columnClasses="label, value">
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosFemmeLabel_telephone}" for="telephone" />
+                                <h:panelGroup>
+                                    <p:inputMask mask="(+999) 999999999" id="telephone" value="#{infosFemmeController.selected.telephone}" title="#{resourcesBundle.CreateInfosFemmeTitle_telephone}" />
+                                </h:panelGroup>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosFemmeLabel_niveauEtude}" for="niveauEtude" />
+                                <h:panelGroup>
+                                    <p:selectOneMenu id="niveauEtude" value="#{infosFemmeController.selected.niveauEtude}" title="#{resourcesBundle.CreateInfosFemmeTitle_niveauEtude}" maxlength="10">
+                                        <f:selectItem itemLabel="Aucun" itemValue="Aucun" />
+                                        <f:selectItem itemLabel="Primaire" itemValue="Primaire" />
+                                        <f:selectItem itemLabel="Sécondaire" itemValue="Sécondaire" />
+                                        <f:selectItem itemLabel="Supérieur" itemValue="Supérieur" />
+                                    </p:selectOneMenu>
+
+
+                                </h:panelGroup>
+                                <p:outputLabel value="Image *" for="image" />
+                                <h:panelGroup>
+                                    <p:fileUpload fileLimitMessage="Vous avez déjà chargé une image au serveur!" 
+                                                  requiredMessage="veillez ajouter une image"
+                                                  cancelLabel="Annuler" previewWidth="100"
+                                                  invalidSizeMessage="3 Mo max autorisé"
+                                                  invalidFileMessage="format de l'image non valide!" 
+                                                  required="false" id="image"
+                                                  uploadLabel="Charger"
+                                                  fileUploadListener="#{infosFemmeController.handleFileUpload}"
+                                                  mode="advanced" dragDropSupport="true"
+                                                  update="growl" sizeLimit="3000000" fileLimit="1" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+
+                                </h:panelGroup>
+
+                                <ui:remove>
+                                    <p:outputLabel value="#{resourcesBundle.CreateInfosFemmeLabel_antecChurCPN}" for="antecChurCPN" />
+                                    <h:panelGroup>
+                                        <p:selectManyMenu showCheckbox="true" id="antecChurCPN" value="#{infosFemmeController.antecedentChurgicaux}">
+                                            <f:selectItem itemLabel=" Césariènne" itemValue="Césariènne" />
+                                            <f:selectItem itemLabel=" Fracture bassin" itemValue="Fracture bassin" />
+                                            <f:selectItem itemLabel=" GEU" itemValue="Geu" />
+                                            <f:selectItem itemLabel=" Cerclage" itemValue="Cerclage" />
+                                        </p:selectManyMenu>
+                                    </h:panelGroup>
+
+                                    <p:outputLabel value="#{resourcesBundle.CreateInfosFemmeLabel_antecMedCPN}" for="antecMedCPN" />
+                                    <h:panelGroup>
+
+                                        <p:selectManyMenu showCheckbox="true" id="antecMedCPN" value="#{infosFemmeController.antecedentMedicaux}">
+                                            <f:selectItem itemLabel=" TB" itemValue="TB" />
+                                            <f:selectItem itemLabel=" HTA" itemValue="HTA" />
+                                            <f:selectItem itemLabel=" Sous Cotri" itemValue="Sous Cotri" />
+                                            <f:selectItem itemLabel=" DBT" itemValue="DBT" />
+
+                                        </p:selectManyMenu>
+
+                                    </h:panelGroup>
+                                </ui:remove>
+
+
+
+
+                            </h:panelGrid>
+                        </p:panel>
+                    </p:tab>
+
+                    <p:tab id="confirm" title="Confirmation">
+                        <p:panel header="Confirmation">
+                            <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid,grid">
+                                <h:panelGrid columns="2" columnClasses="label, value">
+
+                                    <h:outputText value="numDossier : " />
+                                    <h:outputText  value="#{infosFemmeController.selected.numDossier}" styleClass="outputLabel"/>
+
+                                    <h:outputText value="nom : " />
+                                    <h:outputText  value="#{infosFemmeController.selected.nom}" styleClass="outputLabel"/>
+
+                                    <h:outputText value="PostNom : " />
+                                    <h:outputText  value="#{infosFemmeController.selected.postNom}" styleClass="outputLabel"/>
+
+                                    <h:outputText value="Prénom : " />
+                                    <h:outputText  value="#{infosFemmeController.selected.prenom}" styleClass="outputLabel"/>
+
+                                    <h:outputText value="Profession : " />
+                                    <h:outputText  value="#{infosFemmeController.selected.profession}" styleClass="outputLabel"/>
+
+                                    <h:outputText value="Profession conjoint : " />
+                                    <h:outputText  value="#{infosFemmeController.selected.professioConjoint}" styleClass="outputLabel"/>
+
+                                    <h:outputText value="age : " />
+                                    <h:outputText  value="#{infosFemmeController.selected.age}" styleClass="outputLabel"/>
+
+
+                                    <h:outputText value="Etat civil : " />
+                                    <h:outputText  value="#{infosFemmeController.selected.etatCivil}" styleClass="outputLabel"/>
+
+
+                                </h:panelGrid>
+
+                                <h:panelGrid columns="2" columnClasses="label, value">
+                                    <h:outputText value="Zone de santé : " />
+                                    <h:outputText  value="#{infosFemmeController.selected.zoneSante}" styleClass="outputLabel"/>
+
+
+                                    <h:outputText value="Aire de santé : " />
+                                    <h:outputText  value="#{infosFemmeController.selected.aireSante}" styleClass="outputLabel"/>
+
+
+                                    <h:outputText value="Province : " />
+                                    <h:outputText  value="#{infosFemmeController.selected.province}" styleClass="outputLabel"/>
+
+                                    <h:outputText value="District : " />
+                                    <h:outputText  value="#{infosFemmeController.selected.district}" styleClass="outputLabel"/>
+
+
+                                    <h:outputText value="Adresse : " />
+                                    <h:outputText  value="#{infosFemmeController.selected.adresseCPN}" styleClass="outputLabel"/>
+
+                                    <h:outputText value="Provenance : " />
+                                    <h:outputText  value="#{infosFemmeController.selected.provenance}" styleClass="outputLabel"/>
+                                </h:panelGrid>
+
+                                <h:panelGrid columns="2" columnClasses="label, value">
+                                    <h:outputText value="Téléphone : " />
+                                    <h:outputText  value="#{infosFemmeController.selected.telephone}" styleClass="outputLabel"/>
+                                    <h:outputText value="Niveau d'étude : " />
+                                    <h:outputText  value="#{infosFemmeController.selected.niveauEtude}" styleClass="outputLabel"/>
+
+                                    <ui:remove>
+                                        <h:outputText value="Antécédents chirurgicaux : " />
+                                        <h:outputText  value="#{infosFemmeController.selected.antecChurCPN}" styleClass="outputLabel"/> 
+
+                                        <h:outputText value="Antécédents Médicaux : " />
+                                        <h:outputText value="#{infosFemmeController.selected.antecMedCPN}" styleClass="outputLabel"/>
+
+                                    </ui:remove>
+
+                                </h:panelGrid>
+                            </h:panelGrid>
+                            <p:commandButton action="index" actionListener="#{infosFemmeController.saveNew}" value="#{resourcesBundle.Save}" update="display,:InfosFemmeListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('InfosFemmeCreateDialog'));">
+                            </p:commandButton>
+                            <p:commandButton value="#{resourcesBundle.Cancel}" onclick="PF('InfosFemmeCreateDialog').hide()"/>
+                        </p:panel>
+                    </p:tab>
+                </p:wizard>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

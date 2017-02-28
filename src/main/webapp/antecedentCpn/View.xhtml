@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AntecedentCpnViewDlg" widgetVar="AntecedentCpnViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{resourcesBundle.ViewAntecedentCpnTitle}" closeOnEscape="true">
+
+            <h:form id="AntecedentCpnViewForm">
+
+                <h:panelGroup id="display">
+                    <p:tabView id="AntecedentCpnTabView">
+
+                        <p:tab id="AntecedentCpnTab1" title="#{resourcesBundle.TabHeaderPrefix} 1">
+                            <p:panelGrid columns="2" columnClasses="column" rendered="#{antecedentCpnController.selected != null}">
+                                <h:outputText value="#{resourcesBundle.ViewAntecedentCpnLabel_idAntecObstr}"/>
+                                <h:outputText value="#{antecedentCpnController.selected.idAntecObstr}" title="#{resourcesBundle.ViewAntecedentCpnTitle_idAntecObstr}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewAntecedentCpnLabel_ddr}"/>
+                                <h:outputText value="#{antecedentCpnController.selected.ddr}" title="#{resourcesBundle.ViewAntecedentCpnTitle_ddr}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+
+                                <h:outputText value="#{resourcesBundle.ViewAntecedentCpnLabel_dpa}"/>
+                                <h:outputText value="#{antecedentCpnController.selected.dpa}" title="#{resourcesBundle.ViewAntecedentCpnTitle_dpa}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+
+                                <h:outputText value="#{resourcesBundle.ViewAntecedentCpnLabel_grossesse}"/>
+                                <h:outputText value="#{antecedentCpnController.selected.grossesse}" title="#{resourcesBundle.ViewAntecedentCpnTitle_grossesse}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewAntecedentCpnLabel_enfantsvie}"/>
+                                <h:outputText value="#{antecedentCpnController.selected.enfantsvie}" title="#{resourcesBundle.ViewAntecedentCpnTitle_enfantsvie}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewAntecedentCpnLabel_avortement1erTrim}"/>
+                                <h:outputText value="#{antecedentCpnController.selected.avortement1erTrim}" title="#{resourcesBundle.ViewAntecedentCpnTitle_avortement1erTrim}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewAntecedentCpnLabel_primipare15ansOuMoin}"/>
+                                <h:outputText value="#{antecedentCpnController.selected.primipare15ansOuMoin}" title="#{resourcesBundle.ViewAntecedentCpnTitle_primipare15ansOuMoin}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewAntecedentCpnLabel_primipare30ansOuPlus}"/>
+                                <h:outputText value="#{antecedentCpnController.selected.primipare30ansOuPlus}" title="#{resourcesBundle.ViewAntecedentCpnTitle_primipare30ansOuPlus}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewAntecedentCpnLabel_dernieraccouchementdatede}"/>
+                                <h:outputText value="#{antecedentCpnController.selected.dernieraccouchementdatede}" title="#{resourcesBundle.ViewAntecedentCpnTitle_dernieraccouchementdatede}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+
+                                <h:outputText value="#{resourcesBundle.ViewAntecedentCpnLabel_type}"/>
+                                <h:outputText value="#{antecedentCpnController.selected.type}" title="#{resourcesBundle.ViewAntecedentCpnTitle_type}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewAntecedentCpnLabel_intInf2ans}"/>
+                                <h:outputText value="#{antecedentCpnController.selected.intInf2ans}" title="#{resourcesBundle.ViewAntecedentCpnTitle_intInf2ans}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewAntecedentCpnLabel_plusgrospoidsnaiss}"/>
+                                <h:outputText value="#{antecedentCpnController.selected.plusgrospoidsnaiss}" title="#{resourcesBundle.ViewAntecedentCpnTitle_plusgrospoidsnaiss}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewAntecedentCpnLabel_plusde4kg}"/>
+                                <h:outputText value="#{antecedentCpnController.selected.plusde4kg}" title="#{resourcesBundle.ViewAntecedentCpnTitle_plusde4kg}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewAntecedentCpnLabel_dernierEnfant}"/>
+                                <h:outputText value="#{antecedentCpnController.selected.dernierEnfant}" title="#{resourcesBundle.ViewAntecedentCpnTitle_dernierEnfant}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewAntecedentCpnLabel_complicationtraitement}"/>
+                                <h:outputText value="#{antecedentCpnController.selected.complicationtraitement}" title="#{resourcesBundle.ViewAntecedentCpnTitle_complicationtraitement}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewAntecedentCpnLabel_complicationpostPartum}"/>
+                                <h:outputText value="#{antecedentCpnController.selected.complicationpostPartum}" title="#{resourcesBundle.ViewAntecedentCpnTitle_complicationpostPartum}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewAntecedentCpnLabel_traitementpoursterilite}"/>
+                                <h:outputText value="#{antecedentCpnController.selected.traitementpoursterilite}" title="#{resourcesBundle.ViewAntecedentCpnTitle_traitementpoursterilite}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewAntecedentCpnLabel_parite}"/>
+                                <h:outputText value="#{antecedentCpnController.selected.parite}" title="#{resourcesBundle.ViewAntecedentCpnTitle_parite}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewAntecedentCpnLabel_avortement}"/>
+                                <h:outputText value="#{antecedentCpnController.selected.avortement}" title="#{resourcesBundle.ViewAntecedentCpnTitle_avortement}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewAntecedentCpnLabel_deces}"/>
+                                <h:outputText value="#{antecedentCpnController.selected.deces}" title="#{resourcesBundle.ViewAntecedentCpnTitle_deces}"/>
+
+                            </p:panelGrid>
+                        </p:tab>
+                        <p:tab id="AntecedentCpnTab2" title="#{resourcesBundle.TabHeaderPrefix} 2">
+                            <p:panelGrid columns="2" columnClasses="column" rendered="#{antecedentCpnController.selected != null}">
+                                <h:outputText value="#{resourcesBundle.ViewAntecedentCpnLabel_vbg}"/>
+                                <h:outputText value="#{antecedentCpnController.selected.vbg}" title="#{resourcesBundle.ViewAntecedentCpnTitle_vbg}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewAntecedentCpnLabel_antecedentChirurgicauxCPN}"/>
+                                <h:outputText value="#{antecedentCpnController.selected.antecedentChirurgicauxCPN}" title="#{resourcesBundle.ViewAntecedentCpnTitle_antecedentChirurgicauxCPN}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewAntecedentCpnLabel_antecedentMedicauxCPN}"/>
+                                <h:outputText value="#{antecedentCpnController.selected.antecedentMedicauxCPN}" title="#{resourcesBundle.ViewAntecedentCpnTitle_antecedentMedicauxCPN}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewAntecedentCpnLabel_grossesseissuduviol}"/>
+                                <h:outputText value="#{antecedentCpnController.selected.grossesseissuduviol}" title="#{resourcesBundle.ViewAntecedentCpnTitle_grossesseissuduviol}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewAntecedentCpnLabel_numDossier}"/>
+                                <h:outputText value="#{antecedentCpnController.selected.numDossier.numDossier}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewAntecedentCpnLabel_utilisateur}"/>
+                                <h:outputText value="#{antecedentCpnController.selected.utilisateur.uname}"/>
+                            </p:panelGrid>
+                        </p:tab>
+                    </p:tabView>
+                    <p:commandButton value="#{resourcesBundle.Close}" onclick="PF('AntecedentCpnViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

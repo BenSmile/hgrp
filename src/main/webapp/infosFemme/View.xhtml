@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InfosFemmeViewDlg" widgetVar="InfosFemmeViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{resourcesBundle.ViewInfosFemmeTitle}" closeOnEscape="true">
+
+            <h:form id="InfosFemmeViewForm">
+
+                <h:panelGroup id="display">
+                    <p:tabView id="InfosFemmeTabView">
+
+                        <p:tab id="InfosFemmeTab1" title="#{resourcesBundle.TabHeaderPrefix} 1">
+                            <ui:remove>
+                                <p:graphicImage width="58" height="60" value="#{infosFemmeController.getGraphicImage('111')}" />
+                            </ui:remove>
+                            <p:panelGrid columns="4" columnClasses="column" rendered="#{infosFemmeController.selected != null}">
+                                <h:outputText value="#{resourcesBundle.ViewInfosFemmeLabel_numDossier}"/>
+                                <h:outputText value="#{infosFemmeController.selected.numDossier}" title="#{resourcesBundle.ViewInfosFemmeTitle_numDossier}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewInfosFemmeLabel_nom}"/>
+                                <h:outputText value="#{infosFemmeController.selected.nom}" title="#{resourcesBundle.ViewInfosFemmeTitle_nom}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewInfosFemmeLabel_postNom}"/>
+                                <h:outputText value="#{infosFemmeController.selected.postNom}" title="#{resourcesBundle.ViewInfosFemmeTitle_postNom}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewInfosFemmeLabel_prenom}"/>
+                                <h:outputText value="#{infosFemmeController.selected.prenom}" title="#{resourcesBundle.ViewInfosFemmeTitle_prenom}"/>
+
+                                <h:outputText value="Genre"/>
+                                <h:outputText value="#{infosFemmeController.selected.genre}"/>
+                                
+                                <h:outputText value="#{resourcesBundle.ViewInfosFemmeLabel_profession}"/>
+                                <h:outputText value="#{infosFemmeController.selected.profession}" title="#{resourcesBundle.ViewInfosFemmeTitle_profession}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewInfosFemmeLabel_professioConjoint}"/>
+                                <h:outputText value="#{infosFemmeController.selected.professioConjoint}" title="#{resourcesBundle.ViewInfosFemmeTitle_professioConjoint}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewInfosFemmeLabel_zoneSante}"/>
+                                <h:outputText value="#{infosFemmeController.selected.zoneSante}" title="#{resourcesBundle.ViewInfosFemmeTitle_zoneSante}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewInfosFemmeLabel_aireSante}"/>
+                                <h:outputText value="#{infosFemmeController.selected.aireSante}" title="#{resourcesBundle.ViewInfosFemmeTitle_aireSante}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewInfosFemmeLabel_province}"/>
+                                <h:outputText value="#{infosFemmeController.selected.province}" title="#{resourcesBundle.ViewInfosFemmeTitle_province}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewInfosFemmeLabel_district}"/>
+                                <h:outputText value="#{infosFemmeController.selected.district}" title="#{resourcesBundle.ViewInfosFemmeTitle_district}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewInfosFemmeLabel_adresseCPN}"/>
+                                <h:outputText value="#{infosFemmeController.selected.adresseCPN}" title="#{resourcesBundle.ViewInfosFemmeTitle_adresseCPN}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewInfosFemmeLabel_telephone}"/>
+                                <h:outputText value="#{infosFemmeController.selected.telephone}" title="#{resourcesBundle.ViewInfosFemmeTitle_telephone}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewInfosFemmeLabel_age}"/>
+                                <h:outputText value="#{infosFemmeController.selected.age}" title="#{resourcesBundle.ViewInfosFemmeTitle_age}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewInfosFemmeLabel_provenance}"/>
+                                <h:outputText value="#{infosFemmeController.selected.provenance}" title="#{resourcesBundle.ViewInfosFemmeTitle_provenance}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewInfosFemmeLabel_etatCivil}"/>
+                                <h:outputText value="#{infosFemmeController.selected.etatCivil}" title="#{resourcesBundle.ViewInfosFemmeTitle_etatCivil}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewInfosFemmeLabel_niveauEtude}"/>
+                                <h:outputText value="#{infosFemmeController.selected.niveauEtude}" title="#{resourcesBundle.ViewInfosFemmeTitle_niveauEtude}"/>
+                                <h:outputText value="#{resourcesBundle.ViewInfosFemmeLabel_utilisateur}"/>
+                                <h:outputText value="#{infosFemmeController.selected.utilisateur.uname}" title="#{resourcesBundle.ViewInfosFemmeTitle_utilisateur}"/>
+
+                                <ui:remove>
+                                    <h:outputText value="#{resourcesBundle.ViewInfosFemmeLabel_antecChurCPN}"/>
+                                    <h:outputText value="#{infosFemmeController.selected.antecChurCPN}" title="#{resourcesBundle.ViewInfosFemmeTitle_antecChurCPN}"/>
+
+                                    <h:outputText value="#{resourcesBundle.ViewInfosFemmeLabel_antecMedCPN}"/>
+                                    <h:outputText value="#{infosFemmeController.selected.antecMedCPN}" title="#{resourcesBundle.ViewInfosFemmeTitle_antecMedCPN}"/>
+                                </ui:remove>
+
+                            </p:panelGrid>
+                        </p:tab>
+                    </p:tabView>
+                    <p:commandButton value="#{resourcesBundle.Close}" onclick="PF('InfosFemmeViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

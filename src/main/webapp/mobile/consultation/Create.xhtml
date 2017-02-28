@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="ConsultationCreatePage" lazy="true">
+        <pm:header title="#{resourcesBundle.CreateConsultationTitle}">
+            <h:form>
+                <p:commandButton styleClass="ui-btn-left ui-btn-inline" value="#{resourcesBundle.Cancel}" icon="ui-icon-arrow-l" action="#{mobilePageController.navigateBackInHistory('pm:ConsultationListPage')}"/>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="ConsultationCreateForm">
+
+                <h:panelGroup id="display" rendered="#{consultationController.selected != null}">
+                    <p:tabView id="ConsultationTabView">
+
+                        <p:tab id="ConsultationTab1" title="#{resourcesBundle.TabHeaderPrefix} 1">
+                            <p:outputPanel>
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_date}" for="date" />
+                                    <p:calendar id="date" pattern="MM/dd/yyyy" value="#{consultationController.selected.date}" title="#{resourcesBundle.CreateConsultationTitle_date}"  showOn="button"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_ageGrossesse}" for="ageGrossesse" />
+                                    <p:inputText id="ageGrossesse" value="#{consultationController.selected.ageGrossesse}" title="#{resourcesBundle.CreateConsultationTitle_ageGrossesse}" required="true" requiredMessage="#{resourcesBundle.CreateConsultationRequiredMessage_ageGrossesse}" size="20" maxlength="20"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_conjonctivehb}" for="conjonctivehb" />
+                                    <p:inputText id="conjonctivehb" value="#{consultationController.selected.conjonctivehb}" title="#{resourcesBundle.CreateConsultationTitle_conjonctivehb}" size="20" maxlength="20"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_hauteurUterine}" for="hauteurUterine" />
+                                    <p:inputText id="hauteurUterine" value="#{consultationController.selected.hauteurUterine}" title="#{resourcesBundle.CreateConsultationTitle_hauteurUterine}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_surfaceuterine}" for="surfaceuterine" />
+                                    <p:inputText id="surfaceuterine" value="#{consultationController.selected.surfaceuterine}" title="#{resourcesBundle.CreateConsultationTitle_surfaceuterine}" size="11" maxlength="11"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_mouvementfoetaux}" for="mouvementfoetaux" />
+                                    <p:inputText id="mouvementfoetaux" value="#{consultationController.selected.mouvementfoetaux}" title="#{resourcesBundle.CreateConsultationTitle_mouvementfoetaux}" size="8" maxlength="8"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_bruitfoetaux}" for="bruitfoetaux" />
+                                    <p:inputText id="bruitfoetaux" value="#{consultationController.selected.bruitfoetaux}" title="#{resourcesBundle.CreateConsultationTitle_bruitfoetaux}" size="8" maxlength="8"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_bcf}" for="bcf" />
+                                    <p:inputText id="bcf" value="#{consultationController.selected.bcf}" title="#{resourcesBundle.CreateConsultationTitle_bcf}" size="8" maxlength="8"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_presentation}" for="presentation" />
+                                    <p:inputText id="presentation" value="#{consultationController.selected.presentation}" title="#{resourcesBundle.CreateConsultationTitle_presentation}" size="13" maxlength="13"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_pertesliquidiènnes}" for="pertesliquidiènnes" />
+                                    <p:inputText id="pertesliquidiènnes" value="#{consultationController.selected.pertesliquidiènnes}" title="#{resourcesBundle.CreateConsultationTitle_pertesliquidiènnes}" size="4" maxlength="4"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_oedemes}" for="oedemes" />
+                                    <p:inputText id="oedemes" value="#{consultationController.selected.oedemes}" title="#{resourcesBundle.CreateConsultationTitle_oedemes}" size="8" maxlength="8"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_albuminure}" for="albuminure" />
+                                    <p:inputText id="albuminure" value="#{consultationController.selected.albuminure}" title="#{resourcesBundle.CreateConsultationTitle_albuminure}" size="8" maxlength="8"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_glycosurie}" for="glycosurie" />
+                                    <p:inputText id="glycosurie" value="#{consultationController.selected.glycosurie}" title="#{resourcesBundle.CreateConsultationTitle_glycosurie}" size="8" maxlength="8"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_ta1}" for="ta1" />
+                                    <p:inputText id="ta1" value="#{consultationController.selected.ta1}" title="#{resourcesBundle.CreateConsultationTitle_ta1}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_ta2}" for="ta2" />
+                                    <p:inputText id="ta2" value="#{consultationController.selected.ta2}" title="#{resourcesBundle.CreateConsultationTitle_ta2}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_mictalgie}" for="mictalgie" />
+                                    <p:inputText id="mictalgie" value="#{consultationController.selected.mictalgie}" title="#{resourcesBundle.CreateConsultationTitle_mictalgie}" size="8" maxlength="8"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_contraction}" for="contraction" />
+                                    <p:inputText id="contraction" value="#{consultationController.selected.contraction}" title="#{resourcesBundle.CreateConsultationTitle_contraction}" size="8" maxlength="8"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_bassinPromonitoire}" for="bassinPromonitoire" />
+                                    <p:inputText id="bassinPromonitoire" value="#{consultationController.selected.bassinPromonitoire}" title="#{resourcesBundle.CreateConsultationTitle_bassinPromonitoire}" size="14" maxlength="14"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_poids}" for="poids" />
+                                    <p:inputText id="poids" value="#{consultationController.selected.poids}" title="#{resourcesBundle.CreateConsultationTitle_poids}"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_taille}" for="taille" />
+                                    <p:inputText id="taille" value="#{consultationController.selected.taille}" title="#{resourcesBundle.CreateConsultationTitle_taille}"/>
+                                </pm:field>
+
+                            </p:outputPanel>
+                        </p:tab>
+                        <p:tab id="ConsultationTab2" title="#{resourcesBundle.TabHeaderPrefix} 2">
+                            <p:outputPanel>
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_femmeARisque}" for="femmeARisque" />
+                                    <p:inputText id="femmeARisque" value="#{consultationController.selected.femmeARisque}" title="#{resourcesBundle.CreateConsultationTitle_femmeARisque}" size="8" maxlength="8"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_decisioncentresante}" for="decisioncentresante" />
+                                    <p:inputText id="decisioncentresante" value="#{consultationController.selected.decisioncentresante}" title="#{resourcesBundle.CreateConsultationTitle_decisioncentresante}" size="44" maxlength="44"/>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_raison}" for="raison" />
+                                    <p:inputTextarea rows="4" cols="30" id="raison" value="#{consultationController.selected.raison}" title="#{resourcesBundle.CreateConsultationTitle_raison}" />
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_utilisateur}" for="utilisateur" />
+                                    <p:selectOneMenu id="utilisateur" value="#{consultationController.selected.utilisateur}" required="true" requiredMessage="#{resourcesBundle.CreateConsultationRequiredMessage_utilisateur}" converter="usersConverter">
+                                        <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                        <f:selectItems value="#{usersController.items}"
+                                                       var="utilisateurItem"
+                                                       itemValue="#{utilisateurItem}"
+                                                       itemLabel="#{utilisateurItem.uname.toString()}"
+                                                       />
+
+                                    </p:selectOneMenu>
+                                </pm:field>
+
+                                <pm:field>
+                                    <p:outputLabel value="#{resourcesBundle.CreateConsultationLabel_numDossier}" for="numDossier" />
+                                    <p:selectOneMenu id="numDossier" value="#{consultationController.selected.numDossier}" required="true" requiredMessage="#{resourcesBundle.CreateConsultationRequiredMessage_numDossier}" converter="infosFemmeConverter">
+                                        <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                        <f:selectItems value="#{infosFemmeController.items}"
+                                                       var="numDossierItem"
+                                                       itemValue="#{numDossierItem}"
+                                                       itemLabel="#{numDossierItem.numDossier.toString()}"
+                                                       />
+
+                                    </p:selectOneMenu>
+                                </pm:field>
+                                </p:panelGrid>
+                        </p:tab>
+                    </p:tabView>
+                    <p:commandButton actionListener="#{consultationController.saveNew}" value="#{resourcesBundle.Save}" update="display,:ConsultationListPage:ConsultationListForm:datalist,:growl" action="#{mobilePageController.navigateWithHistory('pm:ConsultationListPage')}">
+                        <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                </h:panelGroup>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

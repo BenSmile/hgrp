@@ -1,0 +1,55 @@
+.ui-widget {
+    font-size: 12px !important;
+}
+.ui-layout-north {
+    z-index:20 !important;
+    overflow:visible !important;   
+
+}
+.ui-layout-north .ui-layout-unit-content {
+    overflow:visible !important;
+}
+.ui-widget-header {
+    text-align: center;
+/*    //text-transform: uppercase;*/
+}
+.ui-datatable .ui-datatable-footer .footer-section {
+    text-align: left;
+}
+.column {
+    font-weight: bold;
+    background-color: menu;
+    
+    
+}
+
+#top{
+/*   // background-color: #036fab;*/
+    background-color: #c2dfef;
+/*    //color: white;*/
+    padding: 5px;
+    margin: 0px 0px 0px 0px;
+    height: 90px;
+}
+#top_left{
+    width: 200px;
+    background-color: #dddddd;
+    padding: 2px 2px 2px 2px;
+/*   // margin-right: 10px;*/
+    float: left;
+    height: 90px;
+}
+#top_center{
+    color: white;
+    text-align: center;
+    background-color: #000000;
+    padding: 2px 2px 2px 2px;
+    
+}
+#bottom {
+/*   // position: relative;*/
+    background-color: #c2dfef;
+    padding: 5px;
+    margin: 0px 0px 0px 0px;
+/*  //  height: 30px;*/
+}

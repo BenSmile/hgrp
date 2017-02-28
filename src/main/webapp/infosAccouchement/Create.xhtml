@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="InfosAccouchementCreateDlg" widgetVar="InfosAccouchementCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{resourcesBundle.CreateInfosAccouchementTitle}" closeOnEscape="true">
+
+            <h:form id="InfosAccouchementCreateForm">
+
+                <h:panelGroup id="display" rendered="#{infosAccouchementController.selected != null}">
+                    <p:tabView id="InfosAccouchementTabView">
+
+                        <p:tab id="InfosAccouchementTab1" title="#{resourcesBundle.TabHeaderPrefix} 1">
+                            <p:panelGrid columns="4" columnClasses="column,#{null},column">
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_numDossier}" for="numDossier" />
+                                <h:panelGroup>
+                                    <p:selectOneMenu id="numDossier" filter="true" filterMatchMode="startsWith" value="#{infosAccouchementController.selected.numDossier}" required="true" requiredMessage="#{resourcesBundle.CreateInfosAccouchementRequiredMessage_numDossier}" converter="infosFemmeConverter">
+                                        <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                        <f:selectItems value="#{infosFemmeController.items}"
+                                                       var="numDossierItem"
+                                                       itemValue="#{numDossierItem}"
+                                                       itemLabel="#{numDossierItem.toString()}"/>
+                                    </p:selectOneMenu>
+                                    <p:inputText style="visibility: hidden" id="user" value="#{infosAccouchementController.user}" title="user: " size="30" maxlength="30"/>
+                                </h:panelGroup>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_dateaccouchement}" for="dateaccouchement" />
+                                <p:calendar id="dateaccouchement" pattern="MM/dd/yyyy" value="#{infosAccouchementController.selected.dateaccouchement}" title="#{resourcesBundle.CreateInfosAccouchementTitle_dateaccouchement}"  showOn="button"/>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_datesortie}" for="datesortie" />
+                                <p:calendar id="datesortie" pattern="MM/dd/yyyy" value="#{infosAccouchementController.selected.datesortie}" title="#{resourcesBundle.CreateInfosAccouchementTitle_datesortie}"  showOn="button"/>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_accoucheuse}" for="accoucheuse" />
+                                <p:inputText id="accoucheuse" value="#{infosAccouchementController.selected.accoucheuse}" title="#{resourcesBundle.CreateInfosAccouchementTitle_accoucheuse}" size="30" maxlength="30"/>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_etatMere}" for="etatMere" />
+                                <p:selectOneMenu id="etatMere" value="#{infosAccouchementController.selected.etatMere}" 
+                                                 title="#{resourcesBundle.CreateInfosAccouchementTitle_etatMere}">
+                                    <f:selectItem itemLabel=""/>                                
+                                    <f:selectItem itemLabel="Vivante" itemValue="Vivante"/>
+                                    <f:selectItem itemLabel="Décédée" itemValue="Décédée"/>
+                                </p:selectOneMenu>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_decesmaternelPostTravail}" for="decesmaternelPostTravail" />
+                                <p:selectOneMenu id="decesmaternelPostTravail" value="#{infosAccouchementController.selected.decesmaternelPostTravail}" 
+                                                 title="#{resourcesBundle.CreateInfosAccouchementTitle_decesmaternelPostTravail}">
+                                    <f:selectItem itemLabel=""/>                                
+                                    <f:selectItem itemLabel="Oui" itemValue="Oui"/>
+                                    <f:selectItem itemLabel="Non" itemValue="Non"/>
+                                </p:selectOneMenu>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_decesMaternelApresIntervention}" for="decesMaternelApresIntervention" />
+                                <p:selectOneMenu id="decesMaternelApresIntervention" value="#{infosAccouchementController.selected.decesMaternelApresIntervention}" 
+                                                 title="#{resourcesBundle.CreateInfosAccouchementTitle_decesMaternelApresIntervention}">
+                                    <f:selectItem itemLabel=""/>                                
+                                    <f:selectItem itemLabel="Oui" itemValue="Oui"/>
+                                    <f:selectItem itemLabel="Non" itemValue="Non"/>
+                                </p:selectOneMenu>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_modeaccouchement}" for="modeaccouchement" />
+                                <p:selectOneMenu id="modeaccouchement" value="#{infosAccouchementController.selected.modeaccouchement}" 
+                                                 title="#{resourcesBundle.CreateInfosAccouchementTitle_modeaccouchement}">
+                                    <f:selectItem itemLabel=""/>                                
+                                    <f:selectItem itemLabel="Eutocique" itemValue="Eutocique"/>
+                                    <f:selectItem itemLabel="Dystocique" itemValue="Dystocique"/>
+                                </p:selectOneMenu>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_eutocique}" for="eutocique" />
+                                <p:selectOneMenu id="eutocique" value="#{infosAccouchementController.selected.eutocique}" 
+                                                 title="#{resourcesBundle.CreateInfosAccouchementTitle_eutocique}">
+                                    <f:selectItem itemLabel=""/>                                
+                                    <f:selectItem itemLabel="Oui" itemValue="Oui"/>
+                                    <f:selectItem itemLabel="Non" itemValue="Non"/>
+                                </p:selectOneMenu>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_dystocique}" for="dystocique" />
+                                <p:selectOneMenu id="dystocique" value="#{infosAccouchementController.selected.dystocique}" 
+                                                 title="#{resourcesBundle.CreateInfosAccouchementTitle_dystocique}">
+                                    <f:selectItem itemLabel=""/>                                
+                                    <f:selectItem itemLabel="Césariènne" itemValue="Césariènne"/>
+                                    <f:selectItem itemLabel="Ventouse" itemValue="Ventouse"/>      
+                                    <f:selectItem itemLabel="Gémelaire" itemValue="Gémelaire"/>
+                                    <f:selectItem itemLabel="Siège" itemValue="Siège"/>
+
+                                </p:selectOneMenu>
+
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_ha}" for="ha" />
+                                <p:selectOneMenu id="ha" value="#{infosAccouchementController.selected.ha}" 
+                                                 title="#{resourcesBundle.CreateInfosAccouchementTitle_ha}">
+                                    <f:selectItem itemLabel=""/>                                
+                                    <f:selectItem itemLabel="Oui" itemValue="Oui"/>
+                                    <f:selectItem itemLabel="Oui" itemValue="Oui"/>
+                                </p:selectOneMenu>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_trans}" for="trans" />
+                                <p:selectOneMenu id="trans" value="#{infosAccouchementController.selected.trans}"
+                                                 title="#{resourcesBundle.CreateInfosAccouchementTitle_trans}" filter="true" filterMatchMode="startsWith">
+                                    <f:selectItem itemLabel=""/>                                
+                                    <f:selectItem itemLabel="Oui" itemValue="Oui"/>
+                                    <f:selectItem itemLabel="Non" itemValue="Non"/>
+                                </p:selectOneMenu>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_infection}" for="infection" />
+                                <p:selectCheckboxMenu id="infection" required="true" value="#{infosAccouchementController.infections}" 
+                                                      filter="true" filterMatchMode="startsWith" label="Infection" panelStyle="width:250px" >
+                                    <f:selectItem itemLabel="Post-opération" itemValue="Post-opération"/>
+                                    <f:selectItem itemLabel="Post-partum" itemValue="Post-partum"/>
+                                </p:selectCheckboxMenu>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_indication}" for="indication" />
+                                <p:selectCheckboxMenu id="indication" required="true" value="#{infosAccouchementController.indications}" 
+                                                      filter="true" filterMatchMode="startsWith" label="Indication" panelStyle="width:250px" >
+                                    <f:selectItem itemLabel="Surveillance sur pathogramme" itemValue="Surveillance sur pathogramme"/>
+                                    <f:selectItem itemLabel="Grossesse à terme" itemValue="Grossesse à terme"/>                         
+                                    <f:selectItem itemLabel="VIT A" itemValue="VIT A"/>
+                                    <f:selectItem itemLabel="Grossesse Gémélaire" itemValue="Grossesse Gémélaire"/>
+                                    <f:selectItem itemLabel="Utero tonique" itemValue="Utero tonique"/>
+                                    <f:selectItem itemLabel="CPN" itemValue="CPN"/>
+                                    <f:selectItem itemLabel="Rupture uteriènne" itemValue="Rupture uteriènne"/>
+                                    <f:selectItem itemLabel="Hémmoragie" itemValue="Hémmoragie"/>
+                                    <f:selectItem itemLabel="Eclampsie" itemValue="Eclampsie"/>
+                                    <f:selectItem itemLabel="Episiotomie" itemValue="Episiotomie"/>
+                                    <f:selectItem itemLabel="Fistule" itemValue="Fistule"/>
+
+                                </p:selectCheckboxMenu>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_etatEnfant}" for="etatEnfant" />
+                                <p:selectOneMenu id="etatEnfant" value="#{infosAccouchementController.selected.etatEnfant}" 
+                                                 title="#{resourcesBundle.CreateInfosAccouchementTitle_etatEnfant}">
+                                    <f:selectItem itemLabel=""/>                                
+                                    <f:selectItem itemLabel="Vivant" itemValue="Vivant"/>
+                                    <f:selectItem itemLabel="Mort-né" itemValue="Mort-né"/>
+                                </p:selectOneMenu>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_vivant}" for="vivant" />
+                                <p:selectOneMenu id="vivant" value="#{infosAccouchementController.selected.vivant}"
+                                                 title="#{resourcesBundle.CreateInfosAccouchementTitle_vivant}">
+                                    <f:selectItem itemLabel=""/>                                
+                                    <f:selectItem itemLabel="Prématuré" itemValue="Prématuré"/>
+                                    <f:selectItem itemLabel="Post-maturé" itemValue="Post-maturé"/> 
+                                    <f:selectItem itemLabel="Normal" itemValue="Normal"/>
+
+                                </p:selectOneMenu>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_mortne}" for="mortne" />
+                                <p:selectOneMenu id="mortne" value="#{infosAccouchementController.selected.mortne}" 
+                                                 title="#{resourcesBundle.CreateInfosAccouchementTitle_mortne}">
+                                    <f:selectItem itemLabel=""/>                                
+                                    <f:selectItem itemLabel="Macéré" itemValue="Macéré"/>
+                                    <f:selectItem itemLabel="Non macéré" itemValue="Non macéré"/> 
+                                </p:selectOneMenu>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_poids}" for="poids" />
+                                <p:selectOneMenu id="poids" value="#{infosAccouchementController.selected.poids}"
+                                                 title="#{resourcesBundle.CreateInfosAccouchementTitle_poids}">
+                                    <f:selectItem itemLabel=""/>                                
+                                    <f:selectItem itemLabel="Inférieur à 2500g" itemValue="Inférieur à 2500g"/>
+                                    <f:selectItem itemLabel="Entre 2500g et 3000g" itemValue="Entre 2500g et 3000g"/>       
+                                    <f:selectItem itemLabel="Supérieur à 3000g" itemValue="Supérieur à 3000g"/> 
+                                </p:selectOneMenu>
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_sexe}" for="sexe" />
+                                <p:selectOneMenu id="sexe" value="#{infosAccouchementController.selected.sexe}" 
+                                                 title="#{resourcesBundle.CreateInfosAccouchementTitle_sexe}">
+                                    <f:selectItem itemLabel=""/>                                
+                                    <f:selectItem itemLabel="Masculin" itemValue="Masculin"/>
+                                    <f:selectItem itemLabel="Féminin" itemValue="Féminin"/> 
+                                </p:selectOneMenu>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_presentation}" for="presentation" />
+                                <p:selectOneMenu id="presentation" value="#{infosAccouchementController.selected.presentation}"
+                                                 title="#{resourcesBundle.CreateInfosAccouchementTitle_presentation}">
+                                    <f:selectItem itemLabel=""/>                                
+                                    <f:selectItem itemLabel="Céphalique" itemValue="Céphalique"/>
+                                    <f:selectItem itemLabel="Siège" itemValue="Siège"/>  
+                                    <f:selectItem itemLabel="Transverse" itemValue="Transverse"/> 
+                                </p:selectOneMenu>
+                                
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_particulariteEnfant}" for="particulariteEnfant" />
+                                <p:selectCheckboxMenu id="particulariteEnfant" required="true" value="#{infosAccouchementController.particularitesEnfant}" 
+                                                      filter="true" filterMatchMode="startsWith" label="Particularité de l'enfant" panelStyle="width:250px" >
+                                    <f:selectItem itemLabel="Né avec Conjocture" itemValue="Né avec Conjocture"/>
+                                    <f:selectItem itemLabel="Anémie" itemValue="Anémie"/>  
+                                    <f:selectItem itemLabel="Souffrance Foetale" itemValue="Souffrance Foetale"/>    
+                                    <f:selectItem itemLabel="Providence du cordon" itemValue="Providence du cordon"/> 
+                                    <f:selectItem itemLabel="MIU" itemValue="MIU"/>  
+                                    <f:selectItem itemLabel="Malformation congénitale" itemValue="Malformation congénitale"/> 
+                                </p:selectCheckboxMenu>
+                            </p:panelGrid>
+                        </p:tab>
+                        <p:tab id="InfosAccouchementTab2" title="#{resourcesBundle.TabHeaderPrefix} 2">
+                            <p:panelGrid columns="4" columnClasses="column,#{null},column">
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_observation}" for="observation" />
+                                <p:inputTextarea id="observation" value="#{infosAccouchementController.selected.observation}" rows="5" cols="30"/>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_accouchementVIHPositif}" for="accouchementVIHPositif" />
+                                <p:selectOneMenu id="accouchementVIHPositif" value="#{infosAccouchementController.selected.accouchementVIHPositif}" 
+                                                 title="#{resourcesBundle.CreateInfosAccouchementTitle_accouchementVIHPositif}" >
+                                    <f:selectItem itemLabel=""/>                                
+                                    <f:selectItem itemLabel="Oui" itemValue="Oui"/>
+                                    <f:selectItem itemLabel="Non" itemValue="Non"/>
+                                </p:selectOneMenu>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_tritherapiePourVIH}" for="tritherapiePourVIH" />
+                                <p:selectOneMenu id="tritherapiePourVIH" value="#{infosAccouchementController.selected.tritherapiePourVIH}" 
+                                                 title="#{resourcesBundle.CreateInfosAccouchementTitle_tritherapiePourVIH}">
+                                    <f:selectItem itemLabel=""/>                                
+                                    <f:selectItem itemLabel="Oui" itemValue="Oui"/>
+                                    <f:selectItem itemLabel="Non" itemValue="Non"/>
+                                </p:selectOneMenu>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_enfantVIHPositif}" for="enfantVIHPositif" />
+                                <p:spinner min="0" id="enfantVIHPositif" required="true" value="#{infosAccouchementController.selected.enfantVIHPositif}" title="#{resourcesBundle.CreateInfosAccouchementTitle_enfantVIHPositif}" size="4" maxlength="4"/>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_tritherapieEnfantVIHPositif}" for="tritherapieEnfantVIHPositif" />
+                                <p:selectOneMenu id="tritherapieEnfantVIHPositif" value="#{infosAccouchementController.selected.tritherapieEnfantVIHPositif}"
+                                                 title="#{resourcesBundle.CreateInfosAccouchementTitle_tritherapieEnfantVIHPositif}">
+                                    <f:selectItem itemLabel=""/>                                
+                                    <f:selectItem itemLabel="Oui" itemValue="Oui"/>
+                                    <f:selectItem itemLabel="Non" itemValue="Non"/>
+                                </p:selectOneMenu>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_CPoN18emeJour}" for="CPoN18emeJour" />
+                                <p:selectOneMenu id="CPoN18emeJour" value="#{infosAccouchementController.selected.CPoN18emeJour}" 
+                                                 title="#{resourcesBundle.CreateInfosAccouchementTitle_CPoN18emeJour}">
+                                    <f:selectItem itemLabel=""/>                                
+                                    <f:selectItem itemLabel="Oui" itemValue="Oui"/>
+                                    <f:selectItem itemLabel="Non" itemValue="Non"/>"/>
+                                </p:selectOneMenu>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_CPoN242emeJour}" for="CPoN242emeJour" />
+                                <p:selectOneMenu id="CPoN242emeJour" value="#{infosAccouchementController.selected.CPoN242emeJour}"
+                                                 title="#{resourcesBundle.CreateInfosAccouchementTitle_CPoN242emeJour}">
+                                    <f:selectItem itemLabel=""/>                                
+                                    <f:selectItem itemLabel="Oui" itemValue="Oui"/>
+                                    <f:selectItem itemLabel="Non" itemValue="Non"/>
+                                </p:selectOneMenu>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_recuVitamineA}" for="recuVitamineA" />
+                                <p:selectOneMenu id="recuVitamineA" value="#{infosAccouchementController.selected.recuVitamineA}" 
+                                                 title="#{resourcesBundle.CreateInfosAccouchementTitle_recuVitamineA}"  >
+                                    <f:selectItem itemLabel=""/>                                
+                                    <f:selectItem itemLabel="Oui" itemValue="Oui"/>
+                                    <f:selectItem itemLabel="Non" itemValue="Non"/>
+                                </p:selectOneMenu>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_recuFerAcideFollique}" for="recuFerAcideFollique" />
+                                <p:selectOneMenu id="recuFerAcideFollique" value="#{infosAccouchementController.selected.recuFerAcideFollique}" 
+                                                 title="#{resourcesBundle.CreateInfosAccouchementTitle_recuFerAcideFollique}"  >
+                                    <f:selectItem itemLabel=""/>                                
+                                    <f:selectItem itemLabel="Oui" itemValue="Oui"/>
+                                    <f:selectItem itemLabel="Non" itemValue="Non"/>
+                                </p:selectOneMenu>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_complicationApresAcc}" for="complicationApresAcc" />
+                                <p:selectOneMenu id="complicationApresAcc" value="#{infosAccouchementController.selected.complicationApresAcc}" 
+                                                 title="#{resourcesBundle.CreateInfosAccouchementTitle_complicationApresAcc}"  >
+                                    <f:selectItem itemLabel=""/>                                
+                                    <f:selectItem itemLabel="Oui" itemValue="Oui"/>
+                                    <f:selectItem itemLabel="Non" itemValue="Non"/>
+                                </p:selectOneMenu>
+                                <ui:remove>
+                                    <p:outputLabel value="#{resourcesBundle.CreateInfosAccouchementLabel_utilisateur}" for="utilisateur" />
+                                    <p:selectOneMenu id="utilisateur" value="#{infosAccouchementController.selected.utilisateur}" required="true" requiredMessage="#{resourcesBundle.CreateInfosAccouchementRequiredMessage_utilisateur}" converter="usersConverter">
+                                        <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                        <f:selectItems value="#{usersController.items}"
+                                                       var="utilisateurItem"
+                                                       itemValue="#{utilisateurItem}"
+                                                       itemLabel="#{utilisateurItem.uname.toString()}"/>
+                                    </p:selectOneMenu>
+                                </ui:remove>
+                            </p:panelGrid>
+                        </p:tab>
+                    </p:tabView>
+                    <p:commandButton actionListener="#{infosAccouchementController.add}" value="#{resourcesBundle.Save}" update="display,:InfosAccouchementListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('InfosAccouchementCreateDialog'));">
+                        <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    
+                    <p:commandButton value="#{resourcesBundle.Cancel}" oncomplete="PF('InfosAccouchementCreateDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

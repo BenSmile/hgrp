@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="GrossesseListForm">
+
+        <p:panel header="#{resourcesBundle.ListGrossesseTitle}">
+            <p:contextMenu id="GrossesseDataTableContextMenu" for="datalist">  
+                <p:menuitem value="#{resourcesBundle.Create}" onclick="document.getElementById('GrossesseListForm:createButton').click();" icon="ui-icon-plus"/>
+                <p:menuitem value="#{resourcesBundle.View}" onclick="document.getElementById('GrossesseListForm:viewButton').click();" icon="ui-icon-search"/>
+                <p:menuitem value="#{resourcesBundle.Edit}" onclick="document.getElementById('GrossesseListForm:editButton').click();" icon="ui-icon-pencil"/>
+                <p:menuitem value="#{resourcesBundle.Delete}" onclick="document.getElementById('GrossesseListForm:deleteButton').click();" icon="ui-icon-trash"/>
+                <p:separator/>
+                <p:menuitem value="#{resourcesBundle.GrossesseMenuItem_utilisateur}" icon="ui-icon-search"  actionListener="#{grossesseController.prepareUtilisateur}" update=":UsersViewForm" oncomplete="PF('UsersViewDialog').show()" disabled="#{empty grossesseController.selected.utilisateur}"/>  
+                <p:menuitem value="#{resourcesBundle.GrossesseMenuItem_numDossier}" icon="ui-icon-search"  actionListener="#{grossesseController.prepareNumDossier}" update=":InfosFemmeViewForm" oncomplete="PF('InfosFemmeViewDialog').show()" disabled="#{empty grossesseController.selected.numDossier}"/>  
+            </p:contextMenu>
+            <p:dataTable id="datalist"
+                         value="#{grossesseController.items}"
+                         lazy="false"
+                         rowKey="#{item.idGros}"
+                         var="item"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30,40,50"
+                         selectionMode="single"
+                         selection="#{grossesseController.selected}">
+                <!--
+                         To enable Lazy Loading, please copy/replace the following lines above,
+                         and be sure to replace the word HASH with the # symbol:
+                
+                         value="HASH{grossesseController.lazyItems}"
+                         lazy="true"
+                         rowKey="HASH{item.idGros}"  <<< Remove this line
+                -->
+
+
+                <p:ajax event="rowSelect"   update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:GrossesseDataTableContextMenu" listener="#{grossesseController.resetParents}"/>
+                <p:ajax event="rowUnselect" update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:GrossesseDataTableContextMenu" listener="#{grossesseController.resetParents}"/>
+                <p:ajax event="contextMenu" update="@form:createButton @form:viewButton @form:editButton @form:deleteButton" listener="#{grossesseController.resetParents}"/>
+                <p:ajax event="rowDblselect" onsuccess="document.getElementById('GrossesseListForm:viewButton').click();"/>
+
+                <p:column sortBy="#{item.numDossier.getNumDossier()}" filterBy="#{item.numDossier.getNumDossier()}">
+                    <f:facet name="header">
+                        <h:outputText value="Num Dossier"/>
+                    </f:facet>
+                    <h:outputText value="#{item.numDossier.getNumDossier()}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.enfantsvivantsactuellement}" filterBy="#{item.enfantsvivantsactuellement}">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListGrossesseTitle_enfantsvivantsactuellement}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.enfantsvivantsactuellement}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.p}" filterBy="#{item.p}">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListGrossesseTitle_p}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.p}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.g}" filterBy="#{item.g}">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListGrossesseTitle_g}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.g}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.a}" filterBy="#{item.a}">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListGrossesseTitle_a}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.a}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.d}" filterBy="#{item.d}">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListGrossesseTitle_d}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.d}"/>
+                </p:column>
+
+                <!--
+                                    <p:column sortBy="#{item.datedernierAccouchement}" filterBy="#{item.datedernierAccouchement}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{resourcesBundle.ListGrossesseTitle_datedernierAccouchement}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.datedernierAccouchement}">
+                                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                                        </h:outputText>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.dateDernierRapportNonProteger}" filterBy="#{item.dateDernierRapportNonProteger}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{resourcesBundle.ListGrossesseTitle_dateDernierRapportNonProteger}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.dateDernierRapportNonProteger}">
+                                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                                        </h:outputText>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.dateDernierRegle}" filterBy="#{item.dateDernierRegle}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{resourcesBundle.ListGrossesseTitle_dateDernierRegle}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.dateDernierRegle}">
+                                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                                        </h:outputText>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.nombrecesarienne}" filterBy="#{item.nombrecesarienne}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{resourcesBundle.ListGrossesseTitle_nombrecesarienne}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.nombrecesarienne}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.utilisateur.uname}" filterBy="#{item.utilisateur.uname}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{resourcesBundle.ListGrossesseTitle_utilisateur}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.utilisateur.uname}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.numDossier.numDossier}" filterBy="#{item.numDossier.numDossier}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{resourcesBundle.ListGrossesseTitle_numDossier}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.numDossier.numDossier}"/>
+                                    </p:column>
+                -->
+
+            </p:dataTable>
+
+            <p:commandButton id="createButton"                             icon="ui-icon-plus"   value="#{resourcesBundle.Create}" actionListener="#{grossesseController.prepareCreate}" update=":GrossesseCreateForm" oncomplete="PF('GrossesseCreateDialog').show()"/>
+            <p:commandButton id="viewButton"   style="visibility: visible;" icon="ui-icon-search" value="#{resourcesBundle.View}" update=":GrossesseViewForm" oncomplete="PF('GrossesseViewDialog').show()" disabled="#{empty grossesseController.selected}"/>
+            <p:commandButton id="editButton"   style="visibility: visible;" icon="ui-icon-pencil" value="#{resourcesBundle.Edit}" update=":GrossesseEditForm" oncomplete="PF('GrossesseEditDialog').show()" disabled="#{empty grossesseController.selected}"/>
+            <p:commandButton id="deleteButton" style="visibility: visible;" icon="ui-icon-trash"  value="#{resourcesBundle.Delete}" actionListener="#{grossesseController.delete}" update=":growl,datalist" disabled="#{empty grossesseController.selected}">
+                <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+            </p:commandButton>
+
+        </p:panel>
+        <ui:include src="/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>

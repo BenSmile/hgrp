@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ReglesViewDlg" widgetVar="ReglesViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{resourcesBundle.ViewReglesTitle}" closeOnEscape="true">
+
+            <h:form id="ReglesViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{reglesController.selected != null}">
+
+                        <h:outputText value="#{resourcesBundle.ViewReglesLabel_idRegle}"/>
+                        <h:outputText value="#{reglesController.selected.idRegle}" title="#{resourcesBundle.ViewReglesTitle_idRegle}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewReglesLabel_ageMenarche}"/>
+                        <h:outputText value="#{reglesController.selected.ageMenarche}" title="#{resourcesBundle.ViewReglesTitle_ageMenarche}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewReglesLabel_ddr}"/>
+                        <h:outputText value="#{reglesController.selected.ddr}" title="#{resourcesBundle.ViewReglesTitle_ddr}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{resourcesBundle.ViewReglesLabel_dureeRegle} (en jours)"/>
+                        <h:outputText value="#{reglesController.selected.dureeRegle}" title="#{resourcesBundle.ViewReglesTitle_dureeRegle}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewReglesLabel_fluxMenstruel}"/>
+                        <h:outputText value="#{reglesController.selected.fluxMenstruel}" title="#{resourcesBundle.ViewReglesTitle_fluxMenstruel}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewReglesLabel_regularite}"/>
+                        <h:outputText value="#{reglesController.selected.regularite}" title="#{resourcesBundle.ViewReglesTitle_regularite}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewReglesLabel_dysmenorhee}"/>
+                        <h:outputText value="#{reglesController.selected.dysmenorhee}" title="#{resourcesBundle.ViewReglesTitle_dysmenorhee}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewReglesLabel_amenorheedepuisaccouchement}"/>
+                        <h:outputText value="#{reglesController.selected.amenorheedepuisaccouchement}" title="#{resourcesBundle.ViewReglesTitle_amenorheedepuisaccouchement}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewReglesLabel_utilisateur}"/>
+                        <h:outputText value="#{reglesController.selected.utilisateur.uname}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewReglesLabel_numDossier}"/>
+                        <h:outputText value="#{reglesController.selected.numDossier.numDossier}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{resourcesBundle.Close}" onclick="PF('ReglesViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

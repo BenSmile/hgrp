@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="GrossesseViewPage" lazy="true">
+        <pm:header title="#{resourcesBundle.ViewGrossesseTitle}">
+            <h:form>
+                <p:commandButton styleClass="ui-btn-left ui-btn-inline" value="#{resourcesBundle.Cancel}" icon="ui-icon-arrow-l" action="#{mobilePageController.navigateBackInHistory('pm:GrossesseListPage')}"/>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="GrossesseViewForm">
+
+                <h:panelGroup id="display">
+                    <p:outputPanel rendered="#{grossesseController.selected != null}">
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewGrossesseLabel_idGros}"/>
+                            <h:outputText value="#{grossesseController.selected.idGros}" title="#{resourcesBundle.ViewGrossesseTitle_idGros}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewGrossesseLabel_enfantsvivantsactuellement}"/>
+                            <h:outputText value="#{grossesseController.selected.enfantsvivantsactuellement}" title="#{resourcesBundle.ViewGrossesseTitle_enfantsvivantsactuellement}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewGrossesseLabel_p}"/>
+                            <h:outputText value="#{grossesseController.selected.p}" title="#{resourcesBundle.ViewGrossesseTitle_p}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewGrossesseLabel_g}"/>
+                            <h:outputText value="#{grossesseController.selected.g}" title="#{resourcesBundle.ViewGrossesseTitle_g}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewGrossesseLabel_a}"/>
+                            <h:outputText value="#{grossesseController.selected.a}" title="#{resourcesBundle.ViewGrossesseTitle_a}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewGrossesseLabel_d}"/>
+                            <h:outputText value="#{grossesseController.selected.d}" title="#{resourcesBundle.ViewGrossesseTitle_d}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewGrossesseLabel_datedernierAccouchement}"/>
+                            <h:outputText value="#{grossesseController.selected.datedernierAccouchement}" title="#{resourcesBundle.ViewGrossesseTitle_datedernierAccouchement}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewGrossesseLabel_dateDernierRapportNonProteger}"/>
+                            <h:outputText value="#{grossesseController.selected.dateDernierRapportNonProteger}" title="#{resourcesBundle.ViewGrossesseTitle_dateDernierRapportNonProteger}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewGrossesseLabel_dateDernierRegle}"/>
+                            <h:outputText value="#{grossesseController.selected.dateDernierRegle}" title="#{resourcesBundle.ViewGrossesseTitle_dateDernierRegle}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewGrossesseLabel_nombrecesarienne}"/>
+                            <h:outputText value="#{grossesseController.selected.nombrecesarienne}" title="#{resourcesBundle.ViewGrossesseTitle_nombrecesarienne}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewGrossesseLabel_utilisateur}"/>
+                            <h:outputText value="#{grossesseController.selected.utilisateur.uname}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewGrossesseLabel_numDossier}"/>
+                            <h:outputText value="#{grossesseController.selected.numDossier.numDossier}"/>
+                        </pm:field>
+                    </p:outputPanel>
+                </h:panelGroup>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

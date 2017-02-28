@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="PlanficationFamilialeCreateDlg" widgetVar="PlanficationFamilialeCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{resourcesBundle.CreatePlanficationFamilialeTitle}" closeOnEscape="true">
+
+            <h:form id="PlanficationFamilialeCreateForm">
+
+                <h:panelGroup id="display" rendered="#{planficationFamilialeController.selected != null}">
+                    <p:panelGrid columns="2" columnClasses="column">
+                        <p:outputLabel value="#{resourcesBundle.CreatePlanficationFamilialeLabel_numDossier}" for="numDossier" />
+                        <h:panelGroup>
+                            <p:selectOneMenu id="numDossier" value="#{planficationFamilialeController.selected.numDossier}" filter="true" filterMatchMode="startsWith" required="true" requiredMessage="#{resourcesBundle.CreatePlanficationFamilialeRequiredMessage_numDossier}" converter="infosFemmeConverter">
+                                <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{infosFemmeController.items}"
+                                               var="numDossierItem"
+                                               itemValue="#{numDossierItem}"
+                                               itemLabel="#{numDossierItem.toString()}"/>
+                            </p:selectOneMenu>
+                            <p:inputText style="visibility: hidden" id="user" value="#{planficationFamilialeController.user}" title="user: " size="30" maxlength="30"/>
+                        </h:panelGroup>
+                        <p:outputLabel value="#{resourcesBundle.EditConsultationLabel_date}" for="date" />
+                        <h:panelGroup>
+                            <p:calendar id="date" required="true"  pattern="dd/MM/yyyy" value="#{planficationFamilialeController.date}" title="#{resourcesBundle.EditConsultationTitle_date}"  showOn="button"/>
+                        </h:panelGroup>
+                        <p:outputLabel value="#{resourcesBundle.CreatePlanficationFamilialeLabel_nouvelleacceptante}" for="nouvelleacceptante" />
+                        <p:selectOneMenu id="nouvelleacceptante" value="#{planficationFamilialeController.selected.nouvelleacceptante}" 
+                                         title="#{resourcesBundle.CreatePlanficationFamilialeTitle_nouvelleacceptante}">
+                            <f:selectItem itemLabel=""/>                            
+                            <f:selectItem itemLabel="Oui" itemValue="Oui"/>                            
+                            <f:selectItem itemLabel="Non" itemValue="Non"/>
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{resourcesBundle.CreatePlanficationFamilialeLabel_renouvellement}" for="renouvellement" />
+                        <p:selectOneMenu id="renouvellement" value="#{planficationFamilialeController.selected.renouvellement}" 
+                                         title="#{resourcesBundle.CreatePlanficationFamilialeTitle_renouvellement}">
+                            <f:selectItem itemLabel=""/>                            
+                            <f:selectItem itemLabel="Année en cours" itemValue="Année en cours"/>                            
+                            <f:selectItem itemLabel="Année antérieure" itemValue="Année antérieure"/>  
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{resourcesBundle.CreatePlanficationFamilialeLabel_methodeanterieure}" for="methodeanterieure" />
+                        <p:selectOneMenu id="methodeanterieure" value="#{planficationFamilialeController.selected.methodeanterieure}"
+                                         title="#{resourcesBundle.CreatePlanficationFamilialeTitle_methodeanterieure}" >
+                            <f:selectItem itemLabel=""/>                            
+                            <f:selectItem itemLabel="LTB" itemValue="LTB"/>                            
+                            <f:selectItem itemLabel="IMPLANTS" itemValue="IMPLANTS"/>  
+                            <f:selectItem itemLabel="COC" itemValue="COC"/>
+                            <f:selectItem itemLabel="COP" itemValue="COP"/>
+                            <f:selectItem itemLabel="Collier du cycle" itemValue="Collier du cycle"/>
+                            <f:selectItem itemLabel="DMPA" itemValue="DMPA"/>
+                            <f:selectItem itemLabel="Noristerat" itemValue="Noristerat"/>
+                            <f:selectItem itemLabel="Méthode Naturelle" itemValue="Méthode Naturelle"/>
+                            <f:selectItem itemLabel="DIU Stérilet" itemValue="DIU Stérilet"/>
+                            <f:selectItem itemLabel="Fémidon" itemValue="Fémidon"/>
+                            <f:selectItem itemLabel="Préservatif" itemValue="Préservatif"/>
+                            <f:selectItem itemLabel="Vasectomie" itemValue="Vasectomie"/>
+                            <f:selectItem itemLabel="mama" itemValue="mama"/>
+                            <f:selectItem itemLabel="autre" itemValue="autre"/>
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{resourcesBundle.CreatePlanficationFamilialeLabel_autreMethodeAnterieure}" for="autreMethodeAnterieure" />
+                        <p:inputText id="autreMethodeAnterieure" value="#{planficationFamilialeController.selected.autreMethodeAnterieure}" title="#{resourcesBundle.CreatePlanficationFamilialeTitle_autreMethodeAnterieure}" size="50" maxlength="50"/>
+
+                        <p:outputLabel value="#{resourcesBundle.CreatePlanficationFamilialeLabel_sourcerenseignementsurPF}" for="sourcerenseignementsurPF" />
+                        <p:inputText id="sourcerenseignementsurPF" value="#{planficationFamilialeController.selected.sourcerenseignementsurPF}" title="#{resourcesBundle.CreatePlanficationFamilialeTitle_sourcerenseignementsurPF}" size="30" maxlength="30"/>
+
+                        <p:outputLabel value="#{resourcesBundle.CreatePlanficationFamilialeLabel_raisondechangement}" for="raisondechangement" />
+                        <p:inputText id="raisondechangement" value="#{planficationFamilialeController.selected.raisondechangement}" title="#{resourcesBundle.CreatePlanficationFamilialeTitle_raisondechangement}" size="45" maxlength="45"/>
+
+                       
+                        <p:outputLabel value="#{resourcesBundle.CreatePlanficationFamilialeLabel_counsling}" for="counsling" />
+                        <p:selectOneMenu id="counsling" value="#{planficationFamilialeController.selected.counsling}" 
+                                         title="#{resourcesBundle.CreatePlanficationFamilialeTitle_counsling}" >
+                            <f:selectItem itemLabel=""/>                            
+                            <f:selectItem itemLabel="Oui" itemValue="Oui"/>
+                            <f:selectItem itemLabel="Non" itemValue="Non"/>
+                        </p:selectOneMenu>
+                        
+                        <p:outputLabel value="Retrait implant/norplant" for="retraitImplant" />
+                        <p:selectOneMenu id="retraitImplant" value="#{planficationFamilialeController.selected.retraitimplant}" 
+                                        >
+                            <f:selectItem itemLabel=""/>                            
+                            <f:selectItem itemLabel="Oui" itemValue="Oui"/>
+                            <f:selectItem itemLabel="Non" itemValue="Non"/>
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="Retrait DIU" for="retraitDIU" />
+                        <p:selectOneMenu id="retraitDIU" value="#{planficationFamilialeController.selected.retraitDIU}">
+                            <f:selectItem itemLabel=""/>                            
+                            <f:selectItem itemLabel="Oui" itemValue="Oui"/>
+                            <f:selectItem itemLabel="Non" itemValue="Non"/>
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="Complication" for="complication" />
+                        <p:selectOneMenu id="complication" value="#{planficationFamilialeController.selected.complication}" 
+                                         title="Complication">
+                            <f:selectItem itemLabel=""/>                            
+                            <f:selectItem itemLabel="Oui" itemValue="Oui"/>
+                            <f:selectItem itemLabel="Non" itemValue="Non"/>
+                        </p:selectOneMenu>
+                        
+                         <p:outputLabel value="Limite information" for="limiteInfo" />
+                         <p:selectOneMenu id="limiteInfo" value="#{planficationFamilialeController.selected.limiteinformation}" 
+                                         title="Limite information" >
+                            <f:selectItem itemLabel=""/>                            
+                            <f:selectItem itemLabel="Oui" itemValue="Oui"/>
+                            <f:selectItem itemLabel="Non" itemValue="Non"/>
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{resourcesBundle.CreatePlanficationFamilialeLabel_methodechoisie}" for="methodechoisie" />
+                        <p:selectOneMenu id="methodechoisie" value="#{planficationFamilialeController.selected.methodechoisie}"
+                                         title="#{resourcesBundle.CreatePlanficationFamilialeTitle_methodechoisie}">
+                            <f:selectItem itemLabel=""/>                            
+                            <f:selectItem itemLabel="LTB" itemValue="LTB"/>                            
+                            <f:selectItem itemLabel="IMPLANTS" itemValue="IMPLANTS"/>  
+                            <f:selectItem itemLabel="COC" itemValue="COC"/>
+                            <f:selectItem itemLabel="COP" itemValue="COP"/>
+                            <f:selectItem itemLabel="Collier du cycle" itemValue="Collier du cycle"/>
+                            <f:selectItem itemLabel="DMPA" itemValue="DMPA"/>
+                            <f:selectItem itemLabel="Noristerat" itemValue="Noristerat"/>
+                            <f:selectItem itemLabel="Méthode Naturelle" itemValue="Méthode Naturelle"/>
+                            <f:selectItem itemLabel="DIU Stérilet" itemValue="DIU Stérilet"/>
+                            <f:selectItem itemLabel="Fémidon" itemValue="Fémidon"/>
+                            <f:selectItem itemLabel="Préservatif" itemValue="Préservatif"/>
+                            <f:selectItem itemLabel="mama" itemValue="mama"/>
+                            <f:selectItem itemLabel="autre" itemValue="autre"/>
+                        </p:selectOneMenu>
+                        <ui:remove>
+                            <p:outputLabel value="#{resourcesBundle.CreatePlanficationFamilialeLabel_utilisateur}" for="utilisateur" />
+                            <p:selectOneMenu id="utilisateur" value="#{planficationFamilialeController.selected.utilisateur}" required="true" requiredMessage="#{resourcesBundle.CreatePlanficationFamilialeRequiredMessage_utilisateur}" converter="usersConverter">
+                                <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{usersController.items}"
+                                               var="utilisateurItem"
+                                               itemValue="#{utilisateurItem}"
+                                               itemLabel="#{utilisateurItem.uname.toString()}"
+                                               />
+                            </p:selectOneMenu>
+                        </ui:remove>
+
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{planficationFamilialeController.saveNew}" value="#{resourcesBundle.Save}" update="display,:PlanficationFamilialeListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('PlanficationFamilialeCreateDialog'));">
+                        <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{resourcesBundle.Cancel}" oncomplete="PF('PlanficationFamilialeCreateDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

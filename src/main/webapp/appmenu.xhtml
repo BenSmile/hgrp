@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <h:form id="menuForm">
+            <p:menubar>
+                <p:menuitem value="#{resourcesBundle.Home}" outcome="/index" icon="ui-icon-home"/>
+                <p:submenu label="#{resourcesBundle.Maintenance}">
+                    <p:menuitem value="#{resourcesBundle.AntecedentCpnHeading}..." outcome="/antecedentCpn/index" />
+                    <p:menuitem value="#{resourcesBundle.AntecedentPlHeading}..." outcome="/antecedentPl/index" />
+                    <p:menuitem value="#{resourcesBundle.AutresProblemesHeading}..." outcome="/autresProblemes/index" />
+                    <p:menuitem value="#{resourcesBundle.ConsultationHeading}..." outcome="/consultation/index" />
+                    <p:menuitem value="#{resourcesBundle.DcipHeading}..." outcome="/dcip/index" />
+                    <p:menuitem value="#{resourcesBundle.DonneesObjectivesHeading}..." outcome="/donneesObjectives/index" />
+                    <p:menuitem value="#{resourcesBundle.ExamenLaboHeading}..." outcome="/examenLabo/index" />
+                    <p:menuitem value="#{resourcesBundle.GrossesseHeading}..." outcome="/grossesse/index" />
+                    <p:menuitem value="#{resourcesBundle.HospitalisationHeading}..." outcome="/hospitalisation/index" />
+                    <p:menuitem value="#{resourcesBundle.InfosAccouchementHeading}..." outcome="/infosAccouchement/index" />
+                    <p:menuitem value="#{resourcesBundle.InfosFemmeHeading}..." outcome="/infosFemme/index" />
+                    <p:menuitem value="#{resourcesBundle.MesuresPreventivesHeading}..." outcome="/mesuresPreventives/index" />
+                    <p:menuitem value="#{resourcesBundle.MotifConsultationHeading}..." outcome="/motifConsultation/index" />
+                    <p:menuitem value="#{resourcesBundle.PlanficationFamilialeHeading}..." outcome="/planficationFamiliale/index" />
+                    <p:menuitem value="#{resourcesBundle.ReglesHeading}..." outcome="/regles/index" />
+                    <p:menuitem value="#{resourcesBundle.SuiviMaterniteHeading}..." outcome="/suiviMaternite/index" />
+                    <p:menuitem value="#{resourcesBundle.UsersHeading}..." outcome="/users/index" />
+                </p:submenu>
+                <p:menuitem value="#{resourcesBundle.Mobile}" outcome="/mobile/index" icon="ui-icon-signal"/>
+            </p:menubar>
+        </h:form>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MotifConsultationCreateDlg" widgetVar="MotifConsultationCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{resourcesBundle.CreateMotifConsultationTitle}" closeOnEscape="true">
+
+            <h:form id="MotifConsultationCreateForm">
+
+                <h:panelGroup id="display" rendered="#{motifConsultationController.selected != null}">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <p:outputLabel value="#{resourcesBundle.CreateMotifConsultationLabel_idPF}" for="idPF" />
+                        <h:panelGroup> 
+                            <p:selectOneMenu id="idPF" value="#{motifConsultationController.selected.idPF}" required="true" requiredMessage="#{resourcesBundle.CreateMotifConsultationRequiredMessage_idPF}" converter="planficationFamilialeConverter">
+                                <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{planficationFamilialeController.items}"
+                                               var="idPFItem"
+                                               itemValue="#{idPFItem}"
+                                               itemLabel="#{idPFItem.toString()}"/>
+                            </p:selectOneMenu>
+                            <p:inputText style="visibility: hidden" id="user" value="#{motifConsultationController.user}" title="user: " size="20" maxlength="20"/>
+                        </h:panelGroup>
+                        <p:outputLabel value="#{resourcesBundle.CreateMotifConsultationLabel_motif}" for="motif" />
+                        <p:selectCheckboxMenu id="motif" value="#{motifConsultationController.motifs}" filter="true" filterMatchMode="startsWith" label="Motif">
+                            <f:selectItem itemValue="Espacement" itemLabel="Espacement"/>                        
+                            <f:selectItem itemValue="Assez d_enfant" itemLabel="Assez d'enfants"/>
+                            <f:selectItem itemValue="Santé" itemLabel="Santé"/>
+                        </p:selectCheckboxMenu>
+
+                        <p:outputLabel value="#{resourcesBundle.CreateMotifConsultationLabel_autreprecision}" for="autreprecision" />
+                        <p:inputText id="autreprecision" value="#{motifConsultationController.selected.autreprecision}" title="#{resourcesBundle.CreateMotifConsultationTitle_autreprecision}" size="35" maxlength="35"/>
+
+
+                        <ui:remove>
+                            <p:outputLabel value="#{resourcesBundle.CreateMotifConsultationLabel_utilisateur}" for="utilisateur" />
+                            <p:selectManyMenu id="utilisateur" value="#{motifConsultationController.selected.utilisateur}" required="true" requiredMessage="#{resourcesBundle.CreateMotifConsultationRequiredMessage_utilisateur}" converter="usersConverter">
+                                <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{usersController.items}"
+                                               var="utilisateurItem"
+                                               itemValue="#{utilisateurItem}"
+                                               itemLabel="#{utilisateurItem.uname.toString()}"/>
+                            </p:selectManyMenu>
+                        </ui:remove>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{motifConsultationController.saveNew}" value="#{resourcesBundle.Save}" update="display,:MotifConsultationListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('MotifConsultationCreateDialog'));">
+                        <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{resourcesBundle.Cancel}" oncomplete="PF('MotifConsultationCreateDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

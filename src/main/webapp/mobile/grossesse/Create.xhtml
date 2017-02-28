@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="GrossesseCreatePage" lazy="true">
+        <pm:header title="#{resourcesBundle.CreateGrossesseTitle}">
+            <h:form>
+                <p:commandButton styleClass="ui-btn-left ui-btn-inline" value="#{resourcesBundle.Cancel}" icon="ui-icon-arrow-l" action="#{mobilePageController.navigateBackInHistory('pm:GrossesseListPage')}"/>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="GrossesseCreateForm">
+
+                <h:panelGroup id="display" rendered="#{grossesseController.selected != null}">
+                    <p:outputPanel>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.CreateGrossesseLabel_enfantsvivantsactuellement}" for="enfantsvivantsactuellement" />
+                            <p:inputText id="enfantsvivantsactuellement" value="#{grossesseController.selected.enfantsvivantsactuellement}" title="#{resourcesBundle.CreateGrossesseTitle_enfantsvivantsactuellement}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.CreateGrossesseLabel_p}" for="p" />
+                            <p:inputText id="p" value="#{grossesseController.selected.p}" title="#{resourcesBundle.CreateGrossesseTitle_p}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.CreateGrossesseLabel_g}" for="g" />
+                            <p:inputText id="g" value="#{grossesseController.selected.g}" title="#{resourcesBundle.CreateGrossesseTitle_g}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.CreateGrossesseLabel_a}" for="a" />
+                            <p:inputText id="a" value="#{grossesseController.selected.a}" title="#{resourcesBundle.CreateGrossesseTitle_a}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.CreateGrossesseLabel_d}" for="d" />
+                            <p:inputText id="d" value="#{grossesseController.selected.d}" title="#{resourcesBundle.CreateGrossesseTitle_d}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.CreateGrossesseLabel_datedernierAccouchement}" for="datedernierAccouchement" />
+                            <p:calendar id="datedernierAccouchement" pattern="MM/dd/yyyy" value="#{grossesseController.selected.datedernierAccouchement}" title="#{resourcesBundle.CreateGrossesseTitle_datedernierAccouchement}"  showOn="button"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.CreateGrossesseLabel_dateDernierRapportNonProteger}" for="dateDernierRapportNonProteger" />
+                            <p:calendar id="dateDernierRapportNonProteger" pattern="MM/dd/yyyy" value="#{grossesseController.selected.dateDernierRapportNonProteger}" title="#{resourcesBundle.CreateGrossesseTitle_dateDernierRapportNonProteger}"  showOn="button"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.CreateGrossesseLabel_dateDernierRegle}" for="dateDernierRegle" />
+                            <p:calendar id="dateDernierRegle" pattern="MM/dd/yyyy" value="#{grossesseController.selected.dateDernierRegle}" title="#{resourcesBundle.CreateGrossesseTitle_dateDernierRegle}"  showOn="button"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.CreateGrossesseLabel_nombrecesarienne}" for="nombrecesarienne" />
+                            <p:inputText id="nombrecesarienne" value="#{grossesseController.selected.nombrecesarienne}" title="#{resourcesBundle.CreateGrossesseTitle_nombrecesarienne}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.CreateGrossesseLabel_utilisateur}" for="utilisateur" />
+                            <p:selectOneMenu id="utilisateur" value="#{grossesseController.selected.utilisateur}" required="true" requiredMessage="#{resourcesBundle.CreateGrossesseRequiredMessage_utilisateur}" converter="usersConverter">
+                                <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{usersController.items}"
+                                               var="utilisateurItem"
+                                               itemValue="#{utilisateurItem}"
+                                               itemLabel="#{utilisateurItem.uname.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.CreateGrossesseLabel_numDossier}" for="numDossier" />
+                            <p:selectOneMenu id="numDossier" value="#{grossesseController.selected.numDossier}" required="true" requiredMessage="#{resourcesBundle.CreateGrossesseRequiredMessage_numDossier}" converter="infosFemmeConverter">
+                                <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{infosFemmeController.items}"
+                                               var="numDossierItem"
+                                               itemValue="#{numDossierItem}"
+                                               itemLabel="#{numDossierItem.numDossier.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                        </pm:field>
+                    </p:outputPanel>
+                    <p:commandButton actionListener="#{grossesseController.saveNew}" value="#{resourcesBundle.Save}" update="display,:GrossesseListPage:GrossesseListForm:datalist,:growl" action="#{mobilePageController.navigateWithHistory('pm:GrossesseListPage')}">
+                        <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                </h:panelGroup>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

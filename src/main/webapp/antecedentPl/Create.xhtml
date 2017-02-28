@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="AntecedentPlCreateDlg" widgetVar="AntecedentPlCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{resourcesBundle.CreateAntecedentPlTitle}" closeOnEscape="true">
+
+            <h:form id="AntecedentPlCreateForm">
+
+                <h:panelGroup id="display" rendered="#{antecedentPlController.selected != null}">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <p:outputLabel value="#{resourcesBundle.CreateAntecedentPlLabel_numDossier}" for="numDossier" />
+                        <h:panelGroup> 
+                            <p:selectOneMenu id="numDossier" value="#{antecedentPlController.selected.numDossier}" filter="true" filterMatchMode="startsWith" required="true" requiredMessage="#{resourcesBundle.CreateAntecedentPlRequiredMessage_numDossier}" converter="infosFemmeConverter">
+                                <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{infosFemmeController.items}"
+                                               var="numDossierItem"
+                                               itemValue="#{numDossierItem}"
+                                               itemLabel="#{numDossierItem.toString()}"/>
+                            </p:selectOneMenu>
+                            <p:inputText style="visibility: hidden" id="user" value="#{antecedentPlController.user}" title="user: " size="30" maxlength="30"/>
+                        </h:panelGroup>
+                        <p:outputLabel value="#{resourcesBundle.CreateAntecedentPlLabel_antecedentsMedicauxPL}" for="antecedentsMedicauxPL"/>
+                        <p:selectCheckboxMenu id="antecedentsMedicauxPL" required="true" value="#{antecedentPlController.antecedentsMedicauxPL}" label="Antecedants Medicaux"
+                                              filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+                            <f:selectItem itemLabel="Aucun" itemValue="Aucun"/>
+                            <f:selectItem itemLabel="HTA" itemValue="HTA"/>
+                            <f:selectItem itemLabel="Epilepsie" itemValue="Epilepsie"/>
+                            <f:selectItem  itemLabel="Essouflement anormal" itemValue="Essouflement anormal"/>
+                            <f:selectItem  itemLabel="Gonflement des Jambes" itemValue="Gonflement des Jambes"/>
+                            <f:selectItem itemLabel="Douleur des jambes" itemValue="Douleur des jambes"/>
+                            <f:selectItem  itemLabel="Jaunisse" itemValue="Jaunisse"/>
+                            <f:selectItem  itemLabel="Douleur thoracique" itemValue="Douleur thoracique"/>
+                            <f:selectItem  itemLabel="Tabagisme" itemValue="Tabagisme"/>
+                            <f:selectItem  itemLabel="Anémies" itemValue="Anémies"/>
+                            <f:selectItem itemLabel="Migraines" itemValue="Migraines"/>
+                            <f:selectItem  itemLabel="Trouble visuel" itemValue="Trouble visuel"/>
+                            <f:selectItem  itemLabel="Diabète" itemValue="Diabète"/>
+                        </p:selectCheckboxMenu>
+
+                        <p:outputLabel value="#{resourcesBundle.CreateAntecedentPlLabel_antecedentsObstétricauxPL}" for="antecedentsObstetricauxPL" />
+                        <p:selectCheckboxMenu id="antecedentsObstetricauxPL" required="true" value="#{antecedentPlController.antecedentsObstetricauxPl}" label="Antecedants Obstétricaux PL"
+                                              filter="true" filterMatchMode="startsWith" panelStyle="width:250px">
+                            <f:selectItem itemLabel="Aucun" itemValue="Aucun"/>
+                            <f:selectItem itemLabel="Règles anormales" itemValue="Règles anormales"/>
+                            <f:selectItem itemLabel="Suintement mamellaire" itemValue="Suintement mamellaire"/>
+                            <f:selectItem  itemLabel="Masse au sein" itemValue="Masse au sein"/>
+                            <f:selectItem  itemLabel="Douleurs/trouble de la miction" itemValue="Douleurs/trouble de la miction"/>
+                            <f:selectItem itemLabel="Saignement Post-Coital" itemValue="Saignement Post-Coital"/>
+                            <f:selectItem  itemLabel="Infection pelvienne" itemValue="Infection pelvienne"/>
+                            <f:selectItem  itemLabel="Douleurs abdominales" itemValue="Douleurs abdominales"/>
+                        </p:selectCheckboxMenu>
+
+                        <ui:remove>
+                            <p:outputLabel value="#{resourcesBundle.CreateAntecedentPlLabel_utilisateur}" for="utilisateur" />
+                            <p:selectOneMenu id="utilisateur" value="#{antecedentPlController.selected.utilisateur}" required="true" requiredMessage="#{resourcesBundle.CreateAntecedentPlRequiredMessage_utilisateur}" converter="usersConverter">
+                                <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{usersController.items}"
+                                               var="utilisateurItem"
+                                               itemValue="#{utilisateurItem}"
+                                               itemLabel="#{utilisateurItem.uname.toString()}"/>
+                            </p:selectOneMenu>
+                        </ui:remove>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{antecedentPlController.saveNew}" value="#{resourcesBundle.Save}" update="display,:AntecedentPlListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('AntecedentPlCreateDialog'));">
+                        <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{resourcesBundle.Cancel}" oncomplete="PF('AntecedentPlCreateDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

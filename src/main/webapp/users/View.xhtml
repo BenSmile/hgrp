@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UsersViewDlg" widgetVar="UsersViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{resourcesBundle.ViewUsersTitle}" closeOnEscape="true">
+
+            <h:form id="UsersViewForm">
+
+                <h:panelGroup id="display">
+                    <p:tabView id="UsersTabView">
+
+                        <p:tab id="UsersTab1" title="#{resourcesBundle.TabHeaderPrefix} 1">
+                            <p:panelGrid columns="2" columnClasses="column" rendered="#{usersController.selected != null}">
+                                <h:outputText value="#{resourcesBundle.ViewUsersLabel_uname}"/>
+                                <h:outputText value="#{usersController.selected.uname}" title="#{resourcesBundle.ViewUsersTitle_uname}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewUsersLabel_password}"/>
+                                <h:outputText value="#{usersController.selected.password}" title="#{resourcesBundle.ViewUsersTitle_password}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewUsersLabel_nom}"/>
+                                <h:outputText value="#{usersController.selected.nom}" title="#{resourcesBundle.ViewUsersTitle_nom}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewUsersLabel_postNom}"/>
+                                <h:outputText value="#{usersController.selected.postNom}" title="#{resourcesBundle.ViewUsersTitle_postNom}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewUsersLabel_prenom}"/>
+                                <h:outputText value="#{usersController.selected.prenom}" title="#{resourcesBundle.ViewUsersTitle_prenom}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewUsersLabel_role}"/>
+                                <h:outputText value="#{usersController.selected.role}" title="#{resourcesBundle.ViewUsersTitle_role}"/>
+                            </p:panelGrid>
+                        </p:tab>
+                    </p:tabView>
+                    <p:commandButton value="#{resourcesBundle.Close}" onclick="PF('UsersViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

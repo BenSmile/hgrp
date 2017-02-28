@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="AntecedentPlListForm">
+
+        <p:panel header="#{resourcesBundle.ListAntecedentPlTitle}">
+            <p:contextMenu id="AntecedentPlDataTableContextMenu" for="datalist">  
+                <p:menuitem value="#{resourcesBundle.Create}" onclick="document.getElementById('AntecedentPlListForm:createButton').click();" icon="ui-icon-plus"/>
+                <p:menuitem value="#{resourcesBundle.View}" onclick="document.getElementById('AntecedentPlListForm:viewButton').click();" icon="ui-icon-search"/>
+                <p:menuitem value="#{resourcesBundle.Edit}" onclick="document.getElementById('AntecedentPlListForm:editButton').click();" icon="ui-icon-pencil"/>
+                <p:menuitem value="#{resourcesBundle.Delete}" onclick="document.getElementById('AntecedentPlListForm:deleteButton').click();" icon="ui-icon-trash"/>
+                <p:separator/>
+                <p:menuitem value="#{resourcesBundle.AntecedentPlMenuItem_numDossier}" icon="ui-icon-search"  actionListener="#{antecedentPlController.prepareNumDossier}" update=":InfosFemmeViewForm" oncomplete="PF('InfosFemmeViewDialog').show()" disabled="#{empty antecedentPlController.selected.numDossier}"/>  
+                <p:menuitem value="#{resourcesBundle.AntecedentPlMenuItem_utilisateur}" icon="ui-icon-search"  actionListener="#{antecedentPlController.prepareUtilisateur}" update=":UsersViewForm" oncomplete="PF('UsersViewDialog').show()" disabled="#{empty antecedentPlController.selected.utilisateur}"/>  
+            </p:contextMenu>
+            <p:dataTable id="datalist"
+                         value="#{antecedentPlController.items}"
+                         lazy="false"
+                         rowKey="#{item.idAntecedentPL}"
+                         var="item"
+                         paginator="true"
+                         rows="10"
+                         rowsPerPageTemplate="10,20,30,40,50"
+                         selectionMode="single"
+                         selection="#{antecedentPlController.selected}">
+                <!--
+                         To enable Lazy Loading, please copy/replace the following lines above,
+                         and be sure to replace the word HASH with the # symbol:
+                
+                         value="HASH{antecedentPlController.lazyItems}"
+                         lazy="true"
+                         rowKey="HASH{item.idAntecedentPL}"  <<< Remove this line
+                -->
+
+
+                <p:ajax event="rowSelect"   update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:AntecedentPlDataTableContextMenu" listener="#{antecedentPlController.resetParents}"/>
+                <p:ajax event="rowUnselect" update="@form:createButton,@form:viewButton,@form:editButton,@form:deleteButton,@form:AntecedentPlDataTableContextMenu" listener="#{antecedentPlController.resetParents}"/>
+                <p:ajax event="contextMenu" update="@form:createButton @form:viewButton @form:editButton @form:deleteButton" listener="#{antecedentPlController.resetParents}"/>
+                <p:ajax event="rowDblselect" onsuccess="document.getElementById('AntecedentPlListForm:viewButton').click();"/>
+                <ui:remove>
+                    <p:column sortBy="#{item.idAntecedentPL}" filterBy="#{item.idAntecedentPL}">
+                        <f:facet name="header">
+                            <h:outputText value="#{resourcesBundle.ListAntecedentPlTitle_idAntecedentPL}"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idAntecedentPL}"/>
+                    </p:column>
+                </ui:remove>
+
+                <p:column sortBy="#{item.numDossier.numDossier}" filterBy="#{item.numDossier.numDossier}">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListAntecedentPlTitle_numDossier}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.numDossier.numDossier}"/>
+                </p:column>
+
+                <p:column sortBy="#{item.antecedentsMedicauxPL}" filterBy="#{item.antecedentsMedicauxPL}">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListAntecedentPlTitle_antecedentsMedicauxPL}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.antecedentsMedicauxPL}"/>
+                </p:column>
+
+                <p:column sortBy="#{item.antecedentsObstétricauxPL}" filterBy="#{item.antecedentsObstétricauxPL}">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListAntecedentPlTitle_antecedentsObstétricauxPL}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.antecedentsObstétricauxPL}"/>
+                </p:column>
+
+
+
+
+
+                <p:column sortBy="#{item.utilisateur.uname}" filterBy="#{item.utilisateur.uname}">
+                    <f:facet name="header">
+                        <h:outputText value="#{resourcesBundle.ListAntecedentPlTitle_utilisateur}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.utilisateur.uname}"/>
+                </p:column>
+
+
+            </p:dataTable>
+
+            <p:commandButton id="createButton"                             icon="ui-icon-plus"   value="#{resourcesBundle.Create}" actionListener="#{antecedentPlController.prepareCreate}" update=":AntecedentPlCreateForm" oncomplete="PF('AntecedentPlCreateDialog').show()"/>
+            <p:commandButton id="viewButton"   style="visibility: visible;" icon="ui-icon-search" value="#{resourcesBundle.View}" update=":AntecedentPlViewForm" oncomplete="PF('AntecedentPlViewDialog').show()" disabled="#{empty antecedentPlController.selected}"/>
+            <p:commandButton id="editButton"   style="visibility: visible;" icon="ui-icon-pencil" value="#{resourcesBundle.Edit}" update=":AntecedentPlEditForm" oncomplete="PF('AntecedentPlEditDialog').show()" disabled="#{empty antecedentPlController.selected}"/>
+            <p:commandButton id="deleteButton" style="visibility: visible;" icon="ui-icon-trash"  value="#{resourcesBundle.Delete}" actionListener="#{antecedentPlController.delete}" update=":growl,datalist" disabled="#{empty antecedentPlController.selected}">
+                <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+            </p:commandButton>
+
+        </p:panel>
+        <ui:include src="/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>

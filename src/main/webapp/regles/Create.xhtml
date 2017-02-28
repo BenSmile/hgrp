@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ReglesCreateDlg" widgetVar="ReglesCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{resourcesBundle.CreateReglesTitle}" closeOnEscape="true">
+            <h:form id="ReglesCreateForm">
+
+                <h:panelGroup id="display" rendered="#{reglesController.selected != null}">
+                    <p:panelGrid columns="2" columnClasses="column">
+                        <p:outputLabel value="#{resourcesBundle.CreateReglesLabel_numDossier}" for="numDossier" />
+                        <h:panelGroup> 
+                            <p:selectOneMenu id="numDossier" value="#{reglesController.selected.numDossier}" filter="true" filterMatchMode="startsWith" required="true" requiredMessage="#{resourcesBundle.CreateReglesRequiredMessage_numDossier}" converter="infosFemmeConverter">
+                                <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{infosFemmeController.items}"
+                                               var="numDossierItem"
+                                               itemValue="#{numDossierItem}"
+                                               itemLabel="#{numDossierItem.toString()}"/>
+                            </p:selectOneMenu>
+                            <p:inputText style="visibility: hidden" id="user" value="#{reglesController.user}" title="user: " size="30" maxlength="30"/>
+                        </h:panelGroup>
+                        <p:outputLabel value="#{resourcesBundle.CreateReglesLabel_ageMenarche}" for="ageMenarche" />
+                        <p:inputText id="ageMenarche" value="#{reglesController.selected.ageMenarche}" title="#{resourcesBundle.CreateReglesTitle_ageMenarche}"/>
+
+                        <p:outputLabel value="#{resourcesBundle.CreateReglesLabel_ddr}" for="ddr" />
+                        <p:calendar id="ddr" pattern="MM/dd/yyyy" value="#{reglesController.selected.ddr}" title="#{resourcesBundle.CreateReglesTitle_ddr}"  showOn="button"/>
+
+                        <p:outputLabel value="#{resourcesBundle.CreateReglesLabel_dureeRegle} (en jours)" for="dureeRegle" />
+                        <p:inputText id="dureeRegle" value="#{reglesController.selected.dureeRegle}" title="#{resourcesBundle.CreateReglesTitle_dureeRegle}"/>
+
+                        <p:outputLabel value="#{resourcesBundle.CreateReglesLabel_fluxMenstruel}" for="fluxMenstruel" />
+                        <p:selectOneMenu id="fluxMenstruel" value="#{reglesController.selected.fluxMenstruel}"  title="#{resourcesBundle.CreateReglesTitle_fluxMenstruel}">
+                            <f:selectItem itemLabel=""/>                         
+                            <f:selectItem itemLabel="Normal" itemValue="Normal"/>                         
+                            <f:selectItem itemLabel="Abondant" itemValue="Abondant"/>
+                            <f:selectItem itemLabel="Très abondant" itemValue="Très abondant"/>
+
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{resourcesBundle.CreateReglesLabel_regularite}" for="regularite" />
+                        <p:selectOneMenu id="regularite" value="#{reglesController.selected.regularite}" title="#{resourcesBundle.CreateReglesTitle_regularite}">
+                            <f:selectItem itemLabel=""/>                         
+                            <f:selectItem itemLabel="Oui" itemValue="Oui"/>
+                            <f:selectItem itemLabel="Non" itemValue="Non"/>                        
+
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{resourcesBundle.CreateReglesLabel_dysmenorhee}" for="dysmenorhee" />
+                        <p:selectOneMenu id="dysmenorhee" value="#{reglesController.selected.dysmenorhee}" title="#{resourcesBundle.CreateReglesTitle_dysmenorhee}" >
+                            <f:selectItem itemLabel=""/>                         
+                            <f:selectItem itemLabel="Oui" itemValue="Oui"/>
+                            <f:selectItem itemLabel="Non" itemValue="Non"/>                        
+                        </p:selectOneMenu>
+
+                        <p:outputLabel value="#{resourcesBundle.CreateReglesLabel_amenorheedepuisaccouchement}" for="amenorheedepuisaccouchement" />
+                        <p:selectOneMenu id="amenorheedepuisaccouchement" value="#{reglesController.selected.amenorheedepuisaccouchement}"  title="#{resourcesBundle.CreateReglesTitle_amenorheedepuisaccouchement}" >
+                            <f:selectItem itemLabel=""/>                         
+                            <f:selectItem itemLabel="Oui" itemValue="Oui"/>
+                            <f:selectItem itemLabel="Non" itemValue="Non"/>                        
+                        </p:selectOneMenu>
+                        <ui:remove>
+                            <p:outputLabel value="#{resourcesBundle.CreateReglesLabel_utilisateur}" for="utilisateur" />
+                            <p:selectOneMenu id="utilisateur" value="#{reglesController.selected.utilisateur}" required="true" requiredMessage="#{resourcesBundle.CreateReglesRequiredMessage_utilisateur}" converter="usersConverter">
+                                <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{usersController.items}"
+                                               var="utilisateurItem"
+                                               itemValue="#{utilisateurItem}"
+                                               itemLabel="#{utilisateurItem.uname.toString()}"
+                                               />
+                            </p:selectOneMenu>
+                        </ui:remove>
+
+
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{reglesController.saveNew}" value="#{resourcesBundle.Save}" update="display,:ReglesListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('ReglesCreateDialog'));">
+                        <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="#{resourcesBundle.Cancel}" oncomplete="PF('ReglesCreateDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

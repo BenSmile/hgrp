@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="DonneesObjectivesEditDlg" widgetVar="DonneesObjectivesEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{resourcesBundle.EditDonneesObjectivesTitle}" closeOnEscape="true">
+
+            <h:form id="DonneesObjectivesEditForm">
+
+                <h:panelGroup id="display">
+                    <p:tabView id="DonneesObjectivesTabView">
+
+                        <p:tab id="DonneesObjectivesTab1" title="#{resourcesBundle.TabHeaderPrefix} 1">
+                            <p:panelGrid columns="4" columnClasses="column,#{null},column">
+
+                                <p:outputLabel value="#{resourcesBundle.CreateDonneesObjectivesLabel_numDossier}" for="numDossier" />
+                                <p:selectOneMenu id="numDossier" value="#{donneesObjectivesController.selected.numDossier}"  converter="infosFemmeConverter" required="true">
+                                    <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                    <f:selectItems value="#{infosFemmeController.items}"
+                                                   var="numDossierItem"
+                                                   itemValue="#{numDossierItem}"
+                                                   itemLabel="#{numDossierItem.toString()}"/>
+                                </p:selectOneMenu>
+                                <p:outputLabel value="#{resourcesBundle.CreateDonneesObjectivesLabel_dateRDVPL}" for="dateRDVPL" />
+                                <p:calendar id="dateRDVPL" pattern="MM/dd/yyyy" value="#{donneesObjectivesController.selected.dateRDVPL}" title="#{resourcesBundle.CreateDonneesObjectivesTitle_dateRDVPL}"  showOn="button"/>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateDonneesObjectivesLabel_poids}" for="poids" />
+                                <p:inputText id="poids" value="#{donneesObjectivesController.selected.poids}" title="#{resourcesBundle.CreateDonneesObjectivesTitle_poids}"/>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateDonneesObjectivesLabel_ta}" for="ta" />
+                                <p:inputMask id="ta" mask="99/99" value="#{donneesObjectivesController.selected.ta}"/>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateDonneesObjectivesLabel_signeinfectiongyneco}" for="signeinfectiongyneco" />
+                                <p:selectOneMenu id="signeinfectiongyneco" value="#{donneesObjectivesController.selected.signeinfectiongyneco}" title="#{resourcesBundle.CreateDonneesObjectivesTitle_signeinfectiongyneco}" >
+                                    <f:selectItem itemLabel=""/>                            
+                                    <f:selectItem itemLabel="Normal" itemValue="Normal"/>                            
+                                    <f:selectItem itemLabel="Anormal" itemValue="Anormal"/>
+                                    <f:selectItem itemLabel="Présent" itemValue="Présent"/>
+                                    <f:selectItem itemLabel="Négatif" itemValue="Négatif"/>
+                                    <f:selectItem itemLabel="Douloureux" itemValue="Douloureux"/>
+                                </p:selectOneMenu>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateDonneesObjectivesLabel_ist}" for="ist" />
+                                <p:selectOneMenu id="ist" value="#{donneesObjectivesController.selected.ist}" title="#{resourcesBundle.CreateDonneesObjectivesTitle_ist}" maxlength="10">
+                                    <f:selectItem itemLabel=""/> 
+                                    <f:selectItem itemLabel="Présent" itemValue="Présent"/>
+                                    <f:selectItem itemLabel="Négatif" itemValue="Négatif"/>
+                                </p:selectOneMenu>
+                                <p:outputLabel value="#{resourcesBundle.CreateDonneesObjectivesLabel_amenorhee6emSEm}" for="amenorhee6emSEm" />
+                                <p:selectOneMenu id="amenorhee6emSEm" value="#{donneesObjectivesController.selected.amenorhee6emSEm}" 
+                                                 title="#{resourcesBundle.CreateDonneesObjectivesTitle_amenorhee6emSEm}" >
+                                    <f:selectItem itemLabel=""/>                            
+                                    <f:selectItem itemLabel="Normal" itemValue="Normal"/>                            
+                                    <f:selectItem itemLabel="Anormal" itemValue="Anormal"/>
+                                    <f:selectItem itemLabel="Présent" itemValue="Présent"/>
+                                    <f:selectItem itemLabel="Négatif" itemValue="Négatif"/>
+                                    <f:selectItem itemLabel="Douloureux" itemValue="Douloureux"/>
+                                </p:selectOneMenu>
+                                <p:outputLabel value="#{resourcesBundle.CreateDonneesObjectivesLabel_signeGrossesse}" for="signeGrossesse" />
+                                <p:selectOneMenu id="signeGrossesse" value="#{donneesObjectivesController.selected.signeGrossesse}" 
+                                                 title="#{resourcesBundle.CreateDonneesObjectivesTitle_signeGrossesse}">
+
+                                    <f:selectItem itemLabel=""/>                            
+                                    <f:selectItem itemLabel="Normal" itemValue="Normal"/>                            
+                                    <f:selectItem itemLabel="Anormal" itemValue="Anormal"/>
+                                    <f:selectItem itemLabel="Présent" itemValue="Présent"/>
+                                    <f:selectItem itemLabel="Négatif" itemValue="Négatif"/>
+                                    <f:selectItem itemLabel="Douloureux" itemValue="Douloureux"/>
+
+                                </p:selectOneMenu>
+                                <p:outputLabel value="#{resourcesBundle.CreateDonneesObjectivesLabel_visiontroublee}" for="visiontroublee" />
+                                <p:selectOneMenu id="visiontroublee" value="#{donneesObjectivesController.selected.visiontroublee}"
+                                                 title="#{resourcesBundle.CreateDonneesObjectivesTitle_visiontroublee}">
+
+                                    <f:selectItem itemLabel=""/>                            
+                                    <f:selectItem itemLabel="Normal" itemValue="Normal"/>                            
+                                    <f:selectItem itemLabel="Anormal" itemValue="Anormal"/>
+                                    <f:selectItem itemLabel="Présent" itemValue="Présent"/>
+                                    <f:selectItem itemLabel="Négatif" itemValue="Négatif"/>
+                                    <f:selectItem itemLabel="Douloureux" itemValue="Douloureux"/>
+
+                                </p:selectOneMenu>
+                                <p:outputLabel value="#{resourcesBundle.CreateDonneesObjectivesLabel_cephaleesintenses}" for="cephaleesintenses" />
+                                <p:selectOneMenu id="cephaleesintenses" value="#{donneesObjectivesController.selected.cephaleesintenses}" 
+                                                 title="#{resourcesBundle.CreateDonneesObjectivesTitle_cephaleesintenses}" >
+
+                                    <f:selectItem itemLabel=""/>                            
+                                    <f:selectItem itemLabel="Normal" itemValue="Normal"/>                            
+                                    <f:selectItem itemLabel="Anormal" itemValue="Anormal"/>
+                                    <f:selectItem itemLabel="Présent" itemValue="Présent"/>
+                                    <f:selectItem itemLabel="Négatif" itemValue="Négatif"/>
+                                    <f:selectItem itemLabel="Douloureux" itemValue="Douloureux"/>
+
+                                </p:selectOneMenu>
+                                <p:outputLabel value="#{resourcesBundle.CreateDonneesObjectivesLabel_masseSuspecte}" for="masseSuspecte" />
+                                <p:selectOneMenu id="masseSuspecte" value="#{donneesObjectivesController.selected.masseSuspecte}" 
+                                                 title="#{resourcesBundle.CreateDonneesObjectivesTitle_masseSuspecte}" >
+                                    <f:selectItem itemLabel=""/>                            
+                                    <f:selectItem itemLabel="Normal" itemValue="Normal"/>                            
+                                    <f:selectItem itemLabel="Anormal" itemValue="Anormal"/>
+                                    <f:selectItem itemLabel="Présent" itemValue="Présent"/>
+                                    <f:selectItem itemLabel="Négatif" itemValue="Négatif"/>
+                                    <f:selectItem itemLabel="Douloureux" itemValue="Douloureux"/>
+                                </p:selectOneMenu>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateDonneesObjectivesLabel_nauseeVaumissement}" for="nauseeVaumissement" />
+                                <p:selectOneMenu id="nauseeVaumissement" value="#{donneesObjectivesController.selected.nauseeVaumissement}" 
+                                                 title="#{resourcesBundle.CreateDonneesObjectivesTitle_nauseeVaumissement}" >
+
+                                    <f:selectItem itemLabel=""/>                            
+                                    <f:selectItem itemLabel="Normal" itemValue="Normal"/>                            
+                                    <f:selectItem itemLabel="Anormal" itemValue="Anormal"/>
+                                    <f:selectItem itemLabel="Présent" itemValue="Présent"/>
+                                    <f:selectItem itemLabel="Négatif" itemValue="Négatif"/>
+                                    <f:selectItem itemLabel="Douloureux" itemValue="Douloureux"/>
+
+                                </p:selectOneMenu>
+                                <p:outputLabel value="#{resourcesBundle.CreateDonneesObjectivesLabel_douleurPelvienne}" for="douleurPelvienne" />
+                                <p:selectOneMenu id="douleurPelvienne" value="#{donneesObjectivesController.selected.douleurPelvienne}" 
+                                                 title="#{resourcesBundle.CreateDonneesObjectivesTitle_douleurPelvienne}">
+
+                                    <f:selectItem itemLabel=""/>                            
+                                    <f:selectItem itemLabel="Normal" itemValue="Normal"/>                            
+                                    <f:selectItem itemLabel="Anormal" itemValue="Anormal"/>
+                                    <f:selectItem itemLabel="Présent" itemValue="Présent"/>
+                                    <f:selectItem itemLabel="Négatif" itemValue="Négatif"/>
+                                    <f:selectItem itemLabel="Douloureux" itemValue="Douloureux"/>
+
+                                </p:selectOneMenu>
+                                <p:outputLabel value="#{resourcesBundle.CreateDonneesObjectivesLabel_icteres}" for="icteres" />
+                                <p:selectOneMenu id="icteres" value="#{donneesObjectivesController.selected.icteres}" 
+                                                 title="#{resourcesBundle.CreateDonneesObjectivesTitle_icteres}" >
+
+                                    <f:selectItem itemLabel=""/>                            
+                                    <f:selectItem itemLabel="Normal" itemValue="Normal"/>                            
+                                    <f:selectItem itemLabel="Anormal" itemValue="Anormal"/>
+                                    <f:selectItem itemLabel="Présent" itemValue="Présent"/>
+                                    <f:selectItem itemLabel="Négatif" itemValue="Négatif"/>
+                                    <f:selectItem itemLabel="Douloureux" itemValue="Douloureux"/>
+
+                                </p:selectOneMenu>
+                                <p:outputLabel value="#{resourcesBundle.CreateDonneesObjectivesLabel_fatigabilite}" for="fatigabilite" />
+                                <p:selectOneMenu id="fatigabilite" value="#{donneesObjectivesController.selected.fatigabilite}" 
+                                                 title="#{resourcesBundle.CreateDonneesObjectivesTitle_fatigabilite}" >
+
+                                    <f:selectItem itemLabel=""/>                            
+                                    <f:selectItem itemLabel="Normal" itemValue="Normal"/>                            
+                                    <f:selectItem itemLabel="Anormal" itemValue="Anormal"/>
+                                    <f:selectItem itemLabel="Présent" itemValue="Présent"/>
+                                    <f:selectItem itemLabel="Négatif" itemValue="Négatif"/>
+                                    <f:selectItem itemLabel="Douloureux" itemValue="Douloureux"/>
+
+                                </p:selectOneMenu>
+                                <p:outputLabel value="#{resourcesBundle.CreateDonneesObjectivesLabel_examenSeins}" for="examenSeins" />
+                                <p:selectOneMenu id="examenSeins" value="#{donneesObjectivesController.selected.examenSeins}"
+                                                 title="#{resourcesBundle.CreateDonneesObjectivesTitle_examenSeins}" >
+
+                                    <f:selectItem itemLabel=""/>                            
+                                    <f:selectItem itemLabel="Normal" itemValue="Normal"/>                            
+                                    <f:selectItem itemLabel="Anormal" itemValue="Anormal"/>
+                                    <f:selectItem itemLabel="Présent" itemValue="Présent"/>
+                                    <f:selectItem itemLabel="Négatif" itemValue="Négatif"/>
+                                    <f:selectItem itemLabel="Douloureux" itemValue="Douloureux"/>
+
+                                </p:selectOneMenu>
+                                <p:outputLabel value="#{resourcesBundle.CreateDonneesObjectivesLabel_examenAbdomen}" for="examenAbdomen" />
+                                <p:selectOneMenu id="examenAbdomen" value="#{donneesObjectivesController.selected.examenAbdomen}" 
+                                                 title="#{resourcesBundle.CreateDonneesObjectivesTitle_examenAbdomen}" >
+
+                                    <f:selectItem itemLabel=""/>                            
+                                    <f:selectItem itemLabel="Normal" itemValue="Normal"/>                            
+                                    <f:selectItem itemLabel="Anormal" itemValue="Anormal"/>
+                                    <f:selectItem itemLabel="Présent" itemValue="Présent"/>
+                                    <f:selectItem itemLabel="Négatif" itemValue="Négatif"/>
+                                    <f:selectItem itemLabel="Douloureux" itemValue="Douloureux"/>
+
+                                </p:selectOneMenu>
+                                <p:outputLabel value="#{resourcesBundle.CreateDonneesObjectivesLabel_examengyneco}" for="examengyneco" />
+                                <p:selectOneMenu id="examengyneco" value="#{donneesObjectivesController.selected.examengyneco}" 
+                                                 title="#{resourcesBundle.CreateDonneesObjectivesTitle_examengyneco}" >
+
+                                    <f:selectItem itemLabel=""/>                            
+                                    <f:selectItem itemLabel="Normal" itemValue="Normal"/>                            
+                                    <f:selectItem itemLabel="Anormal" itemValue="Anormal"/>
+                                    <f:selectItem itemLabel="Présent" itemValue="Présent"/>
+                                    <f:selectItem itemLabel="Négatif" itemValue="Négatif"/>
+                                    <f:selectItem itemLabel="Douloureux" itemValue="Douloureux"/>
+
+                                </p:selectOneMenu>
+                                <p:outputLabel value="#{resourcesBundle.CreateDonneesObjectivesLabel_gainanormalePoids}" for="gainanormalePoids" />
+                                <p:selectOneMenu id="gainanormalePoids" value="#{donneesObjectivesController.selected.gainanormalePoids}" 
+                                                 title="#{resourcesBundle.CreateDonneesObjectivesTitle_gainanormalePoids}" >
+
+                                    <f:selectItem itemLabel=""/>                            
+                                    <f:selectItem itemLabel="Normal" itemValue="Normal"/>                            
+                                    <f:selectItem itemLabel="Anormal" itemValue="Anormal"/>
+                                    <f:selectItem itemLabel="Présent" itemValue="Présent"/>
+                                    <f:selectItem itemLabel="Négatif" itemValue="Négatif"/>
+                                    <f:selectItem itemLabel="Douloureux" itemValue="Douloureux"/>
+
+                                </p:selectOneMenu>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateDonneesObjectivesLabel_signeAnemie}" for="signeAnemie" />
+                                <p:selectOneMenu id="signeAnemie" value="#{donneesObjectivesController.selected.signeAnemie}" 
+                                                 title="#{resourcesBundle.CreateDonneesObjectivesTitle_signeAnemie}" 
+                                                 >
+
+                                    <f:selectItem itemLabel=""/>                            
+                                    <f:selectItem itemLabel="Normal" itemValue="Normal"/>                            
+                                    <f:selectItem itemLabel="Anormal" itemValue="Anormal"/>
+                                    <f:selectItem itemLabel="Présent" itemValue="Présent"/>
+                                    <f:selectItem itemLabel="Négatif" itemValue="Négatif"/>
+                                    <f:selectItem itemLabel="Douloureux" itemValue="Douloureux"/>
+
+                                </p:selectOneMenu>
+                            </p:panelGrid>
+                        </p:tab>
+                        <p:tab id="DonneesObjectivesTab2" title="#{resourcesBundle.TabHeaderPrefix} 2">
+                            <p:panelGrid columns="4" columnClasses="column,#{null},column">
+                                <p:outputLabel value="#{resourcesBundle.CreateDonneesObjectivesLabel_autressignesAnormaux}" for="autressignesAnormaux" />
+                                <p:selectOneMenu id="autressignesAnormaux" value="#{donneesObjectivesController.selected.autressignesAnormaux}" 
+                                                 title="#{resourcesBundle.CreateDonneesObjectivesTitle_autressignesAnormaux}">
+
+                                    <f:selectItem itemLabel=""/>                            
+                                    <f:selectItem itemLabel="Normal" itemValue="Normal"/>                            
+                                    <f:selectItem itemLabel="Anormal" itemValue="Anormal"/>
+                                    <f:selectItem itemLabel="Présent" itemValue="Présent"/>
+                                    <f:selectItem itemLabel="Négatif" itemValue="Négatif"/>
+                                    <f:selectItem itemLabel="Douloureux" itemValue="Douloureux"/>
+
+                                </p:selectOneMenu>
+                                <p:outputLabel value="#{resourcesBundle.CreateDonneesObjectivesLabel_methode}" for="methode" />
+                                <p:selectOneMenu id="methode" value="#{donneesObjectivesController.selected.methode}" title="#{resourcesBundle.CreateDonneesObjectivesTitle_methode}" >
+                                    <f:selectItem itemLabel=""/>                            
+                                    <f:selectItem itemLabel="LTB" itemValue="LTB"/>                            
+                                    <f:selectItem itemLabel="IMPLANTS" itemValue="IMPLANTS"/>  
+                                    <f:selectItem itemLabel="COC" itemValue="COC"/>
+                                    <f:selectItem itemLabel="COP" itemValue="COP"/>
+                                    <f:selectItem itemLabel="Collier du cycle" itemValue="Collier du cycle"/>
+                                    <f:selectItem itemLabel="DMPA" itemValue="DMPA"/>
+                                    <f:selectItem itemLabel="Noristerat" itemValue="Noristerat"/>
+                                    <f:selectItem itemLabel="Méthode Naturelle" itemValue="Méthode Naturelle"/>
+                                    <f:selectItem itemLabel="DIU Stérilet" itemValue="DIU Stérilet"/>
+                                    <f:selectItem itemLabel="Fémidon" itemValue="Fémidon"/>
+                                    <f:selectItem itemLabel="Préservatif" itemValue="Préservatif"/>
+                                    <f:selectItem itemLabel="Vasectomie" itemValue="Vasectomie"/>
+                                    <f:selectItem itemLabel="mama" itemValue="mama"/>
+                                    <f:selectItem itemLabel="autre" itemValue="autre"/>
+                                </p:selectOneMenu>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateDonneesObjectivesLabel_quantite}" for="quantite" />
+                                <p:inputText id="quantite" value="#{donneesObjectivesController.selected.quantite}" title="#{resourcesBundle.CreateDonneesObjectivesTitle_quantite}"/>
+
+                                <p:outputLabel value="#{resourcesBundle.CreateDonneesObjectivesLabel_dateProchaineVisite}" for="dateProchaineVisite" />
+                                <p:calendar id="dateProchaineVisite" pattern="MM/dd/yyyy" value="#{donneesObjectivesController.selected.dateProchaineVisite}" title="#{resourcesBundle.CreateDonneesObjectivesTitle_dateProchaineVisite}"  showOn="button"/>
+                                <ui:remove>
+                                    <p:outputLabel value="#{resourcesBundle.CreateDonneesObjectivesLabel_utilisateur}" for="utilisateur" />
+                                    <p:selectOneMenu id="utilisateur" value="#{donneesObjectivesController.selected.utilisateur}" required="true" requiredMessage="#{resourcesBundle.CreateDonneesObjectivesRequiredMessage_utilisateur}" converter="usersConverter">
+                                        <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                        <f:selectItems value="#{usersController.items}"
+                                                       var="utilisateurItem"
+                                                       itemValue="#{utilisateurItem}"
+                                                       itemLabel="#{utilisateurItem.uname.toString()}" />
+                                    </p:selectOneMenu>
+                                </ui:remove>
+
+                            </p:panelGrid>
+                        </p:tab>
+                    </p:tabView>
+                    <p:commandButton actionListener="#{donneesObjectivesController.save}" value="#{resourcesBundle.Save}" update="display,:DonneesObjectivesListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('DonneesObjectivesEditDialog'));">
+                        <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{resourcesBundle.Cancel}" oncomplete="PF('DonneesObjectivesEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

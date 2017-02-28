@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="AutresProblemesEditDlg" widgetVar="AutresProblemesEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{resourcesBundle.EditAutresProblemesTitle}" closeOnEscape="true">
+
+            <h:form id="AutresProblemesEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{autresProblemesController.selected != null}">
+
+
+                        <p:outputLabel value="#{resourcesBundle.EditAutresProblemesLabel_numDossier}" for="numDossier" />
+                        <p:selectOneMenu id="numDossier" value="#{autresProblemesController.selected.numDossier}"  converter="infosFemmeConverter">
+                            <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{infosFemmeController.items}"
+                                           var="numDossierItem"
+                                           itemValue="#{numDossierItem}"
+                                           itemLabel="#{numDossierItem.toString()}"/>
+                        </p:selectOneMenu>
+
+                        <h:outputLabel value="#{resourcesBundle.EditAutresProblemesLabel_idAutreProbl}" for="idAutreProbl" />
+                        <h:outputText id="idAutreProbl" value="#{autresProblemesController.selected.idAutreProbl}" />
+
+                        <p:outputLabel value="#{resourcesBundle.CreateAutresProblemesLabel_probleme}" for="probleme" />
+                        <p:inputTextarea id="probleme" value="#{autresProblemesController.selected.probleme}" title="#{resourcesBundle.CreateAutresProblemesTitle_probleme}" cols="25" rows="4"/>
+
+                        <p:outputLabel value="#{resourcesBundle.CreateAutresProblemesLabel_observationTraitement}" for="observationTraitement" />
+                        <p:inputTextarea id="observationTraitement" value="#{autresProblemesController.selected.observationTraitement}" title="#{resourcesBundle.CreateAutresProblemesTitle_observationTraitement}" cols="30" rows="5"/>
+
+
+                        <ui:remove>
+                            <p:outputLabel value="#{resourcesBundle.EditAutresProblemesLabel_utilisateur}" for="utilisateur" />
+                            <p:selectOneMenu id="utilisateur" value="#{autresProblemesController.selected.utilisateur}" required="true" requiredMessage="#{resourcesBundle.EditAutresProblemesRequiredMessage_utilisateur}" converter="usersConverter">
+                                <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{usersController.items}"
+                                               var="utilisateurItem"
+                                               itemValue="#{utilisateurItem}"
+                                               itemLabel="#{utilisateurItem.uname.toString()}"/>
+                            </p:selectOneMenu>
+                        </ui:remove>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{autresProblemesController.save}" value="#{resourcesBundle.Save}" update="display,:AutresProblemesListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('AutresProblemesEditDialog'));">
+                        <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{resourcesBundle.Cancel}" oncomplete="PF('AutresProblemesEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

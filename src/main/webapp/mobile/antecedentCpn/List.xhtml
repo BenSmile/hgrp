@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="AntecedentCpnListPage">
+        <pm:header title="#{resourcesBundle.ListAntecedentCpnTitle}">
+            <h:form>
+                <p:commandButton id="backButton"   styleClass="ui-btn-left  ui-btn-inline" icon="ui-icon-arrow-l" value="#{myBundle.Back}" action="#{mobilePageController.navigateBackInHistory('/mobile/index')}"/>
+                <p:commandButton id="createButton" styleClass="ui-btn-right ui-btn-inline" icon="ui-icon-plus"    value="#{resourcesBundle.Create}" update=":AntecedentCpnCreatePage:AntecedentCpnCreateForm" actionListener="#{antecedentCpnController.prepareCreate}" action="#{mobilePageController.navigateWithHistory('pm:AntecedentCpnCreatePage')}">
+                    <f:actionListener binding="#{currentPageListener}"/>
+                </p:commandButton>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="AntecedentCpnListForm">
+
+                <p:dataTable id="datalist"
+                             value="#{antecedentCpnController.items}"
+                             var="item"
+                             rowKey="#{item.idAntecObstr}"
+                             paginator="true"
+                             rows="10"
+                             rowsPerPageTemplate="10,20,30,40,50"
+                             selectionMode="single"
+                             selection="#{antecedentCpnController.selected}"
+                             reflow="true">
+
+                    <p:ajax event="rowSelect"   update="@form:editButton,@form:deleteButton,@form:navigationMenuButton,@form:navigationMenuPanel" listener="#{antecedentCpnController.resetParents}"/>
+                    <p:ajax event="rowUnselect" update="@form:editButton,@form:deleteButton,@form:navigationMenuButton,@form:navigationMenuPanel" listener="#{antecedentCpnController.resetParents}"/>
+                    <p:ajax event="swipeleft"   oncomplete="document.getElementById('AntecedentCpnListPage:AntecedentCpnListForm:deleteButton').click();"/>
+                    <p:ajax event="tap"         oncomplete="document.getElementById('AntecedentCpnListPage:AntecedentCpnListForm:editButton').click();"/>
+                    <p:ajax event="taphold"     oncomplete="document.getElementById('AntecedentCpnListPage:AntecedentCpnListForm:navigationMenuButton').click();"/>
+
+                    <p:column sortBy="#{item.idAntecObstr}" filterBy="#{item.idAntecObstr}" headerText="#{resourcesBundle.ListAntecedentCpnTitle_idAntecObstr}">
+                        <h:outputText value="#{item.idAntecObstr}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.ddr}" filterBy="#{item.ddr}" headerText="#{resourcesBundle.ListAntecedentCpnTitle_ddr}">
+                        <h:outputText value="#{item.ddr}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.dpa}" filterBy="#{item.dpa}" headerText="#{resourcesBundle.ListAntecedentCpnTitle_dpa}">
+                        <h:outputText value="#{item.dpa}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.grossesse}" filterBy="#{item.grossesse}" headerText="#{resourcesBundle.ListAntecedentCpnTitle_grossesse}">
+                        <h:outputText value="#{item.grossesse}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.enfantsvie}" filterBy="#{item.enfantsvie}" headerText="#{resourcesBundle.ListAntecedentCpnTitle_enfantsvie}">
+                        <h:outputText value="#{item.enfantsvie}"/>
+                    </p:column>
+
+
+                    <p:column sortBy="#{item.avortement1erTrim}" filterBy="#{item.avortement1erTrim}" headerText="#{resourcesBundle.ListAntecedentCpnTitle_avortement1erTrim}">
+                        <h:outputText value="#{item.avortement1erTrim}"/>
+                    </p:column>
+
+                    <!--
+                                        <p:column sortBy="#{item.primipare15ansOuMoin}" filterBy="#{item.primipare15ansOuMoin}" headerText="#{resourcesBundle.ListAntecedentCpnTitle_primipare15ansOuMoin}">
+                                            <h:outputText value="#{item.primipare15ansOuMoin}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.primipare30ansOuPlus}" filterBy="#{item.primipare30ansOuPlus}" headerText="#{resourcesBundle.ListAntecedentCpnTitle_primipare30ansOuPlus}">
+                                            <h:outputText value="#{item.primipare30ansOuPlus}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.dernieraccouchementdatede}" filterBy="#{item.dernieraccouchementdatede}" headerText="#{resourcesBundle.ListAntecedentCpnTitle_dernieraccouchementdatede}">
+                                            <h:outputText value="#{item.dernieraccouchementdatede}">
+                                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                                            </h:outputText>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.type}" filterBy="#{item.type}" headerText="#{resourcesBundle.ListAntecedentCpnTitle_type}">
+                                            <h:outputText value="#{item.type}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.intInf2ans}" filterBy="#{item.intInf2ans}" headerText="#{resourcesBundle.ListAntecedentCpnTitle_intInf2ans}">
+                                            <h:outputText value="#{item.intInf2ans}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.plusgrospoidsnaiss}" filterBy="#{item.plusgrospoidsnaiss}" headerText="#{resourcesBundle.ListAntecedentCpnTitle_plusgrospoidsnaiss}">
+                                            <h:outputText value="#{item.plusgrospoidsnaiss}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.plusde4kg}" filterBy="#{item.plusde4kg}" headerText="#{resourcesBundle.ListAntecedentCpnTitle_plusde4kg}">
+                                            <h:outputText value="#{item.plusde4kg}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.dernierEnfant}" filterBy="#{item.dernierEnfant}" headerText="#{resourcesBundle.ListAntecedentCpnTitle_dernierEnfant}">
+                                            <h:outputText value="#{item.dernierEnfant}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.complicationtraitement}" filterBy="#{item.complicationtraitement}" headerText="#{resourcesBundle.ListAntecedentCpnTitle_complicationtraitement}">
+                                            <h:outputText value="#{item.complicationtraitement}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.complicationpostPartum}" filterBy="#{item.complicationpostPartum}" headerText="#{resourcesBundle.ListAntecedentCpnTitle_complicationpostPartum}">
+                                            <h:outputText value="#{item.complicationpostPartum}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.traitementpoursterilite}" filterBy="#{item.traitementpoursterilite}" headerText="#{resourcesBundle.ListAntecedentCpnTitle_traitementpoursterilite}">
+                                            <h:outputText value="#{item.traitementpoursterilite}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.parite}" filterBy="#{item.parite}" headerText="#{resourcesBundle.ListAntecedentCpnTitle_parite}">
+                                            <h:outputText value="#{item.parite}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.avortement}" filterBy="#{item.avortement}" headerText="#{resourcesBundle.ListAntecedentCpnTitle_avortement}">
+                                            <h:outputText value="#{item.avortement}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.deces}" filterBy="#{item.deces}" headerText="#{resourcesBundle.ListAntecedentCpnTitle_deces}">
+                                            <h:outputText value="#{item.deces}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.vbg}" filterBy="#{item.vbg}" headerText="#{resourcesBundle.ListAntecedentCpnTitle_vbg}">
+                                            <h:outputText value="#{item.vbg}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.antecedentChirurgicauxCPN}" filterBy="#{item.antecedentChirurgicauxCPN}" headerText="#{resourcesBundle.ListAntecedentCpnTitle_antecedentChirurgicauxCPN}">
+                                            <h:outputText value="#{item.antecedentChirurgicauxCPN}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.antecedentMedicauxCPN}" filterBy="#{item.antecedentMedicauxCPN}" headerText="#{resourcesBundle.ListAntecedentCpnTitle_antecedentMedicauxCPN}">
+                                            <h:outputText value="#{item.antecedentMedicauxCPN}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.grossesseissuduviol}" filterBy="#{item.grossesseissuduviol}" headerText="#{resourcesBundle.ListAntecedentCpnTitle_grossesseissuduviol}">
+                                            <h:outputText value="#{item.grossesseissuduviol}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.numDossier.numDossier}" filterBy="#{item.numDossier.numDossier}" headerText="#{resourcesBundle.ListAntecedentCpnTitle_numDossier}">
+                                            <h:outputText value="#{item.numDossier.numDossier}"/>
+                                        </p:column>
+                    -->
+                    <!--
+                                        <p:column sortBy="#{item.utilisateur.uname}" filterBy="#{item.utilisateur.uname}" headerText="#{resourcesBundle.ListAntecedentCpnTitle_utilisateur}">
+                                            <h:outputText value="#{item.utilisateur.uname}"/>
+                                        </p:column>
+                    -->
+                </p:dataTable>
+                <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{resourcesBundle.Edit}" update=":AntecedentCpnEditPage:AntecedentCpnEditForm" disabled="#{empty antecedentCpnController.selected}" actionListener="#{mobilePageController.currentPageListener}" action="#{mobilePageController.navigateWithHistory('pm:AntecedentCpnEditPage')}"/>
+                <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{resourcesBundle.Delete}" actionListener="#{antecedentCpnController.delete}" update=":growl,datalist" disabled="#{empty antecedentCpnController.selected}">
+                    <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+                </p:commandButton>
+                <p:commandButton id="navigationMenuButton" style="visibility: hidden;" value="#{resourcesBundle.Menu}" disabled="#{empty antecedentCpnController.selected}"/>
+
+                <p:overlayPanel id="navigationMenuPanel" for="navigationMenuButton" at="right" showEffect="overlay">
+                    <h2>#{resourcesBundle.AntecedentCpnHeading} #{resourcesBundle.Menu}</h2>
+                    <p:menu>
+                        <p:menuitem value="#{resourcesBundle.AntecedentCpnMenuItem_numDossier}" icon="ui-icon-search" update=":InfosFemmeEditPage:InfosFemmeEditForm" disabled="#{empty antecedentCpnController.selected.numDossier}" actionListener="#{antecedentCpnController.prepareNumDossier}" action="#{mobilePageController.navigateWithHistory}">  
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="pm:InfosFemmeEditPage"/>
+                        </p:menuitem>
+                        <p:menuitem value="#{resourcesBundle.AntecedentCpnMenuItem_utilisateur}" icon="ui-icon-search" update=":UsersEditPage:UsersEditForm" disabled="#{empty antecedentCpnController.selected.utilisateur}" actionListener="#{antecedentCpnController.prepareUtilisateur}" action="#{mobilePageController.navigateWithHistory}">  
+                            <f:actionListener binding="#{currentPageActionListener}"/>
+                            <f:setPropertyActionListener target="#{mobilePageController.nextPage}" value="pm:UsersEditPage"/>
+                        </p:menuitem>
+                    </p:menu>
+                </p:overlayPanel>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

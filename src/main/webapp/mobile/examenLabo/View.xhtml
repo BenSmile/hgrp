@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="ExamenLaboViewPage" lazy="true">
+        <pm:header title="#{resourcesBundle.ViewExamenLaboTitle}">
+            <h:form>
+                <p:commandButton styleClass="ui-btn-left ui-btn-inline" value="#{resourcesBundle.Cancel}" icon="ui-icon-arrow-l" action="#{mobilePageController.navigateBackInHistory('pm:ExamenLaboListPage')}"/>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="ExamenLaboViewForm">
+
+                <h:panelGroup id="display">
+                    <p:outputPanel rendered="#{examenLaboController.selected != null}">
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewExamenLaboLabel_idExamenLabo}"/>
+                            <h:outputText value="#{examenLaboController.selected.idExamenLabo}" title="#{resourcesBundle.ViewExamenLaboTitle_idExamenLabo}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewExamenLaboLabel_dateExamenLabo}"/>
+                            <h:outputText value="#{examenLaboController.selected.dateExamenLabo}" title="#{resourcesBundle.ViewExamenLaboTitle_dateExamenLabo}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewExamenLaboLabel_nomtechnicien}"/>
+                            <h:outputText value="#{examenLaboController.selected.nomtechnicien}" title="#{resourcesBundle.ViewExamenLaboTitle_nomtechnicien}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewExamenLaboLabel_nomMedecin}"/>
+                            <h:outputText value="#{examenLaboController.selected.nomMedecin}" title="#{resourcesBundle.ViewExamenLaboTitle_nomMedecin}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewExamenLaboLabel_hemoglobine}"/>
+                            <h:outputText value="#{examenLaboController.selected.hemoglobine}" title="#{resourcesBundle.ViewExamenLaboTitle_hemoglobine}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewExamenLaboLabel_groupeSanguin}"/>
+                            <h:outputText value="#{examenLaboController.selected.groupeSanguin}" title="#{resourcesBundle.ViewExamenLaboTitle_groupeSanguin}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewExamenLaboLabel_goutteEpaisse}"/>
+                            <h:outputText value="#{examenLaboController.selected.goutteEpaisse}" title="#{resourcesBundle.ViewExamenLaboTitle_goutteEpaisse}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewExamenLaboLabel_sellesdirectes}"/>
+                            <h:outputText value="#{examenLaboController.selected.sellesdirectes}" title="#{resourcesBundle.ViewExamenLaboTitle_sellesdirectes}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewExamenLaboLabel_rubeole}"/>
+                            <h:outputText value="#{examenLaboController.selected.rubeole}" title="#{resourcesBundle.ViewExamenLaboTitle_rubeole}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewExamenLaboLabel_vdrl}"/>
+                            <h:outputText value="#{examenLaboController.selected.vdrl}" title="#{resourcesBundle.ViewExamenLaboTitle_vdrl}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewExamenLaboLabel_toxoplasmose}"/>
+                            <h:outputText value="#{examenLaboController.selected.toxoplasmose}" title="#{resourcesBundle.ViewExamenLaboTitle_toxoplasmose}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewExamenLaboLabel_utilisateur}"/>
+                            <h:outputText value="#{examenLaboController.selected.utilisateur.uname}"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <h:outputText value="#{resourcesBundle.ViewExamenLaboLabel_numDossier}"/>
+                            <h:outputText value="#{examenLaboController.selected.numDossier.numDossier}"/>
+                        </pm:field>
+                    </p:outputPanel>
+                </h:panelGroup>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

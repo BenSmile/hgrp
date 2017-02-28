@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="SuiviMaterniteEditDlg" widgetVar="SuiviMaterniteEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{resourcesBundle.EditSuiviMaterniteTitle}" closeOnEscape="true">
+
+            <h:form id="SuiviMaterniteEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{suiviMaterniteController.selected != null}">
+
+
+                        <h:outputLabel value="#{resourcesBundle.EditSuiviMaterniteLabel_idSuiv}" for="idSuiv" />
+                        <h:outputText id="idSuiv" value="#{suiviMaterniteController.selected.idSuiv}" />
+
+                        <p:outputLabel value="#{resourcesBundle.EditSuiviMaterniteLabel_examenPhysique}" for="examenPhysique" />
+                        <p:inputText id="examenPhysique" value="#{suiviMaterniteController.selected.examenPhysique}" title="#{resourcesBundle.EditSuiviMaterniteTitle_examenPhysique}" size="50" maxlength="50"/>
+
+                        <p:outputLabel value="#{resourcesBundle.EditSuiviMaterniteLabel_examenParacliniques}" for="examenParacliniques" />
+                        <p:inputText id="examenParacliniques" value="#{suiviMaterniteController.selected.examenParacliniques}" title="#{resourcesBundle.EditSuiviMaterniteTitle_examenParacliniques}" size="50" maxlength="50"/>
+
+                        <p:outputLabel value="#{resourcesBundle.EditSuiviMaterniteLabel_autreObservation}" for="autreObservation" />
+                        <p:inputText id="autreObservation" value="#{suiviMaterniteController.selected.autreObservation}" title="#{resourcesBundle.EditSuiviMaterniteTitle_autreObservation}" size="100" maxlength="100"/>
+
+                        <p:outputLabel value="#{resourcesBundle.EditSuiviMaterniteLabel_conclusion}" for="conclusion" />
+                        <p:inputText id="conclusion" value="#{suiviMaterniteController.selected.conclusion}" title="#{resourcesBundle.EditSuiviMaterniteTitle_conclusion}" size="75" maxlength="75"/>
+
+                        <p:outputLabel value="#{resourcesBundle.EditSuiviMaterniteLabel_decision}" for="decision" />
+                        <p:inputText id="decision" value="#{suiviMaterniteController.selected.decision}" title="#{resourcesBundle.EditSuiviMaterniteTitle_decision}" size="50" maxlength="50"/>
+
+                        <p:outputLabel value="#{resourcesBundle.EditSuiviMaterniteLabel_numDossierCPN}" for="numDossierCPN" />
+                        <p:inputText id="numDossierCPN" value="#{suiviMaterniteController.selected.numDossierCPN}" title="#{resourcesBundle.EditSuiviMaterniteTitle_numDossierCPN}" size="15" maxlength="15"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{suiviMaterniteController.save}" value="#{resourcesBundle.Save}" update="display,:SuiviMaterniteListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('SuiviMaterniteEditDialog'));">
+                        <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{resourcesBundle.Cancel}" oncomplete="PF('SuiviMaterniteEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

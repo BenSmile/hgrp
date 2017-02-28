@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="AntecedentPlEditPage" lazy="true">
+        <pm:header title="#{resourcesBundle.EditAntecedentPlTitle}">
+            <h:form>
+                <p:commandButton styleClass="ui-btn-left ui-btn-inline" value="#{resourcesBundle.Cancel}" icon="ui-icon-arrow-l" action="#{mobilePageController.navigateBackInHistory('pm:AntecedentPlListPage')}"/>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="AntecedentPlEditForm">
+
+                <h:panelGroup id="display">
+                    <p:outputPanel rendered="#{antecedentPlController.selected != null}">
+
+                        <pm:field>
+                            <h:outputLabel value="#{resourcesBundle.EditAntecedentPlLabel_idAntecedentPL}" for="idAntecedentPL" />
+                            <h:outputText id="idAntecedentPL" value="#{antecedentPlController.selected.idAntecedentPL}" />
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditAntecedentPlLabel_antecedentsMedicauxPL}" for="antecedentsMedicauxPL" />
+                            <p:inputText id="antecedentsMedicauxPL" value="#{antecedentPlController.selected.antecedentsMedicauxPL}" title="#{resourcesBundle.EditAntecedentPlTitle_antecedentsMedicauxPL}" size="154" maxlength="154"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditAntecedentPlLabel_antecedentsObstétricauxPL}" for="antecedentsObstétricauxPL" />
+                            <p:inputText id="antecedentsObstétricauxPL" value="#{antecedentPlController.selected.antecedentsObstétricauxPL}" title="#{resourcesBundle.EditAntecedentPlTitle_antecedentsObstétricauxPL}" size="147" maxlength="147"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditAntecedentPlLabel_numDossier}" for="numDossier" />
+                            <p:selectOneMenu id="numDossier" value="#{antecedentPlController.selected.numDossier}" required="true" requiredMessage="#{resourcesBundle.EditAntecedentPlRequiredMessage_numDossier}" converter="infosFemmeConverter">
+                                <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{infosFemmeController.items}"
+                                               var="numDossierItem"
+                                               itemValue="#{numDossierItem}"
+                                               itemLabel="#{numDossierItem.numDossier.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.EditAntecedentPlLabel_utilisateur}" for="utilisateur" />
+                            <p:selectOneMenu id="utilisateur" value="#{antecedentPlController.selected.utilisateur}" required="true" requiredMessage="#{resourcesBundle.EditAntecedentPlRequiredMessage_utilisateur}" converter="usersConverter">
+                                <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{usersController.items}"
+                                               var="utilisateurItem"
+                                               itemValue="#{utilisateurItem}"
+                                               itemLabel="#{utilisateurItem.uname.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                        </pm:field>
+                    </p:outputPanel>
+                    <p:commandButton actionListener="#{antecedentPlController.save}" value="#{resourcesBundle.Save}" update="#{mobilePageController.updatableWidgets(component,'display,:AntecedentPlListPage:AntecedentPlListForm:datalist,:growl')}" action="#{mobilePageController.navigateWithHistory('pm:AntecedentPlListPage')}">
+                        <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                </h:panelGroup>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

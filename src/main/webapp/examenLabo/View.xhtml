@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ExamenLaboViewDlg" widgetVar="ExamenLaboViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{resourcesBundle.ViewExamenLaboTitle}" closeOnEscape="true">
+
+            <h:form id="ExamenLaboViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{examenLaboController.selected != null}">
+
+                        <h:outputText value="#{resourcesBundle.ViewExamenLaboLabel_idExamenLabo}"/>
+                        <h:outputText value="#{examenLaboController.selected.idExamenLabo}" title="#{resourcesBundle.ViewExamenLaboTitle_idExamenLabo}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewExamenLaboLabel_dateExamenLabo}"/>
+                        <h:outputText value="#{examenLaboController.selected.dateExamenLabo}" title="#{resourcesBundle.ViewExamenLaboTitle_dateExamenLabo}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{resourcesBundle.ViewExamenLaboLabel_nomtechnicien}"/>
+                        <h:outputText value="#{examenLaboController.selected.nomtechnicien}" title="#{resourcesBundle.ViewExamenLaboTitle_nomtechnicien}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewExamenLaboLabel_nomMedecin}"/>
+                        <h:outputText value="#{examenLaboController.selected.nomMedecin}" title="#{resourcesBundle.ViewExamenLaboTitle_nomMedecin}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewExamenLaboLabel_hemoglobine}"/>
+                        <h:outputText value="#{examenLaboController.selected.hemoglobine}" title="#{resourcesBundle.ViewExamenLaboTitle_hemoglobine}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewExamenLaboLabel_groupeSanguin}"/>
+                        <h:outputText value="#{examenLaboController.selected.groupeSanguin}" title="#{resourcesBundle.ViewExamenLaboTitle_groupeSanguin}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewExamenLaboLabel_goutteEpaisse}"/>
+                        <h:outputText value="#{examenLaboController.selected.goutteEpaisse}" title="#{resourcesBundle.ViewExamenLaboTitle_goutteEpaisse}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewExamenLaboLabel_sellesdirectes}"/>
+                        <h:outputText value="#{examenLaboController.selected.sellesdirectes}" title="#{resourcesBundle.ViewExamenLaboTitle_sellesdirectes}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewExamenLaboLabel_rubeole}"/>
+                        <h:outputText value="#{examenLaboController.selected.rubeole}" title="#{resourcesBundle.ViewExamenLaboTitle_rubeole}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewExamenLaboLabel_vdrl}"/>
+                        <h:outputText value="#{examenLaboController.selected.vdrl}" title="#{resourcesBundle.ViewExamenLaboTitle_vdrl}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewExamenLaboLabel_toxoplasmose}"/>
+                        <h:outputText value="#{examenLaboController.selected.toxoplasmose}" title="#{resourcesBundle.ViewExamenLaboTitle_toxoplasmose}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewExamenLaboLabel_utilisateur}"/>
+                        <h:outputText value="#{examenLaboController.selected.utilisateur.uname}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewExamenLaboLabel_numDossier}"/>
+                        <h:outputText value="#{examenLaboController.selected.numDossier.numDossier}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{resourcesBundle.Close}" onclick="PF('ExamenLaboViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

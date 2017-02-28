@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="HospitalisationEditDlg" widgetVar="HospitalisationEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{resourcesBundle.EditHospitalisationTitle}" closeOnEscape="true">
+
+            <h:form id="HospitalisationEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{hospitalisationController.selected != null}">
+                        <p:outputLabel value="#{resourcesBundle.EditHospitalisationLabel_numDossier}" for="numDossier" />
+                        <p:selectOneMenu id="numDossier" value="#{hospitalisationController.selected.numDossier}" required="true" requiredMessage="#{resourcesBundle.EditHospitalisationRequiredMessage_numDossier}" converter="infosFemmeConverter">
+                            <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{infosFemmeController.items}"
+                                           var="numDossierItem"
+                                           itemValue="#{numDossierItem}"
+                                           itemLabel="#{numDossierItem.numDossier.toString()}"/>
+                        </p:selectOneMenu>
+
+                        <h:outputLabel value="#{resourcesBundle.EditHospitalisationLabel_idHosp}" for="idHosp" />
+                        <h:outputText id="idHosp" value="#{hospitalisationController.selected.idHosp}" />
+
+                        <p:outputLabel value="#{resourcesBundle.EditHospitalisationLabel_dateHospitalisation}" for="dateHospitalisation" />
+                        <p:calendar id="dateHospitalisation" pattern="MM/dd/yyyy" value="#{hospitalisationController.selected.dateHospitalisation}" title="#{resourcesBundle.EditHospitalisationTitle_dateHospitalisation}"  showOn="button"/>
+
+                        <p:outputLabel value="#{resourcesBundle.EditHospitalisationLabel_hospitalisation}" for="hospitalisation" />
+                        <p:inputText id="hospitalisation" value="#{hospitalisationController.selected.hospitalisation}" title="#{resourcesBundle.EditHospitalisationTitle_hospitalisation}" size="44" maxlength="44"/>
+
+                        <p:outputLabel value="#{resourcesBundle.EditHospitalisationLabel_pourTraitementSpecifique}" for="pourTraitementSpecifique" />
+                        <p:inputText id="pourTraitementSpecifique" value="#{hospitalisationController.selected.pourTraitementSpecifique}" title="#{resourcesBundle.EditHospitalisationTitle_pourTraitementSpecifique}" size="50" maxlength="50"/>
+                        <ui:remove>
+                        <p:outputLabel value="#{resourcesBundle.EditHospitalisationLabel_utilisateur}" for="utilisateur" />
+                        <p:selectOneMenu id="utilisateur" value="#{hospitalisationController.selected.utilisateur}" required="true" requiredMessage="#{resourcesBundle.EditHospitalisationRequiredMessage_utilisateur}" converter="usersConverter">
+                            <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{usersController.items}"
+                                           var="utilisateurItem"
+                                           itemValue="#{utilisateurItem}"
+                                           itemLabel="#{utilisateurItem.uname.toString()}"/>
+                        </p:selectOneMenu>
+                        </ui:remove>
+
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{hospitalisationController.save}" value="#{resourcesBundle.Save}" update="display,:HospitalisationListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,PF('HospitalisationEditDialog'));">
+                        <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{resourcesBundle.Cancel}" oncomplete="PF('HospitalisationEditDialog').hide()" update="display" process="@this" immediate="true" resetValues="true"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="DonneesObjectivesViewDlg" widgetVar="DonneesObjectivesViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{resourcesBundle.ViewDonneesObjectivesTitle}" closeOnEscape="true">
+
+            <h:form id="DonneesObjectivesViewForm">
+
+                <h:panelGroup id="display">
+                    <p:tabView id="DonneesObjectivesTabView">
+
+                        <p:tab id="DonneesObjectivesTab1" title="#{resourcesBundle.TabHeaderPrefix} 1">
+                            <p:panelGrid columns="4" columnClasses="column" rendered="#{donneesObjectivesController.selected != null}">
+                                <h:outputText value="#{resourcesBundle.ViewDonneesObjectivesLabel_idDonnObject}"/>
+                                <h:outputText value="#{donneesObjectivesController.selected.idDonnObject}" title="#{resourcesBundle.ViewDonneesObjectivesTitle_idDonnObject}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewDonneesObjectivesLabel_dateRDVPL}"/>
+                                <h:outputText value="#{donneesObjectivesController.selected.dateRDVPL}" title="#{resourcesBundle.ViewDonneesObjectivesTitle_dateRDVPL}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+
+                                <h:outputText value="#{resourcesBundle.ViewDonneesObjectivesLabel_poids}"/>
+                                <h:outputText value="#{donneesObjectivesController.selected.poids}" title="#{resourcesBundle.ViewDonneesObjectivesTitle_poids}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewDonneesObjectivesLabel_ta}"/>
+                                <h:outputText value="#{donneesObjectivesController.selected.ta}" title="#{resourcesBundle.ViewDonneesObjectivesTitle_ta}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewDonneesObjectivesLabel_signeinfectiongyneco}"/>
+                                <h:outputText value="#{donneesObjectivesController.selected.signeinfectiongyneco}" title="#{resourcesBundle.ViewDonneesObjectivesTitle_signeinfectiongyneco}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewDonneesObjectivesLabel_ist}"/>
+                                <h:outputText value="#{donneesObjectivesController.selected.ist}" title="#{resourcesBundle.ViewDonneesObjectivesTitle_ist}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewDonneesObjectivesLabel_amenorhee6emSEm}"/>
+                                <h:outputText value="#{donneesObjectivesController.selected.amenorhee6emSEm}" title="#{resourcesBundle.ViewDonneesObjectivesTitle_amenorhee6emSEm}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewDonneesObjectivesLabel_signeGrossesse}"/>
+                                <h:outputText value="#{donneesObjectivesController.selected.signeGrossesse}" title="#{resourcesBundle.ViewDonneesObjectivesTitle_signeGrossesse}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewDonneesObjectivesLabel_visiontroublee}"/>
+                                <h:outputText value="#{donneesObjectivesController.selected.visiontroublee}" title="#{resourcesBundle.ViewDonneesObjectivesTitle_visiontroublee}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewDonneesObjectivesLabel_cephaleesintenses}"/>
+                                <h:outputText value="#{donneesObjectivesController.selected.cephaleesintenses}" title="#{resourcesBundle.ViewDonneesObjectivesTitle_cephaleesintenses}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewDonneesObjectivesLabel_masseSuspecte}"/>
+                                <h:outputText value="#{donneesObjectivesController.selected.masseSuspecte}" title="#{resourcesBundle.ViewDonneesObjectivesTitle_masseSuspecte}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewDonneesObjectivesLabel_nauseeVaumissement}"/>
+                                <h:outputText value="#{donneesObjectivesController.selected.nauseeVaumissement}" title="#{resourcesBundle.ViewDonneesObjectivesTitle_nauseeVaumissement}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewDonneesObjectivesLabel_douleurPelvienne}"/>
+                                <h:outputText value="#{donneesObjectivesController.selected.douleurPelvienne}" title="#{resourcesBundle.ViewDonneesObjectivesTitle_douleurPelvienne}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewDonneesObjectivesLabel_icteres}"/>
+                                <h:outputText value="#{donneesObjectivesController.selected.icteres}" title="#{resourcesBundle.ViewDonneesObjectivesTitle_icteres}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewDonneesObjectivesLabel_fatigabilite}"/>
+                                <h:outputText value="#{donneesObjectivesController.selected.fatigabilite}" title="#{resourcesBundle.ViewDonneesObjectivesTitle_fatigabilite}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewDonneesObjectivesLabel_examenSeins}"/>
+                                <h:outputText value="#{donneesObjectivesController.selected.examenSeins}" title="#{resourcesBundle.ViewDonneesObjectivesTitle_examenSeins}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewDonneesObjectivesLabel_examenAbdomen}"/>
+                                <h:outputText value="#{donneesObjectivesController.selected.examenAbdomen}" title="#{resourcesBundle.ViewDonneesObjectivesTitle_examenAbdomen}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewDonneesObjectivesLabel_examengyneco}"/>
+                                <h:outputText value="#{donneesObjectivesController.selected.examengyneco}" title="#{resourcesBundle.ViewDonneesObjectivesTitle_examengyneco}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewDonneesObjectivesLabel_gainanormalePoids}"/>
+                                <h:outputText value="#{donneesObjectivesController.selected.gainanormalePoids}" title="#{resourcesBundle.ViewDonneesObjectivesTitle_gainanormalePoids}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewDonneesObjectivesLabel_TAtropelevee}"/>
+                                <h:outputText value="#{donneesObjectivesController.selected.TAtropelevee}" title="#{resourcesBundle.ViewDonneesObjectivesTitle_TAtropelevee}"/>
+
+                            </p:panelGrid>
+                        </p:tab>
+                        <p:tab id="DonneesObjectivesTab2" title="#{resourcesBundle.TabHeaderPrefix} 2">
+                            <p:panelGrid columns="2" columnClasses="column" rendered="#{donneesObjectivesController.selected != null}">
+                                <h:outputText value="#{resourcesBundle.ViewDonneesObjectivesLabel_signeAnemie}"/>
+                                <h:outputText value="#{donneesObjectivesController.selected.signeAnemie}" title="#{resourcesBundle.ViewDonneesObjectivesTitle_signeAnemie}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewDonneesObjectivesLabel_autressignesAnormaux}"/>
+                                <h:outputText value="#{donneesObjectivesController.selected.autressignesAnormaux}" title="#{resourcesBundle.ViewDonneesObjectivesTitle_autressignesAnormaux}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewDonneesObjectivesLabel_methode}"/>
+                                <h:outputText value="#{donneesObjectivesController.selected.methode}" title="#{resourcesBundle.ViewDonneesObjectivesTitle_methode}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewDonneesObjectivesLabel_quantite}"/>
+                                <h:outputText value="#{donneesObjectivesController.selected.quantite}" title="#{resourcesBundle.ViewDonneesObjectivesTitle_quantite}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewDonneesObjectivesLabel_dateProchaineVisite}"/>
+                                <h:outputText value="#{donneesObjectivesController.selected.dateProchaineVisite}" title="#{resourcesBundle.ViewDonneesObjectivesTitle_dateProchaineVisite}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+
+                                <h:outputText value="#{resourcesBundle.ViewDonneesObjectivesLabel_utilisateur}"/>
+                                <h:outputText value="#{donneesObjectivesController.selected.utilisateur.uname}"/>
+
+                                <h:outputText value="#{resourcesBundle.ViewDonneesObjectivesLabel_numDossier}"/>
+                                <h:outputText value="#{donneesObjectivesController.selected.numDossier.numDossier}"/>
+                            </p:panelGrid>
+                        </p:tab>
+                    </p:tabView>
+                    <p:commandButton value="#{resourcesBundle.Close}" onclick="PF('DonneesObjectivesViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

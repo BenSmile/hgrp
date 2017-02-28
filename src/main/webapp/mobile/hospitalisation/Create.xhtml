@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pm="http://primefaces.org/mobile">
+
+    <pm:page id="HospitalisationCreatePage" lazy="true">
+        <pm:header title="#{resourcesBundle.CreateHospitalisationTitle}">
+            <h:form>
+                <p:commandButton styleClass="ui-btn-left ui-btn-inline" value="#{resourcesBundle.Cancel}" icon="ui-icon-arrow-l" action="#{mobilePageController.navigateBackInHistory('pm:HospitalisationListPage')}"/>
+            </h:form>
+        </pm:header>
+
+        <pm:content>
+
+            <h:form id="HospitalisationCreateForm">
+
+                <h:panelGroup id="display" rendered="#{hospitalisationController.selected != null}">
+                    <p:outputPanel>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.CreateHospitalisationLabel_dateHospitalisation}" for="dateHospitalisation" />
+                            <p:calendar id="dateHospitalisation" pattern="MM/dd/yyyy" value="#{hospitalisationController.selected.dateHospitalisation}" title="#{resourcesBundle.CreateHospitalisationTitle_dateHospitalisation}"  showOn="button"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.CreateHospitalisationLabel_hospitalisation}" for="hospitalisation" />
+                            <p:inputText id="hospitalisation" value="#{hospitalisationController.selected.hospitalisation}" title="#{resourcesBundle.CreateHospitalisationTitle_hospitalisation}" size="44" maxlength="44"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.CreateHospitalisationLabel_pourTraitementSpecifique}" for="pourTraitementSpecifique" />
+                            <p:inputText id="pourTraitementSpecifique" value="#{hospitalisationController.selected.pourTraitementSpecifique}" title="#{resourcesBundle.CreateHospitalisationTitle_pourTraitementSpecifique}" size="50" maxlength="50"/>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.CreateHospitalisationLabel_utilisateur}" for="utilisateur" />
+                            <p:selectOneMenu id="utilisateur" value="#{hospitalisationController.selected.utilisateur}" required="true" requiredMessage="#{resourcesBundle.CreateHospitalisationRequiredMessage_utilisateur}" converter="usersConverter">
+                                <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{usersController.items}"
+                                               var="utilisateurItem"
+                                               itemValue="#{utilisateurItem}"
+                                               itemLabel="#{utilisateurItem.uname.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                        </pm:field>
+
+                        <pm:field>
+                            <p:outputLabel value="#{resourcesBundle.CreateHospitalisationLabel_numDossier}" for="numDossier" />
+                            <p:selectOneMenu id="numDossier" value="#{hospitalisationController.selected.numDossier}" required="true" requiredMessage="#{resourcesBundle.CreateHospitalisationRequiredMessage_numDossier}" converter="infosFemmeConverter">
+                                <f:selectItem itemLabel="#{resourcesBundle.SelectOneMessage}"/>
+                                <f:selectItems value="#{infosFemmeController.items}"
+                                               var="numDossierItem"
+                                               itemValue="#{numDossierItem}"
+                                               itemLabel="#{numDossierItem.numDossier.toString()}"
+                                               />
+
+                            </p:selectOneMenu>
+                        </pm:field>
+                    </p:outputPanel>
+                    <p:commandButton actionListener="#{hospitalisationController.saveNew}" value="#{resourcesBundle.Save}" update="display,:HospitalisationListPage:HospitalisationListForm:datalist,:growl" action="#{mobilePageController.navigateWithHistory('pm:HospitalisationListPage')}">
+                        <p:confirm header="#{resourcesBundle.ConfirmationHeader}" message="#{resourcesBundle.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                </h:panelGroup>
+
+            </h:form>
+
+        </pm:content>
+
+    </pm:page>
+
+</ui:composition>

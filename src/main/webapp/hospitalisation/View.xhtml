@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="HospitalisationViewDlg" widgetVar="HospitalisationViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{resourcesBundle.ViewHospitalisationTitle}" closeOnEscape="true">
+
+            <h:form id="HospitalisationViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{hospitalisationController.selected != null}">
+
+                        <h:outputText value="#{resourcesBundle.ViewHospitalisationLabel_idHosp}"/>
+                        <h:outputText value="#{hospitalisationController.selected.idHosp}" title="#{resourcesBundle.ViewHospitalisationTitle_idHosp}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewHospitalisationLabel_dateHospitalisation}"/>
+                        <h:outputText value="#{hospitalisationController.selected.dateHospitalisation}" title="#{resourcesBundle.ViewHospitalisationTitle_dateHospitalisation}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+
+                        <h:outputText value="#{resourcesBundle.ViewHospitalisationLabel_hospitalisation}"/>
+                        <h:outputText value="#{hospitalisationController.selected.hospitalisation}" title="#{resourcesBundle.ViewHospitalisationTitle_hospitalisation}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewHospitalisationLabel_pourTraitementSpecifique}"/>
+                        <h:outputText value="#{hospitalisationController.selected.pourTraitementSpecifique}" title="#{resourcesBundle.ViewHospitalisationTitle_pourTraitementSpecifique}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewHospitalisationLabel_utilisateur}"/>
+                        <h:outputText value="#{hospitalisationController.selected.utilisateur.uname}"/>
+
+                        <h:outputText value="#{resourcesBundle.ViewHospitalisationLabel_numDossier}"/>
+                        <h:outputText value="#{hospitalisationController.selected.numDossier.numDossier}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{resourcesBundle.Close}" onclick="PF('HospitalisationViewDialog').hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>
